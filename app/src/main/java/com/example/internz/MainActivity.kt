@@ -9,5 +9,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
-    //제발 돼라ㅠㅠㅠ 첫커밋 
+    //제발 돼라ㅠㅠㅠ 첫커밋ㅓㅓㅓㅓㅓ
 }
