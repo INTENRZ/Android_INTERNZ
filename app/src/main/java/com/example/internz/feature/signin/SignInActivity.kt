@@ -117,7 +117,7 @@ class SignInActivity : AppCompatActivity() {
 //                        }
 //                        else {
 //                            //TODO! 오류 확인
-//                            Toast.makeText(applicationContext, response.body().toString(), Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(applicationContext, response.message(), Toast.LENGTH_SHORT).show()
 //                        }
 //                    }
 //                }

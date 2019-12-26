@@ -6,14 +6,27 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.Toast
 import com.example.internz.R
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.data.SignUpData
+import com.example.internz.data.SignUpRequestData
+import com.example.internz.feature.signin.SignInActivity
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.activity_sign_up2.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignUp2Activity : AppCompatActivity() {
     private lateinit var email : String
-    private lateinit var nickname: String
+    private lateinit var password: String
     private lateinit var phoneNum : String
+    private var gender : Int = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +50,7 @@ class SignUp2Activity : AppCompatActivity() {
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
-                    if (edtSignUpName.text.isEmpty() || edtSignUpNick.text.isEmpty() || edtSignUpBirth.text.isEmpty()) {
-                        btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape)
-                    } else {
-                        //TODO!
-                    }
+                    changeBtnBackground()
                 }
             }
         )
@@ -58,7 +67,7 @@ class SignUp2Activity : AppCompatActivity() {
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
-                    //TODO!
+                    changeBtnBackground()
                 }
             }
         )
@@ -75,13 +84,13 @@ class SignUp2Activity : AppCompatActivity() {
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
-                    //TODO!
+                    changeBtnBackground()
                 }
             }
         )
 
-        //성별
-
+        //성별(radio_group)
+        val radioGroup = findViewById<RadioGroup>(R.id.radioGroupSignUp)
 
         //서비스 이용 약관 동의(image_button)
         imgbtnSignUpService.setOnClickListener {
@@ -114,11 +123,60 @@ class SignUp2Activity : AppCompatActivity() {
                 false -> imgbtnSignUpMarketing.isSelected = true
             }
         }
+
+        btnSignUpFinish.setOnClickListener {
+            //선택된 라디오버튼 정보(성별)
+            val radioButton = findViewById<RadioButton>(radioGroup.checkedRadioButtonId)
+            if (radioButton.text.toString().equals("남성")) {
+                gender = 1
+            }
+
+            //서버통신구현
+            val call = ApiServiceImpl.service.requestSignUp(
+                SignUpRequestData(email, password, phoneNum, edtSignUpName.text.toString(),
+                    edtSignUpNick.text.toString(), edtSignUpBirth.text.toString(), gender))
+
+            call.enqueue(
+                object : Callback<SignUpData> {
+                    override fun onFailure(call: Call<SignUpData>, t: Throwable) {
+                        Log.e("TAG", "SignUp2Activity 서버 통신 불가")
+                    }
+
+                    override fun onResponse(
+                        call: Call<SignUpData>,
+                        response: Response<SignUpData>
+                    ) {
+                        if (response.isSuccessful) {
+                            //TODO! 로그인 화면으로 전환 (기획파트와 확인 필요)
+                            val intent = Intent(this@SignUp2Activity, SignInActivity::class.java)
+                            startActivity(intent)
+
+                            //TODO! 뒤의 모든 액티비티 종료
+                        } else {
+                            Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            )
+        }
     }
 
     private fun initialVariable() {
         email = intent.getStringExtra("email")
-        nickname = intent.getStringExtra("pwd")
+        password = intent.getStringExtra("pwd")
         phoneNum = intent.getStringExtra("phoneNum")
+    }
+
+    private fun changeBtnBackground() {
+        if (edtSignUpName.text.isEmpty() || edtSignUpNick.text.isEmpty() || edtSignUpBirth.text.isEmpty()) {
+            btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape)
+        } else {
+            if(imgbtnSignUpService.isSelected && imgbtnSignUpMarketing.isSelected) {
+                btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape_ok)
+            } else {
+                Toast.makeText(applicationContext, "약관동의를 선택하세요.", Toast.LENGTH_SHORT).show()
+                txtSignUpService.requestFocus()
+            }
+        }
     }
 }
