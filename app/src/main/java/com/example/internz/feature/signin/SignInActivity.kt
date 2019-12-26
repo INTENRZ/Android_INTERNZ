@@ -1,13 +1,21 @@
-package com.example.internz
+package com.example.internz.feature.signin
 
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Toast
+import com.example.internz.R
+import com.example.internz.api.SignInServiceImpl
+import com.example.internz.data.SignInData
+import com.example.internz.data.SignInRequestData
+import com.example.internz.feature.signup.SignUpActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import retrofit2.Call
+import retrofit2.Response
+import javax.security.auth.callback.Callback
 
 class SignInActivity : AppCompatActivity() {
     private var backKeyPressedTime : Long = 0
@@ -71,7 +79,30 @@ class SignInActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            //TODO! 로그인 요청
+            //로그인 요청
+            val signInCall = SignInServiceImpl.singInService.requestSignIn(SignInRequestData(email, pwd))
+
+            signInCall.enqueue(
+                object : retrofit2.Callback<SignInData> {
+                    override fun onFailure(call: Call<SignInData>, t: Throwable) {
+                        Log.e("TAG", "SignInActivity 서버 통신 불가")
+                    }
+
+                    override fun onResponse(
+                        call: Call<SignInData>,
+                        response: Response<SignInData>
+                    ) {
+                        //로그인 성공
+                        if (response.isSuccessful) {
+                            //TODO! 직무 선택 페이지로 넘어가기
+                        }
+                        else {
+                            //TODO! 오류 확인
+                            Toast.makeText(applicationContext, response.body().toString(), Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            )
         }
 
         //회원가입

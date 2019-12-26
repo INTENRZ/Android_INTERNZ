@@ -1,9 +1,11 @@
-package com.example.internz
+package com.example.internz.feature
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import com.example.internz.R
+import com.example.internz.feature.signin.SignInActivity
 
 class SplashActivity : AppCompatActivity() {
 

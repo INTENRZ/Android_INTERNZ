@@ -1,7 +1,8 @@
-package com.example.internz
+package com.example.internz.feature.signup
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.internz.R
 
 class SignUpActivity : AppCompatActivity() {
 
