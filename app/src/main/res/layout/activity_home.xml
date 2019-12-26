@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fafafc"
+    tools:context=".feature.HomeActivity">
+
+<!--    &lt;!&ndash; home 화면 메인 이미지 뷰 &ndash;&gt;-->
+<!--    <ImageView-->
+<!--        android:id="@+id/img_home_mainimg"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="196dp"-->
+<!--        android:src="@drawable/home_event_btn"-->
+<!--        android:background="#f5bd1d"/>-->
+
+<!--    &lt;!&ndash; home 화면 "맞춤 공고" 텍스트 뷰 &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/txt_home_yourNotice"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/img_home_mainimg"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:layout_marginTop="40dp"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="맞춤 공고"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="#2b2d2f"-->
+<!--        android:textStyle="bold" />-->
+
+<!--    &lt;!&ndash; home 화면 맞춤 공고 뷰페이저 &ndash;&gt;-->
+<!--    &lt;!&ndash; 아직 완료 아닌 상태 &ndash;&gt;-->
+<!--    <ImageView-->
+<!--        android:id="@+id/img_home_yourNotice"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/txt_home_yourNotice"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:layout_width="358dp"-->
+<!--        android:layout_height="146dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:background="@drawable/home_recomm_notice_btn" />-->
+
+<!--    &lt;!&ndash; home 화면 "추천 프로필" 텍스트 뷰 &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/txt_home_profile"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/img_home_yourNotice"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:layout_marginTop="40dp"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="추천 프로필"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textColor="#2b2d2f"-->
+<!--        android:textStyle="bold" />-->
+
+    <!-- 하단 탭바 -->
+    <!-- 하단 탭바  - 홈 버튼 -->
+    <ImageView
+        android:id="@+id/img_maintab_home"
+        android:layout_width="90dp"
+        android:layout_height="56dp"
+        android:src="@drawable/selector_maintab_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- 하단 탭바  - 공고 버튼 -->
+    <ImageView
+        android:id="@+id/img_maintab_notice"
+        android:layout_width="90dp"
+        android:layout_height="56dp"
+        android:src="@drawable/selector_maintab_notice"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/img_maintab_home" />
+
+    <!-- 하단 탭바  - 스토리 버튼 -->
+    <ImageView
+        android:id="@+id/img_maintab_story"
+        android:layout_width="90dp"
+        android:layout_height="56dp"
+        android:src="@drawable/selector_maintab_story"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/img_maintab_notice" />
+
+    <!-- 하단 탭바  - 프로필 버튼 -->
+    <ImageView
+        android:id="@+id/img_maintab_profile"
+        android:layout_width="90dp"
+        android:layout_height="56dp"
+        android:src="@drawable/selector_maintab_profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/img_maintab_story" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+

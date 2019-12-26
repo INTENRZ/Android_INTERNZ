@@ -1,4 +1,4 @@
-package com.example.internz.notification
+package com.example.internz.feature.notification
 
 import android.content.Context
 import android.view.LayoutInflater

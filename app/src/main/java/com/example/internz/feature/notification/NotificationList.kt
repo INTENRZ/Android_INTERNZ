@@ -1,35 +1,48 @@
-package com.example.internz
+package com.example.internz.feature.notification
 
-import androidx.appcompat.app.AppCompatActivity
+
+import android.content.Context
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.internz.data.NotificationListData
-import com.example.internz.notification.NotificationListAdapter
-import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+import com.example.internz.R
+import com.example.internz.data.NotificationListData
+import kotlinx.android.synthetic.main.fragment_notification_list.*
+
+class NotificationList : Fragment() {
+
 
     private lateinit var rvNotificationList: RecyclerView
     private lateinit var notificationListAdapter : NotificationListAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+
+    ): View? {
+        // Inflate the layout for this fragment
+
+        return inflater.inflate(R.layout.fragment_notification_list, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
         makeNotificationList()
         makeSpinner()
+
     }
-
-    fun makeSpinner() {
+  fun makeSpinner() {
         val items = resources.getStringArray(R.array.list)
-        val myAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
-
+       val myAdapter = ArrayAdapter(context!!,android.R.layout.simple_spinner_dropdown_item, items)
         txtNotilistfilter.adapter = myAdapter
-
         txtNotilistfilter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
 
@@ -55,8 +68,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun makeNotificationList() {
-        rvNotificationList = findViewById(R.id.rvNotilist)
-        notificationListAdapter = NotificationListAdapter(this)
+        rvNotificationList = view!!.findViewById(R.id.rvNotilist)
+        notificationListAdapter = NotificationListAdapter(context!!)
 
         rvNotificationList.apply {
             adapter = notificationListAdapter
@@ -81,3 +94,5 @@ class MainActivity : AppCompatActivity() {
         notificationListAdapter.notifyDataSetChanged()
     }
 }
+
+
