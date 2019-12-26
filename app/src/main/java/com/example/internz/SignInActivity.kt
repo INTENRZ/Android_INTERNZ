@@ -1,8 +1,11 @@
 package com.example.internz
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
@@ -17,7 +20,41 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun signInFunction() {
-        //로그인
+        //이메일 TextWatcher
+        edtSignInEmail.addTextChangedListener(
+            object : TextWatcher {
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+                override fun afterTextChanged(p0: Editable?) {
+                    if(edtSignInEmail.text.isNotEmpty() && edtSignInPwd.text.isNotEmpty()) {
+                        btnSignInLogIn.setBackgroundResource(R.drawable.btn_shape_ok)
+                    } else {
+                        btnSignInLogIn.setBackgroundResource(R.drawable.btn_shape)
+                    }
+                }
+            }
+        )
+
+        //비밀번호 TextWatcher
+        edtSignInPwd.addTextChangedListener(
+            object : TextWatcher {
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+                override fun afterTextChanged(p0: Editable?) {
+                    if(edtSignInEmail.text.isNotEmpty() && edtSignInPwd.text.isNotEmpty()) {
+                        btnSignInLogIn.setBackgroundResource(R.drawable.btn_shape_ok)
+                    } else {
+                        btnSignInLogIn.setBackgroundResource(R.drawable.btn_shape)
+                    }
+                }
+            }
+        )
+
+        //로그인(click_event)
         btnSignInLogIn.setOnClickListener {
             val email = edtSignInEmail.text.toString()
             val pwd = edtSignInPwd.text.toString()
@@ -43,7 +80,6 @@ class SignInActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 
     //뒤로가기 2번 종료
     override fun onBackPressed() {

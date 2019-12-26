@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">INTERNZ</string>
     <string name="do_sign_up"><u>회원가입하기</u></string>
+    <string name="do_sign_in"><u>로그인하기</u></string>
 </resources>
