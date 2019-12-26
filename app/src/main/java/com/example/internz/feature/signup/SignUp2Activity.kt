@@ -22,6 +22,7 @@ import retrofit2.Response
 /**
  * TODO! 이름, 닉네임, 생년월일, 성별을 서버에 전달해야 함
  * 유일값 : 닉네임
+ * TODO! 상단바 뒤로가기 이미지뷰 기능 추가
  */
 class SignUp2Activity : AppCompatActivity() {
     private var gender : Int = 0

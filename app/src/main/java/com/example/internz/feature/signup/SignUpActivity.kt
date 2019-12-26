@@ -18,8 +18,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 /**
- * TODO! 이메일, 비밀번호, 핸드폰 번호를 서버로 전달해야 함
+ * TODO! 이메일, 비밀번호, 핸드폰 번호를 서버로 전달해야함
  * 유일값 : 이메일
+ * TODO! 상단바 뒤로가기 이미지뷰 기능 추가
  */
 
 class SignUpActivity : AppCompatActivity() {
