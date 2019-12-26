@@ -1,24 +1,32 @@
 package com.example.internz.feature.signin
 
+import android.app.ActionBar
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.text.Layout
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
+import android.view.Window
+import android.view.WindowManager
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.marginBottom
+import androidx.core.view.updatePadding
 import com.example.internz.R
-import com.example.internz.api.SignInServiceImpl
-import com.example.internz.data.SignInData
-import com.example.internz.data.SignInRequestData
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.data.signin.SignInData
+import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.feature.signup.SignUpActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import retrofit2.Call
 import retrofit2.Response
-import javax.security.auth.callback.Callback
 
 /**
- * TODO! 키보드 올라올때 뷰 위로 올리기
+ * TODO! 키보드 올라올때 뷰 위로 올리기 수정
  */
 
 class SignInActivity : AppCompatActivity() {
@@ -33,7 +41,7 @@ class SignInActivity : AppCompatActivity() {
 
     private fun signInFunction() {
         //이메일 TextWatcher
-        edtSignInEmail.addTextChangedListener(
+        edtSignInEmail?.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
@@ -50,7 +58,7 @@ class SignInActivity : AppCompatActivity() {
         )
 
         //비밀번호 TextWatcher
-        edtSignInPwd.addTextChangedListener(
+        edtSignInPwd?.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
@@ -67,7 +75,7 @@ class SignInActivity : AppCompatActivity() {
         )
 
         //로그인(click_event)
-        btnSignInLogIn.setOnClickListener {
+        btnSignInLogIn?.setOnClickListener {
             val email = edtSignInEmail.text.toString()
             val pwd = edtSignInPwd.text.toString()
 
@@ -84,7 +92,12 @@ class SignInActivity : AppCompatActivity() {
             }
 
             //로그인 요청
-            val signInCall = SignInServiceImpl.singInService.requestSignIn(SignInRequestData(email, pwd))
+            val signInCall = ApiServiceImpl.singInService.requestSignIn(
+                SignInRequestData(
+                    email,
+                    pwd
+                )
+            )
 
             signInCall.enqueue(
                 object : retrofit2.Callback<SignInData> {
@@ -110,10 +123,33 @@ class SignInActivity : AppCompatActivity() {
         }
 
         //회원가입
-        txtSignInSignUp.setOnClickListener{
+        txtSignInSignUp?.setOnClickListener{
             val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
             startActivity(intent)
         }
+
+        //레이아웃 변화 감지
+        constSignIn.addOnLayoutChangeListener(
+            object : View.OnLayoutChangeListener {
+                override fun onLayoutChange(
+                    v: View?,
+                    left: Int,
+                    top: Int,
+                    right: Int,
+                    bottom: Int,
+                    oldLeft: Int,
+                    oldTop: Int,
+                    oldRight: Int,
+                    oldBottom: Int
+                ) {
+                    if (bottom < oldBottom) {
+                        //TODO! marginBottom 마진 줄이기
+                    } else {
+                        //TODO! 기본 마진으로 변화
+                    }
+                }
+            }
+        )
     }
 
     //뒤로가기 2번 종료

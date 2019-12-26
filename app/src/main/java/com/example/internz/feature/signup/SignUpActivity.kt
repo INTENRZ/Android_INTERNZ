@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.core.widget.addTextChangedListener
 import com.example.internz.R
+import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : AppCompatActivity() {
@@ -19,7 +20,7 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun signUpFunction() {
         //이메일
-        edtSignUpEmail.addTextChangedListener(
+        edtSignUpEmail?.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
@@ -35,7 +36,7 @@ class SignUpActivity : AppCompatActivity() {
         )
 
         //이름
-        edtSignUpName.addTextChangedListener(
+        edtSignUpName?.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -52,7 +53,7 @@ class SignUpActivity : AppCompatActivity() {
         )
 
         //비밀번호
-        edtSignUpPwd.addTextChangedListener(
+        edtSignUpPwd?.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -69,7 +70,7 @@ class SignUpActivity : AppCompatActivity() {
         )
 
         //비밀번호 확인
-        edtSignUpPwdChk.addTextChangedListener(
+        edtSignUpPwdChk?.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -85,8 +86,13 @@ class SignUpActivity : AppCompatActivity() {
             }
         )
 
+        //로그인하기(click_event)
+        txtSignUpLogIn?.setOnClickListener{
+            this.finish()
+        }
+
         //다음(click_event)
-        btnSignUpNext.setOnClickListener {
+        btnSignUpNext?.setOnClickListener {
             //TODO! 조건 확인 후 다음 화면으로 넘어가기
         }
     }

@@ -6,6 +6,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorBackground</item>
+
+        <!-- Status Bar Text Color -->
+        <item name="android:windowLightStatusBar">true</item>
+
     </style>
 
     <style name="AppTheme.StatusBar" parent="AppTheme">

@@ -1,4 +1,4 @@
-package com.example.internz.data
+package com.example.internz.data.signin
 
 import com.google.gson.annotations.SerializedName
 

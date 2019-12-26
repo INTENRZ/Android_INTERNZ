@@ -156,6 +156,7 @@
         android:layout_marginRight="80dp"
         android:text="@string/do_sign_in"
         android:textStyle="bold"
+        android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtSignUpPwdChk" />
 
