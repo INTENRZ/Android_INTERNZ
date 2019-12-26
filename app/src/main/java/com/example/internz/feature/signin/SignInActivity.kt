@@ -17,6 +17,10 @@ import retrofit2.Call
 import retrofit2.Response
 import javax.security.auth.callback.Callback
 
+/**
+ * TODO! 키보드 올라올때 뷰 위로 올리기
+ */
+
 class SignInActivity : AppCompatActivity() {
     private var backKeyPressedTime : Long = 0
 
