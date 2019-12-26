@@ -22,6 +22,7 @@ import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.feature.HomeActivity
 import com.example.internz.feature.signup.SignUpActivity
+import com.example.internz.feature.story.StoryActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import retrofit2.Call
 import retrofit2.Response
@@ -155,6 +156,12 @@ class SignInActivity : AppCompatActivity() {
                 }
             }
         )
+
+        //스토리액티비티 이동
+        btnMoveStory.setOnClickListener {
+            startActivity(Intent(this, StoryActivity::class.java))
+            finish()
+        }
     }
 
     //뒤로가기 2번 종료

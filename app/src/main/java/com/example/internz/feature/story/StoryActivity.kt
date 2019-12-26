@@ -3,6 +3,8 @@ package com.example.internz.feature.story
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,7 +36,8 @@ class StoryActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-        //서버 통신
+        //TODO! ApiService 구현하고 주석 풀기
+        /*
         val call = ApiServiceImpl.service.requestStory()
 
         call.enqueue(
@@ -57,5 +60,13 @@ class StoryActivity : AppCompatActivity() {
                 }
             }
         )
+         */
+
+        //스피너 설정
+        val spinner = findViewById<Spinner>(R.id.spinnerStory)
+        val adapter = ArrayAdapter.createFromResource(this, R.array.story_spinner, android.R.layout.simple_spinner_item)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
+
     }
 }
