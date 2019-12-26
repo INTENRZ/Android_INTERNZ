@@ -64,17 +64,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         notificationListAdapter.data = listOf(
-            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "13"),
-            NotificationListData(img = R.drawable.korea_press_foundation, title = "한국언론진흥재단" , desc = "광고, 일반행정", dday = "13"),
-            NotificationListData(img = R.drawable.line, title = "라인스튜디오" , desc = "모바일 게임 데이터 분석", dday = "13"),
+            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "D-13"),
+            NotificationListData(img = R.drawable.korea_press_foundation, title = "한국언론진흥재단" , desc = "광고, 일반행정", dday = "D-13"),
+            NotificationListData(img = R.drawable.line, title = "라인스튜디오" , desc = "모바일 게임 데이터 분석", dday = "D-13"),
             NotificationListData(img = R.drawable.showbox, title = "쇼박스" , desc = "마케팅팀", dday = "13"),
-            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "13"),
-            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "13"),
-            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "13"),
-            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "13"),
-            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "13"),
-            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "13"),
-            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "13")
+            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "D-13"),
+            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "D-13"),
+            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "D-13"),
+            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "D-13"),
+            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "D-13"),
+            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "D-13"),
+            NotificationListData(img = R.drawable.apr_corp, title = "에이피알" , desc = "마케팅 콘텐츠 디자인", dday = "D-13")
 
         )
 

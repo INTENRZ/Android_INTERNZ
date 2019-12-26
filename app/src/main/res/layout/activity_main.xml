@@ -19,7 +19,8 @@
         app:layout_constraintEnd_toEndOf="@id/constraint"
         app:layout_constraintTop_toTopOf="@id/constraint"
         app:layout_constraintBottom_toBottomOf="@id/constraint"
-        android:text="공고"/>
+        android:text="공고"
+        android:fontFamily="@font/notosanscjkkr_medium"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
