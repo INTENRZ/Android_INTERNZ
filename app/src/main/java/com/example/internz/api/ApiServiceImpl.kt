@@ -11,5 +11,5 @@ object ApiServiceImpl {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val singInService = retrofit.create(ApiService::class.java)
+    val service = retrofit.create(ApiService::class.java)
 }
