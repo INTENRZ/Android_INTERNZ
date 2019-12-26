@@ -20,6 +20,7 @@ import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
+import com.example.internz.feature.HomeActivity
 import com.example.internz.feature.signup.SignUpActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import retrofit2.Call
@@ -76,51 +77,55 @@ class SignInActivity : AppCompatActivity() {
 
         //로그인(click_event)
         btnSignInLogIn?.setOnClickListener {
-            val email = edtSignInEmail.text.toString()
-            val pwd = edtSignInPwd.text.toString()
+//            val email = edtSignInEmail.text.toString()
+//            val pwd = edtSignInPwd.text.toString()
+//
+//            //로그인 요청 불가
+//            if(email.isEmpty()) {
+//                Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
+//                edtSignInEmail.requestFocus()
+//                return@setOnClickListener
+//            }
+//            else if(pwd.isEmpty()) {
+//                Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
+//                edtSignInPwd.requestFocus()
+//                return@setOnClickListener
+//            }
+//
+//            //로그인 요청
+//            val signInCall = ApiServiceImpl.singInService.requestSignIn(
+//                SignInRequestData(
+//                    email,
+//                    pwd
+//                )
+//            )
+//
+//            signInCall.enqueue(
+//                object : retrofit2.Callback<SignInData> {
+//                    override fun onFailure(call: Call<SignInData>, t: Throwable) {
+//                        Log.e("TAG", "SignInActivity 서버 통신 불가")
+//                    }
+//
+//                    override fun onResponse(
+//                        call: Call<SignInData>,
+//                        response: Response<SignInData>
+//                    ) {
+//                        //로그인 성공
+//                        if (response.isSuccessful) {
+//                            //TODO! 직무 선택 페이지로 넘어가기
+//                        }
+//                        else {
+//                            //TODO! 오류 확인
+//                            Toast.makeText(applicationContext, response.body().toString(), Toast.LENGTH_SHORT).show()
+//                        }
+//                    }
+//                }
+//            )
 
-            //로그인 요청 불가
-            if(email.isEmpty()) {
-                Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
-                edtSignInEmail.requestFocus()
-                return@setOnClickListener
-            }
-            else if(pwd.isEmpty()) {
-                Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
-                edtSignInPwd.requestFocus()
-                return@setOnClickListener
-            }
-
-            //로그인 요청
-            val signInCall = ApiServiceImpl.singInService.requestSignIn(
-                SignInRequestData(
-                    email,
-                    pwd
-                )
-            )
-
-            signInCall.enqueue(
-                object : retrofit2.Callback<SignInData> {
-                    override fun onFailure(call: Call<SignInData>, t: Throwable) {
-                        Log.e("TAG", "SignInActivity 서버 통신 불가")
-                    }
-
-                    override fun onResponse(
-                        call: Call<SignInData>,
-                        response: Response<SignInData>
-                    ) {
-                        //로그인 성공
-                        if (response.isSuccessful) {
-                            //TODO! 직무 선택 페이지로 넘어가기
-                        }
-                        else {
-                            //TODO! 오류 확인
-                            Toast.makeText(applicationContext, response.body().toString(), Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
-            )
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
         }
+
 
         //회원가입
         txtSignInSignUp?.setOnClickListener{
