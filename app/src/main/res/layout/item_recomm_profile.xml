@@ -6,7 +6,7 @@
 
     <!-- home 화면 추천 프로필 리사이클러뷰 아이템 - 컨테이너 -->
     <ImageView
-        android:id="@+id/img_itemHome_container"
+        android:id="@+id/img_itemRecommProfile_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
 
     <!-- home 화면 추천 프로필 리사이클러뷰 아이템 - 프로필 썸네일 이미지 뷰 -->
     <ImageView
-        android:id="@+id/img_itemHome_thumbnail"
+        android:id="@+id/img_itemRecommProfile_thumbnail"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="46dp"
@@ -25,5 +25,15 @@
         android:src="@drawable/home_recomm_profile_img"/>
 
     <!-- home 화면 추천 프로필 리사이클러뷰 아이템 - 프로필 이름 텍스트 뷰 -->
-    
+    <TextView
+        android:id="@+id/txt_itemRecommProfile_name"
+        app:layout_constraintLeft_toRightOf="@+id/img_itemRecommProfile_thumbnail"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="8dp"
+        android:text="한한한"
+        android:textSize="14sp"
+        android:textColor="#212529"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

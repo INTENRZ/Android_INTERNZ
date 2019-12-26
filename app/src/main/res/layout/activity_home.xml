@@ -1,12 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fafafc"
+    tools:context=".HomeActivity">
 
-    <include layout="@layout/activity_maintab"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+    <!-- home 화면 메인 이미지 뷰 -->
+    <ImageView
+        android:id="@+id/img_home_mainimg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="196dp"
+        android:src="@drawable/home_event_btn"
+        android:background="#f5bd1d"/>
+
+    <!-- home 화면 "맞춤 공고" 텍스트 뷰 -->
+    <TextView
+        android:id="@+id/txt_home_yourNotice"
+        app:layout_constraintTop_toBottomOf="@+id/img_home_mainimg"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="맞춤 공고"
+        android:textSize="18sp"
+        android:textColor="#2b2d2f"
+        android:textStyle="bold" />
+
+    <!-- home 화면 맞춤 공고 뷰페이저 -->
+    <!-- 아직 완료 아닌 상태 -->
+    <ImageView
+        android:id="@+id/img_home_yourNotice"
+        app:layout_constraintTop_toBottomOf="@+id/txt_home_yourNotice"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="358dp"
+        android:layout_height="146dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/home_recomm_notice_btn" />
+
+    <!-- home 화면 "추천 프로필" 텍스트 뷰 -->
+    <TextView
+        android:id="@+id/txt_home_profile"
+        app:layout_constraintTop_toBottomOf="@+id/img_home_yourNotice"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="추천 프로필"
+        android:textSize="18sp"
+        android:textColor="#2b2d2f"
+        android:textStyle="bold" />
+
+
+
+
+<!--    <include-->
+<!--        android:id="@+id/layout_home_tab"-->
+<!--        layout="@layout/activity_maintab"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
