@@ -123,6 +123,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="여성"
+            android:checked="true"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="421dp" />
 
@@ -204,7 +205,7 @@
         android:text="약관동의"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupSignUp" />
 
     <EditText
         android:id="@+id/edtSignUpName"

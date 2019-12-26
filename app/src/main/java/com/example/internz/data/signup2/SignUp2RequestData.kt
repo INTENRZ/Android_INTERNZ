@@ -1,10 +1,7 @@
-package com.example.internz.data
+package com.example.internz.data.signup2
 
 //TODO! 뷰 추가하는대로 데이터 추가 필요함
-class SignUpRequestData (
-    val email : String,
-    val pwd : String,
-    val phoneNum : String,
+class SignUp2RequestData (
     val name : String,
     val nickname : String,
     val birth : String,

@@ -1,6 +1,7 @@
 package com.example.internz.feature.signin
 
 import android.app.ActionBar
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -33,6 +34,7 @@ import retrofit2.Response
 
 class SignInActivity : AppCompatActivity() {
     private var backKeyPressedTime : Long = 0
+    //다중 액티비티 종료
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,53 +80,51 @@ class SignInActivity : AppCompatActivity() {
 
         //로그인(click_event)
         btnSignInLogIn?.setOnClickListener {
-//            val email = edtSignInEmail.text.toString()
-//            val pwd = edtSignInPwd.text.toString()
-//
-//            //로그인 요청 불가
-//            if(email.isEmpty()) {
-//                Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
-//                edtSignInEmail.requestFocus()
-//                return@setOnClickListener
-//            }
-//            else if(pwd.isEmpty()) {
-//                Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
-//                edtSignInPwd.requestFocus()
-//                return@setOnClickListener
-//            }
-//
-//            //로그인 요청
-//            val signInCall = ApiServiceImpl.service.requestSignIn(
-//                SignInRequestData(
-//                    email,
-//                    pwd
-//                )
-//            )
-//
-//            signInCall.enqueue(
-//                object : retrofit2.Callback<SignInData> {
-//                    override fun onFailure(call: Call<SignInData>, t: Throwable) {
-//                        Log.e("TAG", "SignInActivity 서버 통신 불가")
-//                    }
-//
-//                    override fun onResponse(
-//                        call: Call<SignInData>,
-//                        response: Response<SignInData>
-//                    ) {
-//                        //로그인 성공
-//                        if (response.isSuccessful) {
-//                            //TODO! 직무 선택 페이지로 넘어가기
-//                        }
-//                        else {
-//                            //TODO! 오류 확인
-//                            Toast.makeText(applicationContext, response.message(), Toast.LENGTH_SHORT).show()
-//                        }
-//                    }
-//                }
-//            )
+            val email = edtSignInEmail.text.toString()
+            val pwd = edtSignInPwd.text.toString()
 
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+            //로그인 요청 불가
+            if(email.isEmpty()) {
+                Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
+                edtSignInEmail.requestFocus()
+                return@setOnClickListener
+            }
+            else if(pwd.isEmpty()) {
+                Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
+                edtSignInPwd.requestFocus()
+                return@setOnClickListener
+            }
+
+            //로그인 요청
+            val signInCall = ApiServiceImpl.service.requestSignIn(
+                SignInRequestData(
+                    email,
+                    pwd
+                )
+            )
+
+            signInCall.enqueue(
+                object : retrofit2.Callback<SignInData> {
+                    override fun onFailure(call: Call<SignInData>, t: Throwable) {
+                        Log.e("TAG", "SignInActivity 서버 통신 불가")
+                    }
+
+                    override fun onResponse(
+                        call: Call<SignInData>,
+                        response: Response<SignInData>
+                    ) {
+                        //로그인 성공
+                        if (response.isSuccessful) {
+                            val intent = Intent(applicationContext, HomeActivity::class.java)
+                            startActivity(intent)
+                        }
+                        else {
+                            //TODO! 서버->클라이언트 메시지가 정상적으로 출력되지 않음
+                            Log.e("TAG", response.body()?.message.toString())
+                        }
+                    }
+                }
+            )
         }
 
 

@@ -3,7 +3,6 @@ package com.example.internz.feature.signup
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -12,19 +11,19 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
-import com.example.internz.data.SignUpData
-import com.example.internz.data.SignUpRequestData
+import com.example.internz.data.signup2.SignUp2Data
+import com.example.internz.data.signup2.SignUp2RequestData
 import com.example.internz.feature.signin.SignInActivity
-import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.activity_sign_up2.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * TODO! 이름, 닉네임, 생년월일, 성별을 서버에 전달해야 함
+ * 유일값 : 닉네임
+ */
 class SignUp2Activity : AppCompatActivity() {
-    private lateinit var email : String
-    private lateinit var password: String
-    private lateinit var phoneNum : String
     private var gender : Int = 0
 
 
@@ -36,8 +35,6 @@ class SignUp2Activity : AppCompatActivity() {
     }
 
     private fun signUpFunction() {
-        initialVariable()
-
         //이름
         edtSignUpName.addTextChangedListener(
             object : TextWatcher {
@@ -132,26 +129,28 @@ class SignUp2Activity : AppCompatActivity() {
             }
 
             //서버통신구현
-            val call = ApiServiceImpl.service.requestSignUp(
-                SignUpRequestData(email, password, phoneNum, edtSignUpName.text.toString(),
-                    edtSignUpNick.text.toString(), edtSignUpBirth.text.toString(), gender))
+            val call = ApiServiceImpl.service.requestSignUp2(
+                SignUp2RequestData(
+                    edtSignUpName.text.toString(), edtSignUpNick.text.toString(), edtSignUpBirth.text.toString(), gender
+                )
+            )
 
             call.enqueue(
-                object : Callback<SignUpData> {
-                    override fun onFailure(call: Call<SignUpData>, t: Throwable) {
+                object : Callback<SignUp2Data> {
+                    override fun onFailure(call: Call<SignUp2Data>, t: Throwable) {
                         Log.e("TAG", "SignUp2Activity 서버 통신 불가")
                     }
 
                     override fun onResponse(
-                        call: Call<SignUpData>,
-                        response: Response<SignUpData>
+                        call: Call<SignUp2Data>,
+                        response: Response<SignUp2Data>
                     ) {
                         if (response.isSuccessful) {
                             //TODO! 로그인 화면으로 전환 (기획파트와 확인 필요)
                             val intent = Intent(this@SignUp2Activity, SignInActivity::class.java)
+                            //이전의 모든 액티비티 제거
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                             startActivity(intent)
-
-                            //TODO! 뒤의 모든 액티비티 종료
                         } else {
                             Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
                         }
@@ -159,12 +158,6 @@ class SignUp2Activity : AppCompatActivity() {
                 }
             )
         }
-    }
-
-    private fun initialVariable() {
-        email = intent.getStringExtra("email")
-        password = intent.getStringExtra("pwd")
-        phoneNum = intent.getStringExtra("phoneNum")
     }
 
     private fun changeBtnBackground() {
