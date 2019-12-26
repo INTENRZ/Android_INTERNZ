@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="214dp"
+    android:layout_height="146dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- home 화면 추천 프로필 리사이클러뷰 아이템 - 컨테이너 -->
+    <ImageView
+        android:id="@+id/img_itemHome_container"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/home_recomm_profile_btn"/>
+
+    <!-- home 화면 추천 프로필 리사이클러뷰 아이템 - 프로필 썸네일 이미지 뷰 -->
+    <ImageView
+        android:id="@+id/img_itemHome_thumbnail"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/home_recomm_profile_img"/>
+
+    <!-- home 화면 추천 프로필 리사이클러뷰 아이템 - 프로필 이름 텍스트 뷰 -->
+    
+</androidx.constraintlayout.widget.ConstraintLayout>
