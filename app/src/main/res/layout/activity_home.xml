@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fafafc"
-    tools:context=".HomeActivity">
+    tools:context=".feature.HomeActivity">
 
 <!--    &lt;!&ndash; home 화면 메인 이미지 뷰 &ndash;&gt;-->
 <!--    <ImageView-->
