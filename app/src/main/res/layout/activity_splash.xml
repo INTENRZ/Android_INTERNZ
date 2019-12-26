@@ -12,14 +12,13 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="117dp"
-        android:layout_marginLeft="117dp"
         android:layout_marginTop="268dp"
-        android:text="인턴 경험의\n모든 것"
-        android:textSize="26sp"
         android:letterSpacing="0.03"
         android:lineSpacingExtra="6sp"
+        android:text="인턴 경험의\n모든 것"
         android:textColor="@color/colorWhite"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,21 +26,18 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="114dp"
-        android:layout_marginLeft="114dp"
         android:layout_marginTop="21dp"
         android:background="@drawable/internz_yw_logo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="211dp"
-        android:layout_marginLeft="211dp"
         android:layout_marginTop="320dp"
         android:background="@drawable/line_for_splash"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
