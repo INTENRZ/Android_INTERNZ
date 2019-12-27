@@ -1,11 +1,10 @@
-package com.example.internz.feature
+package com.example.internz.ui
 
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import com.example.internz.R
 import com.example.internz.feature.signin.SignInActivity

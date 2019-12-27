@@ -11,7 +11,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/home_recomm_profile_btn"/>
+        android:src="@drawable/home_recomm_profile_shadow_btn"/>
 
     <!-- home 화면 추천 프로필 리사이클러뷰 아이템 - 프로필 썸네일 이미지 뷰 -->
     <ImageView
@@ -21,7 +21,7 @@
         android:layout_width="46dp"
         android:layout_height="46dp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:src="@drawable/home_recomm_profile_img"/>
 
     <!-- home 화면 추천 프로필 리사이클러뷰 아이템 - 프로필 이름 텍스트 뷰 -->
@@ -36,4 +36,22 @@
         android:text="한한한"
         android:textSize="14sp"
         android:textColor="#212529"/>
+
+    <!-- home 화면 추천 프로필 리사이클러뷰 아이템 - 프로필 소개 텍스트 뷰 -->
+    <TextView
+        android:id="@+id/txt_itemRecommProfile_introduce"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_itemRecommProfile_thumbnail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="11dp"
+        android:text="서비스 기획과 리서치를 좋아하는 UXUI 디자이너입니다."
+        android:textSize="12sp"
+        android:textColor="#212529"
+
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
