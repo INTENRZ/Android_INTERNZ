@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.JobSelectActivity">
+    tools:context=".feature.jobselect.JobSelectActivity">
 
     <!-- TODO! 관심 직무 선택과 선택해주세요 사이에 선 그리기   -->
     <androidx.constraintlayout.widget.ConstraintLayout

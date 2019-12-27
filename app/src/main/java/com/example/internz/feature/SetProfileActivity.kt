@@ -1,4 +1,4 @@
-package com.example.internz.feature.jobselect
+package com.example.internz.feature
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
