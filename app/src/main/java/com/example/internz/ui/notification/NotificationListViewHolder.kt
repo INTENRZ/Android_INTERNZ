@@ -1,4 +1,4 @@
-package com.example.internz.feature.notification
+package com.example.internz.ui.notification
 
 import android.view.View
 import android.widget.ImageView

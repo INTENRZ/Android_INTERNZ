@@ -6,13 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.PagerAdapter
 import com.example.internz.R
 import com.example.internz.data.home.RecommData
 import com.example.internz.data.home.StoryData
 import com.example.internz.data.notification.NotificationListData
 import com.example.internz.feature.homestory.HomestoryAdapter
+import com.example.internz.ui.home.customnotification.CustomNotificationAdapter
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
@@ -35,12 +39,22 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        rvInit()
+
+        rvCustom()
+        rvRecommProfile()
         rvStory()
     }
 
+
+    fun rvCustom() {
+
+        val customAdapter : PagerAdapter = CustomNotificationAdapter(childFragmentManager)
+        viewpager.adapter = customAdapter
+        tablayout.setupWithViewPager(viewpager)
+
+    }
     /* home 화면 "추천 프로필" 리사이클러뷰 init */
-    fun rvInit(){
+    fun rvRecommProfile(){
         rv_recomm_profile = activity!!.findViewById(R.id.rv_home_recommProfile)
         adapter_recomm_profile = HomeAdapter(context!!)
         rv_recomm_profile.adapter = adapter_recomm_profile

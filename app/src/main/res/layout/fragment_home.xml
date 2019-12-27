@@ -37,20 +37,45 @@
 
                         <!-- home 화면 맞춤 공고 뷰페이저 -->
                         <!-- 아직 완료 아닌 상태 -->
-                        <ImageView
-                            android:id="@+id/img_home_yourNotice"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/CustomConstraint"
                             app:layout_constraintTop_toBottomOf="@+id/txt_home_yourNotice"
                             app:layout_constraintStart_toStartOf="parent"
-                            android:scaleType="fitXY"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="120dp"
                             android:layout_marginTop="12dp"
-                            android:background="@drawable/home_recomm_notice_btn" />
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:background="#ffffff">
 
+                                <com.google.android.material.tabs.TabLayout
+                                    android:id="@+id/tablayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:tabMode="fixed"
+                                    app:layout_constraintStart_toStartOf="@id/CustomConstraint"
+                                    app:layout_constraintTop_toTopOf="@id/CustomConstraint"/>
+                                <androidx.viewpager.widget.ViewPager
+                                    android:id="@+id/viewpager"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:layout_constraintStart_toStartOf="@id/tablayout"
+                                    app:layout_constraintTop_toTopOf="@id/tablayout"
+                                    />
+                                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp"
+                                    app:layout_anchor="@id/viewpager"
+                                    app:layout_anchorGravity="bottom|right|end"
+                                    app:layout_constraintStart_toStartOf="@id/CustomConstraint"
+                                    app:layout_constraintEnd_toEndOf="@id/CustomConstraint"
+                                    app:layout_constraintBottom_toBottomOf="@id/CustomConstraint"/>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
                         <!-- home 화면 "추천 프로필" 제목 텍스트 뷰 -->
                         <TextView
                             android:id="@+id/txt_home_profile"
-                            app:layout_constraintTop_toBottomOf="@+id/img_home_yourNotice"
+                            app:layout_constraintTop_toBottomOf="@+id/CustomConstraint"
                             app:layout_constraintStart_toStartOf="parent"
                             android:layout_marginTop="40dp"
                             android:layout_marginLeft="16dp"

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:id="@+id/txtHomeCustomFirstTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:text="에이피알"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/txtHomeCustomFirstDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txtHomeCustomFirstTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:text="마케팅 콘텐츠 디자인"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/txtHomeCustomFirstDday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txtHomeCustomFirstDesc"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="16dp"
+        android:text="D-13"
+        android:textSize="14sp"
+        android:textColor="@color/colorDday"/>
+
+    <ImageView
+        android:id="@+id/imgHomeCustomFirstImg"
+        android:layout_width="138dp"
+        android:layout_height="45dp"
+        tools:layout_editor_absoluteX="270dp"
+        tools:layout_editor_absoluteY="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/apr_corp"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
