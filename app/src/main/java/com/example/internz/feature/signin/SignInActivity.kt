@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
+import com.example.internz.data.signin.SignIn
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.feature.jobselect.JobSelectActivity
@@ -112,6 +113,9 @@ class SignInActivity : AppCompatActivity() {
                                 //TODO! 첫 로그인의 경우 JobSelectActivity, 아닐 경우 HomeActivity로 이동하도록 수정
 //                                val intent = Intent(applicationContext, JobSelectActivity::class.java)
 //                                startActivity(intent)
+
+                                //로그인 성공시, 하드디스크에 데이터 저장
+                                SignIn.setUser(applicationContext, email)
                             }
                             else {
                                 //TODO! 서버 -> 클라이언트 요청 OK로 변경해달라고 요청

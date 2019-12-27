@@ -28,58 +28,58 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
-        android:layout_width="391dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
+        app:tabMinWidth="35dp"
+        app:tabMode="scrollable"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
+            android:id="@+id/tabAll"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:text="전체" />
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
+            android:id="@+id/tabIntern"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:text="인턴" />
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
+            android:id="@+id/tabExternal"
+            android:layout_width="63dp"
             android:layout_height="wrap_content"
             android:text="대외활동" />
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
+            android:id="@+id/tabContest"
+            android:layout_width="49dp"
             android:layout_height="wrap_content"
             android:text="공모전" />
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
+            android:id="@+id/tabClub"
+            android:layout_width="49dp"
             android:layout_height="wrap_content"
             android:text="동아리" />
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
+            android:id="@+id/tabLicense"
+            android:layout_width="49dp"
             android:layout_height="wrap_content"
             android:text="자격증" />
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
+            android:id="@+id/tabEtc"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:text="기타" />
 
     </com.google.android.material.tabs.TabLayout>
-
-    <!--
-    <Spinner
-        android:id="@+id/spinnerStory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout" /> -->
 
     <Spinner
         android:id="@+id/spinnerStory"
