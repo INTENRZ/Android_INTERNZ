@@ -1,4 +1,4 @@
-package com.example.internz.data
+package com.example.internz.data.notification
 
 
 data class NotificationListData (

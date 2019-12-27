@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.data.NotificationListData
+import com.example.internz.data.notification.NotificationListData
 
 class NotificationListAdapter (private val context : Context) : RecyclerView.Adapter<NotificationListViewHolder>() {
 

@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.data.NotificationListData
+import com.example.internz.data.notification.NotificationListData
 
 class NotificationListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
