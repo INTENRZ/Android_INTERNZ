@@ -10,18 +10,21 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.internz.R
 import com.example.internz.data.notification.NotificationListData
+import kotlinx.android.synthetic.main.fragment_notification_list.*
 
 class NotificationFragment : Fragment() {
 
 
     private lateinit var rvNotificationList: RecyclerView
     private lateinit var notificationListAdapter : NotificationListAdapter
-    private lateinit var txtNotilistfilter : Spinner
+    // private lateinit var txtNotilistfilter : Spinner
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,41 +39,40 @@ class NotificationFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         makeNotificationList()
         //makeSpinner()
 
     }
-  fun makeSpinner() {
-        txtNotilistfilter = view!!.findViewById(R.id.txtNotilistfilter)
-        val items = resources.getStringArray(R.array.spinner)
-        val myAdapter = ArrayAdapter(context!!,android.R.layout.simple_spinner_dropdown_item, items)
-        txtNotilistfilter.adapter = myAdapter
-
-        txtNotilistfilter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-
-                //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.
-                when(position) {
-                    0   ->  {
-                        Toast.makeText(context, "1", Toast.LENGTH_SHORT).show()
-                    }
-                    1   ->  {
-                        Toast.makeText(context, "2", Toast.LENGTH_SHORT).show()
-                    }
-                    //...
-                    else -> {
-                        Toast.makeText(context, "3", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-
-            }
-        }
-
-    }
+//  fun makeSpinner() {  수정해야함
+//        txtNotilistfilter = view!!.findViewById(R.id.txtNotilistfilter)
+//        val items = resources.getStringArray(R.array.spinner)
+//        val myAdapter = ArrayAdapter(context!!,android.R.layout.simple_spinner_dropdown_item, items)
+//        txtNotilistfilter.adapter = myAdapter
+//
+//        txtNotilistfilter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+//
+//                //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.
+//                when(position) {
+//                    0   ->  {
+//                        Toast.makeText(context, "1", Toast.LENGTH_SHORT).show()
+//                    }
+//                    1   ->  {
+//                        Toast.makeText(context, "2", Toast.LENGTH_SHORT).show()
+//                    }
+//                    //...
+//                    else -> {
+//                        Toast.makeText(context, "3", Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//            }
+//
+//            override fun onNothingSelected(parent: AdapterView<*>) {
+//
+//            }
+//        }
+//
+//    }
 
     fun makeNotificationList() {
         rvNotificationList = view!!.findViewById(R.id.rvNotilist)
