@@ -22,6 +22,7 @@ import com.example.internz.api.ApiServiceImpl
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.feature.HomeActivity
+import com.example.internz.feature.JobSelectActivity
 import com.example.internz.feature.signup.SignUpActivity
 import com.example.internz.feature.story.StoryActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
@@ -115,16 +116,27 @@ class SignInActivity : AppCompatActivity() {
                     ) {
                         //로그인 성공
                         if (response.isSuccessful) {
-                            val intent = Intent(applicationContext, HomeActivity::class.java)
-                            startActivity(intent)
+                            if(response.body()?.success!!) {
+//                                val intent = Intent(applicationContext, HomeActivity::class.java)
+//                                startActivity(intent)
+                                //TODO! 첫 로그인의 경우 JobSelectActivity, 아닐 경우 HomeActivity로 이동하도록 수정
+//                                val intent = Intent(applicationContext, JobSelectActivity::class.java)
+//                                startActivity(intent)
+                            }
+                            else {
+                                //TODO! 서버 -> 클라이언트 요청 OK로 변경해달라고 요청
+                                Log.e("TAG", response.body()?.message.toString())
+                            }
                         }
                         else {
-                            //TODO! 서버->클라이언트 메시지가 정상적으로 출력되지 않음
-                            Log.e("TAG", response.body()?.message.toString())
+                            //Bad Request
                         }
                     }
                 }
             )
+
+            val intent = Intent(applicationContext, JobSelectActivity::class.java)
+            startActivity(intent)
         }
 
 
