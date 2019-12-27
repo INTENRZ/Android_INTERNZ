@@ -7,6 +7,7 @@
     android:background="#fafafc"
     tools:context=".ui.MainActivity">
 
+    <!-- Fragment 고정된 위치 -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
@@ -16,14 +17,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <!-- Fragment 고정된 위치 -->
-<!--    <fragment android:name="com.example.internz.ui.home.HomeFragment"-->
-<!--        android:id="@+id/container"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/v_bar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp" />-->
-
 
     <!-- 하단 탭바 -->
     <androidx.constraintlayout.widget.ConstraintLayout

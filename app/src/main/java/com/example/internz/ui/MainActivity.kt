@@ -2,14 +2,11 @@ package com.example.internz.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.FragmentManager
 import com.example.internz.R
 import com.example.internz.feature.notification.NotificationFragment
 import com.example.internz.ui.Story.StoryFragment
 import com.example.internz.ui.home.HomeFragment
-import com.example.internz.ui.notice.NoticeFragment
-import com.example.internz.ui.profile.ProfileFragment
+import com.example.internz.ui.profile.TimelineFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         val fragmentHome = HomeFragment()
         val fragmentNotification = NotificationFragment()
         val fragmentStory = StoryFragment()
-        val fragmentProfile = ProfileFragment()
+        val fragmentProfile = TimelineFragment()
 
         /* 프래그먼트 교체 관련 */
         val fragmentManager = supportFragmentManager

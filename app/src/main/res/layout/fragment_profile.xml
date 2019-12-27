@@ -1,18 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <ImageView
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+    <!--프로필 메인 텍스트-->
+    <TextView
+        android:id="@+id/txt_profile_main"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="프로필"
+        android:textSize="17sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:gravity="center_horizontal|center_vertical"
+        android:background="#ffffff"/>
+
+    <ScrollView
+        app:layout_constraintTop_toBottomOf="@+id/txt_profile_main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#f4f4f4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:src="@drawable/home_recomm_profile_img"/>
+            android:layout_height="wrap_content"
+            android:background="#ffffff">
+            <!--회색 상단 바-->
+            <View
+                android:id="@+id/img_profile_bar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e3e3e3"/>
+            <!-- 사진 노란색 테두리 이미지 -->
+            <ImageView
+                android:id="@+id/img_profile_face_border"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/img_profile_bar"
+                app:layout_constraintBottom_toBottomOf="@+id/img_profile_bar"
+                android:layout_marginLeft="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/circleimg"/>
+            <!-- 프로필 사진 -->
+            <ImageView
+                android:id="@+id/img_profile_face"
+                app:layout_constraintTop_toTopOf="@+id/img_profile_face_border"
+                app:layout_constraintBottom_toBottomOf="@id/img_profile_face_border"
+                app:layout_constraintStart_toStartOf="@id/img_profile_face_border"
+                app:layout_constraintEnd_toEndOf="@id/img_profile_face_border"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/profile_img"/>
+            <!-- 프로필 이름 텍스트 -->
+            <TextView
+                android:id="@+id/txt_profile_name"
+                app:layout_constraintTop_toBottomOf="@+id/img_profile_bar"
+                app:layout_constraintStart_toEndOf="@+id/img_profile_face_border"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="8dp"
+                android:text="인턴즈"
+                android:textSize="18sp"
+                android:textColor="#212529"
+                android:textStyle="bold"/>
 
+            <ImageView
+                android:id="@+id/img_profile_following"
+                app:layout_constraintTop_toBottomOf="@+id/img_profile_massage"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/following_btn"/>
 
+            <!-- 쪽지 보내기 이미지 버튼 -->
+            <ImageView
+                android:id="@+id/img_profile_massage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_profile_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/massage_ic"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"/>
 
+            <!--팔로워 텍스트 -->
+            <TextView
+                android:id="@+id/txt_profile_follower"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_profile_face_border"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="팔로워"
+                android:textSize="12sp"
+                android:textColor="#212529"/>
 
+            <!--팔로워 수 -->
+            <TextView
+                android:id="@+id/txt_profile_follower_number"
+                app:layout_constraintStart_toEndOf="@+id/txt_profile_follower"
+                app:layout_constraintTop_toBottomOf="@id/img_profile_face_border"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="16dp"
+                android:text="12"
+                android:textSize="12sp"
+                android:textColor="#212529"/>
+
+            <!--팔로우 텍스트 -->
+            <TextView
+                android:id="@+id/txt_profile_follow"
+                app:layout_constraintStart_toEndOf="@id/txt_profile_follower_number"
+                app:layout_constraintTop_toBottomOf="@id/img_profile_face_border"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="팔로우"
+                android:textSize="12sp"
+                android:textColor="#212529"/>
+
+            <!--팔로우 수 -->
+            <TextView
+                android:id="@+id/txt_profile_follow_number"
+                app:layout_constraintStart_toEndOf="@id/txt_profile_follow"
+                app:layout_constraintTop_toBottomOf="@id/img_profile_face_border"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="16dp"
+                android:text="24"
+                android:textSize="12sp"
+                android:textColor="#212529"/>
+
+            <!-- 소개 -->
+            <TextView
+                android:id="@+id/txt_profile_intoduce"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_profile_follow"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="서비스 기획과 리서치를 좋아하는 UXUI 디자이너입니다.
+요즘은 구독, 개인화 서비스에 관심이 많습니다."
+                android:textSize="14sp"
+                android:textColor="#212529"/>
+
+            <!-- 첫 번째 직무-->
+            <TextView
+                android:id="@+id/txt_job1"
+                app:layout_constraintTop_toBottomOf="@+id/txt_profile_intoduce"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/text_backgruond"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:text="디자인"
+                android:textColor="#212529"
+                android:textSize="14sp"/>
+
+            <!-- 두 번째 직무-->
+            <TextView
+                android:id="@+id/txt_job2"
+                app:layout_constraintTop_toBottomOf="@+id/txt_profile_intoduce"
+                app:layout_constraintStart_toEndOf="@+id/txt_job1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/text_backgruond"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:text="마케팅"
+                android:textColor="#212529"
+                android:textSize="14sp"/>
+
+            <!-- 세 번째 직무-->
+            <TextView
+                android:id="@+id/txt_job3"
+                app:layout_constraintTop_toBottomOf="@+id/txt_profile_intoduce"
+                app:layout_constraintStart_toEndOf="@+id/txt_job2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/text_backgruond"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:text="IT"
+                android:textColor="#212529"
+                android:textSize="14sp"/>
+
+            <View
+                android:id="@+id/v_blank"
+                app:layout_constraintTop_toBottomOf="@+id/txt_job3"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_profile_timeline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_blank"
+                android:paddingTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#f4f4f4">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
