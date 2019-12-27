@@ -5,5 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class SignUp2Data (
     //TODO! 에러 확인
     @SerializedName("message")
-    val message : String?
+    val message : String?,
+    @SerializedName("success")
+    val success : Boolean
 )

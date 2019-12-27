@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.data.story.StoryData
+import com.example.internz.data.story.StoryDataTemporal
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,6 +36,10 @@ class StoryActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
+        //TODO! 서버 통신시에는 40,41번 코드 제거후 아래 call 주석 풀기
+        adapter.data = StoryDataTemporal().getStory()
+        adapter.notifyDataSetChanged()
 
         //TODO! ApiService 구현하고 주석 풀기
         /*

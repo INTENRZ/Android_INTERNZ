@@ -13,6 +13,7 @@ import com.example.internz.api.ApiServiceImpl
 import com.example.internz.data.signin.SignIn
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
+import com.example.internz.feature.HomeActivity
 import com.example.internz.feature.jobselect.JobSelectActivity
 import com.example.internz.feature.signup.SignUpActivity
 import com.example.internz.feature.story.StoryActivity
@@ -98,32 +99,47 @@ class SignInActivity : AppCompatActivity() {
             signInCall.enqueue(
                 object : retrofit2.Callback<SignInData> {
                     override fun onFailure(call: Call<SignInData>, t: Throwable) {
-                        Log.e("TAG", "SignInActivity 서버 통신 불가")
+                        Log.e("TAG", "SignInActivity Server is not activated")
                     }
 
                     override fun onResponse(
                         call: Call<SignInData>,
                         response: Response<SignInData>
                     ) {
-                        //로그인 성공
+                        //서버 통신 성공
                         if (response.isSuccessful) {
-                            if(response.body()?.success!!) {
-//                                val intent = Intent(applicationContext, HomeActivity::class.java)
-//                                startActivity(intent)
-                                //TODO! 첫 로그인의 경우 JobSelectActivity, 아닐 경우 HomeActivity로 이동하도록 수정
-//                                val intent = Intent(applicationContext, JobSelectActivity::class.java)
-//                                startActivity(intent)
+                            if(response.body()?.isFirst.equals("0")) { //첫 로그인
+                                //사용자 토큰 저장
+                                SignIn.setUserToken(response.body()?.token!!) //TODO! 오류확인
 
-                                //로그인 성공시, 하드디스크에 데이터 저장
-                                SignIn.setUser(applicationContext, email)
-                            }
-                            else {
-                                //TODO! 서버 -> 클라이언트 요청 OK로 변경해달라고 요청
-                                Log.e("TAG", response.body()?.message.toString())
+                                val intent = Intent(applicationContext, JobSelectActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            } else if (response.body()?.isFirst.equals("1")) { //old user
+                                //사용자 토큰 저장
+                                SignIn.setUserToken(response.body()?.token!!) //TODO! 오류 확인
+
+                                val intent = Intent(applicationContext, HomeActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            } else {
+                                //로그인 불가
+                                if((response.body()?.message!!).contains("비밀번호")) {
+                                    Toast.makeText(applicationContext, response.body()?.message.toString(), Toast.LENGTH_SHORT).show()
+
+                                    //비밀번호 재입력 요청
+                                    edtSignInPwd.text.clear()
+                                    edtSignInPwd.requestFocus()
+                                } else {
+                                    Toast.makeText(applicationContext, response.body()?.message.toString(), Toast.LENGTH_SHORT).show()
+
+                                    edtSignInEmail.text.clear()
+                                    edtSignInPwd.text.clear()
+                                }
                             }
                         }
                         else {
-                            //Bad Request
+                            Log.e("TAG", "SignInActivity Server broadcast fail")
                         }
                     }
                 }

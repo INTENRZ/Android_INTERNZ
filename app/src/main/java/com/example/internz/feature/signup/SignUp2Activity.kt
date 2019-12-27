@@ -25,6 +25,7 @@ import retrofit2.Response
  * TODO! 상단바 뒤로가기 이미지뷰 기능 추가
  */
 class SignUp2Activity : AppCompatActivity() {
+    private lateinit var userIndex : String
     private var gender : Int = 0
 
 
@@ -36,6 +37,9 @@ class SignUp2Activity : AppCompatActivity() {
     }
 
     private fun signUpFunction() {
+        //사용자의 고유 인덱스 초기화
+        userIndex = intent.getStringExtra("userIndex")
+
         //이름
         edtSignUpName.addTextChangedListener(
             object : TextWatcher {
@@ -131,6 +135,7 @@ class SignUp2Activity : AppCompatActivity() {
 
             //서버통신구현
             val call = ApiServiceImpl.service.requestSignUp2(
+                userIndex,
                 SignUp2RequestData(
                     edtSignUpName.text.toString(), edtSignUpNick.text.toString(), edtSignUpBirth.text.toString(), gender
                 )
@@ -139,7 +144,7 @@ class SignUp2Activity : AppCompatActivity() {
             call.enqueue(
                 object : Callback<SignUp2Data> {
                     override fun onFailure(call: Call<SignUp2Data>, t: Throwable) {
-                        Log.e("TAG", "SignUp2Activity 서버 통신 불가")
+                        Log.e("TAG", "SignUp2Activity Server is not activated")
                     }
 
                     override fun onResponse(
@@ -147,13 +152,21 @@ class SignUp2Activity : AppCompatActivity() {
                         response: Response<SignUp2Data>
                     ) {
                         if (response.isSuccessful) {
-                            //TODO! 로그인 화면으로 전환 (기획파트와 확인 필요)
-                            val intent = Intent(this@SignUp2Activity, SignInActivity::class.java)
-                            //이전의 모든 액티비티 제거
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                            startActivity(intent)
+                            if(response.body()?.success!!) {
+                                val intent =
+                                    Intent(this@SignUp2Activity, SignInActivity::class.java)
+                                //이전의 모든 액티비티 제거
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                                startActivity(intent)
+                            } else {
+                                Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
+
+                                //닉네임 재입력 요청
+                                edtSignUpNick.text.clear()
+                                edtSignUpNick.requestFocus()
+                            }
                         } else {
-                            Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
+                            Log.e("TAG", "SignUp2Activiy Server broadcast fail")
                         }
                     }
                 }

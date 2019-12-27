@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.data.signup.SignUpData
@@ -18,8 +19,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 /**
- * TODO! 이메일, 비밀번호, 핸드폰 번호를 서버로 전달해야함
- * 유일값 : 이메일
  * TODO! 상단바 뒤로가기 이미지뷰 기능 추가
  */
 
@@ -110,14 +109,14 @@ class SignUpActivity : AppCompatActivity() {
         btnSignUpNext?.setOnClickListener {
             val call = ApiServiceImpl.service.requestSignUp(
                 SignUpRequestData(
-                    edtSignUpEmail.text.toString(), edtSignUpPwd.text.toString(), edtSignUpPhoneNum.text.toString()
+                    edtSignUpEmail.text.toString(), edtSignUpPwd.text.toString(), edtSignUpPwdChk.text.toString(), edtSignUpPhoneNum.text.toString()
                 )
             )
 
             call.enqueue(
                 object : Callback<SignUpData> {
                     override fun onFailure(call: Call<SignUpData>, t: Throwable) {
-                        Log.e("TAG", "SignUpActivity 서버 통신 불가")
+                        Log.e("TAG", "SignUpActivity Server is not activated")
                     }
 
                     override fun onResponse(
@@ -125,12 +124,21 @@ class SignUpActivity : AppCompatActivity() {
                         response: Response<SignUpData>
                     ) {
                         if (response.isSuccessful) {
-                            val intent = Intent(this@SignUpActivity, SignUp2Activity::class.java)
-                            startActivity(intent)
+                            if(response.body()?.success!!) { //회원 가입 성공
+                                val intent =
+                                    Intent(this@SignUpActivity, SignUp2Activity::class.java)
+                                        .putExtra("userIndex", response.body()?.userIndex.toString())
+                                startActivity(intent)
+                            } else { //회원 가입 실패
+                                Toast.makeText(applicationContext, response.body()?.message.toString(), Toast.LENGTH_SHORT).show()
+
+                                //이메일 재입력 요청
+                                edtSignUpEmail.text.clear()
+                                edtSignUpEmail.requestFocus()
+                            }
                         }
                         else {
-                            //TODO! 서버에서 전달해주는 메시지 확인
-                            //TODO! 서버에서 해당 답장을 주는 경우가 이메일이 유일하지 않을 경우만이면 그냥 custom message로 수정
+                            Log.e("TAG", "SignUpActivity Server broadcast fail")
                         }
                     }
                 }

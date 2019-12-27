@@ -20,5 +20,9 @@ class StoryViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         date.text = data.date
 
         //TODO! clickEvent 구현
+        view.setOnClickListener {
+            //서버와 통신해서 스토리 데이터 받아와서 보여줘야 함
+
+        }
     }
 }

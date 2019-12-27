@@ -13,16 +13,17 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 
 interface ApiService {
     @POST("/user/signin")
     fun requestSignIn(@Body body : SignInRequestData) : Call<SignInData>
 
-    @POST("/user/signup")
+    @POST("/user/signup1")
     fun requestSignUp(@Body body : SignUpRequestData) : Call<SignUpData>
 
-    @POST("/user/signup")
-    fun requestSignUp2(@Body body : SignUp2RequestData) : Call<SignUp2Data>
+    @POST("/user/signup2/{useridx}") //TODO! 오류 확인
+    fun requestSignUp2(@Path("useridx") useridx : String, @Body body : SignUp2RequestData) : Call<SignUp2Data>
 
     //TODO! 스토리 @GET 추가
     fun requestStory() : Call<List<StoryData>>
