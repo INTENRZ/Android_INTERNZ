@@ -1,16 +1,34 @@
 package com.example.internz.feature.signin
 
+import android.app.ActionBar
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.text.Layout
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
+import android.view.ViewGroup
+import android.view.Window
+import android.view.WindowManager
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.marginBottom
+import androidx.core.view.updatePadding
 import com.example.internz.R
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.data.signin.SignIn
+import com.example.internz.data.signin.SignInData
+import com.example.internz.data.signin.SignInRequestData
+import com.example.internz.feature.HomeActivity
+import com.example.internz.feature.jobselect.JobSelectActivity
 import com.example.internz.ui.MainActivity
 import com.example.internz.feature.signup.SignUpActivity
+import com.example.internz.feature.story.StoryActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import retrofit2.Call
+import retrofit2.Response
 
 /**
  * TODO! 키보드 올라올때 뷰 위로 올리기 수정
@@ -18,6 +36,7 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class SignInActivity : AppCompatActivity() {
     private var backKeyPressedTime : Long = 0
+    //다중 액티비티 종료
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,54 +82,82 @@ class SignInActivity : AppCompatActivity() {
 
         //로그인(click_event)
         btnSignInLogIn?.setOnClickListener {
-//            val email = edtSignInEmail.text.toString()
-//            val pwd = edtSignInPwd.text.toString()
-//
-//            //로그인 요청 불가
-//            if(email.isEmpty()) {
-//                Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
-//                edtSignInEmail.requestFocus()
-//                return@setOnClickListener
-//            }
-//            else if(pwd.isEmpty()) {
-//                Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
-//                edtSignInPwd.requestFocus()
-//                return@setOnClickListener
-//            }
-//
-//            //로그인 요청
-//            val signInCall = ApiServiceImpl.singInService.requestSignIn(
-//                SignInRequestData(
-//                    email,
-//                    pwd
-//                )
-//            )
-//
+            val email = edtSignInEmail.text.toString()
+            val pwd = edtSignInPwd.text.toString()
+
+            //로그인 요청 불가
+            if(email.isEmpty()) {
+                Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
+                edtSignInEmail.requestFocus()
+                return@setOnClickListener
+            }
+            else if(pwd.isEmpty()) {
+                Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
+                edtSignInPwd.requestFocus()
+                return@setOnClickListener
+            }
+
+            //로그인 요청
+            val signInCall = ApiServiceImpl.service.requestSignIn(
+                SignInRequestData(
+                    email,
+                    pwd
+                )
+            )
+
 //            signInCall.enqueue(
 //                object : retrofit2.Callback<SignInData> {
 //                    override fun onFailure(call: Call<SignInData>, t: Throwable) {
-//                        Log.e("TAG", "SignInActivity 서버 통신 불가")
+//                        Log.e("TAG", "SignInActivity Server is not activated")
 //                    }
 //
 //                    override fun onResponse(
 //                        call: Call<SignInData>,
 //                        response: Response<SignInData>
 //                    ) {
-//                        //로그인 성공
+//                        //서버 통신 성공
 //                        if (response.isSuccessful) {
-//                            //TODO! 직무 선택 페이지로 넘어가기
+//                            if(response.body()?.isFirst.equals("0")) { //첫 로그인
+//                                //사용자 토큰 저장
+//                                SignIn.setUserToken(response.body()?.token!!) //TODO! 오류확인
+//
+//                                val intent = Intent(applicationContext, JobSelectActivity::class.java)
+//                                startActivity(intent)
+//                                finish()
+//                            } else if (response.body()?.isFirst.equals("1")) { //old user
+//                                //사용자 토큰 저장
+//                                SignIn.setUserToken(response.body()?.token!!) //TODO! 오류 확인 -> 오류 발생
+//
+//                                val intent = Intent(applicationContext, HomeActivity::class.java)
+//                                startActivity(intent)
+//                                finish()
+//                            } else {
+//                                //로그인 불가
+//                                if((response.body()?.message!!).contains("비밀번호")) {
+//                                    Toast.makeText(applicationContext, response.body()?.message.toString(), Toast.LENGTH_SHORT).show()
+//
+//                                    //비밀번호 재입력 요청
+//                                    edtSignInPwd.text.clear()
+//                                    edtSignInPwd.requestFocus()
+//                                } else {
+//                                    Toast.makeText(applicationContext, response.body()?.message.toString(), Toast.LENGTH_SHORT).show()
+//
+//                                    edtSignInEmail.text.clear()
+//                                    edtSignInPwd.text.clear()
+//                                }
+//                            }
 //                        }
 //                        else {
-//                            //TODO! 오류 확인
-//                            Toast.makeText(applicationContext, response.body().toString(), Toast.LENGTH_SHORT).show()
+//                            Log.e("TAG", "SignInActivity Server broadcast fail")
 //                        }
 //                    }
 //                }
 //            )
 
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, MainActivity::class.java))
         }
+
+
 
 
         //회원가입
@@ -141,6 +188,12 @@ class SignInActivity : AppCompatActivity() {
                 }
             }
         )
+
+        //스토리액티비티 이동
+        btnMoveStory.setOnClickListener {
+            startActivity(Intent(this, StoryActivity::class.java))
+            finish()
+        }
     }
 
     //뒤로가기 2번 종료

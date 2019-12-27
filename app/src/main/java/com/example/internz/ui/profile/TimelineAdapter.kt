@@ -12,7 +12,7 @@ class TimelineAdapter(private val context : Context) : RecyclerView.Adapter<Time
     var data = listOf<ProfileTimelineData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimelineVeiwHolder {
-        val itemView = LayoutInflater.from(context).inflate(R.layout.item_profile_timeline, parent, false)
+        val itemView = LayoutInflater.from(context).inflate(R.layout.rv_profile_timeline_item, parent, false)
         return TimelineVeiwHolder(itemView)
     }
 

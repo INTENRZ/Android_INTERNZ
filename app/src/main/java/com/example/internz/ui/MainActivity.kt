@@ -3,8 +3,8 @@ package com.example.internz.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.internz.R
-import com.example.internz.feature.notification.NotificationFragment
-import com.example.internz.ui.Story.StoryFragment
+import com.example.internz.ui.notification.NotificationFragment
+import com.example.internz.ui.story.StoryFragment
 import com.example.internz.ui.home.HomeFragment
 import com.example.internz.ui.profile.TimelineFragment
 import kotlinx.android.synthetic.main.activity_home.*
