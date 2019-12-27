@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.internz.R
 import com.example.internz.ui.notification.NotificationFragment
-import com.example.internz.ui.home.Story.StoryFragment
+import com.example.internz.ui.Story.StoryFragment
 import com.example.internz.ui.home.HomeFragment
 import com.example.internz.ui.home.profile.ProfileFragment
 import kotlinx.android.synthetic.main.activity_home.*

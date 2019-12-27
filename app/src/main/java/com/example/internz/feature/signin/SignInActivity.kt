@@ -1,34 +1,18 @@
 package com.example.internz.feature.signin
 
-import android.app.ActionBar
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.text.Layout
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
-import android.view.ViewGroup
-import android.view.Window
-import android.view.WindowManager
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.marginBottom
-import androidx.core.view.updatePadding
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
-import com.example.internz.data.signin.SignIn
-import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
-import com.example.internz.feature.HomeActivity
-import com.example.internz.feature.jobselect.JobSelectActivity
 import com.example.internz.ui.MainActivity
 import com.example.internz.feature.signup.SignUpActivity
-import com.example.internz.feature.story.StoryActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
-import retrofit2.Call
-import retrofit2.Response
 
 /**
  * TODO! 키보드 올라올때 뷰 위로 올리기 수정

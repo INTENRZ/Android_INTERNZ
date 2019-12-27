@@ -1,4 +1,4 @@
-package com.example.internz.feature.story
+package com.example.internz.ui.Story
 
 import android.content.Context
 import android.view.LayoutInflater

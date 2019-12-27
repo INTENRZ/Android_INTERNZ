@@ -1,40 +1,38 @@
-package com.example.internz.feature.story
+package com.example.internz.ui.Story
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.api.ApiServiceImpl
-import com.example.internz.data.story.StoryData
 import com.example.internz.data.story.StoryDataTemporal
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.internz.ui.home.HomeAdapter
 
-//TODO! 서버 -> 클라이언트 데이터 받아와야 함
-
-class StoryActivity : AppCompatActivity() {
+class StoryFragment : Fragment() {
     private lateinit var recyclerView : RecyclerView
     private lateinit var adapter: StoryAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_story)
+    private lateinit var adapter_recomm_profile: HomeAdapter
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_story, container, false)
 
-        storyFunction()
+        storyFunction(view)
+        return view
     }
 
-    private fun storyFunction() {
+    private fun storyFunction(view : View) {
         //변수 초기화
-        recyclerView = findViewById(R.id.rvStory)
-        adapter = StoryAdapter(this)
+        recyclerView = view.findViewById(R.id.rvStory)
+        adapter = StoryAdapter(view.context)
 
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = LinearLayoutManager(view.context)
         recyclerView.adapter = adapter
 
         //TODO! 서버 통신시에는 40,41번 코드 제거후 아래 call 주석 풀기
@@ -68,10 +66,9 @@ class StoryActivity : AppCompatActivity() {
          */
 
         //스피너 설정
-        val spinner = findViewById<Spinner>(R.id.spinnerStory)
-        val adapter = ArrayAdapter.createFromResource(this, R.array.spinner, android.R.layout.simple_spinner_item)
+        val spinner = view.findViewById<Spinner>(R.id.spinnerStory)
+        val adapter = ArrayAdapter.createFromResource(view.context, R.array.spinner, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
-
     }
 }

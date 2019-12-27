@@ -17,11 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".feature.detailstory.DetailStoryActivity"></activity>
         <activity android:name=".feature.SetProfileActivity" />
         <activity android:name=".feature.jobselect.JobSelectActivity" />
         <activity android:name=".feature.signup.SignUp2Activity" />
-        <activity android:name=".feature.story.StoryActivity" />
         <activity android:name=".feature.HomeActivity" />
         <activity
             android:name=".feature.signin.SignInActivity"
