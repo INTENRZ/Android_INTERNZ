@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.FragmentManager
 import com.example.internz.R
+import com.example.internz.feature.notification.NotificationFragment
 import com.example.internz.ui.Story.StoryFragment
 import com.example.internz.ui.home.HomeFragment
 import com.example.internz.ui.notice.NoticeFragment
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         val fragmentHome = HomeFragment()
-        val fragmentNotice = NoticeFragment()
+        val fragmentNotification = NotificationFragment()
 
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
@@ -31,35 +32,21 @@ class MainActivity : AppCompatActivity() {
         }
         img_maintab_notice.setOnClickListener {
             val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.container, fragmentNotice)
+            fragmentTransaction.replace(R.id.container, fragmentNotification)
             fragmentTransaction.commit()
         }
         img_maintab_notice.setOnClickListener {
             val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.container, fragmentNotice)
+            fragmentTransaction.replace(R.id.container, fragmentNotification)
             fragmentTransaction.commit()
         }
         img_maintab_notice.setOnClickListener {
             val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.container, fragmentNotice)
+            fragmentTransaction.replace(R.id.container, fragmentNotification)
             fragmentTransaction.commit()
         }
     }
 }
 
 
-//    /* fragment 교체 */
-//    fun fragManipulate(){
-//        img_maintab_notice.setOnClickListener {
-//
-//        }
-//        img_maintab_profile.setOnClickListener {
-//
-//        }
-//
-//        img_maintab_story.setOnClickListener {
-//
-//        }
-//
-//    }
-//}
+
