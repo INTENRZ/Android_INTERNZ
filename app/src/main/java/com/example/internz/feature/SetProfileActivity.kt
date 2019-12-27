@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.example.internz.R
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
@@ -25,8 +26,6 @@ class SetProfileActivity : AppCompatActivity() {
     }
 
     private fun setProfileActivity() {
-        //TODO! imgSetProfile glide로 이미지 round로 변경
-
         imgSetProfile.setOnClickListener {
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if(checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) ==
@@ -68,7 +67,7 @@ class SetProfileActivity : AppCompatActivity() {
     ) {
         when(requestCode) {
             PERMISSION_CODE -> {
-                if(grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_DENIED) {
                     //권한 요청 팝업 띄우기
                     getImageFromGallery()
                 }
@@ -84,7 +83,9 @@ class SetProfileActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
-            imgSetProfile.setImageURI(data?.data)
+
+            //TODO! imgSetProfile glide로 이미지 round로 변경
+            Glide.with(this).load(data?.data).into(imgSetProfile)
         }
     }
 }
