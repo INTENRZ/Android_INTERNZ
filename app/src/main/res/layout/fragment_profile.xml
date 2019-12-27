@@ -4,11 +4,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-        <TextView
+
+        <ImageView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:text="프로필"/>
+            android:layout_height="400dp"
+            android:src="@drawable/home_recomm_profile_img"/>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
