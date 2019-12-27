@@ -1,5 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">INTERNZ</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="do_sign_up"><u>회원가입하기</u></string>
     <string name="do_sign_in"><u>로그인하기</u></string>
     <string name="permission_1">[설정] > [권한] 에서 권한을 허용해주세요.</string>

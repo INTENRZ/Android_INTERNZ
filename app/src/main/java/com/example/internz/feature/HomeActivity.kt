@@ -1,7 +1,7 @@
 package com.example.internz.feature
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.internz.R
 
 class HomeActivity : AppCompatActivity() {

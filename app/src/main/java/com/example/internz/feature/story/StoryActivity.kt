@@ -69,7 +69,7 @@ class StoryActivity : AppCompatActivity() {
 
         //스피너 설정
         val spinner = findViewById<Spinner>(R.id.spinnerStory)
-        val adapter = ArrayAdapter.createFromResource(this, R.array.story_spinner, android.R.layout.simple_spinner_item)
+        val adapter = ArrayAdapter.createFromResource(this, R.array.spinner, android.R.layout.simple_spinner_item)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 

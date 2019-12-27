@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="story_spinner">
+    <string-array name="spinner">
         <item>최신순</item>
         <item>조회순</item>
     </string-array>
