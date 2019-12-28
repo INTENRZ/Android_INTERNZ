@@ -48,7 +48,7 @@ class Reference : Fragment() {
 
     private fun initStoryList() {
 
-        
+
     }
 
     private inner class StoryAdapter() : RecyclerView.Adapter<StoryViewHolder>() {

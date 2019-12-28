@@ -1,11 +1,13 @@
 package com.example.internz.feature.jobselect
 
+import android.graphics.Color
 import android.util.Log
 import android.view.View
 import android.widget.CheckedTextView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.load.engine.Resource
 import com.example.internz.R
 import com.example.internz.data.jobselect.JobSelectItem
 
@@ -22,12 +24,14 @@ class JobSelectViewHolder(view : View) : RecyclerView.ViewHolder(view) {
             when(job.isSelected) {
                 true -> {
                     job.isSelected = false
+                    job.setTextColor(Color.parseColor("#000000"))
                     SelectHelper.count--
                     SelectHelper.arrayList.remove(job.text.toString())
                 }
                 false -> {
                     if(SelectHelper.count < 3) {
                         job.isSelected = true
+                        job.setTextColor(Color.parseColor("#ffc200"))
                         SelectHelper.count++
                         SelectHelper.arrayList.add(job.text.toString())
                     } else {

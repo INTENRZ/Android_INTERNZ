@@ -7,8 +7,8 @@
 
     <TextView
         android:id="@+id/rvJobSelectBtn"
-        android:layout_width="76dp"
-        android:layout_height="30dp"
+        android:layout_width="86dp"
+        android:layout_height="33dp"
         android:fontFamily="@font/notosanscjkkrmedium"
         android:textSize="14sp"
         android:lineHeight="6sp"
@@ -16,5 +16,9 @@
         android:checked="false"
         android:background="@drawable/btn_for_job_selecter"
         android:text="직무이름"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="2dp"
         android:gravity="center"/>
 </LinearLayout>
