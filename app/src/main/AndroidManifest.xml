@@ -18,11 +18,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.profile.TimelineAddActivity"></activity>
-        <activity android:name=".feature.SetProfileActivity" />
+        <activity android:name=".feature.setprofile.SetProfileActivity" />
         <activity android:name=".feature.comment.CommentActivity"/>
         <activity android:name=".feature.jobselect.JobSelectActivity" />
         <activity android:name=".feature.signup.SignUp2Activity" />
-        <activity android:name=".feature.HomeActivity" />
         <activity
             android:name=".feature.signin.SignInActivity"
             android:windowSoftInputMode="adjustResize" />

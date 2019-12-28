@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
@@ -143,6 +144,10 @@ class SignUpActivity : AppCompatActivity() {
                     }
                 }
             )
+        }
+
+        findViewById<ImageView>(R.id.imgSignUpBack).setOnClickListener {
+            this.finish()
         }
     }
 

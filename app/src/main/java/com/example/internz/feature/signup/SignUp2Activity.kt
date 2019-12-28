@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
@@ -133,7 +134,14 @@ class SignUp2Activity : AppCompatActivity() {
                 gender = 1
             }
 
+            val intent =
+                Intent(this@SignUp2Activity, SignInActivity::class.java)
+            //이전의 모든 액티비티 제거
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+
             //서버통신구현
+            /*
             val call = ApiServiceImpl.service.requestSignUp2(
                 userIndex,
                 SignUp2RequestData(
@@ -171,6 +179,12 @@ class SignUp2Activity : AppCompatActivity() {
                     }
                 }
             )
+
+             */
+        }
+
+        findViewById<ImageView>(R.id.imgSignUpBack).setOnClickListener {
+            this.finish()
         }
     }
 
