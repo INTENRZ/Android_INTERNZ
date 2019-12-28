@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.main.OtherProfileActivity">
 
     <!--프로필 메인 텍스트-->
     <TextView
-        android:id="@+id/txt_profile_main"
+        android:id="@+id/txt_otherProfile_main"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="match_parent"
@@ -19,7 +21,7 @@
         android:background="#ffffff"/>
 
     <ScrollView
-        app:layout_constraintTop_toBottomOf="@+id/txt_profile_main"
+        app:layout_constraintTop_toBottomOf="@+id/txt_otherProfile_main"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="#f4f4f4"
         android:layout_width="match_parent"
@@ -32,7 +34,7 @@
             android:background="#ffffff">
             <!--회색 상단 바-->
             <View
-                android:id="@+id/img_profile_bar"
+                android:id="@+id/img_otherProfile_bar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="70dp"
@@ -41,29 +43,29 @@
                 android:background="#e3e3e3"/>
             <!-- 사진 노란색 테두리 이미지 -->
             <ImageView
-                android:id="@+id/img_profile_face_border"
+                android:id="@+id/img_otherProfile_face_border"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/img_profile_bar"
-                app:layout_constraintBottom_toBottomOf="@+id/img_profile_bar"
+                app:layout_constraintTop_toTopOf="@+id/img_otherProfile_bar"
+                app:layout_constraintBottom_toBottomOf="@+id/img_otherProfile_bar"
                 android:layout_marginLeft="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/circleimg"/>
             <!-- 프로필 사진 -->
             <ImageView
-                android:id="@+id/img_profile_face"
-                app:layout_constraintTop_toTopOf="@+id/img_profile_face_border"
-                app:layout_constraintBottom_toBottomOf="@id/img_profile_face_border"
-                app:layout_constraintStart_toStartOf="@id/img_profile_face_border"
-                app:layout_constraintEnd_toEndOf="@id/img_profile_face_border"
+                android:id="@+id/img_otherProfile_face"
+                app:layout_constraintTop_toTopOf="@+id/img_otherProfile_face_border"
+                app:layout_constraintBottom_toBottomOf="@id/img_otherProfile_face_border"
+                app:layout_constraintStart_toStartOf="@id/img_otherProfile_face_border"
+                app:layout_constraintEnd_toEndOf="@id/img_otherProfile_face_border"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/profile_img"/>
             <!-- 프로필 이름 텍스트 -->
             <TextView
-                android:id="@+id/txt_profile_name"
-                app:layout_constraintTop_toBottomOf="@+id/img_profile_bar"
-                app:layout_constraintStart_toEndOf="@+id/img_profile_face_border"
+                android:id="@+id/txt_otherProfile_name"
+                app:layout_constraintTop_toBottomOf="@+id/img_otherProfile_bar"
+                app:layout_constraintStart_toEndOf="@+id/img_otherProfile_face_border"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -74,20 +76,20 @@
                 android:textStyle="bold"/>
 
             <ImageView
-                android:id="@+id/img_profile_following"
-                app:layout_constraintTop_toBottomOf="@+id/img_profile_massage"
+                android:id="@+id/img_otherProfile_following"
+                app:layout_constraintTop_toBottomOf="@+id/img_otherProfile_massage"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
-                android:src="@drawable/following_btn"/>
+                android:src="@drawable/follow_btn"/>
 
             <!-- 쪽지 보내기 이미지 버튼 -->
             <ImageView
-                android:id="@+id/img_profile_massage"
+                android:id="@+id/img_otherProfile_massage"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_profile_bar"
+                app:layout_constraintTop_toBottomOf="@+id/img_otherProfile_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/massage_ic"
@@ -96,9 +98,9 @@
 
             <!--팔로워 텍스트 -->
             <TextView
-                android:id="@+id/txt_profile_follower"
+                android:id="@+id/txt_otherProfile_follower"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/img_profile_face_border"
+                app:layout_constraintTop_toBottomOf="@id/img_otherProfile_face_border"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -109,9 +111,9 @@
 
             <!--팔로워 수 -->
             <TextView
-                android:id="@+id/txt_profile_follower_number"
-                app:layout_constraintStart_toEndOf="@+id/txt_profile_follower"
-                app:layout_constraintTop_toBottomOf="@id/img_profile_face_border"
+                android:id="@+id/txt_otherProfile_follower_number"
+                app:layout_constraintStart_toEndOf="@+id/txt_otherProfile_follower"
+                app:layout_constraintTop_toBottomOf="@id/img_otherProfile_face_border"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -122,9 +124,9 @@
 
             <!--팔로우 텍스트 -->
             <TextView
-                android:id="@+id/txt_profile_follow"
-                app:layout_constraintStart_toEndOf="@id/txt_profile_follower_number"
-                app:layout_constraintTop_toBottomOf="@id/img_profile_face_border"
+                android:id="@+id/txt_otherProfile_follow"
+                app:layout_constraintStart_toEndOf="@id/txt_otherProfile_follower_number"
+                app:layout_constraintTop_toBottomOf="@id/img_otherProfile_face_border"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
@@ -135,9 +137,9 @@
 
             <!--팔로우 수 -->
             <TextView
-                android:id="@+id/txt_profile_follow_number"
-                app:layout_constraintStart_toEndOf="@id/txt_profile_follow"
-                app:layout_constraintTop_toBottomOf="@id/img_profile_face_border"
+                android:id="@+id/txt_otherProfile_follow_number"
+                app:layout_constraintStart_toEndOf="@id/txt_otherProfile_follow"
+                app:layout_constraintTop_toBottomOf="@id/img_otherProfile_face_border"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -148,9 +150,9 @@
 
             <!-- 소개 -->
             <TextView
-                android:id="@+id/txt_profile_intoduce"
+                android:id="@+id/txt_otherProfile_intoduce"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_profile_follow"
+                app:layout_constraintTop_toBottomOf="@id/txt_otherProfile_follow"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
@@ -165,7 +167,7 @@
             <!-- 첫 번째 직무-->
             <TextView
                 android:id="@+id/txt_job1"
-                app:layout_constraintTop_toBottomOf="@+id/txt_profile_intoduce"
+                app:layout_constraintTop_toBottomOf="@+id/txt_otherProfile_intoduce"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -183,7 +185,7 @@
             <!-- 두 번째 직무-->
             <TextView
                 android:id="@+id/txt_job2"
-                app:layout_constraintTop_toBottomOf="@+id/txt_profile_intoduce"
+                app:layout_constraintTop_toBottomOf="@+id/txt_otherProfile_intoduce"
                 app:layout_constraintStart_toEndOf="@+id/txt_job1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -201,7 +203,7 @@
             <!-- 세 번째 직무-->
             <TextView
                 android:id="@+id/txt_job3"
-                app:layout_constraintTop_toBottomOf="@+id/txt_profile_intoduce"
+                app:layout_constraintTop_toBottomOf="@+id/txt_otherProfile_intoduce"
                 app:layout_constraintStart_toEndOf="@+id/txt_job2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -223,32 +225,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"/>
 
-
-            <!-- 타임라인 리사이클러뷰 -->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_profile_timeline"
+                android:id="@+id/rv_otherProfile_timeline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_blank"
+                android:paddingTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#f4f4f4"
-                android:paddingTop="30dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/v_blank">
+                android:background="#f4f4f4">
 
             </androidx.recyclerview.widget.RecyclerView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-    <ImageView
-        android:id="@+id/img_profile_floating"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/floating_btn"/>
 
     <!-- 타임라인 비어있을 때 보여줄 텍스트 -->
     <TextView
@@ -265,5 +255,3 @@
         android:textColor="#dbdbdb"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

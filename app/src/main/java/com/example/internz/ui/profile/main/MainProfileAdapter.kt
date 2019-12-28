@@ -18,6 +18,7 @@ class MainProfileAdapter(private val context : Context) : RecyclerView.Adapter<M
 
     override fun onBindViewHolder(holder: MainProfileVeiwHolder, position: Int) {
         holder.bind(data[position])
+
     }
 
     override fun getItemCount(): Int {
