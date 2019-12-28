@@ -61,3 +61,8 @@ class StoryFragment : Fragment() {
         })
     }
 }
+
+
+//        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+//        // Inflate the layout for this fragment
+//        val view = inflater.inflate(R.layout.fragment_main_home, container, false)

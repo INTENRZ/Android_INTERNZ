@@ -8,8 +8,6 @@ import com.example.internz.data.comment.CommentData
 import kotlinx.android.synthetic.main.activity_comment.view.*
 
 class CommentViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-    private val view : View = view.findViewById(R.id.rvCommentItem)
-
     private val nickname: TextView = view.findViewById(R.id.txtCommentNick)
     private val comments : TextView = view.findViewById(R.id.txtCommentContents)
     private val date : TextView = view.findViewById(R.id.txtCommentDate)

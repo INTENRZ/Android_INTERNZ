@@ -12,8 +12,11 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
         android:text="에이피알"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textColor="#212529"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/txtNotilistDesc"
@@ -33,7 +36,8 @@
         android:layout_marginTop="3dp"
         android:text="D-13"
         android:textSize="14sp"
-        android:textColor="@color/colorDday"/>
+        android:textColor="@color/colorDday"
+        android:textStyle="bold"/>
 
     <ImageView
         android:id="@+id/imgNotilistImg"
@@ -47,11 +51,12 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
         android:background="@drawable/rectangle_line"
         app:layout_constraintTop_toBottomOf="@id/txtNotilistDday"
         app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="#e3e3e3"
         android:layout_marginTop="16dp"/>
 
 

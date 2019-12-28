@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/frag_navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="홈" />
+
+    <item
+        android:id="@+id/frag_navigation_notice"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="공고" />
+
+    <item
+        android:id="@+id/frag_navigation_story"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="스토리" />
+
+    <item
+        android:id="@+id/frag_navigation_profile"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="프로필" />
+
+</menu>

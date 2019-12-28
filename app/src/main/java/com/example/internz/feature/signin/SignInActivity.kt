@@ -5,21 +5,28 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
+import com.example.internz.common.toast
+import com.example.internz.data.signin.SignIn
+import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.feature.jobselect.JobSelectActivity
 import com.example.internz.feature.signup.SignUpActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import retrofit2.Call
+import retrofit2.Response
 
 /**
  * TODO! 키보드 올라올때 뷰 위로 올리기 수정
  */
 
 class SignInActivity : AppCompatActivity() {
-    private var backKeyPressedTime : Long = 0
+    private var backKeyPressedTime: Long = 0
     //다중 액티비티 종료
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +45,7 @@ class SignInActivity : AppCompatActivity() {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
                 override fun afterTextChanged(p0: Editable?) {
-                    if(edtSignInEmail.text.isNotEmpty() && edtSignInPwd.text.isNotEmpty()) {
+                    if (edtSignInEmail.text.isNotEmpty() && edtSignInPwd.text.isNotEmpty()) {
                         btnSignInLogIn.setBackgroundResource(R.drawable.btn_shape_ok)
                     } else {
                         btnSignInLogIn.setBackgroundResource(R.drawable.btn_shape)
@@ -55,7 +62,7 @@ class SignInActivity : AppCompatActivity() {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
                 override fun afterTextChanged(p0: Editable?) {
-                    if(edtSignInEmail.text.isNotEmpty() && edtSignInPwd.text.isNotEmpty()) {
+                    if (edtSignInEmail.text.isNotEmpty() && edtSignInPwd.text.isNotEmpty()) {
                         btnSignInLogIn.setBackgroundResource(R.drawable.btn_shape_ok)
                     } else {
                         btnSignInLogIn.setBackgroundResource(R.drawable.btn_shape)
@@ -68,26 +75,52 @@ class SignInActivity : AppCompatActivity() {
         btnSignInLogIn?.setOnClickListener {
             val email = edtSignInEmail.text.toString()
             val pwd = edtSignInPwd.text.toString()
-
+            startActivity(Intent(this, JobSelectActivity::class.java))
             //로그인 요청 불가
-            if(email.isEmpty()) {
-                Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
+            if (email.isEmpty()) {
+                toast("이메일을 입력하세요.")
                 edtSignInEmail.requestFocus()
                 return@setOnClickListener
-            }
-            else if(pwd.isEmpty()) {
+            } else if (pwd.isEmpty()) {
                 Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
                 edtSignInPwd.requestFocus()
                 return@setOnClickListener
             }
+        }
 
-            //로그인 요청
-            val signInCall = ApiServiceImpl.service.requestSignIn(
-                SignInRequestData(
-                    email,
-                    pwd
-                )
-            )
+
+//            //로그인 요청
+//            val signInCall = ApiServiceImpl.service.requestSignIn(
+//                SignInRequestData(
+//                    email,
+//                    pwd
+//                )
+//            )
+
+//            signInCall.enqueue(
+//                onSuccess = {
+//                    when {
+//                        it.isFirst == "0" -> {
+//                            //사용자 토큰 저장
+//                            SignIn.setUserToken(it.token)
+//
+//                            val intent = Intent(applicationContext, JobSelectActivity::class.java)
+//                            startActivity(intent)
+//                        }
+//                        it.isFirst == "1" -> {
+//                            //사용자 토큰 저장
+//                            SignIn.setUserToken(it.token)
+//
+//                            //val intent = Intent(applicationContext, HomeActivity::class.java)
+//                            //startActivity(intent)
+//                            finish()
+//                        }
+//                    }
+//                },
+//                onFail = { status, message ->
+//                    toast(message)
+//                }
+//            )
 
 //            signInCall.enqueue(
 //                object : retrofit2.Callback<SignInData> {
@@ -112,7 +145,7 @@ class SignInActivity : AppCompatActivity() {
 //                                //사용자 토큰 저장
 //                                SignIn.setUserToken(response.body()?.token!!) //TODO! 오류 확인 -> 오류 발생
 //
-//                                val intent = Intent(applicationContext, HomeActivity::class.java)
+////                                val intent = Intent(applicationContext, HomeActivity::class.java)
 //                                startActivity(intent)
 //                                finish()
 //                            } else {
@@ -137,54 +170,30 @@ class SignInActivity : AppCompatActivity() {
 //                    }
 //                }
 //            )
-
-            startActivity(Intent(this, JobSelectActivity::class.java))
-        }
-
-
+//
+//            startActivity(Intent(this, JobSelectActivity::class.java))
+//    }
 
 
         //회원가입
-        txtSignInSignUp?.setOnClickListener{
+        txtSignInSignUp?.setOnClickListener {
             val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
             startActivity(intent)
         }
 
-        //레이아웃 변화 감지
-        constSignIn.addOnLayoutChangeListener(
-            object : View.OnLayoutChangeListener {
-                override fun onLayoutChange(
-                    v: View?,
-                    left: Int,
-                    top: Int,
-                    right: Int,
-                    bottom: Int,
-                    oldLeft: Int,
-                    oldTop: Int,
-                    oldRight: Int,
-                    oldBottom: Int
-                ) {
-                    if (bottom < oldBottom) {
-                        //TODO! marginBottom 마진 줄이기
-                    } else {
-                        //TODO! 기본 마진으로 변화
-                    }
-                }
-            }
-        )
-    }
-
-    //뒤로가기 2번 종료
-    override fun onBackPressed() {
-        val toast = Toast.makeText(this, "\'뒤로\'버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT)
-
-        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
-            backKeyPressedTime = System.currentTimeMillis()
-            toast.show()
-        }
-        else if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
-            toast.cancel()
-            finish()
-        }
     }
 }
+//        //뒤로가기 2번 종료
+//        override fun onBackPressed() {
+//            val toast = Toast.makeText(this, "\'뒤로\'버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT)
+//
+//            if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+//                backKeyPressedTime = System.currentTimeMillis()
+//                toast.show()
+//            } else if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+//                toast.cancel()
+//                finish()
+//            }
+//        }
+//    }
+

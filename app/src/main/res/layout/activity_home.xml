@@ -7,83 +7,36 @@
     android:background="#fafafc"
     tools:context=".ui.MainActivity">
 
-    <!-- Fragment 고정된 위치 -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container"
+
+    <!-- 하단 탭 네비게이션 뷰 -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:labelVisibilityMode="unlabeled"
+        app:itemIconTint="@color/colorBackground"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <!-- 탭 바 클릭시 마다 교체될 프래그먼트-->
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/container_home_tab"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- 하단 탭바 -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container_home_tab"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="64dp">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_line"
-            app:layout_constraintTop_toTopOf="@id/container_home_tab"
-            app:layout_constraintStart_toStartOf="parent"/>
-        <!-- 하단 탭바  - 홈 버튼 -->
-        <ImageView
-            android:id="@+id/img_maintab_home"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintBottom_toBottomOf="@id/container_home_tab"
-            app:layout_constraintStart_toStartOf="@id/container_home_tab"
-            app:layout_constraintTop_toTopOf="@id/container_home_tab"
-            app:layout_constraintEnd_toEndOf="@id/container_home_tab"
-            android:src="@drawable/tabbar_home_btn"/>
-
-
-        <!-- 하단 탭바  - 공고 버튼 -->
-        <ImageView
-            android:id="@+id/img_maintab_notice"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_constraintHorizontal_bias="0.33"
-            android:src="@drawable/tabbar_notice_selected_btn"
-            app:layout_constraintBottom_toBottomOf="@id/container_home_tab"
-            app:layout_constraintStart_toStartOf="@id/container_home_tab"
-            app:layout_constraintEnd_toEndOf="@id/container_home_tab"
-            app:layout_constraintTop_toTopOf="@id/container_home_tab" />
-
-        <!-- 하단 탭바  - 스토리 버튼 -->
-        <ImageView
-            android:id="@+id/img_maintab_story"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_constraintHorizontal_bias="0.66"
-            app:layout_constraintBottom_toBottomOf="@id/container_home_tab"
-            app:layout_constraintStart_toStartOf="@id/container_home_tab"
-            app:layout_constraintEnd_toEndOf="@id/container_home_tab"
-            app:layout_constraintTop_toTopOf="@id/container_home_tab"
-            android:src="@drawable/tabbar_story_btn"/>
-
-        <!-- 하단 탭바  - 프로필 버튼 -->
-        <ImageView
-            android:id="@+id/img_maintab_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_constraintHorizontal_bias="0.99"
-            app:layout_constraintBottom_toBottomOf="@id/container_home_tab"
-            app:layout_constraintStart_toStartOf="@id/container_home_tab"
-            app:layout_constraintEnd_toEndOf="@id/container_home_tab"
-            app:layout_constraintTop_toTopOf="@id/container_home_tab"
-            android:src="@drawable/tabbar_profile_btn"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/nav_view"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:navGraph="@navigation/mobile_navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

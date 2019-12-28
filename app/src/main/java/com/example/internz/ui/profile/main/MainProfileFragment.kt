@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.data.home.RecommData
 import com.example.internz.data.profile.ProfileTimelineData
 import com.example.internz.feature.jobselect.SelectHelper
-import com.example.internz.ui.home.HomeAdapter
+import com.example.internz.ui.notification.NotificationViewModel
 import com.example.internz.ui.profile.TimelineAddActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
 
@@ -22,13 +22,18 @@ class MainProfileFragment : Fragment() {
     private lateinit var rv_profile_timeline: RecyclerView
     private lateinit var adapter_profile_mainProfile: MainProfileAdapter
 
+    private lateinit var profileViewModel: ProfileViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        // 하단 탭에 필요한 코드
+        profileViewModel =
+            ViewModelProviders.of(this).get(ProfileViewModel::class.java)
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

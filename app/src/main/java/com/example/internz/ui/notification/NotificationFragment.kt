@@ -6,17 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
-import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.internz.R
 import com.example.internz.data.notification.NotificationListData
-import kotlinx.android.synthetic.main.fragment_notification_list.*
 
 class NotificationFragment : Fragment() {
 
@@ -25,14 +20,16 @@ class NotificationFragment : Fragment() {
     private lateinit var notificationListAdapter : NotificationListAdapter
     // private lateinit var txtNotilistfilter : Spinner
 
+    private lateinit var notificationViewModel: NotificationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
 
     ): View? {
-        // Inflate the layout for this fragment
-
+        // 하단 탭에 필요한 코드
+        notificationViewModel =
+            ViewModelProviders.of(this).get(NotificationViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_notification_list, container, false)
         return view
     }
