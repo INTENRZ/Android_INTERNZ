@@ -20,19 +20,13 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="회원가입"
-            android:textStyle="bold"
+            android:textColor="#FF000000"
+            android:textSize="17sp"
+            android:fontFamily="@font/notosanscjkkrmedium"
+            android:lineSpacingExtra="-5sp"
+            android:letterSpacing="-0.41sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imgSignUpBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/timeline_detail_back_ic"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,7 +39,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="37dp"
         android:text="이름"
-        android:textStyle="bold"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="28sp"
+        android:letterSpacing="0.48sp"
+        android:textColor="#212529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
@@ -56,7 +54,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="35dp"
         android:text="닉네임"
-        android:textStyle="bold"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="28sp"
+        android:letterSpacing="0.48sp"
+        android:textColor="#212529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtSignUpName" />
 
@@ -80,7 +82,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="35dp"
         android:text="생년월일"
-        android:textStyle="bold"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="28sp"
+        android:letterSpacing="0.48sp"
+        android:textColor="#212529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtSignUpNick" />
 
@@ -104,7 +110,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="35dp"
         android:text="성별"
-        android:textStyle="bold"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="28sp"
+        android:letterSpacing="0.48sp"
+        android:textColor="#212529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtSignUpBirth" />
 
@@ -123,6 +133,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="여성"
+            android:fontFamily="@font/notosanscjkkrmedium"
+            android:textSize="16sp"
+            android:lineSpacingExtra="28sp"
+            android:letterSpacing="0.48sp"
+            android:textColor="#212529"
             android:checked="true"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="421dp" />
@@ -133,6 +148,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="남성"
+            android:fontFamily="@font/notosanscjkkrmedium"
+            android:textSize="16sp"
+            android:lineSpacingExtra="28sp"
+            android:letterSpacing="0.48sp"
+            android:textColor="#212529"
             app:layout_constraintStart_toEndOf="@+id/radioSignUpFemale"
             tools:layout_editor_absoluteY="421dp" />
 
@@ -140,23 +160,23 @@
 
     <ImageView
         android:id="@+id/imgbtnSignUpService"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="9dp"
         android:src="@drawable/license"
+        app:layout_constraintBottom_toBottomOf="@+id/txtSignUpService"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintTop_toTopOf="@+id/txtSignUpService" />
 
     <ImageView
         android:id="@+id/imgbtnSignUpMarketing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="11dp"
         android:src="@drawable/license"
+        app:layout_constraintBottom_toBottomOf="@+id/txtSignUpMarketing"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgbtnSignUpService" />
+        app:layout_constraintTop_toTopOf="@+id/txtSignUpMarketing" />
 
     <TextView
         android:id="@+id/txtSignUpService"
@@ -164,8 +184,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="9dp"
-        android:textStyle="bold"
         android:text="서비스 이용 약관 동의"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="28sp"
+        android:letterSpacing="0.48sp"
+        android:textColor="#212529"
         app:layout_constraintStart_toEndOf="@+id/imgbtnSignUpService"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -175,8 +199,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:text="마케팅 정보 수신 동의"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="28sp"
+        android:letterSpacing="0.48sp"
+        android:textColor="#212529"
+        android:text="(선택)마케팅 정보 수신 동의"
         app:layout_constraintStart_toEndOf="@+id/imgbtnSignUpMarketing"
         app:layout_constraintTop_toBottomOf="@+id/txtSignUpService" />
 
@@ -203,7 +231,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="35dp"
         android:text="약관동의"
-        android:textStyle="bold"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:textSize="16sp"
+        android:lineSpacingExtra="28sp"
+        android:letterSpacing="0.48sp"
+        android:textColor="#212529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroupSignUp" />
 

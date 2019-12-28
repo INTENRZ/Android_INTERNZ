@@ -15,6 +15,7 @@
         android:layout_marginTop="268dp"
         android:letterSpacing="0.03"
         android:lineSpacingExtra="6sp"
+        android:fontFamily="@font/notosanscjkkrlight"
         android:text="인턴 경험의\n모든 것"
         android:textColor="@color/colorWhite"
         android:textSize="26sp"
@@ -35,10 +36,11 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/line_for_splash"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

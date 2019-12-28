@@ -182,10 +182,6 @@ class SignUp2Activity : AppCompatActivity() {
 
              */
         }
-
-        findViewById<ImageView>(R.id.imgSignUpBack).setOnClickListener {
-            this.finish()
-        }
     }
 
     private fun changeBtnBackground() {

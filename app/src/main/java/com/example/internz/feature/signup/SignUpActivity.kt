@@ -146,6 +146,7 @@ class SignUpActivity : AppCompatActivity() {
 //            )
         }
 
+        //뒤로가기(back button)
         findViewById<ImageView>(R.id.imgSignUpBack).setOnClickListener {
             this.finish()
         }

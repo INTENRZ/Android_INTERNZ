@@ -29,10 +29,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="75dp"
+            android:fontFamily="@font/notosanscjkkrmedium"
+            android:lineSpacingExtra="28sp"
             android:text="이메일"
-            android:textStyle="bold"
+            android:textColor="#212529"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -41,10 +43,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="37dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/notosanscjkkrmedium"
+            android:lineSpacingExtra="28sp"
             android:text="비밀번호"
-            android:textStyle="bold"
+            android:textColor="#212529"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtSignInEmail" />
 
@@ -85,10 +89,11 @@
             android:layout_marginRight="16dp"
             android:background="@drawable/btn_shape"
             android:elevation="0dp"
-            android:lineHeight="29sp"
             android:text="로그인"
+            android:fontFamily="@font/notosanscjkkrbold"
             android:textColor="@color/colorWhite"
             android:textSize="20sp"
+            android:lineSpacingExtra="9sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtSignInPwd" />
@@ -104,6 +109,10 @@
         android:layout_marginLeft="80dp"
         android:layout_marginTop="670dp"
         android:text="인턴즈가 처음이신가요?"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:textSize="14sp"
+        android:lineSpacingExtra="30sp"
+        android:letterSpacing="0.03"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -116,7 +125,10 @@
         android:layout_marginRight="88dp"
         android:clickable="true"
         android:text="@string/do_sign_up"
-        android:textStyle="bold"
+        android:textSize="14sp"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:lineSpacingExtra="30sp"
+        android:letterSpacing="0.42sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
