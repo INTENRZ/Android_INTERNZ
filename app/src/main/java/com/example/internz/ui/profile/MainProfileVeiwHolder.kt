@@ -9,7 +9,7 @@ import com.example.internz.R
 import com.example.internz.data.profile.ProfileTimelineData
 
 
-class TimelineVeiwHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class MainProfileVeiwHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val timelineBar: ImageView = itemView.findViewById(R.id.img_profile_timeline_bar)
     val timelineTitle : TextView = itemView.findViewById(R.id.txt_profile_timeline_title)
     val timelinePeriod : TextView = itemView.findViewById(R.id.txt_profile_timeline_period)
