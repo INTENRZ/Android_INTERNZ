@@ -1,6 +1,8 @@
 package com.example.internz.ui.notification
 
 import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
 import android.view.MotionEvent
 import android.view.MotionEvent.ACTION_CANCEL
 import android.view.View
@@ -11,8 +13,8 @@ import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_SWIPE
 import androidx.recyclerview.widget.ItemTouchHelper.LEFT
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_SWIPE
-
-
+import android.graphics.RectF
+import android.widget.Button
 
 
 class SwipeController : ItemTouchHelper.Callback() {
@@ -50,12 +52,42 @@ class SwipeController : ItemTouchHelper.Callback() {
         actionState: Int, isCurrentlyActive: Boolean
     ) {
 
+        drawButtons(c, viewHolder)
         if (actionState == ACTION_STATE_SWIPE) {
             setTouchListener(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
         }
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
     }
 
+    private fun drawButtons(c: Canvas, viewHolder: RecyclerView.ViewHolder) {
+        val buttonWidthWithoutPadding = (buttonWidth - 20).toFloat()
+        val corners = 16f
+
+        val itemView = viewHolder.itemView
+        val p = Paint()
+
+        val rightButton = RectF(
+            itemView.right - buttonWidthWithoutPadding,
+            itemView.top.toFloat(),
+            itemView.right.toFloat(),
+            itemView.bottom.toFloat()
+        )
+        p.setColor(Color.RED)
+        c.drawRoundRect(rightButton, corners, corners, p)
+        drawText("DELETE", c, rightButton, p)
+
+
+    }
+
+    private fun drawText(text: String, c: Canvas, button: RectF, p: Paint) {
+        val textSize = 60f
+        p.color = Color.WHITE
+        p.isAntiAlias = true
+        p.textSize = textSize
+
+        val textWidth = p.measureText(text)
+        c.drawText(text, button.centerX() - textWidth / 2, button.centerY() + textSize / 2, p)
+    }
     private fun setTouchListener(
         c: Canvas,
         recyclerView: RecyclerView,
