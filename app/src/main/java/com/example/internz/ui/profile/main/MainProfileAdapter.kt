@@ -1,4 +1,4 @@
-package com.example.internz.ui.profile
+package com.example.internz.ui.profile.main
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -6,7 +6,7 @@ import com.example.internz.R
 import com.example.internz.ui.notification.NotificationFragment
 import com.example.internz.ui.story.StoryFragment
 import com.example.internz.ui.home.HomeFragment
-import com.example.internz.ui.profile.MainProfileFragment
+import com.example.internz.ui.profile.main.MainProfileFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 class MainActivity : AppCompatActivity() {

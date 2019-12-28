@@ -7,7 +7,7 @@
 
 
     <TextView
-        android:id="@+id/txtTimelineStoryListDesc"
+        android:id="@+id/txtTimelineStoryListExternalDesc"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -16,10 +16,10 @@
         android:textSize="17sp"/>
 
     <TextView
-        android:id="@+id/txtTimelineStoryListdate"
+        android:id="@+id/txtTimelineStoryListExternalDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/txtTimelineStoryListDesc"
+        app:layout_constraintTop_toBottomOf="@id/txtTimelineStoryListExternalDesc"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="12dp"
         android:text="D-13"
@@ -27,12 +27,12 @@
         android:textColor="@color/colorDday"/>
 
     <ImageView
-        android:id="@+id/imgTimelineStoryListImg"
+        android:id="@+id/imgTimelineStoryListExternalImg"
         android:layout_width="110dp"
         android:layout_height="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/txtTimelineStoryListDesc"
+        app:layout_constraintStart_toEndOf="@id/txtTimelineStoryListExternalDesc"
         android:layout_marginStart="30dp"
         android:src="@drawable/home_recomm_story3_img" />
 
@@ -42,7 +42,7 @@
         android:background="@drawable/rectangle_line"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtTimelineStoryListdate"
+        app:layout_constraintTop_toBottomOf="@id/txtTimelineStoryListExternalDate"
         android:layout_marginTop="16dp"/>
 
 

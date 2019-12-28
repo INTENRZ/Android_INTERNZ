@@ -1,4 +1,4 @@
-package com.example.internz.ui.profile
+package com.example.internz.ui.profile.main
 
 
 import android.os.Bundle
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.profile.ProfileTimelineData
+import com.example.internz.ui.profile.main.MainProfileAdapter
 
 class MainProfileFragment : Fragment() {
 
@@ -32,7 +33,8 @@ class MainProfileFragment : Fragment() {
 
     fun rvInit(){
         rv_profile_timeline = activity!!.findViewById(R.id.rv_profile_timeline)
-        adapter_profile_mainProfile = MainProfileAdapter(context!!)
+        adapter_profile_mainProfile =
+            MainProfileAdapter(context!!)
         rv_profile_timeline.adapter = adapter_profile_mainProfile
         rv_profile_timeline.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         adapter_profile_mainProfile.data = listOf(
