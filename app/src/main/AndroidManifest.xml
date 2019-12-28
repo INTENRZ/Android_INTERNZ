@@ -17,6 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.story.DetailStoryActivity"></activity>
         <activity android:name=".ui.profile.TimelineAddActivity"></activity>
         <activity android:name=".feature.setprofile.SetProfileActivity" />
         <activity android:name=".feature.comment.CommentActivity"/>

@@ -43,13 +43,14 @@ class NotificationFragment : Fragment() {
         //makeSpinner()
 
     }
-//  fun makeSpinner() {  수정해야함
-//        txtNotilistfilter = view!!.findViewById(R.id.txtNotilistfilter)
-//        val items = resources.getStringArray(R.array.spinner)
-//        val myAdapter = ArrayAdapter(context!!,android.R.layout.simple_spinner_dropdown_item, items)
-//        txtNotilistfilter.adapter = myAdapter
+//fun makeSpinner() {
 //
-//        txtNotilistfilter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//        val spinner = view?.findViewById<Spinner>(R.id.notificationSpinner)
+//        val arrayAdapter = ArrayAdapter.createFromResource(view!!.context, R.array.spinner, android.R.layout.simple_spinner_item)
+//        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//        spinner?.adapter = arrayAdapter
+//
+//        spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 //            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
 //
 //                //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.

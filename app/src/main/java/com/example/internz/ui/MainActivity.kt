@@ -4,7 +4,6 @@ import StoryFragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.internz.R
-import com.example.internz.ui.story.DetailStoryFragment
 import com.example.internz.ui.notification.NotificationFragment
 import com.example.internz.ui.home.HomeFragment
 import com.example.internz.ui.profile.main.MainProfileFragment
@@ -42,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
         img_maintab_story.setOnClickListener {
             val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.container, DetailStoryFragment())
+            fragmentTransaction.replace(R.id.container, fragmentStory)
             fragmentTransaction.commit()
         }
         img_maintab_profile.setOnClickListener {

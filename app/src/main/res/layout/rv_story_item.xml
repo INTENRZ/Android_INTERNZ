@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rvStoryItem"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/txtStoryTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="193dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="33dp"
-        android:text="스토리의 제목입니다. AI 블라블라"
+        android:layout_marginTop="20dp"
+        android:text="영화번역가는 AI때문에 사라질 직업인가"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,10 +18,9 @@
         android:id="@+id/txtStoryNick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginTop="10dp"
         android:text="한한한"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@id/txtStoryTitle"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -32,28 +29,29 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="12dp"
+        android:layout_marginTop="10dp"
         android:text="20.12.13"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@id/txtStoryTitle"
         app:layout_constraintStart_toEndOf="@+id/txtStoryNick" />
 
     <ImageView
         android:id="@+id/imgStoryThumb"
         android:layout_width="107dp"
         android:layout_height="77dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="28dp"
+        app:layout_constraintStart_toEndOf="@id/txtStoryTitle"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/home_recomm_story3_img" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="33dp"
-        android:background="@drawable/line_for_story"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rectangle_line"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgStoryThumb"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
