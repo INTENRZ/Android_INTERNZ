@@ -9,19 +9,19 @@ import com.example.internz.ui.profile.main.OtherProfileActivity
 import com.example.internz.R
 import com.example.internz.data.home.RecommData
 
-class HomeAdapter(private val context : Context) : RecyclerView.Adapter<HomeViewHolder>() {
+class MainHomeAdapter(private val context : Context) : RecyclerView.Adapter<MainHomeViewHolder>() {
 
     var data = listOf<RecommData>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHomeViewHolder {
         val itemView = LayoutInflater.from(context).inflate(R.layout.rv_recomm_profile_item, parent, false)
-        return HomeViewHolder(itemView)
+        return MainHomeViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
-        holder.bind(data[position])
+    override fun onBindViewHolder(holderMain: MainHomeViewHolder, position: Int) {
+        holderMain.bind(data[position])
 
-        holder.itemView.setOnClickListener{
+        holderMain.itemView.setOnClickListener{
             val intent = Intent(context, OtherProfileActivity::class.java)
             context.startActivity(intent)
         }
