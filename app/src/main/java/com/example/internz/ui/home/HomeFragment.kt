@@ -16,6 +16,7 @@ import com.example.internz.data.home.StoryData
 import com.example.internz.data.notification.NotificationListData
 import com.example.internz.feature.homestory.HomestoryAdapter
 import com.example.internz.ui.home.customnotification.CustomNotificationAdapter
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
@@ -39,7 +40,6 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         rvCustom()
         rvRecommProfile()
         rvStory()
