@@ -17,9 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".BottomNav"
-            android:label="@string/title_activity_bottom_nav"></activity>
+
         <activity android:name=".ui.profile.main.OtherProfileActivity" />
         <activity android:name=".ui.profile.TimelineAddActivity" />
         <activity android:name=".feature.setprofile.SetProfileActivity" />

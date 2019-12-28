@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -114,6 +113,8 @@ class MainHomeFragment : Fragment() {
                 desc = "비 전공자가 알아본 외국계 디자인 인턴과정"
             )
         )
+
+        rv_home_story.overScrollMode = View.OVER_SCROLL_NEVER
 
         apdater_homestory.notifyDataSetChanged()
     }
