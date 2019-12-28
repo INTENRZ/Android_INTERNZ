@@ -16,7 +16,6 @@ import com.example.internz.feature.SetProfileActivity
 import kotlinx.android.synthetic.main.activity_job_select.*
 import retrofit2.Call
 import retrofit2.Response
-import javax.security.auth.callback.Callback
 
 class JobSelectActivity : AppCompatActivity() {
     private lateinit var recylerView : RecyclerView
@@ -70,12 +69,12 @@ class JobSelectActivity : AppCompatActivity() {
 
         //다음(click_event)
         btnJobSelectNext.setOnClickListener {
-            if(JobSelectHelper.count == 3) {
+            if(SelectHelper.count == 3) {
                 //서버 통신
                 val call = ApiServiceImpl.service.putJobSelect(
-                    JobSelectPutData(JobSelectHelper.arrayList.get(0),
-                        JobSelectHelper.arrayList.get(1),
-                        JobSelectHelper.arrayList.get(2)))
+                    JobSelectPutData(SelectHelper.arrayList.get(0),
+                        SelectHelper.arrayList.get(1),
+                        SelectHelper.arrayList.get(2)))
 
                 call.enqueue(
                     object : retrofit2.Callback<JobSelectData> {

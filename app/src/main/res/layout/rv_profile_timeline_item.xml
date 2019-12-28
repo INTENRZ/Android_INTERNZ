@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f4f4f4"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <!-- 동그라미 -->
+    <ImageView
+        android:id="@+id/img_profile_timeline_circle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        android:layout_width="11dp"
+        android:layout_height="11dp"
+        android:src="@drawable/circle_shape"/>
+
+    <!-- 세로 선 -->
+    <ImageView
+        android:id="@+id/img_profile_timeline_bar"
+        app:layout_constraintStart_toStartOf="@+id/img_profile_timeline_circle"
+        app:layout_constraintEnd_toEndOf="@+id/img_profile_timeline_circle"
+        app:layout_constraintTop_toBottomOf="@+id/img_profile_timeline_circle"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/line_shape"/>
+
+    <!-- 배경 박스 -->
+    <ImageView
+        android:id="@+id/img_profile_timeline_background"
+        app:layout_constraintStart_toEndOf="@+id/img_profile_timeline_circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:src="@drawable/rectangle_shape"
+        />
+
+    <!-- 카테고리 텍스트 -->
+    <TextView
+        android:id="@+id/txt_profile_timeline_category"
+        app:layout_constraintTop_toTopOf="@+id/img_profile_timeline_background"
+        app:layout_constraintStart_toStartOf="@+id/img_profile_timeline_background"
+        app:layout_constraintEnd_toEndOf="@+id/img_profile_timeline_background"
+        app:layout_constraintHorizontal_bias="0.07"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/text_backgruond"
+        android:text="인턴"
+        android:textSize="12sp"
+        android:textColor="#212529"/>
+
+    <!-- 스토리 제목 -->
+    <TextView
+        android:id="@+id/txt_profile_timeline_title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_profile_timeline_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="8dp"
+        android:text="NAVER SNOW Jam Studio 기획/운영팀"
+        android:textSize="12sp"
+        android:textColor="#212529"
+        android:textStyle="bold"/>
+
+    <!-- 뒤로가기 이미지 -->
+    <ImageView
+        android:id="@+id/img_profile_timeline_back"
+        app:layout_constraintStart_toEndOf="@+id/txt_profile_timeline_title"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="4dp"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/back_ic"/>
+
+    <!-- 날짜 텍스트 -->
+    <TextView
+        android:id="@+id/txt_profile_timeline_period"
+        app:layout_constraintStart_toStartOf="@id/img_profile_timeline_background"
+        app:layout_constraintBottom_toBottomOf="@id/img_profile_timeline_background"
+        app:layout_constraintEnd_toEndOf="@id/img_profile_timeline_background"
+        app:layout_constraintHorizontal_bias="0.1"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="19.01.01 ~ 19.07.01"
+        android:textSize="12sp"
+        android:textColor="#707070"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

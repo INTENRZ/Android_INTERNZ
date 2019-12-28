@@ -7,6 +7,7 @@
     android:background="#fafafc"
     tools:context=".ui.MainActivity">
 
+    <!-- Fragment 고정된 위치 -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
@@ -28,7 +29,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_shape"
+            android:background="@drawable/rectangle_line"
             app:layout_constraintTop_toTopOf="@id/container_home_tab"
             app:layout_constraintStart_toStartOf="parent"/>
         <!-- 하단 탭바  - 홈 버튼 -->
@@ -43,9 +44,8 @@
             app:layout_constraintEnd_toEndOf="@id/container_home_tab"
             android:src="@drawable/tabbar_home_btn"/>
 
-        <!-- 하단 탭바  - 공고 버튼 -->
 
-        <!-- 하단 탭바  - 스토리 버튼 -->
+        <!-- 하단 탭바  - 공고 버튼 -->
         <ImageView
             android:id="@+id/img_maintab_notice"
             android:layout_width="wrap_content"
@@ -57,6 +57,7 @@
             app:layout_constraintEnd_toEndOf="@id/container_home_tab"
             app:layout_constraintTop_toTopOf="@id/container_home_tab" />
 
+        <!-- 하단 탭바  - 스토리 버튼 -->
         <ImageView
             android:id="@+id/img_maintab_story"
             android:layout_width="wrap_content"

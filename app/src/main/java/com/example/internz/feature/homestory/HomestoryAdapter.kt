@@ -12,7 +12,7 @@ class HomestoryAdapter(private val context : Context) : RecyclerView.Adapter<Hom
     var data = listOf<StoryData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomestoryViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.rv_home_story, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.rv_home_story_item, parent, false)
         return HomestoryViewHolder(view)
     }
 

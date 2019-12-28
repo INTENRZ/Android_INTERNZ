@@ -12,7 +12,7 @@ class HomeAdapter(private val context : Context) : RecyclerView.Adapter<HomeView
     var data = listOf<RecommData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
-        val itemView = LayoutInflater.from(context).inflate(R.layout.item_recomm_profile, parent, false)
+        val itemView = LayoutInflater.from(context).inflate(R.layout.rv_recomm_profile_item, parent, false)
         return HomeViewHolder(itemView)
     }
 

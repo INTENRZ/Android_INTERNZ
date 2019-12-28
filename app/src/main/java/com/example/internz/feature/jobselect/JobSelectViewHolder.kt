@@ -20,20 +20,20 @@ class JobSelectViewHolder(view : View) : RecyclerView.ViewHolder(view) {
             when(job.isSelected) {
                 true -> {
                     job.isSelected = false
-                    JobSelectHelper.count--
-                    JobSelectHelper.arrayList.remove(job.text.toString())
+                    SelectHelper.count--
+                    SelectHelper.arrayList.remove(job.text.toString())
                 }
                 false -> {
-                    if(JobSelectHelper.count < 3) {
+                    if(SelectHelper.count < 3) {
                         job.isSelected = true
-                        JobSelectHelper.count++
-                        JobSelectHelper.arrayList.add(job.text.toString())
+                        SelectHelper.count++
+                        SelectHelper.arrayList.add(job.text.toString())
                     } else {
                         Toast.makeText(view.context, "세 개의 직무를 선택할 수 있습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
-            Log.e("TAG", "선택된 관심 직무 : ${JobSelectHelper.arrayList}")
+            Log.e("TAG", "선택된 관심 직무 : ${SelectHelper.arrayList}")
         }
     }
 }
