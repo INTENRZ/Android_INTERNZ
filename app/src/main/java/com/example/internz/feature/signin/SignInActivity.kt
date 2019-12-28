@@ -16,6 +16,7 @@ import com.example.internz.data.signin.SignIn
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.feature.jobselect.JobSelectActivity
+import com.example.internz.feature.setprofile.SetProfileActivity
 import com.example.internz.feature.signup.SignUpActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import retrofit2.Call
@@ -89,37 +90,39 @@ class SignInActivity : AppCompatActivity() {
             }
 
             //로그인 요청
-            val signInCall = ApiServiceImpl.service.requestSignIn(
-                SignInRequestData(
-                    email,
-                    pwd
-                )
-            )
+//            val signInCall = ApiServiceImpl.service.requestSignIn(
+//                SignInRequestData(
+//                    email,
+//                    pwd
+//                )
+//            )
 
-            signInCall.enqueue(
-                onSuccess = {
-                    when {
-                        it.isFirst == "0" -> {
-                            //사용자 토큰 저장
-                            SignIn.setUserToken(it.token)
+            startActivity(Intent(this, SetProfileActivity::class.java))
 
-                            val intent = Intent(applicationContext, JobSelectActivity::class.java)
-                            startActivity(intent)
-                        }
-                        it.isFirst == "1" -> {
-                            //사용자 토큰 저장
-                            SignIn.setUserToken(it.token)
-
-                            //val intent = Intent(applicationContext, HomeActivity::class.java)
-                            //startActivity(intent)
-                            finish()
-                        }
-                    }
-                },
-                onFail = { status, message ->
-                    toast(message)
-                }
-            )
+//            signInCall.enqueue(
+//                onSuccess = {
+//                    when {
+//                        it.isFirst == "0" -> {
+//                            //사용자 토큰 저장
+//                            SignIn.setUserToken(it.token)
+//
+//                            val intent = Intent(applicationContext, JobSelectActivity::class.java)
+//                            startActivity(intent)
+//                        }
+//                        it.isFirst == "1" -> {
+//                            //사용자 토큰 저장
+//                            SignIn.setUserToken(it.token)
+//
+//                            //val intent = Intent(applicationContext, HomeActivity::class.java)
+//                            //startActivity(intent)
+//                            finish()
+//                        }
+//                    }
+//                },
+//                onFail = { status, message ->
+//                    toast(message)
+//                }
+//            )
 
 //            signInCall.enqueue(
 //                object : retrofit2.Callback<SignInData> {

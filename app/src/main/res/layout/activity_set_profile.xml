@@ -90,7 +90,7 @@
         app:layout_constraintStart_toStartOf="@+id/imgSetProfile"
         app:layout_constraintTop_toTopOf="@+id/imgSetProfile" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/imgSetProfile"
         android:layout_width="80dp"
         android:layout_height="80dp"

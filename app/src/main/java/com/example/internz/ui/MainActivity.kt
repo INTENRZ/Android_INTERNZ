@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         }
         img_maintab_story.setOnClickListener {
             val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.container, DetailStoryFragment())
+            fragmentTransaction.replace(R.id.container, StoryFragment())
             fragmentTransaction.commit()
         }
         img_maintab_profile.setOnClickListener {
