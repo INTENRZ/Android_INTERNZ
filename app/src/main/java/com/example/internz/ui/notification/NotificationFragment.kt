@@ -6,17 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
-import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.internz.R
 import com.example.internz.data.notification.NotificationListData
-import kotlinx.android.synthetic.main.fragment_notification_list.*
 
 class NotificationFragment : Fragment() {
 
@@ -25,14 +20,16 @@ class NotificationFragment : Fragment() {
     private lateinit var notificationListAdapter : NotificationListAdapter
     // private lateinit var txtNotilistfilter : Spinner
 
+    private lateinit var notificationViewModel: NotificationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
 
     ): View? {
-        // Inflate the layout for this fragment
-
+        // 하단 탭에 필요한 코드
+        notificationViewModel =
+            ViewModelProviders.of(this).get(NotificationViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_notification_list, container, false)
         return view
     }
@@ -43,13 +40,14 @@ class NotificationFragment : Fragment() {
         //makeSpinner()
 
     }
-//  fun makeSpinner() {  수정해야함
-//        txtNotilistfilter = view!!.findViewById(R.id.txtNotilistfilter)
-//        val items = resources.getStringArray(R.array.spinner)
-//        val myAdapter = ArrayAdapter(context!!,android.R.layout.simple_spinner_dropdown_item, items)
-//        txtNotilistfilter.adapter = myAdapter
+//fun makeSpinner() {
 //
-//        txtNotilistfilter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//        val spinner = view?.findViewById<Spinner>(R.id.notificationSpinner)
+//        val arrayAdapter = ArrayAdapter.createFromResource(view!!.context, R.array.spinner, android.R.layout.simple_spinner_item)
+//        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//        spinner?.adapter = arrayAdapter
+//
+//        spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 //            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
 //
 //                //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.

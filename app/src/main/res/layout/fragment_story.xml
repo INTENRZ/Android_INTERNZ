@@ -9,6 +9,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            app:layout_constraintBottom_toTopOf="@+id/tabStory"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -32,6 +33,7 @@
             android:id="@+id/tabStory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
             app:tabMinWidth="35dp"
             app:tabMode="scrollable"
             app:tabTextColor="#5e5e5e"
@@ -80,6 +82,7 @@
                     android:layout_width="35dp"
                     android:layout_height="wrap_content"
                     android:text="기타" />
+
         </com.google.android.material.tabs.TabLayout>
 
         <Spinner

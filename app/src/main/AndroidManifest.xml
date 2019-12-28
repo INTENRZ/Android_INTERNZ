@@ -13,13 +13,16 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.profile.TimelineAddActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+
+        <activity android:name=".ui.story.DetailStoryActivity"/>
+        <activity android:name=".ui.profile.main.OtherProfileActivity" />
+        <activity android:name=".ui.profile.TimelineAddActivity" />
         <activity android:name=".feature.setprofile.SetProfileActivity" />
-        <activity android:name=".feature.comment.CommentActivity"/>
+        <activity android:name=".feature.comment.CommentActivity" />
         <activity android:name=".feature.jobselect.JobSelectActivity" />
         <activity android:name=".feature.signup.SignUp2Activity" />
         <activity

@@ -1,14 +1,15 @@
 package com.example.internz.ui
 
-import Reference
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.internz.R
-import com.example.internz.ui.calendar.CalendarFragment
-import com.example.internz.ui.notification.NotificationFragment
-import com.example.internz.ui.home.HomeFragment
-import com.example.internz.ui.profile.main.MainProfileFragment
-import kotlinx.android.synthetic.main.activity_home.*
+
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,42 +17,25 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        // 프래그먼트들 선언
-        val fragmentHome = HomeFragment()
-        val fragmentNotification = NotificationFragment()
-        val fragmentStory = Reference()
-        val fragmentProfile = MainProfileFragment()
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        /* 프래그먼트 교체 관련 */
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.container, fragmentHome).commit()
+        val navController = findNavController(R.id.nav_host_fragment)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.frag_navigation_home,
+                R.id.frag_navigation_notice,
+                R.id.frag_navigation_story,
+                R.id.frag_navigation_profile
+            )
+        )
+        navView.setupWithNavController(navController)
 
         MainHelper.setFT(supportFragmentManager.beginTransaction())
 
-        // 하단 탭 클릭 리스너 (클릭 시 프래그먼트 교체됨)
-        img_maintab_home.setOnClickListener {
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.container, fragmentNotification)
-            fragmentTransaction.commit()
-        }
-        img_maintab_notice.setOnClickListener {
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.container, CalendarFragment())
-            fragmentTransaction.commit()
-        }
-        img_maintab_story.setOnClickListener {
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.container, Reference())
-            fragmentTransaction.commit()
-        }
-        img_maintab_profile.setOnClickListener {
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.container, fragmentProfile)
-            fragmentTransaction.commit()
-        }
     }
 }
+
+
 
 
 

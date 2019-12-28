@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!-- home 화면 메인 이미지 뷰 -->
+            <ImageView
+                android:id="@+id/img_home_mainimg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="196dp"
+                android:src="@drawable/home_event_btn"
+                android:background="#f5bd1d"/>
+
+            <!-- home 화면 "맞춤 공고" 제목 텍스트 뷰 -->
+            <TextView
+                android:id="@+id/txt_home_yourNotice"
+                app:layout_constraintTop_toBottomOf="@+id/img_home_mainimg"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="맞춤 공고"
+                android:textSize="18sp"
+                android:textColor="#2b2d2f"
+                android:textStyle="bold" />
+
+            <!-- home 화면 맞춤 공고 뷰페이저 -->
+            <!-- 아직 완료 아닌 상태 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/CustomConstraint"
+                app:layout_constraintTop_toBottomOf="@+id/txt_home_yourNotice"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="#ffffff">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tablayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:tabMode="fixed"
+                    app:layout_constraintStart_toStartOf="@id/CustomConstraint"
+                    app:layout_constraintTop_toTopOf="@id/CustomConstraint"/>
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="@id/tablayout"
+                    app:layout_constraintTop_toTopOf="@id/tablayout"
+                    />
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    app:layout_anchor="@id/viewpager"
+                    app:layout_anchorGravity="bottom|right|end"
+                    app:layout_constraintStart_toStartOf="@id/CustomConstraint"
+                    app:layout_constraintEnd_toEndOf="@id/CustomConstraint"
+                    app:layout_constraintBottom_toBottomOf="@id/CustomConstraint"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- home 화면 "추천 프로필" 제목 텍스트 뷰 -->
+            <TextView
+                android:id="@+id/txt_home_profile"
+                app:layout_constraintTop_toBottomOf="@+id/CustomConstraint"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="추천 프로필"
+                android:textSize="18sp"
+                android:textColor="#2b2d2f"
+                android:textStyle="bold" />
+
+            <!-- home 화면 "추천 프로필" 리사이클러 뷰 -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_home_recommProfile"
+                app:layout_constraintTop_toBottomOf="@+id/txt_home_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginLeft="2.5dp"
+                android:layout_width="match_parent"
+                android:layout_height="146dp">
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <!-- home 화면 "오늘의 스토리" 제목 텍스트 뷰 -->
+            <TextView
+                android:id="@+id/txt_home_story"
+                app:layout_constraintTop_toBottomOf="@+id/rv_home_recommProfile"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="40dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오늘의 스토리"
+                android:textSize="18sp"
+                android:textColor="#2b2d2f"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/img_home_story"
+                app:layout_constraintTop_toBottomOf="@+id/txt_home_story"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:scaleType="fitXY"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/home_recomm_story_box"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_homestory"
+                app:layout_constraintStart_toStartOf="@id/img_home_story"
+                app:layout_constraintTop_toTopOf="@id/img_home_story"
+                app:layout_constraintEnd_toEndOf="@id/img_home_story"
+                app:layout_constraintBottom_toBottomOf="@id/img_home_story"
+                android:layout_width="wrap_content"
+                android:layout_height="400dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

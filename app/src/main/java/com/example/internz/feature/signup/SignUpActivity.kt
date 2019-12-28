@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
 import com.example.internz.data.signup.SignUpData
 import com.example.internz.data.signup.SignUpRequestData
 import kotlinx.android.synthetic.main.activity_sign_up.*

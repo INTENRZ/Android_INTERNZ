@@ -6,25 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
 import com.example.internz.R
 import com.example.internz.data.home.RecommData
 import com.example.internz.data.home.StoryData
-import com.example.internz.data.notification.NotificationListData
 import com.example.internz.feature.homestory.HomestoryAdapter
 import com.example.internz.ui.home.customnotification.CustomNotificationAdapter
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment() {
+class MainHomeFragment : Fragment() {
 
     private lateinit var rv_recomm_profile: RecyclerView
-    private lateinit var adapter_recomm_profile: HomeAdapter
+    private lateinit var adapter_recomm_profile: MainHomeAdapter
 
     private lateinit var rv_home_story: RecyclerView
     private lateinit var apdater_homestory: HomestoryAdapter
+
+    private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,14 +34,15 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
 
     ): View? {
+        // 하단 탭에 필요한 코드
+        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        val view = inflater.inflate(R.layout.fragment_main_home, container, false)
         return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         rvCustom()
         rvRecommProfile()
         rvStory()
@@ -56,7 +59,7 @@ class HomeFragment : Fragment() {
     /* home 화면 "추천 프로필" 리사이클러뷰 init */
     fun rvRecommProfile(){
         rv_recomm_profile = activity!!.findViewById(R.id.rv_home_recommProfile)
-        adapter_recomm_profile = HomeAdapter(context!!)
+        adapter_recomm_profile = MainHomeAdapter(context!!)
         rv_recomm_profile.adapter = adapter_recomm_profile
         rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         adapter_recomm_profile.data = listOf(
