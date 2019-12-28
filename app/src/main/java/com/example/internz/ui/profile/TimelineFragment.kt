@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.TimelineAddActivity
 import com.example.internz.data.profile.ProfileTimelineData
+import com.example.internz.feature.jobselect.SelectHelper
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 class TimelineFragment : Fragment() {
@@ -88,6 +88,9 @@ class TimelineFragment : Fragment() {
 
     fun floatingClick(){
         img_profile_floating.setOnClickListener{
+            // 타임라인 추가 도중 뒤로가기 눌렀을 때 count 값 초기화
+            SelectHelper.categoryCount = 0
+
             val intent = Intent(context, TimelineAddActivity::class.java)
             startActivity(intent)
         }

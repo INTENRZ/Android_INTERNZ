@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TimelineAddActivity">
+    tools:context=".ui.profile.TimelineAddActivity">
 
     <!--타임라인 메인 제목 텍스트-->
     <TextView
@@ -226,70 +226,16 @@
         android:textSize="16sp"
         android:textStyle="bold"/>
 
-    <!--카테고리 - 인턴-->
-    <TextView
-        android:id="@+id/txt_timelineadd_category1"
+    <!-- 카테고리 그리드 리사이클러 뷰 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_timelineadd"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_category"
-        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/txt_timelineadd_category"
+        android:layout_marginTop="15dp"
         android:layout_marginStart="16dp"
-        android:layout_width="76dp"
-        android:layout_height="30dp"
-        android:background="@drawable/category_border"
-        android:text="인턴"
-        android:textSize="14sp"
-        android:textColor="#212529"
-        android:gravity="center_vertical|center_horizontal"/>
-
-<!--    &lt;!&ndash;카테고리 - 대외활동&ndash;&gt;-->
-<!--    <TextView-->
-<!--        android:id="@+id/txt_timelineadd_category2"-->
-<!--        app:layout_constraintStart_toEndOf="@id/txt_timelineadd_category1"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_category"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/txt_timelineadd_category4"-->
-<!--        app:layout_constraintHorizontal_bias="0.1"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_width="76dp"-->
-<!--        android:layout_height="30dp"-->
-<!--        android:background="@drawable/category_border"-->
-<!--        android:text="대외활동"-->
-<!--        android:textSize="14sp"-->
-<!--        android:textColor="#212529"-->
-<!--        android:gravity="center_vertical|center_horizontal"/>-->
-
-<!--    &lt;!&ndash;카테고리 - 공모전&ndash;&gt;-->
-<!--    <TextView-->
-<!--        android:id="@+id/txt_timelineadd_category3"-->
-<!--        app:layout_constraintStart_toEndOf="@id/txt_timelineadd_category1"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_category"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/txt_timelineadd_category4"-->
-<!--        app:layout_constraintHorizontal_bias="0.9"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_width="76dp"-->
-<!--        android:layout_height="30dp"-->
-<!--        android:background="@drawable/category_border"-->
-<!--        android:text="공모전"-->
-<!--        android:textSize="14sp"-->
-<!--        android:textColor="#212529"-->
-<!--        android:gravity="center_vertical|center_horizontal"/>-->
-
-<!--    &lt;!&ndash;카테고리 - 동아리&ndash;&gt;-->
-<!--    <TextView-->
-<!--        android:id="@+id/txt_timelineadd_category4"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_category"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:layout_marginStart="16dp"-->
-<!--        android:layout_width="76dp"-->
-<!--        android:layout_height="30dp"-->
-<!--        android:background="@drawable/category_border"-->
-<!--        android:text="동아리"-->
-<!--        android:textSize="14sp"-->
-<!--        android:textColor="#212529"-->
-<!--        android:gravity="center_vertical|center_horizontal"/>-->
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

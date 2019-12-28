@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".TimelineAddActivity"></activity>
+        <activity android:name=".ui.profile.TimelineAddActivity"></activity>
         <activity android:name=".feature.detailstory.DetailStoryActivity" />
         <activity android:name=".feature.SetProfileActivity" />
         <activity android:name=".feature.jobselect.JobSelectActivity" />

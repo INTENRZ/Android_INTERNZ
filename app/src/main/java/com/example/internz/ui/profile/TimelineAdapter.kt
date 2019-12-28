@@ -18,7 +18,6 @@ class TimelineAdapter(private val context : Context) : RecyclerView.Adapter<Time
 
     override fun onBindViewHolder(holder: TimelineVeiwHolder, position: Int) {
         holder.bind(data[position])
-
     }
 
     override fun getItemCount(): Int {

@@ -1,0 +1,49 @@
+package com.example.internz.ui.profile
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.internz.R
+import com.example.internz.data.timeline.TimelineCategoryData
+
+class TimelineAddActivity : AppCompatActivity() {
+
+    private lateinit var rv_timeline_category: RecyclerView
+    private lateinit var adapter_timeline_category : TimelineCategoryAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_timeline_add)
+
+        timelineCategoryRv()
+    }
+
+    fun timelineCategoryRv(){
+        rv_timeline_category = findViewById(R.id.rv_timelineadd)
+        adapter_timeline_category = TimelineCategoryAdapter(this)
+        rv_timeline_category.adapter = adapter_timeline_category
+        rv_timeline_category.layoutManager = GridLayoutManager(this, 4)
+        adapter_timeline_category.data = listOf(
+            TimelineCategoryData(
+                category = "인턴"
+            ),
+            TimelineCategoryData(
+                category = "대외활동"
+            ),
+            TimelineCategoryData(
+                category = "공모전"
+            ),
+            TimelineCategoryData(
+                category = "동아리"
+            ),
+            TimelineCategoryData(
+                category = "자격증"
+            ),
+            TimelineCategoryData(
+                category = "기타"
+            )
+        )
+        adapter_timeline_category.notifyDataSetChanged()
+    }
+}
