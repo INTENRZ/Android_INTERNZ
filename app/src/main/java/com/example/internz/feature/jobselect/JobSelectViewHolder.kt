@@ -9,6 +9,7 @@ import com.example.internz.R
 import com.example.internz.data.jobselect.JobSelectItem
 
 class JobSelectViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+
     private val view : View = view.findViewById(R.id.rvJobSelectItem)
 
     private val job : CheckedTextView = view.findViewById(R.id.rvJobSelectBtn)

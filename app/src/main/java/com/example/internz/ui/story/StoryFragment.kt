@@ -15,6 +15,8 @@ import com.example.internz.ui.home.HomeAdapter
 import com.example.internz.ui.story.DetailStoryFragment
 import kotlinx.android.synthetic.*
 
+//TODO! StoryFragment 변경해야 함
+
 class StoryFragment : Fragment() {
 
     private val adapter: StoryAdapter = StoryAdapter()
