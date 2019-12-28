@@ -10,10 +10,12 @@ import android.view.ViewGroup
 import androidx.core.view.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.applandeo.materialcalendarview.CalendarView
 import com.applandeo.materialcalendarview.EventDay
 import com.example.internz.R
 import com.example.internz.common.toast
 import com.example.internz.data.calendar.CalendarDataTemporal
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_calendar.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -24,6 +26,10 @@ import kotlin.collections.ArrayList
 class CalendarFragment : Fragment() {
     private lateinit var recyclerView : RecyclerView
     private lateinit var adapter : CalendarAdapter
+
+    //달력
+//    private lateinit var events : List<EventDay>
+    private lateinit var calendar : Calendar
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,11 +54,11 @@ class CalendarFragment : Fragment() {
 
 
         //calendar custom area
-        val events : List<EventDay> = ArrayList<EventDay>()
-        val calendar : Calendar = android.icu.util.Calendar.getInstance()
+//        events = ArrayList<EventDay>() //이벤트가 있는 날 표시
+        calendar = android.icu.util.Calendar.getInstance() //달력 객체
 //        events.add(EventDay(calendar, R.drawable.circle_shape))
 
-        //오늘 날짜 지정
-
+        //calendar custom image 추가
+        calendar.add(android.icu.util.Calendar.DAY_OF_MONTH, 1) //1일에 이벤트 추가
     }
 }

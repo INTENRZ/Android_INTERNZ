@@ -12,6 +12,7 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
 import com.example.internz.data.signup2.SignUp2Data
 import com.example.internz.data.signup2.SignUp2RequestData
 import com.example.internz.feature.signin.SignInActivity
@@ -141,7 +142,7 @@ class SignUp2Activity : AppCompatActivity() {
             startActivity(intent)
 
             //서버통신구현
-            /*
+
             val call = ApiServiceImpl.service.requestSignUp2(
                 userIndex,
                 SignUp2RequestData(
@@ -149,6 +150,7 @@ class SignUp2Activity : AppCompatActivity() {
                 )
             )
 
+            /*
             call.enqueue(
                 object : Callback<SignUp2Data> {
                     override fun onFailure(call: Call<SignUp2Data>, t: Throwable) {
@@ -179,8 +181,8 @@ class SignUp2Activity : AppCompatActivity() {
                     }
                 }
             )
+            */
 
-             */
         }
     }
 
