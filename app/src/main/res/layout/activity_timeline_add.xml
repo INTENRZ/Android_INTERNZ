@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.TimelineAddActivity">
+
+    <!--타임라인 메인 제목 텍스트-->
+    <TextView
+        android:id="@+id/txt_timelineadd_main"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="타임라인"
+        android:textSize="17sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:gravity="center_horizontal|center_vertical" />
+
+    <!-- 타임라인 메인 제목 좌측 취소 버튼 -->
+    <ImageView
+        android:id="@+id/img_timelineadd_delete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_timelineadd_main"
+        android:layout_marginLeft="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/delete_btn"/>
+
+    <!-- 타임라인 메인 제목 우측 등록 버튼 -->
+    <TextView
+        android:id="@+id/txt_timelineadd_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_timelineadd_main"
+        android:layout_marginRight="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="등록"
+        android:textColor="#ffc200"
+        android:textSize="15sp" />
+
+    <View
+        android:id="@+id/v_bar"
+        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_main"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e3e3e3"/>
+
+    <!--타임라인 활동명 텍스트 -->
+    <TextView
+        android:id="@+id/txt_timelineadd_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v_bar"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="활동명"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#212529" />
+
+    <!--타임라인 활동명 edit 텍스트 -->
+    <EditText
+        android:id="@+id/edt_timelineadd_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:inputType="text"
+        android:textSize="16sp"
+        android:hint="활동 내용, 회사명, 담당 직무 등을 적어주세요."
+        android:layout_height="50dp"/>
+
+    <!--타임라인 활동기간 텍스트 -->
+    <TextView
+        android:id="@+id/txt_timelineadd_period"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_timelineadd_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="40dp"
+        android:text="활동기간"
+        android:textColor="#212529"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <!--타임라인 활동기간 년도 작성 뷰-->
+    <EditText
+        android:id="@+id/edt_timelineadd_period_year"
+        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_period"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/txt_border"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:paddingStart="6dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:inputType="number"
+        android:hint="년도"
+        android:textSize="16sp"
+        android:textColorHint="#212529"
+        android:layout_width="61dp"
+        android:layout_height="32dp"/>
+
+    <!--타임라인 활동기간 월 작성 뷰-->
+    <EditText
+        android:id="@+id/edt_timelineadd_period_month"
+        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_period"
+        app:layout_constraintStart_toEndOf="@+id/edt_timelineadd_period_year"
+        android:background="@drawable/txt_border"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:paddingStart="6dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:inputType="number"
+        android:hint="월"
+        android:textSize="16sp"
+        android:textColorHint="#212529"
+        android:layout_width="45dp"
+        android:layout_height="32dp"/>
+
+    <!--타임라인 활동기간 일 작성 뷰-->
+    <EditText
+        android:id="@+id/edt_timelineadd_period_day"
+        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_period"
+        app:layout_constraintStart_toEndOf="@+id/edt_timelineadd_period_month"
+        android:background="@drawable/txt_border"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:inputType="number"
+        android:paddingStart="6dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:hint="일"
+        android:textSize="16sp"
+        android:textColorHint="#212529"
+        android:layout_width="45dp"
+        android:layout_height="32dp"/>
+
+    <View
+        app:layout_constraintTop_toTopOf="@id/edt_timelineadd_period_day"
+        app:layout_constraintBottom_toBottomOf="@id/edt_timelineadd_period_day"
+        app:layout_constraintStart_toEndOf="@id/edt_timelineadd_period_day"
+        app:layout_constraintEnd_toStartOf="@+id/edt_timelineadd_period_year_end"
+        android:layout_marginLeft="5dp"
+        android:background="#000000"
+        android:layout_width="20dp"
+        android:layout_height="1dp"/>
+
+    <!--타임라인 활동기간 일 작성 뷰-->
+    <EditText
+        android:id="@+id/edt_timelineadd_period_day_end"
+        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_period"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/txt_border"
+        app:layout_constraintHorizontal_bias="0.03"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="number"
+        android:paddingStart="6dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:hint="일"
+        android:textSize="16sp"
+        android:textColorHint="#212529"
+        android:layout_width="45dp"
+        android:layout_height="32dp"/>
+
+    <!--타임라인 활동기간 월 작성 뷰-->
+    <EditText
+        android:id="@+id/edt_timelineadd_period_month_end"
+        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_period"
+        app:layout_constraintEnd_toStartOf="@id/edt_timelineadd_period_day_end"
+        android:background="@drawable/txt_border"
+        app:layout_constraintHorizontal_bias="0.03"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:inputType="number"
+        android:paddingStart="6dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:hint="월"
+        android:textSize="16sp"
+        android:textColorHint="#212529"
+        android:layout_width="45dp"
+        android:layout_height="32dp"/>
+
+    <!--타임라인 활동기간 년도 작성 뷰-->
+    <EditText
+        android:id="@+id/edt_timelineadd_period_year_end"
+        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_period"
+        app:layout_constraintEnd_toStartOf="@+id/edt_timelineadd_period_month_end"
+        android:background="@drawable/txt_border"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:inputType="number"
+        android:paddingStart="6dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:hint="년도"
+        android:textSize="16sp"
+        android:textColorHint="#212529"
+        android:layout_width="61dp"
+        android:layout_height="32dp"/>
+
+    <!--타임라인 카테고리 텍스트 -->
+    <TextView
+        android:id="@+id/txt_timelineadd_category"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_timelineadd_period_year_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="40dp"
+        android:text="카테고리"
+        android:textColor="#212529"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <!-- 카테고리 그리드 리사이클러 뷰 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_timelineadd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_timelineadd_category"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

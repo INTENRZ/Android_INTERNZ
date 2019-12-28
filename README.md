@@ -83,7 +83,7 @@ MainActivity
 
 HomeFragment
 ---
-- 맞춤 공고, 추천 프로필, 오늘의 스토리 
+- 맞춤 공고, 추천 프로필, 오늘의 스토리
 
 <br>
 
