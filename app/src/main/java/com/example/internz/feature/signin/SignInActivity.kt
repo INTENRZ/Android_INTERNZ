@@ -89,6 +89,8 @@ class SignInActivity : AppCompatActivity() {
             }
         }
 
+        //TODO! 서버통신 extension 구현이 매우매우 잘못됨
+
             //로그인 요청
 //            val signInCall = ApiServiceImpl.service.requestSignIn(
 //                SignInRequestData(
