@@ -97,7 +97,7 @@ class SignInActivity : AppCompatActivity() {
 //                )
 //            )
 
-            startActivity(Intent(this, SetProfileActivity::class.java))
+            startActivity(Intent(this, JobSelectActivity::class.java))
 
 //            signInCall.enqueue(
 //                onSuccess = {

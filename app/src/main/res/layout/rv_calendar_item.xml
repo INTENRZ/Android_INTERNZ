@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rvCalendarItem"
     android:layout_width="match_parent"
-    android:layout_height="82dp"
+    android:layout_height="110dp"
+    android:layout_marginBottom="3dp"
+    android:layout_marginTop="3dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:background="@drawable/round_for_calendar_btn"
     android:orientation="vertical">
 
     <ImageView
@@ -12,20 +17,23 @@
         android:layout_width="8dp"
         android:layout_height="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
         android:background="@drawable/circle_profile_image"
+        app:layout_constraintBottom_toBottomOf="@+id/imgCalendarName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imgCalendarName" />
 
     <TextView
         android:id="@+id/imgCalendarName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/notosanscjkkrbold"
+        android:lineSpacingExtra="7sp"
         android:text="쇼박스"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#212529"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/imgCalendarColor"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -33,10 +41,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="28dp"
+        android:fontFamily="@font/notosanscjkkrregular"
+        android:lineSpacingExtra="7sp"
         android:text="마케팅팀"
+        android:textColor="#212529"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtCalendarDate"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imgCalendarName" />
 
     <ImageView
         android:id="@+id/imgCalendarLogo"
@@ -53,8 +65,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/notosanscjkkrbold"
+        android:lineSpacingExtra="6sp"
         android:text="D-13"
+        android:textColor="#ffc200"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

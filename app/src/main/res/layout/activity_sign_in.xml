@@ -81,19 +81,17 @@
         <Button
             android:id="@+id/btnSignInLogIn"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="60dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
             android:background="@drawable/btn_shape"
             android:elevation="0dp"
-            android:text="로그인"
             android:fontFamily="@font/notosanscjkkrbold"
+            android:lineSpacingExtra="9sp"
+            android:text="로그인"
             android:textColor="@color/colorWhite"
             android:textSize="20sp"
-            android:lineSpacingExtra="9sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtSignInPwd" />
@@ -128,7 +126,6 @@
         android:textSize="14sp"
         android:fontFamily="@font/notosanscjkkrmedium"
         android:lineSpacingExtra="30sp"
-        android:letterSpacing="0.42sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

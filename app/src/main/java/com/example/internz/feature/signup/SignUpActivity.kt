@@ -144,6 +144,7 @@ class SignUpActivity : AppCompatActivity() {
 //                    }
 //                }
 //            )
+            startActivity(Intent(this, SignUp2Activity::class.java))
         }
 
         //뒤로가기(back button)

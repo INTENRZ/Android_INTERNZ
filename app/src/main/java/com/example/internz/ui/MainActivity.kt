@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         // 하단 탭 클릭 리스너 (클릭 시 프래그먼트 교체됨)
         img_maintab_home.setOnClickListener {
             val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.container, fragmentHome)
+            fragmentTransaction.replace(R.id.container, fragmentNotification)
             fragmentTransaction.commit()
         }
         img_maintab_notice.setOnClickListener {

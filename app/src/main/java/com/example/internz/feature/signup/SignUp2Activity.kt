@@ -39,7 +39,7 @@ class SignUp2Activity : AppCompatActivity() {
 
     private fun signUpFunction() {
         //사용자의 고유 인덱스 초기화
-        userIndex = intent.getStringExtra("userIndex")
+//        userIndex = intent.getStringExtra("userIndex")
 
         //이름
         edtSignUpName.addTextChangedListener(

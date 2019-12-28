@@ -3,6 +3,7 @@ package com.example.internz.feature.jobselect
 import android.util.Log
 import android.view.View
 import android.widget.CheckedTextView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
@@ -12,7 +13,7 @@ class JobSelectViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
     private val view : View = view.findViewById(R.id.rvJobSelectItem)
 
-    private val job : CheckedTextView = view.findViewById(R.id.rvJobSelectBtn)
+    private val job : TextView = view.findViewById(R.id.rvJobSelectBtn)
 
     fun bind(data: JobSelectItem) {
         job.text = data.job

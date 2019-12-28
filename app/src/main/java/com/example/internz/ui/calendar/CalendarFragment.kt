@@ -46,6 +46,7 @@ class CalendarFragment : Fragment() {
         adapter.data = CalendarDataTemporal().getCalendarData()
         adapter.notifyDataSetChanged()
 
+
         //calendar custom area
         val events : List<EventDay> = ArrayList<EventDay>()
         val calendar : Calendar = android.icu.util.Calendar.getInstance()

@@ -22,7 +22,6 @@
             android:fontFamily="@font/notosanscjkkrmedium"
             android:textSize="17sp"
             android:lineSpacingExtra="-5sp"
-            android:letterSpacing="-0.41sp"
             android:textColor="#FF000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
