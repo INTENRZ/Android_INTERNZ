@@ -1,12 +1,17 @@
 package com.example.internz.feature
 
 import android.app.Activity
+import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.internz.R
@@ -83,9 +88,11 @@ class SetProfileActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+            //Glide를 이용한 make image oval 실패
+//            Glide.with(this).load(data?.data).into(imgSetProfile)
 
-            //TODO! imgSetProfile glide로 이미지 round로 변경
-            Glide.with(this).load(data?.data).into(imgSetProfile)
+            //TODO! dhodenhof를 이용한 원형 이미지 생성 -> 실패, Uri convert to Url?
+//            imgSetProfile.setCircleBackgroundColorResource(data?.data)
         }
     }
 }

@@ -3,6 +3,7 @@ package com.example.internz.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.internz.R
+import com.example.internz.ui.Story.DetailStoryFragment
 import com.example.internz.ui.notification.NotificationFragment
 import com.example.internz.ui.Story.StoryFragment
 import com.example.internz.ui.home.HomeFragment
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.add(R.id.container, fragmentHome).commit()
 
+        MainHelper.setFT(supportFragmentManager.beginTransaction())
+
         // 하단 탭 클릭 리스너 (클릭 시 프래그먼트 교체됨)
         img_maintab_home.setOnClickListener {
             val fragmentTransaction = fragmentManager.beginTransaction()
@@ -39,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         }
         img_maintab_story.setOnClickListener {
             val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.container, fragmentStory)
+            fragmentTransaction.replace(R.id.container, DetailStoryFragment())
             fragmentTransaction.commit()
         }
         img_maintab_profile.setOnClickListener {

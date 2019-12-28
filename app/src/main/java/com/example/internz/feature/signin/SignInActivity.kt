@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.data.signin.SignInRequestData
+import com.example.internz.feature.SetProfileActivity
 import com.example.internz.ui.MainActivity
 import com.example.internz.feature.signup.SignUpActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
@@ -175,7 +176,7 @@ class SignInActivity : AppCompatActivity() {
 
         //스토리액티비티 이동
         btnMoveStory.setOnClickListener {
-            startActivity(Intent(this, StoryActivity::class.java))
+            startActivity(Intent(this, SetProfileActivity::class.java))
             finish()
         }
     }

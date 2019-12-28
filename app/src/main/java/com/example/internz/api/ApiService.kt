@@ -25,8 +25,9 @@ interface ApiService {
     @POST("/user/signup2/{useridx}") //TODO! 오류 확인
     fun requestSignUp2(@Path("useridx") useridx : String, @Body body : SignUp2RequestData) : Call<SignUp2Data>
 
-    //TODO! 스토리 @GET 추가
+    @POST("/story/category")
     fun requestStory() : Call<List<StoryData>>
+//    fun requestStory(@Body body : String) : Call<List<StoryData>>
 
     //TODO! PUT 타입은 무엇을 받는가?
     @PUT("/user/task")

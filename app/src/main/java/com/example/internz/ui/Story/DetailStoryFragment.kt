@@ -1,12 +1,16 @@
 package com.example.internz.ui.Story
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.FragmentManager
 import com.example.internz.R
+import com.example.internz.feature.comment.CommentActivity
+import kotlinx.android.synthetic.main.fragment_detail_story.*
 
 class DetailStoryFragment : Fragment() {
 
@@ -22,6 +26,10 @@ class DetailStoryFragment : Fragment() {
     }
 
     private fun detailStoryFunction(view : View) {
-        val fragmentManager =
+        //TODO! 기능 추가
+
+        view.findViewById<ImageView>(R.id.imgDetailComment).setOnClickListener {
+            view.context.startActivity(Intent(view.context, CommentActivity::class.java))
+        }
     }
 }

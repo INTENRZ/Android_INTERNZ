@@ -16,7 +16,7 @@ class JobSelectAdapter(private val context : Context) : RecyclerView.Adapter<Job
     }
 
     override fun onBindViewHolder(holder: JobSelectViewHolder, position: Int) {
-        holder.bind(data[position], position)
+        holder.bind(data[position])
     }
 
     override fun getItemCount(): Int {
