@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
 import com.example.internz.data.signup.SignUpData
 import com.example.internz.data.signup.SignUpRequestData
 import kotlinx.android.synthetic.main.activity_sign_up.*
@@ -114,36 +115,35 @@ class SignUpActivity : AppCompatActivity() {
                 )
             )
 
-            call.enqueue(
-                object : Callback<SignUpData> {
-                    override fun onFailure(call: Call<SignUpData>, t: Throwable) {
-                        Log.e("TAG", "SignUpActivity Server is not activated")
-                    }
-
-                    override fun onResponse(
-                        call: Call<SignUpData>,
-                        response: Response<SignUpData>
-                    ) {
-                        if (response.isSuccessful) {
-                            if(response.body()?.success!!) { //회원 가입 성공
-                                val intent =
-                                    Intent(this@SignUpActivity, SignUp2Activity::class.java)
-                                        .putExtra("userIndex", response.body()?.userIndex.toString())
-                                startActivity(intent)
-                            } else { //회원 가입 실패
-                                Toast.makeText(applicationContext, response.body()?.message.toString(), Toast.LENGTH_SHORT).show()
-
-                                //이메일 재입력 요청
-                                edtSignUpEmail.text.clear()
-                                edtSignUpEmail.requestFocus()
-                            }
-                        }
-                        else {
-                            Log.e("TAG", "SignUpActivity Server broadcast fail")
-                        }
-                    }
-                }
-            )
+//            call.enqueue(
+//                object : Callback<SignUpData> {
+//                    override fun onFailure(call: Call<SignUpData>, t: Throwable) {
+//                        Log.e("TAG", "SignUpActivity Server is not activated")
+//                    }
+//
+//                    override fun onResponse(
+//                        call: Call<SignUpData>,
+//                        response: Response<SignUpData>
+//                    ) {
+//                        if (response.isSuccessful) {
+//                            if(response.body()?.success!!) { //회원 가입 성공
+//                                val intent =
+//                                    Intent(this@SignUpActivity, SignUp2Activity::class.java)
+//                                        .putExtra("userIndex", response.body()?.userIndex.toString())
+//                                startActivity(intent)
+//                            } else { //회원 가입 실패
+//                                Toast.makeText(applicationContext, response.body()?.message.toString(), Toast.LENGTH_SHORT).show()
+//
+//                                //이메일 재입력 요청
+//                                edtSignUpEmail.text.clear()
+//                                edtSignUpEmail.requestFocus()
+//                            }
+//                        }
+//                        else {
+//                            Log.e("TAG", "SignUpActivity Server broadcast fail")
+//                        }
+//                    }
+//                })
         }
 
         findViewById<ImageView>(R.id.imgSignUpBack).setOnClickListener {

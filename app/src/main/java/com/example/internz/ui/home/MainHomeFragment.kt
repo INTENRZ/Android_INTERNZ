@@ -15,7 +15,6 @@ import com.example.internz.data.home.RecommData
 import com.example.internz.data.home.StoryData
 import com.example.internz.feature.homestory.HomestoryAdapter
 import com.example.internz.ui.home.customnotification.CustomNotificationAdapter
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_main_home.*
 
 class MainHomeFragment : Fragment() {
