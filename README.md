@@ -1,6 +1,5 @@
 # Contributor
 
-
 - [김초희](https://github.com/choheeis)
 - [윤주연](https://github.com/otu165)
 - [오현택](https://github.com/Grit-Taek)
@@ -84,7 +83,7 @@ MainActivity
 
 HomeFragment
 ---
-- 맞춤 공고, 추천 프로필, 오늘의 스토리 
+- 맞춤 공고, 추천 프로필, 오늘의 스토리
 
 <br>
 

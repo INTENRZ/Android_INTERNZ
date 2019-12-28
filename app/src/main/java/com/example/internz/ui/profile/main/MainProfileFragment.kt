@@ -1,4 +1,4 @@
-package com.example.internz.ui.profile
+package com.example.internz.ui.profile.main
 
 
 import android.content.Intent
@@ -10,14 +10,17 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
+import com.example.internz.data.home.RecommData
 import com.example.internz.data.profile.ProfileTimelineData
 import com.example.internz.feature.jobselect.SelectHelper
+import com.example.internz.ui.home.HomeAdapter
+import com.example.internz.ui.profile.TimelineAddActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
 
-class TimelineFragment : Fragment() {
+class MainProfileFragment : Fragment() {
 
     private lateinit var rv_profile_timeline: RecyclerView
-    private lateinit var adapter_profile_timeline: TimelineAdapter
+    private lateinit var adapter_profile_mainProfile: MainProfileAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,10 +39,11 @@ class TimelineFragment : Fragment() {
 
     fun rvInit(){
         rv_profile_timeline = activity!!.findViewById(R.id.rv_profile_timeline)
-        adapter_profile_timeline = TimelineAdapter(context!!)
-        rv_profile_timeline.adapter = adapter_profile_timeline
+        adapter_profile_mainProfile =
+            MainProfileAdapter(context!!)
+        rv_profile_timeline.adapter = adapter_profile_mainProfile
         rv_profile_timeline.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        adapter_profile_timeline.data = listOf(
+        adapter_profile_mainProfile.data = listOf(
             ProfileTimelineData(
                 timelineCategory = "인턴",
                 timelineTitle = "NAVER SNOW Jam Studio 기획/운영팀",
@@ -83,7 +87,7 @@ class TimelineFragment : Fragment() {
                 timelinePeriodEnd = "19.07.01"
             )
         )
-        adapter_profile_timeline.notifyDataSetChanged()
+        adapter_profile_mainProfile.notifyDataSetChanged()
     }
 
     fun floatingClick(){
