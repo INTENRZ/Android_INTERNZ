@@ -42,7 +42,7 @@
             app:layout_constraintStart_toStartOf="@id/container_home_tab"
             app:layout_constraintTop_toTopOf="@id/container_home_tab"
             app:layout_constraintEnd_toEndOf="@id/container_home_tab"
-            android:src="@drawable/tabbar_home_btn"/>
+            android:background="@drawable/tabbar_home_selector" />
 
 
         <!-- 하단 탭바  - 공고 버튼 -->
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:layout_constraintHorizontal_bias="0.33"
-            android:src="@drawable/tabbar_notice_selected_btn"
+            android:background="@drawable/tabbar_notification_selector"
             app:layout_constraintBottom_toBottomOf="@id/container_home_tab"
             app:layout_constraintStart_toStartOf="@id/container_home_tab"
             app:layout_constraintEnd_toEndOf="@id/container_home_tab"
@@ -67,7 +67,7 @@
             app:layout_constraintStart_toStartOf="@id/container_home_tab"
             app:layout_constraintEnd_toEndOf="@id/container_home_tab"
             app:layout_constraintTop_toTopOf="@id/container_home_tab"
-            android:src="@drawable/tabbar_story_btn"/>
+            android:background="@drawable/tabbar_story_selector"/>
 
         <!-- 하단 탭바  - 프로필 버튼 -->
         <ImageView
@@ -79,7 +79,7 @@
             app:layout_constraintStart_toStartOf="@id/container_home_tab"
             app:layout_constraintEnd_toEndOf="@id/container_home_tab"
             app:layout_constraintTop_toTopOf="@id/container_home_tab"
-            android:src="@drawable/tabbar_profile_btn"/>
+            android:background="@drawable/tabbar_profile_selector"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
