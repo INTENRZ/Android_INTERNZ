@@ -1,5 +1,6 @@
 package com.example.internz.api
 
+import com.example.internz.common.BaseResponse
 import com.example.internz.data.jobselect.JobSelectData
 import com.example.internz.data.jobselect.JobSelectPutData
 import com.example.internz.data.signin.SignInData
@@ -17,13 +18,13 @@ import retrofit2.http.Path
 
 interface ApiService {
     @POST("/user/signin")
-    fun requestSignIn(@Body body : SignInRequestData) : Call<SignInData>
+    fun requestSignIn(@Body body : SignInRequestData) : Call<BaseResponse<SignInData>>
 
     @POST("/user/signup1")
-    fun requestSignUp(@Body body : SignUpRequestData) : Call<SignUpData>
+    fun requestSignUp(@Body body : SignUpRequestData) : Call<BaseResponse<SignUpData>>
 
     @POST("/user/signup2/{useridx}") //TODO! 오류 확인
-    fun requestSignUp2(@Path("useridx") useridx : String, @Body body : SignUp2RequestData) : Call<SignUp2Data>
+    fun requestSignUp2(@Path("useridx") useridx : String, @Body body : SignUp2RequestData) : Call<BaseResponse<SignUp2Data>>
 
     @POST("/story/category")
     fun requestStory() : Call<List<StoryData>>

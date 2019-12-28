@@ -5,14 +5,21 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
+import com.example.internz.common.toast
+import com.example.internz.data.signin.SignIn
+import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.feature.jobselect.JobSelectActivity
 import com.example.internz.feature.signup.SignUpActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import retrofit2.Call
+import retrofit2.Response
 
 /**
  * TODO! 키보드 올라올때 뷰 위로 올리기 수정
@@ -71,7 +78,7 @@ class SignInActivity : AppCompatActivity() {
 
             //로그인 요청 불가
             if(email.isEmpty()) {
-                Toast.makeText(this, "이메일을 입력하세요.", Toast.LENGTH_SHORT).show()
+                toast("이메일을 입력하세요.")
                 edtSignInEmail.requestFocus()
                 return@setOnClickListener
             }
@@ -87,6 +94,31 @@ class SignInActivity : AppCompatActivity() {
                     email,
                     pwd
                 )
+            )
+
+            signInCall.enqueue(
+                onSuccess = {
+                    when {
+                        it.isFirst == "0" -> {
+                            //사용자 토큰 저장
+                            SignIn.setUserToken(it.token)
+
+                            val intent = Intent(applicationContext, JobSelectActivity::class.java)
+                            startActivity(intent)
+                        }
+                        it.isFirst == "1" -> {
+                            //사용자 토큰 저장
+                            SignIn.setUserToken(it.token)
+
+                            //val intent = Intent(applicationContext, HomeActivity::class.java)
+                            //startActivity(intent)
+                            finish()
+                        }
+                    }
+                },
+                onFail = { status, message ->
+                    toast(message)
+                }
             )
 
 //            signInCall.enqueue(
@@ -112,7 +144,7 @@ class SignInActivity : AppCompatActivity() {
 //                                //사용자 토큰 저장
 //                                SignIn.setUserToken(response.body()?.token!!) //TODO! 오류 확인 -> 오류 발생
 //
-//                                val intent = Intent(applicationContext, HomeActivity::class.java)
+////                                val intent = Intent(applicationContext, HomeActivity::class.java)
 //                                startActivity(intent)
 //                                finish()
 //                            } else {
@@ -138,7 +170,7 @@ class SignInActivity : AppCompatActivity() {
 //                }
 //            )
 
-            startActivity(Intent(this, JobSelectActivity::class.java))
+//            startActivity(Intent(this, JobSelectActivity::class.java))
         }
 
 

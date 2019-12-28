@@ -110,6 +110,8 @@ class HomeFragment : Fragment() {
             )
         )
 
+        rv_home_story.overScrollMode = View.OVER_SCROLL_NEVER
+
         apdater_homestory.notifyDataSetChanged()
     }
 }

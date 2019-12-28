@@ -6,9 +6,9 @@ import retrofit2.http.Query
 //서버 -> 클라이언트
 data class SignInData (
     @SerializedName("message")
-    val message : String?,
+    val message : String,
     @SerializedName("token")
-    val token : String?,
+    val token : String,
     @SerializedName("isnotFirst")
-    val isFirst : String? //첫 로그인 : 0, 아닌 경우 : 1
+    val isFirst : String //첫 로그인 : 0, 아닌 경우 : 1
 )
