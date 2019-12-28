@@ -1,5 +1,3 @@
-package com.example.internz.ui.story
-
 
 import android.os.Bundle
 import android.view.LayoutInflater

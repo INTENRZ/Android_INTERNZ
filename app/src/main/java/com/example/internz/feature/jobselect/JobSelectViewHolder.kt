@@ -13,7 +13,7 @@ class JobSelectViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
     private val job : CheckedTextView = view.findViewById(R.id.rvJobSelectBtn)
 
-    fun bind(data: JobSelectItem, position : Int) {
+    fun bind(data: JobSelectItem) {
         job.text = data.job
 
         job.setOnClickListener {

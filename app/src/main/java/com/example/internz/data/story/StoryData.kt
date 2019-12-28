@@ -1,9 +1,15 @@
 package com.example.internz.data.story
 
+import com.google.gson.annotations.SerializedName
+
 //서버 -> 클라이언트
-data class StoryData (
-    //TODO! Serialized 설정
-    val title : String,
-    val nickname : String,
-    val date : String
+data class StoryData(
+    @SerializedName("title")
+    val title: String?,
+    @SerializedName("nickname")
+    val nickname: String?,
+    @SerializedName("created_date")
+    val date: String?,
+    @SerializedName("success")
+    val success : String
 )

@@ -1,4 +1,4 @@
-package com.example.internz.feature
+package com.example.internz.feature.setprofile
 
 import android.app.Activity
 import android.content.Intent
@@ -6,15 +6,10 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
 import android.widget.Toast
-import com.bumptech.glide.Glide
 import com.example.internz.R
-import com.gun0912.tedpermission.PermissionListener
-import com.gun0912.tedpermission.TedPermission
+import com.example.internz.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_set_profile.*
-import java.util.ArrayList
-import java.util.jar.Manifest
 
 class SetProfileActivity : AppCompatActivity() {
 
@@ -33,7 +28,9 @@ class SetProfileActivity : AppCompatActivity() {
                     //권한 거부
                     val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
                     //권한 요청 팝업 생성
-                    requestPermissions(permissions, PERMISSION_CODE)
+                    requestPermissions(permissions,
+                        PERMISSION_CODE
+                    )
                 }
                 else {
                     //이미 권한이 생성된 경우
@@ -45,12 +42,18 @@ class SetProfileActivity : AppCompatActivity() {
                 getImageFromGallery()
             }
         }
+
+        btnSetProfileStart.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 
     private fun getImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
-        startActivityForResult(intent, IMAGE_PICK_CODE)
+        startActivityForResult(intent,
+            IMAGE_PICK_CODE
+        )
     }
 
     companion object {
@@ -83,9 +86,11 @@ class SetProfileActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+            //Glide를 이용한 make image oval 실패
+//            Glide.with(this).load(data?.data).into(imgSetProfile)
 
-            //TODO! imgSetProfile glide로 이미지 round로 변경
-            Glide.with(this).load(data?.data).into(imgSetProfile)
+            //TODO! dhodenhof를 이용한 원형 이미지 생성 -> 실패, Uri convert to Url?
+//            imgSetProfile.setCircleBackgroundColorResource(data?.data)
         }
     }
 }

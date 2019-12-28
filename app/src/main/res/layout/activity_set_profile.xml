@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.SetProfileActivity">
+    tools:context=".feature.setprofile.SetProfileActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
@@ -90,12 +90,12 @@
         app:layout_constraintStart_toStartOf="@+id/imgSetProfile"
         app:layout_constraintTop_toTopOf="@+id/imgSetProfile" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgSetProfile"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="50dp"
-        android:background="@drawable/circle_profile_image"
+        android:src="@drawable/home_recomm_story3_img"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

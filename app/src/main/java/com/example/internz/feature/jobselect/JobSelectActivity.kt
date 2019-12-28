@@ -12,7 +12,7 @@ import com.example.internz.api.ApiServiceImpl
 import com.example.internz.data.jobselect.JobSelectData
 import com.example.internz.data.jobselect.JobSelectItem
 import com.example.internz.data.jobselect.JobSelectPutData
-import com.example.internz.feature.SetProfileActivity
+import com.example.internz.feature.setprofile.SetProfileActivity
 import kotlinx.android.synthetic.main.activity_job_select.*
 import retrofit2.Call
 import retrofit2.Response

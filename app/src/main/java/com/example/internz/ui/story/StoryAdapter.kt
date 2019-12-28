@@ -1,4 +1,4 @@
-package com.example.internz.feature.story
+package com.example.internz.ui.story
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import com.example.internz.data.story.StoryData
 
 class StoryAdapter(private val context : Context) : RecyclerView.Adapter<StoryViewHolder>() {
     var data = listOf<StoryData>()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoryViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.rv_story_item, parent, false)

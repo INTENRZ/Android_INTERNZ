@@ -1,10 +1,10 @@
 package com.example.internz.data.story
 
-class StoryDataTemporal {
+class StoryDataTemporal2 {
     fun getStory() : List<StoryData> {
         return listOf(
             StoryData(
-                title = "영화번역가는 AI 때문에 사라질 직업인가?",
+                title = "여기는 인턴 내용이 나타날 프래그먼트입니다.",
                 nickname = "한한한",
                 date = "20.12.13",
                 success = "true"
