@@ -1,6 +1,7 @@
 package com.example.internz.ui.profile
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.data.home.RecommData
+import com.example.internz.TimelineAddActivity
 import com.example.internz.data.profile.ProfileTimelineData
-import com.example.internz.ui.home.HomeAdapter
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 class TimelineFragment : Fragment() {
 
@@ -30,6 +31,7 @@ class TimelineFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         rvInit()
+        floatingClick()
     }
 
     fun rvInit(){
@@ -82,5 +84,12 @@ class TimelineFragment : Fragment() {
             )
         )
         adapter_profile_timeline.notifyDataSetChanged()
+    }
+
+    fun floatingClick(){
+        img_profile_floating.setOnClickListener{
+            val intent = Intent(context, TimelineAddActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
