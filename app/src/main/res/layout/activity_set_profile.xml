@@ -60,6 +60,7 @@
         android:ems="40"
         android:hint="최소 20자 최대 40자로 입력해주세요."
         android:gravity="left"
+        android:maxLength="40"
         android:inputType="textMultiLine"
         android:lines="5"
         android:minLines="2"

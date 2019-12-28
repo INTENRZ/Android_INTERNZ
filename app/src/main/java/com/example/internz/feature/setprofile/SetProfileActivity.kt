@@ -6,6 +6,8 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
@@ -50,6 +52,31 @@ class SetProfileActivity : AppCompatActivity() {
             }
         }
 
+        //한줄 프로필 소개
+        edtSetProfileContents.addTextChangedListener(
+            object : TextWatcher {
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                }
+
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                }
+
+                //글자 개수 20 ~ 40
+                override fun afterTextChanged(text: Editable?) {
+                    if (text != null && !text.toString().equals("")) {
+                        if(text.toString().length >= 20) {
+                            btnSetProfileStart.setBackgroundResource(R.drawable.btn_shape_ok)
+                        } else {
+                            btnSetProfileStart.setBackgroundResource(R.drawable.btn_shape)
+                        }
+                    }
+                }
+            }
+        )
+
+        //시작하기 click listener
         btnSetProfileStart.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }

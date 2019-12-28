@@ -1,11 +1,10 @@
 package com.example.internz.ui
 
-import StoryFragment
+import Reference
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.internz.R
 import com.example.internz.ui.calendar.CalendarFragment
-import com.example.internz.ui.story.DetailStoryFragment
 import com.example.internz.ui.notification.NotificationFragment
 import com.example.internz.ui.home.HomeFragment
 import com.example.internz.ui.profile.main.MainProfileFragment
@@ -20,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         // 프래그먼트들 선언
         val fragmentHome = HomeFragment()
         val fragmentNotification = NotificationFragment()
-        val fragmentStory = StoryFragment()
+        val fragmentStory = Reference()
         val fragmentProfile = MainProfileFragment()
 
         /* 프래그먼트 교체 관련 */
@@ -43,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         }
         img_maintab_story.setOnClickListener {
             val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.container, StoryFragment())
+            fragmentTransaction.replace(R.id.container, Reference())
             fragmentTransaction.commit()
         }
         img_maintab_profile.setOnClickListener {

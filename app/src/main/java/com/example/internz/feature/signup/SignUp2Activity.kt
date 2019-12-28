@@ -188,10 +188,10 @@ class SignUp2Activity : AppCompatActivity() {
         if (edtSignUpName.text.isEmpty() || edtSignUpNick.text.isEmpty() || edtSignUpBirth.text.isEmpty()) {
             btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape)
         } else {
-            if(imgbtnSignUpService.isSelected && imgbtnSignUpMarketing.isSelected) {
+            if(imgbtnSignUpService.isSelected) {
                 btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape_ok)
             } else {
-                Toast.makeText(applicationContext, "약관동의를 선택하세요.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "서비스 이용 약관동의를 선택하세요.", Toast.LENGTH_SHORT).show()
                 txtSignUpService.requestFocus()
             }
         }

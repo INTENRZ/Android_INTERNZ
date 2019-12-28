@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.*
 
 //TODO! StoryFragment 변경해야 함
 
-class StoryFragment : Fragment() {
+class Reference : Fragment() {
 
     private val adapter: StoryAdapter = StoryAdapter()
 
@@ -48,8 +48,7 @@ class StoryFragment : Fragment() {
 
     private fun initStoryList() {
 
-
-
+        
     }
 
     private inner class StoryAdapter() : RecyclerView.Adapter<StoryViewHolder>() {

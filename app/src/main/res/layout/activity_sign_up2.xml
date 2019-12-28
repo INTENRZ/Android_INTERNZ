@@ -150,7 +150,7 @@
 
     </RadioGroup>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imgbtnSignUpService"
         android:layout_width="18dp"
         android:layout_height="18dp"
@@ -160,12 +160,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtSignUpService" />
 
-    <ImageView
+    <CheckedTextView
         android:id="@+id/imgbtnSignUpMarketing"
         android:layout_width="18dp"
         android:layout_height="18dp"
         android:layout_marginStart="16dp"
-        android:src="@drawable/license"
+        android:background="@drawable/license"
+        android:checked="true"
         app:layout_constraintBottom_toBottomOf="@+id/txtSignUpMarketing"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/txtSignUpMarketing" />
