@@ -46,11 +46,9 @@ class SignUp2Activity : AppCompatActivity() {
         edtSignUpName.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
                 }
 
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
@@ -63,11 +61,9 @@ class SignUp2Activity : AppCompatActivity() {
         edtSignUpNick.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
                 }
 
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
@@ -80,11 +76,9 @@ class SignUp2Activity : AppCompatActivity() {
         edtSignUpBirth.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
                 }
 
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
@@ -135,20 +129,23 @@ class SignUp2Activity : AppCompatActivity() {
                 gender = 1
             }
 
+            //TODO! 해당 코드는 서버 통신 후 successful 안으로 넣어야 함
             val intent =
                 Intent(this@SignUp2Activity, SignInActivity::class.java)
             //이전의 모든 액티비티 제거
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
 
+            Log.e("TAG", "${edtSignUpName.text.toString()}, ${edtSignUpNick.text.toString()}, ${edtSignUpBirth.text.toString()}, ${radioButton.text.toString()}")
+
             //서버통신구현
 
-            val call = ApiServiceImpl.service.requestSignUp2(
-                userIndex,
-                SignUp2RequestData(
-                    edtSignUpName.text.toString(), edtSignUpNick.text.toString(), edtSignUpBirth.text.toString(), gender
-                )
-            )
+//            val call = ApiServiceImpl.service.requestSignUp2(
+//                userIndex,
+//                SignUp2RequestData(
+//                    edtSignUpName.text.toString(), edtSignUpNick.text.toString(), edtSignUpBirth.text.toString(), gender
+//                )
+//            )
 
             /*
             call.enqueue(
@@ -182,12 +179,11 @@ class SignUp2Activity : AppCompatActivity() {
                 }
             )
             */
-
         }
     }
 
     private fun changeBtnBackground() {
-        if (edtSignUpName.text.isEmpty() || edtSignUpNick.text.isEmpty() || edtSignUpBirth.text.isEmpty()) {
+        if (edtSignUpName.text.isEmpty() || edtSignUpNick.text.isEmpty() || (edtSignUpBirth.text.length < 6)) {
             btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape)
         } else {
             if(imgbtnSignUpService.isSelected) {

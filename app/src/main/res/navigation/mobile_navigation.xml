@@ -28,4 +28,11 @@
         android:name="com.example.internz.ui.profile.main.MainProfileFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/frag_navigation_calendar"
+        android:name="com.example.internz.ui.calendar.CalendarFragment"
+        android:label="@string/title_calendar"
+        tools:layout="@layout/fragment_calendar" />
+
 </navigation>

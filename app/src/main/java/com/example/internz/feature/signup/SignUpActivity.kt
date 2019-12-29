@@ -41,7 +41,6 @@ class SignUpActivity : AppCompatActivity() {
                 }
 
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
                 }
 
                 override fun afterTextChanged(p0: Editable?) {
@@ -155,7 +154,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun changeBtnBackground() {
-        if (edtSignUpEmail.text.isEmpty() || edtSignUpPhoneNum.text.isEmpty() || edtSignUpPwd.text.isEmpty() || edtSignUpPwdChk.text.isEmpty()) {
+        if (edtSignUpEmail.text.isEmpty() || edtSignUpPhoneNum.text.isEmpty() || (edtSignUpPwd.text.length >= 6) || (edtSignUpPwdChk.text.length >= 6)) {
             btnSignUpNext.setBackgroundResource(R.drawable.btn_shape)
         } else {
             btnSignUpNext.setBackgroundResource(R.drawable.btn_shape_ok)

@@ -11,7 +11,6 @@
         android:layout_height="33dp"
         android:fontFamily="@font/notosanscjkkrmedium"
         android:textSize="14sp"
-        android:lineHeight="6sp"
         android:textColor="#212529"
         android:checked="false"
         android:background="@drawable/btn_for_job_selecter"

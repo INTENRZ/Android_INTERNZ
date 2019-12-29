@@ -1,6 +1,6 @@
 package com.example.internz.ui.story
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,24 +10,24 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.story.StoryData
-import com.example.internz.ui.home.HomeViewModel
-import com.example.internz.ui.profile.main.MainProfileAdapter
-import com.example.internz.ui.story.StoryViewModel
-import kotlinx.android.synthetic.*
+import com.example.internz.data.story.StoryDataTemporal
+import com.example.internz.data.story.StoryDataTemporal2
+import com.example.internz.ui.story.detailstory.DetailStoryActivity
+import com.google.android.material.tabs.TabLayout
 
 //TODO! StoryFragment 변경해야 함
 
 class StoryFragment : Fragment() {
-
-
-    private lateinit var rv_story: RecyclerView
-    private lateinit var adapter_story: MainProfileAdapter
-
-    private val adapter: StoryAdapter = StoryAdapter()
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter : StoryAdapter
     private lateinit var storyViewModel: StoryViewModel
+
+    //사용자가 선택한 탭
+    private var selectedTab : String = "전체"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,38 +47,37 @@ class StoryFragment : Fragment() {
         val arrayAdapter = ArrayAdapter.createFromResource(view.context, R.array.spinner, android.R.layout.simple_spinner_item)
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = arrayAdapter
-    }
 
-    private inner class StoryAdapter() : RecyclerView.Adapter<StoryViewHolder>() {
-        var data = listOf<StoryData>()
+        //스크롤 이펙 제거
+        view.findViewById<RecyclerView>(R.id.rvStory).overScrollMode = View.OVER_SCROLL_NEVER
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoryViewHolder {
-            val view = LayoutInflater.from(context).inflate(R.layout.rv_story_item, parent, false)
-            return StoryViewHolder(view)
-        }
+        //변수 초기화
+        recyclerView = view.findViewById(R.id.rvStory)
+        adapter = StoryAdapter(view.context)
 
-        override fun onBindViewHolder(holder: StoryViewHolder, position: Int) {
-            holder.bind(data[position])
-        }
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(view.context)
 
-        override fun getItemCount(): Int {
-            return data.size
-        }
-    }
+        adapter.data = StoryDataTemporal().getStory()
+        adapter.notifyDataSetChanged()
 
-    private inner class StoryViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-        private val view : View = view.findViewById(R.id.rvStoryItem)
+        //사용자가 선택한 탭
+        view.findViewById<TabLayout>(R.id.tabStory).addOnTabSelectedListener(
+            object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(p0: TabLayout.Tab?) {
+//                    selectedTab = p0?.text.toString()
+//
+//                    //TODO! 서버와 통신
+//                    adapter.data = StoryDataTemporal2().getStory()
+//                    adapter.notifyDataSetChanged()
+                }
 
-        private val title : TextView = view.findViewById(R.id.txtStoryTitle)
-        private val nickname : TextView = view.findViewById(R.id.txtStoryNick)
-        private val date : TextView = view.findViewById(R.id.txtStoryDate)
+                override fun onTabReselected(p0: TabLayout.Tab?) {
+                }
 
-        fun bind(data : StoryData) {
-            title.text = data.title
-            nickname.text = data.nickname
-            date.text = data.date
-
-
-        }
+                override fun onTabUnselected(p0: TabLayout.Tab?) {
+                }
+            }
+        )
     }
 }

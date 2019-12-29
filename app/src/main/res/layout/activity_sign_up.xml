@@ -7,7 +7,7 @@
     tools:context=".feature.signup.SignUpActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/const1"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -40,19 +40,24 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <View
+        app:layout_constraintTop_toBottomOf="@+id/const1"
+        android:background="#e3e3e3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="70dp"
-        android:text="이메일"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/notosanscjkkrregular"
-        android:textSize="16sp"
+        android:text="이메일"
         android:textColor="#212529"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/const1" />
 
     <TextView
         android:id="@+id/textView6"
@@ -116,7 +121,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="이름을 입력해주세요."
+        android:hint="핸드폰 번호를 입력해주세요."
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -157,39 +162,41 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="50dp"
-        android:text="이미 가입하셨나요?"
+        android:layout_marginBottom="40dp"
         android:fontFamily="@font/notosanscjkkrmedium"
+        android:text="이미 가입하셨나요?"
+        app:layout_constraintHorizontal_bias="0.35"
         android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignUpNext"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtSignUpPhoneNum" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/txtSignUpLogIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="40dp"
         android:clickable="true"
-        android:text="@string/do_sign_in"
         android:fontFamily="@font/notosanscjkkrbold"
+        app:layout_constraintHorizontal_bias="0.7"
+        android:text="@string/do_sign_in"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtSignUpPhoneNum" />
+        app:layout_constraintBottom_toTopOf="@+id/btnSignUpNext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btnSignUpNext"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="35dp"
         android:background="@drawable/btn_shape"
+        android:gravity="center"
         android:text="다음"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.comment.CommentDataTemporal
+import kotlinx.android.synthetic.main.activity_comment.*
 
 class CommentActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -30,5 +31,9 @@ class CommentActivity : AppCompatActivity() {
         adapter.data = CommentDataTemporal().getCommentData()
         adapter.notifyDataSetChanged()
 
+
+        imgCommentBack.setOnClickListener {
+            finish()
+        }
     }
 }

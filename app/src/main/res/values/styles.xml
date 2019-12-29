@@ -9,6 +9,7 @@
         <!-- Status Bar Text Color -->
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:includeFontPadding">false</item>
+        <item name="android:overScrollMode">never</item>
 
 
     </style>

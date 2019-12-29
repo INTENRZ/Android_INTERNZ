@@ -20,6 +20,7 @@ import com.example.internz.feature.setprofile.SetProfileActivity
 import com.example.internz.feature.signup.SignUpActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 /**
@@ -76,8 +77,8 @@ class SignInActivity : AppCompatActivity() {
         btnSignInLogIn?.setOnClickListener {
             val email = edtSignInEmail.text.toString()
             val pwd = edtSignInPwd.text.toString()
-            startActivity(Intent(this, JobSelectActivity::class.java))
-            //로그인 요청 불가
+
+            //로그인 요청 to Server 불가
             if (email.isEmpty()) {
                 toast("이메일을 입력하세요.")
                 edtSignInEmail.requestFocus()
@@ -87,43 +88,120 @@ class SignInActivity : AppCompatActivity() {
                 edtSignInPwd.requestFocus()
                 return@setOnClickListener
             }
-        }
 
+            startActivity(Intent(this, JobSelectActivity::class.java))
 
-//            //로그인 요청
-//            val signInCall = ApiServiceImpl.service.requestSignIn(
-//                SignInRequestData(
-//                    email,
-//                    pwd
-//                )
-//            )
+//            //예전 방식으로 서버 통신 구현
+//            val signIncall : Call<SignInData> = ApiServiceImpl.service.requestSignIn(SignInRequestData(email, pwd))
 //
-//            startActivity(Intent(this, JobSelectActivity::class.java))
+//            signIncall.enqueue(
+//                object : Callback<SignInData> {
+//                    override fun onFailure(call: Call<SignInData>, t: Throwable) {
+//                        Log.e("TAG", "SignInActivity server is not activated")
+//                    }
 //
-//            signInCall.enqueue(
-//                onSuccess = {
-//                    when {
-//                        it.isFirst == "0" -> {
-//                            //사용자 토큰 저장
-//                            SignIn.setUserToken(it.token)
+//                    override fun onResponse(
+//                        call: Call<SignInData>,
+//                        response: Response<SignInData>
+//                    ) {
+//                        if(response.isSuccessful) {
+//                            //서버 통신 성공
+//                            val body = response.body()!!
 //
-//                            val intent = Intent(applicationContext, JobSelectActivity::class.java)
-//                            startActivity(intent)
+//                            if(body.success) { //로그인 성공
+//                                //사용자 토큰 저장 TODO!
+////                                ApiServiceImpl.setToken(body.token)
+//
+//                                if(body.isFirst.equals("0")) { //첫 로그인
+//                                    //직무선택 액티비티로 전환
+//                                    val intent = Intent(applicationContext, JobSelectActivity::class.java)
+//                                    startActivity(intent)
+//                                } else { //기존 유저
+//                                    //홈 액티비티로 전환
+//                                    val intent = Intent(applicationContext, MainActivity::class.java)
+//                                    startActivity(intent)
+//                                }
+//                            }
+//                            else { //로그인 실패
+//                                if (body.status.equals("331")) {
+//                                    edtSignInPwd.text.clear()
+//                                    edtSignInPwd.requestFocus()
+//
+//                                    Toast.makeText(applicationContext, body.message, Toast.LENGTH_SHORT).show()
+//                                } else if (body.status.equals("900")) {
+//                                    edtSignInPwd.text.clear()
+//                                    edtSignInEmail.text.clear()
+//
+//                                    Toast.makeText(applicationContext, body.message, Toast.LENGTH_SHORT).show()
+//                                }
+//                            }
 //                        }
-//                        it.isFirst == "1" -> {
-//                            //사용자 토큰 저장
-//                            SignIn.setUserToken(it.token)
-//
-//                            //val intent = Intent(applicationContext, HomeActivity::class.java)
-//                            //startActivity(intent)
-//                            finish()
+//                        else {
+//                            Log.e("TAG", "Bad Request! SignInActivity broadcast fail")
 //                        }
 //                    }
-//                },
-//                onFail = { status, message ->
-//                    toast(message)
 //                }
 //            )
+        }
+
+        //회원가입
+        txtSignInSignUp?.setOnClickListener {
+            val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    //뒤로가기 2번 종료
+    override fun onBackPressed() {
+        val toast = Toast.makeText(this, "\'뒤로\'버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT)
+
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis()
+            toast.show()
+        } else if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+            toast.cancel()
+            finish()
+        }
+    }
+}
+            /*
+            //TODO! 파트장님이 extension 이용해서 서버 통신 구현하신 부분
+            //로그인 요청
+            val signInCall = ApiServiceImpl.service.requestSignIn(
+                SignInRequestData(
+                    email,
+                    pwd
+                )
+            )
+
+            startActivity(Intent(this, JobSelectActivity::class.java))
+
+            signInCall.enqueue(
+                onSuccess = {
+                    when {
+                        it.isFirst == "0" -> {
+                            //사용자 토큰 저장
+                            SignIn.setUserToken(it.token)
+
+                            val intent = Intent(applicationContext, JobSelectActivity::class.java)
+                            startActivity(intent)
+                        }
+                        it.isFirst == "1" -> {
+                            //사용자 토큰 저장
+                            SignIn.setUserToken(it.token)
+
+                            //val intent = Intent(applicationContext, HomeActivity::class.java)
+                            //startActivity(intent)
+                            finish()
+                        }
+                    }
+                },
+                onFail = { status, message ->
+                    toast(message)
+                }
+            )
+            */
+
 
 //            signInCall.enqueue(
 //                object : retrofit2.Callback<SignInData> {
@@ -178,25 +256,5 @@ class SignInActivity : AppCompatActivity() {
 //    }
 
 
-        //회원가입
-        txtSignInSignUp?.setOnClickListener {
-            val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
-            startActivity(intent)
-        }
 
-    }
-}
-//        //뒤로가기 2번 종료
-//        override fun onBackPressed() {
-//            val toast = Toast.makeText(this, "\'뒤로\'버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT)
-//
-//            if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
-//                backKeyPressedTime = System.currentTimeMillis()
-//                toast.show()
-//            } else if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
-//                toast.cancel()
-//                finish()
-//            }
-//        }
-//    }
 
