@@ -3,7 +3,6 @@ package com.example.internz.feature.setprofile
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,15 +10,12 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.ImageView
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
 import com.example.internz.common.toast
-import com.example.internz.feature.jobselect.SelectHelper
-import com.example.internz.ui.MainActivity
+import com.example.internz.ui.BottomBarActivity
 import kotlinx.android.synthetic.main.activity_set_profile.*
-import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class SetProfileActivity : AppCompatActivity() {
 
@@ -80,7 +76,7 @@ class SetProfileActivity : AppCompatActivity() {
 
         //시작하기 click listener
         btnSetProfileStart.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, BottomBarActivity::class.java))
         }
     }
 

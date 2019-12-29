@@ -3,9 +3,11 @@ package com.example.internz.ui.profile.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -43,9 +45,8 @@ class MainProfileFragment : Fragment() {
     }
 
     fun rvInit(){
-        rv_profile_timeline = activity!!.findViewById(R.id.rv_profile_timeline)
-        adapter_profile_mainProfile =
-            MainProfileAdapter(context!!)
+        rv_profile_timeline = view!!.findViewById(R.id.rv_profile_timeline)
+        adapter_profile_mainProfile = MainProfileAdapter(context!!)
         rv_profile_timeline.adapter = adapter_profile_mainProfile
         rv_profile_timeline.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         adapter_profile_mainProfile.data = listOf(

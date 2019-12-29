@@ -56,9 +56,10 @@ class MainHomeFragment : Fragment() {
         tablayout.setupWithViewPager(viewpager)
 
     }
+
     /* home 화면 "추천 프로필" 리사이클러뷰 init */
     fun rvRecommProfile(){
-        rv_recomm_profile = activity!!.findViewById(R.id.rv_home_recommProfile)
+        rv_recomm_profile = view!!.findViewById(R.id.rv_home_recommProfile)
         adapter_recomm_profile = HomerecommAdapter(context!!)
         rv_recomm_profile.adapter = adapter_recomm_profile
         rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -113,6 +114,8 @@ class MainHomeFragment : Fragment() {
                 desc = "비 전공자가 알아본 외국계 디자인 인턴과정"
             )
         )
+
+        rv_home_story.overScrollMode = View.OVER_SCROLL_NEVER
 
         apdater_homestory.notifyDataSetChanged()
     }

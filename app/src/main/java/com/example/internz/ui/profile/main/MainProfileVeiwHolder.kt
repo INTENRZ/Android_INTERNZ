@@ -19,8 +19,5 @@ class MainProfileVeiwHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         timelinePeriod.text = data.timelinePeriodStart + " - " + data.timelinePeriodEnd
     }
 
-    /* 타임라인 리사이클러뷰 왼쪽 세로 바 없애기 */
-    fun timelineIconSetting(){
-        timelineBar.visibility = View.INVISIBLE
-    }
+
 }
