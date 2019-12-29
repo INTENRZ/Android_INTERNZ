@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupWithNavController
 import com.example.internz.R
 import com.example.internz.ui.home.MainHomeFragment
 import com.example.internz.ui.notification.NotificationFragment
@@ -14,9 +12,8 @@ import com.example.internz.ui.story.StoryFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-
-
 class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+
 
     // 액티비티가 프래그먼트를 멤버 변수화 해서 관리하겠다. 메모리 단위
     private val fragmentHome = MainHomeFragment()
@@ -60,7 +57,7 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
     }
 
 
-    // 현재 화면을 숨기고 우리가 선택한 화면을 show한다. 이게 내부적으로 돌아가는 것 
+    // 현재 화면을 숨기고 우리가 선택한 화면을 show한다. 이게 내부적으로 돌아가는 것
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
         when(menuItem.itemId){
             in fragments.keys -> {

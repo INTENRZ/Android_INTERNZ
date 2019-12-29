@@ -14,12 +14,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.story.StoryData
 import com.example.internz.ui.home.HomeViewModel
+import com.example.internz.ui.profile.main.MainProfileAdapter
 import com.example.internz.ui.story.StoryViewModel
 import kotlinx.android.synthetic.*
 
 //TODO! StoryFragment 변경해야 함
 
 class StoryFragment : Fragment() {
+
+
+    private lateinit var rv_story: RecyclerView
+    private lateinit var adapter_story: MainProfileAdapter
 
     private val adapter: StoryAdapter = StoryAdapter()
     private lateinit var storyViewModel: StoryViewModel
@@ -73,16 +78,7 @@ class StoryFragment : Fragment() {
             nickname.text = data.nickname
             date.text = data.date
 
-            //DetailStoryFragment 보여주기
-//            view.setOnClickListener {
-//                //TODO! DetailStoryFragment 액티비티로 교체 요구
-////            MainHelper.getFT().hide(StoryFragment()).show(DetailStoryFragment()).commit()
-//                activity?.supportFragmentManager?.let {
-//                    it.beginTransaction().apply {
-//                        show(DetailStoryFragment())
-//                    }.commit()
-//                }
-//            }
+
         }
     }
 }
