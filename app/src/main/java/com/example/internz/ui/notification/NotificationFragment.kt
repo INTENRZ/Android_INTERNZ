@@ -1,6 +1,7 @@
 package com.example.internz.ui.notification
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,14 +14,12 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.internz.R
 import com.example.internz.data.notification.NotificationListData
-import com.example.internz.ui.calendar.CalendarFragment
-import kotlinx.android.synthetic.main.fragment_calendar.*
+import com.example.internz.feature.calendar.CalendarActivity
 import kotlinx.android.synthetic.main.fragment_notification_list.*
 
 class NotificationFragment : Fragment() {
@@ -158,16 +157,13 @@ fun makeSpinner() {
                 desc = "마케팅 콘텐츠 디자인",
                 dday = "D-13"
             )
-
         )
 
         notificationListAdapter.notifyDataSetChanged()
 
         //공고 -> 캘린더 이동 imageview click listener
-        activity?.findViewById<ImageView>(R.id.imgNotiToCalendar)?.setOnClickListener {
-            Log.e("TAG", "버튼이 눌렸습니다.")
-            //TODO! fragment attach, detach, destroy..?
-            activity?.supportFragmentManager?.beginTransaction()?.add(R.id.nav_host_fragment,CalendarFragment())?.show(CalendarFragment())?.commit()
+        imgNotiToCalendar?.setOnClickListener {
+            startActivity(Intent(context, CalendarActivity::class.java))
         }
     }
 

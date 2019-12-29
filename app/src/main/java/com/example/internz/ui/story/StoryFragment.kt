@@ -1,25 +1,22 @@
 package com.example.internz.ui.story
 
-import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.data.story.StoryData
 import com.example.internz.data.story.StoryDataTemporal
 import com.example.internz.data.story.StoryDataTemporal2
-import com.example.internz.ui.story.detailstory.DetailStoryActivity
 import com.google.android.material.tabs.TabLayout
 
-//TODO! StoryFragment 변경해야 함
 
 class StoryFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
@@ -65,11 +62,11 @@ class StoryFragment : Fragment() {
         view.findViewById<TabLayout>(R.id.tabStory).addOnTabSelectedListener(
             object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(p0: TabLayout.Tab?) {
-//                    selectedTab = p0?.text.toString()
-//
-//                    //TODO! 서버와 통신
-//                    adapter.data = StoryDataTemporal2().getStory()
-//                    adapter.notifyDataSetChanged()
+                    selectedTab = p0?.text.toString()
+
+                    //TODO! 서버와 통신
+                    adapter.data = StoryDataTemporal2().getStory()
+                    adapter.notifyDataSetChanged()
                 }
 
                 override fun onTabReselected(p0: TabLayout.Tab?) {
@@ -79,5 +76,25 @@ class StoryFragment : Fragment() {
                 }
             }
         )
+
+        //스피너 기능 정의
+        spinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    when(position) {
+                        0 -> {
+                            //최신순 TODO! 서버요청
+                            Log.e("TAG", "StoryFragment의 최신순 조회")
+                        }
+                        1 -> {
+                            //조회순 TODO! 서버요청
+                            Log.e("TAG", "StoryFragment의 조회순 조회")
+                        }
+                    }
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                }
+            }
     }
 }

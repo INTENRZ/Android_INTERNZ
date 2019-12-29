@@ -23,9 +23,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-/**
- * TODO! 키보드 올라올때 뷰 위로 올리기 수정
- */
 
 class SignInActivity : AppCompatActivity() {
     private var backKeyPressedTime: Long = 0
@@ -110,7 +107,7 @@ class SignInActivity : AppCompatActivity() {
 //
 //                            if(body.success) { //로그인 성공
 //                                //사용자 토큰 저장 TODO!
-////                                ApiServiceImpl.setToken(body.token)
+//                                ApiServiceImpl.setToken(body.token)
 //
 //                                if(body.isFirst.equals("0")) { //첫 로그인
 //                                    //직무선택 액티비티로 전환
@@ -201,59 +198,6 @@ class SignInActivity : AppCompatActivity() {
                 }
             )
             */
-
-
-//            signInCall.enqueue(
-//                object : retrofit2.Callback<SignInData> {
-//                    override fun onFailure(call: Call<SignInData>, t: Throwable) {
-//                        Log.e("TAG", "SignInActivity Server is not activated")
-//                    }
-//
-//                    override fun onResponse(
-//                        call: Call<SignInData>,
-//                        response: Response<SignInData>
-//                    ) {
-//                        //서버 통신 성공
-//                        if (response.isSuccessful) {
-//                            if(response.body()?.isFirst.equals("0")) { //첫 로그인
-//                                //사용자 토큰 저장
-//                                SignIn.setUserToken(response.body()?.token!!) //TODO! 오류확인
-//
-//                                val intent = Intent(applicationContext, JobSelectActivity::class.java)
-//                                startActivity(intent)
-//                                finish()
-//                            } else if (response.body()?.isFirst.equals("1")) { //old user
-//                                //사용자 토큰 저장
-//                                SignIn.setUserToken(response.body()?.token!!) //TODO! 오류 확인 -> 오류 발생
-//
-////                                val intent = Intent(applicationContext, HomeActivity::class.java)
-//                                startActivity(intent)
-//                                finish()
-//                            } else {
-//                                //로그인 불가
-//                                if((response.body()?.message!!).contains("비밀번호")) {
-//                                    Toast.makeText(applicationContext, response.body()?.message.toString(), Toast.LENGTH_SHORT).show()
-//
-//                                    //비밀번호 재입력 요청
-//                                    edtSignInPwd.text.clear()
-//                                    edtSignInPwd.requestFocus()
-//                                } else {
-//                                    Toast.makeText(applicationContext, response.body()?.message.toString(), Toast.LENGTH_SHORT).show()
-//
-//                                    edtSignInEmail.text.clear()
-//                                    edtSignInPwd.text.clear()
-//                                }
-//                            }
-//                        }
-//                        else {
-//                            Log.e("TAG", "SignInActivity Server broadcast fail")
-//                        }
-//                    }
-//                }
-//            )
-//
-//            startActivity(Intent(this, JobSelectActivity::class.java))
-//    }
 
 
 

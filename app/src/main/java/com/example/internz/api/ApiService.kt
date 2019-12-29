@@ -23,7 +23,7 @@ interface ApiService {
     @POST("/user/signup1")
     fun requestSignUp(@Body body : SignUpRequestData) : Call<BaseResponse<SignUpData>>
 
-    @POST("/user/signup2/{useridx}") //TODO! 오류 확인
+    @POST("/user/signup2/{useridx}")
     fun requestSignUp2(@Path("useridx") useridx : String, @Body body : SignUp2RequestData) : Call<BaseResponse<SignUp2Data>>
      */
 

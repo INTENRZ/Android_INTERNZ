@@ -19,7 +19,6 @@ import com.example.internz.feature.homerecomm.HomerecommAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class MainHomeFragment : Fragment() {
-
     private lateinit var rv_recomm_profile: RecyclerView
     private lateinit var adapter_recomm_profile: HomerecommAdapter
 

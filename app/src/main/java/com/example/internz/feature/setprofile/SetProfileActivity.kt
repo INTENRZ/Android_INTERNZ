@@ -103,12 +103,13 @@ class SetProfileActivity : AppCompatActivity() {
 
         //시작하기 click listener
         btnSetProfileStart.setOnClickListener {
-            //TODO! EditText의 길이 최소 20
             if (edtSetProfileContents.text.length < 20) {
                 edtSetProfileContents.requestFocus()
                 Toast.makeText(applicationContext, "20자 이상의 한줄 소개를 작성해주세요.", Toast.LENGTH_SHORT).show()
             } else {
-                startActivity(Intent(this, BottomBarActivity::class.java))
+                val intent = Intent(this, BottomBarActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
             }
         }
     }
