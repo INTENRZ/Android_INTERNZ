@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <TextView
+            android:id="@+id/txtFollowerListMain"
+            app:layout_constraintTop_toTopOf="@id/constraint"
+            app:layout_constraintStart_toStartOf="@id/constraint"
+            app:layout_constraintEnd_toEndOf="@id/constraint"
+            app:layout_constraintBottom_toBottomOf="@id/constraint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="팔로워"
+            android:textSize="17sp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:background="#ffffff"/>
+
+        <View
+            android:id="@+id/v_bar"
+            app:layout_constraintTop_toBottomOf="@id/txtFollowerListMain"
+            app:layout_constraintStart_toStartOf="@id/constraint"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e3e3e3"
+            android:layout_marginTop="12dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFollower"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/constraint"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="12dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

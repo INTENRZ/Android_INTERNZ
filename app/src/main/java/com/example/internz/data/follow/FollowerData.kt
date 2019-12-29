@@ -6,7 +6,6 @@ data class FollowerData (
 
     val profileImg : Int,
     val name : String,
-    val icon : Int,
     val desc : String
 
 )
