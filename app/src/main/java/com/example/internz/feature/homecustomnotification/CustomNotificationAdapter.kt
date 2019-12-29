@@ -1,4 +1,4 @@
-package com.example.internz.ui.home.customnotification
+package com.example.internz.feature.homecustomnotification
 
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment

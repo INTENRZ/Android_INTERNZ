@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:text="프로필 설정"
             android:textSize="17sp"
+            android:fontFamily="@font/notosanscjkkrmedium"
             android:lineSpacingExtra="-5sp"
             android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -35,6 +36,42 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <ImageView
+        android:id="@+id/imgSetProfile"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/basicprofile_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+
+    <ImageButton
+        android:id="@+id/imgbtnSetProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="70dp"
+        android:background="@null"
+        android:src="@drawable/picture_ic"
+        app:layout_constraintStart_toStartOf="@+id/imgSetProfile"
+        app:layout_constraintTop_toTopOf="@+id/imgSetProfile" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:text="인턴즈"
+        android:textColor="#212529"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgSetProfile" />
 
     <TextView
         android:id="@+id/textView15"
@@ -87,44 +124,8 @@
         android:text="시작하기"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="210dp"
+        app:layout_constraintTop_toBottomOf="@id/edtSetProfileContents"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/imgSetProfile"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-        android:layout_marginTop="50dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/basicprofile_img"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
-
-    <ImageButton
-        android:id="@+id/imgbtnSetProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="70dp"
-        android:background="@null"
-        android:src="@drawable/picture_ic"
-        app:layout_constraintStart_toStartOf="@+id/imgSetProfile"
-        app:layout_constraintTop_toTopOf="@+id/imgSetProfile" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:fontFamily="@font/notosanscjkkrmedium"
-        android:lineSpacingExtra="26sp"
-        android:text="인턴즈"
-        android:textColor="#212529"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgSetProfile" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,41 +37,41 @@
 
             <!-- home 화면 맞춤 공고 뷰페이저 -->
             <!-- 아직 완료 아닌 상태 -->
-            <androidx.constraintlayout.widget.ConstraintLayout
+
+            <ImageView
                 android:id="@+id/CustomConstraint"
                 app:layout_constraintTop_toBottomOf="@+id/txt_home_yourNotice"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="#ffffff">
+                android:layout_height="150dp"
+                android:src="@drawable/home_recomm_notice_btn"
+                android:scaleType="fitXY"/>
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tablayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="120dp"
                     app:tabMode="fixed"
                     app:layout_constraintStart_toStartOf="@id/CustomConstraint"
-                    app:layout_constraintTop_toTopOf="@id/CustomConstraint"/>
+                    app:layout_constraintEnd_toEndOf="@id/CustomConstraint"
+                    app:layout_constraintTop_toTopOf="@id/CustomConstraint"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="16dp" />
+
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewpager"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_constraintStart_toStartOf="@id/tablayout"
-                    app:layout_constraintTop_toTopOf="@id/tablayout"
-                    />
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    app:layout_anchor="@id/viewpager"
-                    app:layout_anchorGravity="bottom|right|end"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginTop="12dp"
                     app:layout_constraintStart_toStartOf="@id/CustomConstraint"
+                    app:layout_constraintTop_toTopOf="@id/CustomConstraint"
                     app:layout_constraintEnd_toEndOf="@id/CustomConstraint"
-                    app:layout_constraintBottom_toBottomOf="@id/CustomConstraint"/>
+                    />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
             <!-- home 화면 "추천 프로필" 제목 텍스트 뷰 -->
             <TextView
                 android:id="@+id/txt_home_profile"
@@ -91,7 +91,6 @@
                 android:id="@+id/rv_home_recommProfile"
                 app:layout_constraintTop_toBottomOf="@+id/txt_home_profile"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginLeft="2.5dp"
                 android:layout_width="match_parent"
                 android:layout_height="146dp">
             </androidx.recyclerview.widget.RecyclerView>
@@ -116,13 +115,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:scaleType="fitXY"
-                android:layout_marginTop="12dp"
                 android:layout_marginBottom="50dp"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
-                android:src="@drawable/home_recomm_story_box"/>
+                android:layout_height="410dp"
+                android:src="@drawable/home_recomm_story_shadow_box"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_homestory"
@@ -131,7 +127,7 @@
                 app:layout_constraintEnd_toEndOf="@id/img_home_story"
                 app:layout_constraintBottom_toBottomOf="@id/img_home_story"
                 android:layout_width="wrap_content"
-                android:layout_height="400dp" />
+                android:layout_height="wrap_content" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

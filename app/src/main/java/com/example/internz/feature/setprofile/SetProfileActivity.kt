@@ -10,12 +10,11 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.ImageView
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
 import com.example.internz.common.toast
-import com.example.internz.ui.MainActivity
+import com.example.internz.ui.BottomBarActivity
 import kotlinx.android.synthetic.main.activity_set_profile.*
 
 class SetProfileActivity : AppCompatActivity() {
@@ -23,6 +22,7 @@ class SetProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_set_profile)
+
 
         setProfileActivity()
     }
@@ -56,11 +56,9 @@ class SetProfileActivity : AppCompatActivity() {
         edtSetProfileContents.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
                 }
 
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
                 }
 
                 //글자 개수 20 ~ 40
@@ -78,7 +76,7 @@ class SetProfileActivity : AppCompatActivity() {
 
         //시작하기 click listener
         btnSetProfileStart.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, BottomBarActivity::class.java))
         }
     }
 
