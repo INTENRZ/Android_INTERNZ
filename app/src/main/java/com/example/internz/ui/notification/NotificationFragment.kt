@@ -28,7 +28,6 @@ class NotificationFragment : Fragment() {
 
     private lateinit var rvNotificationList: RecyclerView
     private lateinit var notificationListAdapter : NotificationListAdapter
-    // private lateinit var txtNotilistfilter : Spinner
 
     private lateinit var notificationViewModel: NotificationViewModel
 
@@ -168,7 +167,7 @@ fun makeSpinner() {
         activity?.findViewById<ImageView>(R.id.imgNotiToCalendar)?.setOnClickListener {
             Log.e("TAG", "버튼이 눌렸습니다.")
             //TODO! fragment attach, detach, destroy..?
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, CalendarFragment())?.commit()
+            activity?.supportFragmentManager?.beginTransaction()?.add(R.id.nav_host_fragment,CalendarFragment())?.show(CalendarFragment())?.commit()
         }
     }
 

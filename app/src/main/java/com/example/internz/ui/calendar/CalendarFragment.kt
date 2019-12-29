@@ -100,7 +100,7 @@ class CalendarFragment : Fragment() {
         //calendar -> 공고 이동 imageview click listener
         view.findViewById<ImageView>(R.id.imgCalendarToNoti).setOnClickListener {
 //            activity?.findNavController(R.id.nav_host_fragment)?.navigate(R.id.frag_navigation_notice) //이것보단 밑에 코드가 나은듯
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, NotificationFragment())?.commit()
+            activity?.supportFragmentManager?.beginTransaction()?.hide(calendarFragment)?.commit()
             Log.e("TAG", "캘린더 -> 공고 fragment 교체됨")
         }
     }
