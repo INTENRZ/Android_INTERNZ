@@ -2,8 +2,12 @@ package com.example.internz.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.internz.R
 import com.example.internz.ui.home.MainHomeFragment
 import com.example.internz.ui.notification.NotificationFragment
@@ -33,6 +37,7 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
     // active는 현재 보여지는 화면
     private lateinit var active: Fragment
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -40,8 +45,8 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navView.setOnNavigationItemSelectedListener(this)
 
-       // val navController = findNavController(R.id.nav_host_fragment)
-       // navView.setupWithNavController(navController)
+        // val navController = findNavController(R.id.nav_host_fragment)
+        // navView.setupWithNavController(navController)
 
 
         //for each문은 자동으로 처음부터 끝까지 리스트 접근, 그래서 manager가 관리 , 관리하기 위해서는 add로 manager한테 권한주기
@@ -57,9 +62,10 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
     }
 
 
+
     // 현재 화면을 숨기고 우리가 선택한 화면을 show한다. 이게 내부적으로 돌아가는 것
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
-        when(menuItem.itemId){
+        when (menuItem.itemId) {
             in fragments.keys -> {
                 fragments[menuItem.itemId]?.let {
                     supportFragmentManager.beginTransaction().hide(active).show(it).commit()
@@ -70,6 +76,7 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
         }
         return true
     }
+
 
 }
 
