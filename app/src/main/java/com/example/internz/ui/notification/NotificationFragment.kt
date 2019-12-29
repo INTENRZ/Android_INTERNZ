@@ -50,7 +50,6 @@ class NotificationFragment : Fragment() {
 
     }
 fun makeSpinner() {
-
         val spinner = view?.findViewById<Spinner>(R.id.notificationSpinner)
         val arrayAdapter = ArrayAdapter.createFromResource(view!!.context, R.array.spinner, android.R.layout.simple_spinner_item)
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

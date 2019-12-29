@@ -9,14 +9,54 @@ import android.view.View
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_SWIPE
-import androidx.recyclerview.widget.ItemTouchHelper.LEFT
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_SWIPE
 import android.graphics.RectF
 import android.widget.Button
+import androidx.recyclerview.widget.ItemTouchHelper.*
+import com.example.internz.R
+
+class SwipeController : ItemTouchHelper.Callback() {
+    private lateinit var swipeController : SwipeController
+    private lateinit var itemTouchHelper: ItemTouchHelper
+
+    //생성자(매개변수로 recyclerView 변수로 넘겨줌)
+    public fun SwipeController(recyclerView: RecyclerView) {
+        swipeController = com.example.internz.ui.notification.SwipeController()
+        itemTouchHelper = ItemTouchHelper(swipeController)
+
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+    }
+
+    //기본 method override 1
+    override fun getMovementFlags(
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder
+    ): Int {
+        return makeMovementFlags(0, LEFT or RIGHT)
+    }
+
+    //기본 method override 2
+    override fun onMove(
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder,
+        target: RecyclerView.ViewHolder
+    ): Boolean {
+        return false
+    }
+
+    //기본 method override 3
+    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+    }
+
+    override fun convertToAbsoluteDirection(flags: Int, layoutDirection: Int): Int {
+        return super.convertToAbsoluteDirection(flags, layoutDirection)
+    }
 
 
+}
+
+/* 현택오빠가 구현한 부분
 class SwipeController : ItemTouchHelper.Callback() {
 
     private var swipeBack : Boolean = false
@@ -191,3 +231,5 @@ class SwipeController : ItemTouchHelper.Callback() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
+
+ */
