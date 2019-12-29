@@ -65,5 +65,5 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.1'
 
     //calendar
-    compile 'com.applandeo:material-calendar-view:1.7.0'
+    implementation 'com.applandeo:material-calendar-view:1.7.0'
 }

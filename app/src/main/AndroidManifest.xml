@@ -17,8 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".ui.story.DetailStoryActivity"/>
+        <activity android:name=".feature.message.messagesend.MessageSendActivity"></activity>
+        <activity android:name=".feature.message.messagelist.MessageListActivity" />
+        <activity android:name=".feature.message.MessageActivity" />
+        <activity android:name=".ui.story.DetailStoryActivity" />
         <activity android:name=".ui.profile.main.OtherProfileActivity" />
         <activity android:name=".ui.profile.TimelineAddActivity" />
         <activity android:name=".feature.setprofile.SetProfileActivity" />
@@ -37,7 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

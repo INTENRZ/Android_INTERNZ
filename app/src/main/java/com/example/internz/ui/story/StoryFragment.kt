@@ -1,6 +1,7 @@
 package com.example.internz.ui.story
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +14,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.story.StoryData
+import com.example.internz.feature.message.MessageActivity
 import com.example.internz.ui.home.HomeViewModel
 import com.example.internz.ui.story.StoryViewModel
 import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_story.*
 
 //TODO! StoryFragment 변경해야 함
