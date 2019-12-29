@@ -6,10 +6,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.internz.R
-import com.example.internz.ui.notification.NotificationFragment
-import com.example.internz.ui.home.MainHomeFragment
-import com.example.internz.ui.profile.main.MainProfileFragment
-import kotlinx.android.synthetic.main.activity_home.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
