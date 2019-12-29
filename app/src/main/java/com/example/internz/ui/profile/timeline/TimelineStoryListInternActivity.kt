@@ -32,17 +32,17 @@ class TimelineStoryListInternActivity : AppCompatActivity() {
             TimelineStoryListInternData(
                 desc = "영화 번역가는 AI 때문에 사라질 직업인가.",
                 date = "12.23",
-                img = R.drawable.home_recomm_story_img
+                img = R.drawable.home_recomm_story3_img
             ),
             TimelineStoryListInternData(
                 desc = "영화 번역가는 AI 때문에 사라질 직업인가.",
                 date = "12.23",
-                img = R.drawable.home_recomm_story_img
+                img = R.drawable.home_recomm_story3_img
             ),
             TimelineStoryListInternData(
                 desc = "영화 번역가는 AI 때문에 사라질 직업인가.",
                 date = "12.23",
-                img = R.drawable.home_recomm_story_img
+                img = R.drawable.home_recomm_story3_img
             )
         )
 

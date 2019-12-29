@@ -1,11 +1,15 @@
 package com.example.internz.feature.homestory
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.home.StoryData
+import com.example.internz.ui.profile.main.OtherProfileActivity
+import com.example.internz.ui.story.DetailStoryActivity
 
 class HomestoryAdapter(private val context : Context) : RecyclerView.Adapter<HomestoryViewHolder>() {
 
@@ -22,5 +26,9 @@ class HomestoryAdapter(private val context : Context) : RecyclerView.Adapter<Hom
 
     override fun onBindViewHolder(holder: HomestoryViewHolder, position: Int) {
         holder.bind(data[position])
+        holder.itemView.setOnClickListener{
+            val intent = Intent(context, DetailStoryActivity::class.java)
+            context.startActivity(intent)
+        }
     }
 }

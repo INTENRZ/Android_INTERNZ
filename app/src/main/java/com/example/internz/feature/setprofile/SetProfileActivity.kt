@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
 import com.example.internz.common.toast
-import com.example.internz.ui.MainActivity
+import com.example.internz.ui.BottomBarActivity
 import kotlinx.android.synthetic.main.activity_set_profile.*
 
 class SetProfileActivity : AppCompatActivity() {
@@ -108,7 +108,7 @@ class SetProfileActivity : AppCompatActivity() {
                 edtSetProfileContents.requestFocus()
                 Toast.makeText(applicationContext, "20자 이상의 한줄 소개를 작성해주세요.", Toast.LENGTH_SHORT).show()
             } else {
-                startActivity(Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, BottomBarActivity::class.java))
             }
         }
     }

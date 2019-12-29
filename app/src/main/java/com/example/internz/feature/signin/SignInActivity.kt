@@ -18,7 +18,6 @@ import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.feature.jobselect.JobSelectActivity
 import com.example.internz.feature.setprofile.SetProfileActivity
 import com.example.internz.feature.signup.SignUpActivity
-import com.example.internz.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -70,7 +69,6 @@ class SignInActivity : AppCompatActivity() {
                     } else {
                         btnSignInLogIn.setBackgroundResource(R.drawable.btn_shape)
                     }
-
                 }
             }
         )

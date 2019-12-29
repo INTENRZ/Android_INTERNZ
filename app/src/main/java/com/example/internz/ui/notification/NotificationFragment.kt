@@ -9,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,8 +24,11 @@ import kotlinx.android.synthetic.main.fragment_calendar.*
 import kotlinx.android.synthetic.main.fragment_notification_list.*
 
 class NotificationFragment : Fragment() {
+
+
     private lateinit var rvNotificationList: RecyclerView
     private lateinit var notificationListAdapter : NotificationListAdapter
+    // private lateinit var txtNotilistfilter : Spinner
 
     private lateinit var notificationViewModel: NotificationViewModel
 
@@ -36,11 +42,48 @@ class NotificationFragment : Fragment() {
             ViewModelProviders.of(this).get(NotificationViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_notification_list, container, false)
 
-        makeNotificationList(view)
         return view
     }
 
-    fun makeNotificationList(view : View) {
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        makeNotificationList()
+        makeSpinner()
+
+    }
+fun makeSpinner() {
+
+        val spinner = view?.findViewById<Spinner>(R.id.notificationSpinner)
+        val arrayAdapter = ArrayAdapter.createFromResource(view!!.context, R.array.spinner, android.R.layout.simple_spinner_item)
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner?.adapter = arrayAdapter
+
+        spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+
+                //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.
+                when(position) {
+                    0   ->  {
+                        Toast.makeText(context, "1", Toast.LENGTH_SHORT).show()
+                    }
+                    1   ->  {
+                        Toast.makeText(context, "2", Toast.LENGTH_SHORT).show()
+                    }
+                    //...
+                    else -> {
+                        Toast.makeText(context, "3", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+
+            }
+        }
+
+    }
+
+    fun makeNotificationList() {
         rvNotificationList = view!!.findViewById(R.id.rvNotilist)
         notificationListAdapter = NotificationListAdapter(context!!)
 
@@ -122,7 +165,7 @@ class NotificationFragment : Fragment() {
         notificationListAdapter.notifyDataSetChanged()
 
         //공고 -> 캘린더 이동 imageview click listener
-        view.findViewById<ImageView>(R.id.imgNotiToCalendar).setOnClickListener {
+        activity?.findViewById<ImageView>(R.id.imgNotiToCalendar)?.setOnClickListener {
             Log.e("TAG", "버튼이 눌렸습니다.")
             //TODO! fragment attach, detach, destroy..?
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, CalendarFragment())?.commit()
