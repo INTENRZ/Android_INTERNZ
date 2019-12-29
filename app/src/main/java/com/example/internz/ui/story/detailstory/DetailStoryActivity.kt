@@ -1,13 +1,12 @@
-package com.example.internz.ui.story
+package com.example.internz.ui.story.detailstory
 
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import androidx.fragment.app.Fragment
 import com.example.internz.R
-
+import com.example.internz.feature.comment.CommentActivity
+import kotlinx.android.synthetic.main.activity_detail_story.*
 
 
 class DetailStoryActivity : AppCompatActivity() {
@@ -17,11 +16,13 @@ class DetailStoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_story)
 
-//        backicon.setOnClickListener {
-//            val intent = Intent(this , StoryFragment::class.java)
-//            startActivity(intent)
-//        }
+        detailStoryFunction()
+    }
 
+    private fun detailStoryFunction() {
+        imgDetailComment.setOnClickListener {
+            startActivity(Intent(this, CommentActivity::class.java))
+        }
     }
 }
 

@@ -1,10 +1,10 @@
 package com.example.internz.data.story
 
-object StoryDataTemporal2 {
+class StoryDataTemporal2 {
     fun getStory() : List<StoryData> {
         return listOf(
             StoryData(
-                title = "여기는 인턴 내용이 나타날 프래그먼트입니다.",
+                title = "여기는 탭을 선택한 내용이 나타날 프래그먼트입니다.",
                 nickname = "한한한",
                 date = "20.12.13",
                 success = "true"

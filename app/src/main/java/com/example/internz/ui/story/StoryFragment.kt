@@ -1,6 +1,5 @@
 package com.example.internz.ui.story
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,22 +10,24 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.story.StoryData
-import com.example.internz.feature.message.MessageActivity
-import com.example.internz.ui.home.HomeViewModel
-import com.example.internz.ui.story.StoryViewModel
-import kotlinx.android.synthetic.*
-import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.fragment_story.*
+import com.example.internz.data.story.StoryDataTemporal
+import com.example.internz.data.story.StoryDataTemporal2
+import com.example.internz.ui.story.detailstory.DetailStoryActivity
+import com.google.android.material.tabs.TabLayout
 
 //TODO! StoryFragment 변경해야 함
 
 class StoryFragment : Fragment() {
-
-    private val adapter: StoryAdapter = StoryAdapter()
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter : StoryAdapter
     private lateinit var storyViewModel: StoryViewModel
+
+    //사용자가 선택한 탭
+    private var selectedTab : String = "전체"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,47 +50,34 @@ class StoryFragment : Fragment() {
 
         //스크롤 이펙 제거
         view.findViewById<RecyclerView>(R.id.rvStory).overScrollMode = View.OVER_SCROLL_NEVER
-    }
 
-    private inner class StoryAdapter() : RecyclerView.Adapter<StoryViewHolder>() {
-        var data = listOf<StoryData>()
+        //변수 초기화
+        recyclerView = view.findViewById(R.id.rvStory)
+        adapter = StoryAdapter(view.context)
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoryViewHolder {
-            val view = LayoutInflater.from(context).inflate(R.layout.rv_story_item, parent, false)
-            return StoryViewHolder(view)
-        }
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(view.context)
 
-        override fun onBindViewHolder(holder: StoryViewHolder, position: Int) {
-            holder.bind(data[position])
-        }
+        adapter.data = StoryDataTemporal().getStory()
+        adapter.notifyDataSetChanged()
 
-        override fun getItemCount(): Int {
-            return data.size
-        }
-    }
+        //사용자가 선택한 탭
+        view.findViewById<TabLayout>(R.id.tabStory).addOnTabSelectedListener(
+            object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(p0: TabLayout.Tab?) {
+//                    selectedTab = p0?.text.toString()
+//
+//                    //TODO! 서버와 통신
+//                    adapter.data = StoryDataTemporal2().getStory()
+//                    adapter.notifyDataSetChanged()
+                }
 
-    private inner class StoryViewHolder(view : View) : RecyclerView.ViewHolder(view) {
-        private val view : View = view.findViewById(R.id.rvStoryItem)
+                override fun onTabReselected(p0: TabLayout.Tab?) {
+                }
 
-        private val title : TextView = view.findViewById(R.id.txtStoryTitle)
-        private val nickname : TextView = view.findViewById(R.id.txtStoryNick)
-        private val date : TextView = view.findViewById(R.id.txtStoryDate)
-
-        fun bind(data : StoryData) {
-            title.text = data.title
-            nickname.text = data.nickname
-            date.text = data.date
-
-            //DetailStoryFragment 보여주기
-//            view.setOnClickListener {
-//                //TODO! DetailStoryFragment 액티비티로 교체 요구
-////            MainHelper.getFT().hide(StoryFragment()).show(DetailStoryFragment()).commit()
-//                activity?.supportFragmentManager?.let {
-//                    it.beginTransaction().apply {
-//                        show(DetailStoryFragment())
-//                    }.commit()
-//                }
-//            }
-        }
+                override fun onTabUnselected(p0: TabLayout.Tab?) {
+                }
+            }
+        )
     }
 }

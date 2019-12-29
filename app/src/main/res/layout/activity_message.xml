@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@id/action_bar" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMessage"
+        android:id="@+id/rvMessageItem"
         android:layout_width="391dp"
         android:layout_height="748dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -15,6 +15,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="보낸쪽지"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,7 +25,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:paddingLeft="5dp"
         android:text="안녕하세요. 라인 인턴에 대해 궁금한게 웅앵"
+        android:fontFamily="@font/notosanscjkkrregular"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtListItemSendOrReceive" />
@@ -35,6 +40,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="5dp"
         android:text="20.01.03"
+        android:textColor="#bfbfbf"
+        android:textSize="14sp"
+        android:fontFamily="@font/notosanscjkkrregular"
         app:layout_constraintEnd_toStartOf="@+id/textView25"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,6 +53,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="14:18"
+        android:textColor="#bfbfbf"
+        android:textSize="14sp"
+        android:fontFamily="@font/notosanscjkkrregular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,6 +66,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="5dp"
         android:text="|"
+        android:textColor="#bfbfbf"
+        android:textSize="14sp"
+        android:fontFamily="@font/notosanscjkkrregular"
         app:layout_constraintEnd_toStartOf="@+id/txtListItemTime"
         app:layout_constraintTop_toTopOf="parent" />
 

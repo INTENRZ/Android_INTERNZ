@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.method.KeyListener
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
@@ -30,10 +31,34 @@ class SetProfileActivity : AppCompatActivity() {
     private fun setProfileActivity() {
         imgSetProfile.makeCircle()
 
+        //기본 이미지 click listener 지정
         imgSetProfile.setOnClickListener {
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if(checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) ==
                         PackageManager.PERMISSION_DENIED) {
+                    //권한 거부
+                    val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                    //권한 요청 팝업 생성
+                    requestPermissions(permissions,
+                        PERMISSION_CODE
+                    )
+                }
+                else {
+                    //이미 권한이 생성된 경우
+                    getImageFromGallery()
+                }
+            }
+            else {
+                //운영체제가 Version.M 이하인 경우
+                getImageFromGallery()
+            }
+        }
+
+        //카메라 이미지 click listener 지정
+        imgbtnSetProfile.setOnClickListener {
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if(checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                    PackageManager.PERMISSION_DENIED) {
                     //권한 거부
                     val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
                     //권한 요청 팝업 생성
@@ -78,7 +103,13 @@ class SetProfileActivity : AppCompatActivity() {
 
         //시작하기 click listener
         btnSetProfileStart.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            //TODO! EditText의 길이 최소 20
+            if (edtSetProfileContents.text.length < 20) {
+                edtSetProfileContents.requestFocus()
+                Toast.makeText(applicationContext, "20자 이상의 한줄 소개를 작성해주세요.", Toast.LENGTH_SHORT).show()
+            } else {
+                startActivity(Intent(this, MainActivity::class.java))
+            }
         }
     }
 
@@ -118,19 +149,17 @@ class SetProfileActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
-            Log.d("seungmin", "${data?.data}")
-            //Glide를 이용한 make image oval 실패
+            //원형 이미지 띄우기
             Glide
                 .with(this)
                 .load(data?.data)
                 .apply(RequestOptions.circleCropTransform())
-                .into(imgSetProfile);
+                .into(imgSetProfile)
 
-            //TODO! dhodenhof를 이용한 원형 이미지 생성 -> 실패, Uri convert to Url?
-//            imgSetProfile.setCircleBackgroundColorResource(data?.data)
         }
     }
 
+    //기본 이미지 원형 지정
     private fun ImageView.makeCircle() {
         Glide
             .with(this@SetProfileActivity)

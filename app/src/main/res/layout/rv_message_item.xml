@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rvMessageItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -25,6 +26,9 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="14dp"
         android:text="한한한"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:textSize="14sp"
+        android:textColor="#212529"
         app:layout_constraintStart_toEndOf="@+id/imgMessageUser"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,6 +39,9 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="10dp"
         android:text="최근 주고받은 쪽지 내용~~~"
+        android:fontFamily="@font/notosanscjkkrregular"
+        android:textSize="14sp"
+        android:textColor="#212529"
         app:layout_constraintStart_toEndOf="@+id/imgMessageUser"
         app:layout_constraintTop_toBottomOf="@+id/txtMessageNick" />
 

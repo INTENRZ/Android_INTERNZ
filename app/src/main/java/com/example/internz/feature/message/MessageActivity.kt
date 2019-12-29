@@ -1,13 +1,12 @@
 package com.example.internz.feature.message
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.messagelist.MessageDataTemp
-import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.activity_message.*
 
 class MessageActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -21,7 +20,7 @@ class MessageActivity : AppCompatActivity() {
     }
 
     private fun messageFunction() {
-        recyclerView = findViewById(R.id.rvMessage)
+        recyclerView = findViewById(R.id.rvMessageItem)
         adapter = MessageAdapter(this)
 
         recyclerView.adapter = adapter
@@ -30,10 +29,9 @@ class MessageActivity : AppCompatActivity() {
         adapter.data = MessageDataTemp().getMessage()
         adapter.notifyDataSetChanged()
 
-        //쪽지 보내기
-        img_profile_massage.setOnClickListener {
-            val intent = Intent(this, MessageActivity::class.java)
-            startActivity(intent)
+        //뒤로가기(back button)
+        imgSendBack.setOnClickListener {
+            this.finish()
         }
     }
 }

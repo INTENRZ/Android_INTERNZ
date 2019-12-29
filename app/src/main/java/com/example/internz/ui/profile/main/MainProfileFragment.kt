@@ -3,9 +3,11 @@ package com.example.internz.ui.profile.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.profile.ProfileTimelineData
 import com.example.internz.feature.jobselect.SelectHelper
+import com.example.internz.feature.message.MessageActivity
 import com.example.internz.ui.notification.NotificationViewModel
 import com.example.internz.ui.profile.TimelineAddActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -33,6 +36,13 @@ class MainProfileFragment : Fragment() {
         profileViewModel =
             ViewModelProviders.of(this).get(ProfileViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
+
+        view.findViewById<ImageView>(R.id.img_profile_massage).setOnClickListener {
+            Log.e("TAG", "MainProfile To Message clicked")
+            val intent = Intent(view.context, MessageActivity::class.java)
+            startActivity(intent)
+        }
+
         return view
     }
 
