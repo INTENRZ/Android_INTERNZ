@@ -62,13 +62,12 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         fragments.forEach { (key, frag) ->
             supportFragmentManager.beginTransaction().add(R.id.nav_host_fragment, frag, key.toString()).hide(frag).commit()
         }
-//
+
         supportFragmentManager.beginTransaction().show(fragmentHome).commit()
         active = fragmentHome
 
-        // 추가
-        navView.setOnNavigationItemSelectedListener(this)
 
+        navView.setOnNavigationItemSelectedListener(this)
 
     }
 

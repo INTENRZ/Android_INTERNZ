@@ -76,7 +76,12 @@
         android:inputType="text"
         android:textSize="16sp"
         android:hint="활동 내용, 회사명, 담당 직무 등을 적어주세요."
-        android:layout_height="50dp"/>
+        android:layout_height="50dp"
+        android:singleLine="true"
+        android:nextFocusDown="@id/edt_timelineadd_period_year">
+    </EditText>
+
+
 
     <!--타임라인 활동기간 텍스트 -->
     <TextView
@@ -104,11 +109,14 @@
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:inputType="number"
+        android:maxLength="4"
         android:hint="년도"
         android:textSize="16sp"
         android:textColorHint="#212529"
         android:layout_width="61dp"
-        android:layout_height="32dp"/>
+        android:layout_height="32dp"
+        android:singleLine="true"
+        android:nextFocusDown="@id/edt_timelineadd_period_month"/>
 
     <!--타임라인 활동기간 월 작성 뷰-->
     <EditText
@@ -122,11 +130,14 @@
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:inputType="number"
+        android:maxLength="2"
         android:hint="월"
         android:textSize="16sp"
         android:textColorHint="#212529"
         android:layout_width="45dp"
-        android:layout_height="32dp"/>
+        android:layout_height="32dp"
+        android:singleLine="true"
+        android:nextFocusDown="@id/edt_timelineadd_period_day"/>
 
     <!--타임라인 활동기간 일 작성 뷰-->
     <EditText
@@ -140,11 +151,14 @@
         android:paddingStart="6dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
+        android:maxLength="2"
         android:hint="일"
         android:textSize="16sp"
         android:textColorHint="#212529"
         android:layout_width="45dp"
-        android:layout_height="32dp"/>
+        android:layout_height="32dp"
+        android:singleLine="true"
+        android:nextFocusDown="@id/edt_timelineadd_period_year_end"/>
 
     <View
         app:layout_constraintTop_toTopOf="@id/edt_timelineadd_period_day"
@@ -169,6 +183,7 @@
         android:paddingStart="6dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
+        android:maxLength="2"
         android:hint="일"
         android:textSize="16sp"
         android:textColorHint="#212529"
@@ -188,11 +203,14 @@
         android:paddingStart="6dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
+        android:maxLength="2"
         android:hint="월"
         android:textSize="16sp"
         android:textColorHint="#212529"
         android:layout_width="45dp"
-        android:layout_height="32dp"/>
+        android:layout_height="32dp"
+        android:singleLine="true"
+        android:nextFocusDown="@id/edt_timelineadd_period_day_end"/>
 
     <!--타임라인 활동기간 년도 작성 뷰-->
     <EditText
@@ -206,11 +224,14 @@
         android:paddingStart="6dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
+        android:maxLength="4"
         android:hint="년도"
         android:textSize="16sp"
         android:textColorHint="#212529"
         android:layout_width="61dp"
-        android:layout_height="32dp"/>
+        android:layout_height="32dp"
+        android:singleLine="true"
+        android:nextFocusDown="@id/edt_timelineadd_period_month_end"/>
 
     <!--타임라인 카테고리 텍스트 -->
     <TextView
@@ -231,6 +252,7 @@
         android:id="@+id/rv_timelineadd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_timelineadd_category"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="15dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"

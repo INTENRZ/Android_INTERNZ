@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="80dp"
-    android:layout_height="45dp"
+    android:layout_width="84dp"
+    android:layout_height="44dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <TextView
-        android:id="@+id/txt_category"
+    <CheckedTextView
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/checktxt_filter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/category_selector"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:text="인턴"
         android:textSize="14sp"
         android:textColor="#212529"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@drawable/category_selector"
-        android:gravity="center_horizontal|center_vertical" />
-
+        android:textAlignment="center" />
 </androidx.constraintlayout.widget.ConstraintLayout>
