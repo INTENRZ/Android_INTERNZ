@@ -14,14 +14,14 @@ import com.example.internz.R
 import com.example.internz.data.home.RecommData
 import com.example.internz.data.home.StoryData
 import com.example.internz.feature.homestory.HomestoryAdapter
-import com.example.internz.ui.home.customnotification.CustomNotificationAdapter
-import com.google.android.material.tabs.TabLayout
+import com.example.internz.feature.homecustomnotification.CustomNotificationAdapter
+import com.example.internz.feature.homerecomm.HomerecommAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class MainHomeFragment : Fragment() {
 
     private lateinit var rv_recomm_profile: RecyclerView
-    private lateinit var adapter_recomm_profile: MainHomeAdapter
+    private lateinit var adapter_recomm_profile: HomerecommAdapter
 
     private lateinit var rv_home_story: RecyclerView
     private lateinit var apdater_homestory: HomestoryAdapter
@@ -59,7 +59,7 @@ class MainHomeFragment : Fragment() {
     /* home 화면 "추천 프로필" 리사이클러뷰 init */
     fun rvRecommProfile(){
         rv_recomm_profile = activity!!.findViewById(R.id.rv_home_recommProfile)
-        adapter_recomm_profile = MainHomeAdapter(context!!)
+        adapter_recomm_profile = HomerecommAdapter(context!!)
         rv_recomm_profile.adapter = adapter_recomm_profile
         rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         adapter_recomm_profile.data = listOf(
@@ -89,18 +89,19 @@ class MainHomeFragment : Fragment() {
 
     fun rvStory() {
 
-        rv_home_story = activity!!.findViewById(R.id.rv_homestory)
+        rv_home_story = view!!.findViewById(R.id.rv_homestory)
         apdater_homestory = HomestoryAdapter(context!!)
         rv_home_story.adapter = apdater_homestory
         rv_home_story.layoutManager = LinearLayoutManager(context!!, LinearLayoutManager.VERTICAL, false)
 
+
         apdater_homestory.data = listOf(
             StoryData(
-                img = R.drawable.home_recomm_story_img,
+                img = R.drawable.home_recomm_story3_img,
                 desc = "영화번역가는 AI 때문에 사라질 직업인가"
             ),
             StoryData(
-                img = R.drawable.home_recomm_story_img,
+                img = R.drawable.home_recomm_story3_img,
                 desc = "코딩 테스트부터 코딩 인턴까지 코딩에 대한 A to Z"
             ),
             StoryData(
@@ -108,12 +109,10 @@ class MainHomeFragment : Fragment() {
                 desc = "디자인 인턴 합격까지 과정! 서류부터 면접까지!"
             ),
             StoryData(
-                img = R.drawable.home_recomm_story4_img,
+                img = R.drawable.home_recomm_story3_img,
                 desc = "비 전공자가 알아본 외국계 디자인 인턴과정"
             )
         )
-
-        rv_home_story.overScrollMode = View.OVER_SCROLL_NEVER
 
         apdater_homestory.notifyDataSetChanged()
     }

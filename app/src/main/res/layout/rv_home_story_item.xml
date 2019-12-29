@@ -11,7 +11,7 @@
         android:text="영화번역가는 AI때문에 사라질 직업인가"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="16dp"
         android:textSize="16sp"
         android:textColor="#212529"
@@ -21,11 +21,10 @@
         android:id="@+id/imgHomeStoryImg"
         android:layout_width="90dp"
         android:layout_height="65dp"
-        android:src="@drawable/home_recomm_story_img"
+        android:src="@drawable/home_recomm_story3_img"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/txtHomeStoryDesc"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="16dp"/>
 
@@ -35,5 +34,5 @@
         android:background="@drawable/rectangle_line"
         app:layout_constraintTop_toBottomOf="@id/imgHomeStoryImg"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="13dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

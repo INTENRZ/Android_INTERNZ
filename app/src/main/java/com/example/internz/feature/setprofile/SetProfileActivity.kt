@@ -3,6 +3,7 @@ package com.example.internz.feature.setprofile
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,14 +16,17 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
 import com.example.internz.common.toast
+import com.example.internz.feature.jobselect.SelectHelper
 import com.example.internz.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_set_profile.*
+import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class SetProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_set_profile)
+
 
         setProfileActivity()
     }
@@ -56,11 +60,9 @@ class SetProfileActivity : AppCompatActivity() {
         edtSetProfileContents.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
                 }
 
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
                 }
 
                 //글자 개수 20 ~ 40

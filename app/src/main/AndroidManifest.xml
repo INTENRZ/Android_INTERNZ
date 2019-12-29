@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.internz">
+    package="com.example.internz"
+    android:installLocation="preferExternal">
     <!-- 권한 설정 -->
     <!-- 서버 통신용 -->
     <uses-permission android:name="android.permission.INTERNET" />
