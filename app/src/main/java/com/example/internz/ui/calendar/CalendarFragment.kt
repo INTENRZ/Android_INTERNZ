@@ -8,31 +8,25 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.applandeo.materialcalendarview.CalendarView
 import com.applandeo.materialcalendarview.EventDay
-import com.applandeo.materialcalendarview.listeners.OnDayClickListener
 import com.example.internz.R
-import com.example.internz.common.toast
 import com.example.internz.data.calendar.CalendarDataTemporal
-import com.example.internz.ui.home.HomeViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.fragment_calendar.*
-
+import com.example.internz.ui.notification.NotificationFragment
 
 /**
  * A simple [Fragment] subclass.
  */
 class CalendarFragment : Fragment() {
+    private lateinit var calendarFragment: CalendarFragment
     private lateinit var recyclerView : RecyclerView
     private lateinit var adapter : CalendarAdapter
 
@@ -52,6 +46,7 @@ class CalendarFragment : Fragment() {
     }
 
     private fun calendarFunction(view : View) {
+        calendarFragment = CalendarFragment()
 
         //RecyclerView setting
         recyclerView = view.findViewById(R.id.rvCalendar)
@@ -69,6 +64,10 @@ class CalendarFragment : Fragment() {
         //Calendar Setting
         calendarView = view.findViewById(R.id.Calendar)
         var events = listOf<EventDay>()
+
+        //image setting
+        calendarView.setForwardButtonImage(view.resources.getDrawable(R.drawable.notice_calendar_next_ic))
+        calendarView.setPreviousButtonImage(view.resources.getDrawable(R.drawable.notice_calendar_before_ic))
 
         //add one events
         calendar = java.util.Calendar.getInstance()
@@ -93,19 +92,24 @@ class CalendarFragment : Fragment() {
             }
         }
 
-//        txtCalendarToNoti.setOnClickListener {
-//            btnFunction(view)
-//        }
-
-        //스크롤 이펙 제거
-//        calendarCalendar.overScrollMode = View.OVER_SCROLL_NEVER
-        view.findViewById<RecyclerView>(R.id.rvCalendar).overScrollMode = View.OVER_SCROLL_NEVER
+        //calendar -> 공고 이동 imageview click listener
+        view.findViewById<ImageView>(R.id.imgCalendarToNoti).setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, NotificationFragment())?.commit()
+            Log.e("TAG", "캘린더 -> 공고 fragment 교체됨")
+        }
     }
 
-    private fun btnFunction(view : View) {
-//        val host = NavHostFragment.create(R.navigation.mobile_navigation)
-//        activity?.supportFragmentManager?.beginTransaction().replace(R.id.nav_host_fragment, host).setPrimaryNavigationFragment(host).commit()
+    override fun onDestroy() {
+        super.onDestroy()
 
-//        activity?.findNavController(R.navigation.mobile_navigation)?.navigate(R.id.frag_navigation_notice)
+        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, NotificationFragment())?.commit()
+        Log.e("TAG", "CalendarFragment 파괴됨")
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+
+        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, NotificationFragment())?.commit()
+        Log.e("TAG", "CalendarFragment 완전히 파괴됨")
     }
 }

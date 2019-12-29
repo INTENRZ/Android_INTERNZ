@@ -16,6 +16,7 @@ import com.example.internz.data.story.StoryData
 import com.example.internz.ui.home.HomeViewModel
 import com.example.internz.ui.story.StoryViewModel
 import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.fragment_story.*
 
 //TODO! StoryFragment 변경해야 함
 
@@ -42,6 +43,9 @@ class StoryFragment : Fragment() {
         val arrayAdapter = ArrayAdapter.createFromResource(view.context, R.array.spinner, android.R.layout.simple_spinner_item)
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = arrayAdapter
+
+        //스크롤 이펙 제거
+        view.findViewById<RecyclerView>(R.id.rvStory).overScrollMode = View.OVER_SCROLL_NEVER
     }
 
     private inner class StoryAdapter() : RecyclerView.Adapter<StoryViewHolder>() {

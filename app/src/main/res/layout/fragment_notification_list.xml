@@ -23,11 +23,12 @@
             app:layout_constraintTop_toTopOf="@id/constraint" />
 
         <ImageView
+            android:id="@+id/imgNotiToCalendar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
             android:src="@drawable/calendar_ic"
+            android:clickable="true"
             app:layout_constraintBottom_toBottomOf="@id/constraint"
             app:layout_constraintEnd_toEndOf="@id/constraint"
             app:layout_constraintTop_toTopOf="@id/constraint" />

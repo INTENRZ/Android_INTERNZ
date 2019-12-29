@@ -9,7 +9,10 @@ import com.example.internz.R
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-
+/**
+ * TODO! 하단탭바 눌러서 프래그먼트 교체하는 움직임이 요상함
+ *
+ */
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,20 +24,18 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment)
 
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.frag_navigation_home,
-                R.id.frag_navigation_notice,
-                R.id.frag_navigation_story,
-                R.id.frag_navigation_profile
-            )
-        )
+//        val appBarConfiguration = AppBarConfiguration(
+//            setOf(
+//                R.id.frag_navigation_home,
+//                R.id.frag_navigation_notice,
+//                R.id.frag_navigation_story,
+//                R.id.frag_navigation_profile
+//                R.id.frag_navigation_calendar
+//            )
+//        )
         navView.setupWithNavController(navController)
-
-//        MainHelper.setFT(supportFragmentManager.beginTransaction())
     }
 }
-
 
 
 
