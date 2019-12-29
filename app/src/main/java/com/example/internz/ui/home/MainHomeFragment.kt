@@ -56,9 +56,10 @@ class MainHomeFragment : Fragment() {
         tablayout.setupWithViewPager(viewpager)
 
     }
+
     /* home 화면 "추천 프로필" 리사이클러뷰 init */
     fun rvRecommProfile(){
-        rv_recomm_profile = activity!!.findViewById(R.id.rv_home_recommProfile)
+        rv_recomm_profile = view!!.findViewById(R.id.rv_home_recommProfile)
         adapter_recomm_profile = MainHomeAdapter(context!!)
         rv_recomm_profile.adapter = adapter_recomm_profile
         rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -89,7 +90,7 @@ class MainHomeFragment : Fragment() {
 
     fun rvStory() {
 
-        rv_home_story = activity!!.findViewById(R.id.rv_homestory)
+        rv_home_story = view!!.findViewById(R.id.rv_homestory)
         apdater_homestory = HomestoryAdapter(context!!)
         rv_home_story.adapter = apdater_homestory
         rv_home_story.layoutManager = LinearLayoutManager(context!!, LinearLayoutManager.VERTICAL, false)

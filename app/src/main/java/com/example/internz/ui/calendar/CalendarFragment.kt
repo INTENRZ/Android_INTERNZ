@@ -1,33 +1,17 @@
 package com.example.internz.ui.calendar
 
-
-import android.icu.util.Calendar
-import androidx.navigation.findNavController
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CalendarView
-import android.widget.Toast
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.applandeo.materialcalendarview.CalendarView
 import com.applandeo.materialcalendarview.EventDay
-import com.applandeo.materialcalendarview.listeners.OnDayClickListener
 import com.example.internz.R
-import com.example.internz.common.toast
 import com.example.internz.data.calendar.CalendarDataTemporal
-import com.example.internz.ui.home.HomeViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.fragment_calendar.*
 
 
 /**
@@ -39,7 +23,7 @@ class CalendarFragment : Fragment() {
 
     //달력
     private lateinit var calendar : java.util.Calendar
-    private lateinit var calendarView: CalendarView
+    private lateinit var calendarView: com.applandeo.materialcalendarview.CalendarView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
