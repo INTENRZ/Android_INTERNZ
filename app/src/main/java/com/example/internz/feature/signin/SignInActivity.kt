@@ -16,6 +16,7 @@ import com.example.internz.data.signin.SignIn
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.feature.jobselect.JobSelectActivity
+import com.example.internz.feature.setprofile.SetProfileActivity
 import com.example.internz.feature.signup.SignUpActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import retrofit2.Call
@@ -88,7 +89,7 @@ class SignInActivity : AppCompatActivity() {
             }
         }
 
-//
+
 //            //로그인 요청
 //            val signInCall = ApiServiceImpl.service.requestSignIn(
 //                SignInRequestData(
@@ -96,7 +97,9 @@ class SignInActivity : AppCompatActivity() {
 //                    pwd
 //                )
 //            )
-
+//
+//            startActivity(Intent(this, JobSelectActivity::class.java))
+//
 //            signInCall.enqueue(
 //                onSuccess = {
 //                    when {

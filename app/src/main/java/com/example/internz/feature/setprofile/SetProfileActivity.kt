@@ -6,8 +6,15 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
+import com.example.internz.common.toast
 import com.example.internz.ui.MainActivity
 import kotlinx.android.synthetic.main.activity_set_profile.*
 
@@ -21,6 +28,8 @@ class SetProfileActivity : AppCompatActivity() {
     }
 
     private fun setProfileActivity() {
+        imgSetProfile.makeCircle()
+
         imgSetProfile.setOnClickListener {
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if(checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) ==
@@ -43,6 +52,31 @@ class SetProfileActivity : AppCompatActivity() {
             }
         }
 
+        //한줄 프로필 소개
+        edtSetProfileContents.addTextChangedListener(
+            object : TextWatcher {
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                }
+
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                }
+
+                //글자 개수 20 ~ 40
+                override fun afterTextChanged(text: Editable?) {
+                    if (text != null && !text.toString().equals("")) {
+                        if(text.toString().length >= 20) {
+                            btnSetProfileStart.setBackgroundResource(R.drawable.btn_shape_ok)
+                        } else {
+                            btnSetProfileStart.setBackgroundResource(R.drawable.btn_shape)
+                        }
+                    }
+                }
+            }
+        )
+
+        //시작하기 click listener
         btnSetProfileStart.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
@@ -51,9 +85,7 @@ class SetProfileActivity : AppCompatActivity() {
     private fun getImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
-        startActivityForResult(intent,
-            IMAGE_PICK_CODE
-        )
+        startActivityForResult(intent, IMAGE_PICK_CODE)
     }
 
     companion object {
@@ -76,7 +108,7 @@ class SetProfileActivity : AppCompatActivity() {
                 }
                 else {
                     //권한 거부
-                    Toast.makeText(applicationContext, R.string.permission_1, Toast.LENGTH_SHORT).show()
+                    toast(R.string.permission_1)
                 }
             }
         }
@@ -86,11 +118,24 @@ class SetProfileActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+            Log.d("seungmin", "${data?.data}")
             //Glide를 이용한 make image oval 실패
-//            Glide.with(this).load(data?.data).into(imgSetProfile)
+            Glide
+                .with(this)
+                .load(data?.data)
+                .apply(RequestOptions.circleCropTransform())
+                .into(imgSetProfile);
 
             //TODO! dhodenhof를 이용한 원형 이미지 생성 -> 실패, Uri convert to Url?
 //            imgSetProfile.setCircleBackgroundColorResource(data?.data)
         }
+    }
+
+    private fun ImageView.makeCircle() {
+        Glide
+            .with(this@SetProfileActivity)
+            .load(this.drawable)
+            .apply(RequestOptions.circleCropTransform())
+            .into(this)
     }
 }

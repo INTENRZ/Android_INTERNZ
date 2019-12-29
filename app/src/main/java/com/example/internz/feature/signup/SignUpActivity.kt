@@ -143,9 +143,12 @@ class SignUpActivity : AppCompatActivity() {
 //                            Log.e("TAG", "SignUpActivity Server broadcast fail")
 //                        }
 //                    }
-//                })
+//                }
+//            )
+            startActivity(Intent(this, SignUp2Activity::class.java))
         }
 
+        //뒤로가기(back button)
         findViewById<ImageView>(R.id.imgSignUpBack).setOnClickListener {
             this.finish()
         }

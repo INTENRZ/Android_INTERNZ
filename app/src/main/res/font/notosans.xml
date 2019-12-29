@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <font
+        android:font="@font/notosanscjkkrblack"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/notosanscjkkrbold"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/notosanscjkkrdemilight"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/notosanscjkkrlight"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/notosanscjkkrmedium"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/notosanscjkkrregular"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/notosanscjkkrthin"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/notosansmonocjkkrbold"
+        android:fontStyle="normal"/>
+
+    <font
+        android:font="@font/notosansmonocjkkrregular"
+        android:fontStyle="normal"/>
+
+</font-family>

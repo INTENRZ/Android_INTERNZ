@@ -14,38 +14,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/timeline_detail_back_ic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="프로필 설정"
-            android:textStyle="bold"
+            android:textSize="17sp"
+            android:lineSpacingExtra="-5sp"
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e3e3e3"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="35dp"
+        android:lineSpacingExtra="28sp"
         android:text="소개"
-        android:textStyle="bold"
+        android:textColor="#212529"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgSetProfile" />
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <EditText
         android:id="@+id/edtSetProfileContents"
@@ -54,10 +56,19 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/btn_for_job_select"
+        android:background="@drawable/btn_line_for_set_profile"
         android:ems="40"
         android:hint="최소 20자 최대 40자로 입력해주세요."
-        android:inputType="textPersonName"
+        android:gravity="left"
+        android:maxLength="40"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:minLines="2"
+        android:maxLines="7"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
@@ -68,37 +79,52 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_shape"
+        android:fontFamily="@font/notosanscjkkrbold"
+        android:gravity="center"
+        android:lineSpacingExtra="9sp"
         android:text="시작하기"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgSetProfile"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/basicprofile_img"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
     <ImageButton
         android:id="@+id/imgbtnSetProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="70dp"
         android:background="@null"
         android:src="@drawable/picture_ic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/imgSetProfile"
         app:layout_constraintTop_toTopOf="@+id/imgSetProfile" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imgSetProfile"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/home_recomm_story3_img"
-        android:scaleType="centerCrop"
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:lineSpacingExtra="26sp"
+        android:text="인턴즈"
+        android:textColor="#212529"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/imgSetProfile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

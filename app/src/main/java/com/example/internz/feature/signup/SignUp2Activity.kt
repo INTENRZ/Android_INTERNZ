@@ -12,6 +12,7 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
 import com.example.internz.data.signup2.SignUp2Data
 import com.example.internz.data.signup2.SignUp2RequestData
 import com.example.internz.feature.signin.SignInActivity
@@ -39,7 +40,7 @@ class SignUp2Activity : AppCompatActivity() {
 
     private fun signUpFunction() {
         //사용자의 고유 인덱스 초기화
-        userIndex = intent.getStringExtra("userIndex")
+//        userIndex = intent.getStringExtra("userIndex")
 
         //이름
         edtSignUpName.addTextChangedListener(
@@ -141,7 +142,7 @@ class SignUp2Activity : AppCompatActivity() {
             startActivity(intent)
 
             //서버통신구현
-            /*
+
             val call = ApiServiceImpl.service.requestSignUp2(
                 userIndex,
                 SignUp2RequestData(
@@ -149,6 +150,7 @@ class SignUp2Activity : AppCompatActivity() {
                 )
             )
 
+            /*
             call.enqueue(
                 object : Callback<SignUp2Data> {
                     override fun onFailure(call: Call<SignUp2Data>, t: Throwable) {
@@ -179,12 +181,8 @@ class SignUp2Activity : AppCompatActivity() {
                     }
                 }
             )
+            */
 
-             */
-        }
-
-        findViewById<ImageView>(R.id.imgSignUpBack).setOnClickListener {
-            this.finish()
         }
     }
 
@@ -192,10 +190,10 @@ class SignUp2Activity : AppCompatActivity() {
         if (edtSignUpName.text.isEmpty() || edtSignUpNick.text.isEmpty() || edtSignUpBirth.text.isEmpty()) {
             btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape)
         } else {
-            if(imgbtnSignUpService.isSelected && imgbtnSignUpMarketing.isSelected) {
+            if(imgbtnSignUpService.isSelected) {
                 btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape_ok)
             } else {
-                Toast.makeText(applicationContext, "약관동의를 선택하세요.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "서비스 이용 약관동의를 선택하세요.", Toast.LENGTH_SHORT).show()
                 txtSignUpService.requestFocus()
             }
         }

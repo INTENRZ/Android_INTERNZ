@@ -1,6 +1,6 @@
 package com.example.internz.data.story
 
-class StoryDataTemporal {
+object StoryDataTemporal {
     fun getStory() : List<StoryData> {
         return listOf(
             StoryData(

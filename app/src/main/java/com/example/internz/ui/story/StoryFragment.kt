@@ -1,68 +1,88 @@
+package com.example.internz.ui.story
 
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.data.story.StoryDataTemporal
-import com.example.internz.ui.story.DetailStoryActivity
-import com.example.internz.ui.story.StoryAdapter
+import com.example.internz.data.story.StoryData
+import com.example.internz.ui.home.HomeViewModel
+import com.example.internz.ui.story.StoryViewModel
+import kotlinx.android.synthetic.*
+
+//TODO! StoryFragment 변경해야 함
 
 class StoryFragment : Fragment() {
 
-
-    private lateinit var rvStory: RecyclerView
-    private lateinit var storyAdapter : StoryAdapter
-
+    private val adapter: StoryAdapter = StoryAdapter()
+    private lateinit var storyViewModel: StoryViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-
-    ): View? {
-        // Inflate the layout for this fragment
-
+    ): View {
+        //TODO! 이 코드 삭제하면 에러나는지 확인
+        storyViewModel = ViewModelProviders.of(this).get(StoryViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_story, container, false)
+
+        storyFunction(view)
         return view
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        makeStory()
-
+    private fun storyFunction(view : View) {
+        val spinner = view.findViewById<Spinner>(R.id.spinnerStory)
+        val arrayAdapter = ArrayAdapter.createFromResource(view.context, R.array.spinner, android.R.layout.simple_spinner_item)
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = arrayAdapter
     }
 
+    private inner class StoryAdapter() : RecyclerView.Adapter<StoryViewHolder>() {
+        var data = listOf<StoryData>()
 
-    fun makeStory() {
-        rvStory = view!!.findViewById(R.id.rvStory)
-        storyAdapter = StoryAdapter(context!!)
-
-        rvStory.apply {
-            adapter = storyAdapter
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoryViewHolder {
+            val view = LayoutInflater.from(context).inflate(R.layout.rv_story_item, parent, false)
+            return StoryViewHolder(view)
         }
 
-        storyAdapter.data = StoryDataTemporal().getStory()
-        storyAdapter.notifyDataSetChanged()
+        override fun onBindViewHolder(holder: StoryViewHolder, position: Int) {
+            holder.bind(data[position])
+        }
 
-        storyAdapter.setItemClickListener(object : StoryAdapter.ItemClickListener {
-            override fun onClick(view: View, position : Int) {
-                val intent = Intent(this@StoryFragment.context, DetailStoryActivity::class.java)
-                startActivity(intent)
-            }
-        })
+        override fun getItemCount(): Int {
+            return data.size
+        }
+    }
+
+    private inner class StoryViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+        private val view : View = view.findViewById(R.id.rvStoryItem)
+
+        private val title : TextView = view.findViewById(R.id.txtStoryTitle)
+        private val nickname : TextView = view.findViewById(R.id.txtStoryNick)
+        private val date : TextView = view.findViewById(R.id.txtStoryDate)
+
+        fun bind(data : StoryData) {
+            title.text = data.title
+            nickname.text = data.nickname
+            date.text = data.date
+
+            //DetailStoryFragment 보여주기
+//            view.setOnClickListener {
+//                //TODO! DetailStoryFragment 액티비티로 교체 요구
+////            MainHelper.getFT().hide(StoryFragment()).show(DetailStoryFragment()).commit()
+//                activity?.supportFragmentManager?.let {
+//                    it.beginTransaction().apply {
+//                        show(DetailStoryFragment())
+//                    }.commit()
+//                }
+//            }
+        }
     }
 }
-
-
-//        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-//        // Inflate the layout for this fragment
-//        val view = inflater.inflate(R.layout.fragment_main_home, container, false)
