@@ -40,6 +40,10 @@ class CalendarActivity : AppCompatActivity() {
         adapter.data = CalendarDataTemporal().getCalendarData()
         adapter.notifyDataSetChanged()
 
+        if(adapter.itemCount == 0) {
+            txtCalendarEmpty.text = "공고를 추가해주세요."
+        }
+
         //스크롤 이펙트 제거
         findViewById<RecyclerView>(R.id.rvCalendar).overScrollMode = View.OVER_SCROLL_NEVER
 
