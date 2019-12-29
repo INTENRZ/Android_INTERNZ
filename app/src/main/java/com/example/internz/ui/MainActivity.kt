@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.frag_navigation_home,
@@ -30,8 +31,7 @@ class MainActivity : AppCompatActivity() {
         )
         navView.setupWithNavController(navController)
 
-        MainHelper.setFT(supportFragmentManager.beginTransaction())
-
+//        MainHelper.setFT(supportFragmentManager.beginTransaction())
     }
 }
 

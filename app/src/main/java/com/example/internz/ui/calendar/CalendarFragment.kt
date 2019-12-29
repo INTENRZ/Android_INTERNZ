@@ -3,6 +3,7 @@ package com.example.internz.ui.calendar
 
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.applandeo.materialcalendarview.CalendarView
 import com.applandeo.materialcalendarview.EventDay
+import com.applandeo.materialcalendarview.listeners.OnDayClickListener
 import com.example.internz.R
 import com.example.internz.common.toast
 import com.example.internz.data.calendar.CalendarDataTemporal
+import kotlinx.android.synthetic.main.fragment_calendar.*
 
 
 /**
@@ -26,7 +29,6 @@ class CalendarFragment : Fragment() {
     private lateinit var adapter : CalendarAdapter
 
     //달력
-    private lateinit var events : List<EventDay>
     private lateinit var calendar : java.util.Calendar
     private lateinit var calendarView: CalendarView
 
@@ -42,6 +44,7 @@ class CalendarFragment : Fragment() {
     }
 
     private fun calendarFunction(view : View) {
+
         //RecyclerView setting
         recyclerView = view.findViewById(R.id.rvCalendar)
         adapter = CalendarAdapter(view.context)
@@ -52,27 +55,36 @@ class CalendarFragment : Fragment() {
         adapter.data = CalendarDataTemporal().getCalendarData()
         adapter.notifyDataSetChanged()
 
+        //스크롤 이펙트 제거
+        rvCalendar.overScrollMode = View.OVER_SCROLL_NEVER
+
         //Calendar Setting
-        calendar = java.util.Calendar.getInstance()
-        calendarView = view.findViewById(R.id.calendarCalendar)
-        events = ArrayList<EventDay>()
+        calendarView = view.findViewById(R.id.Calendar)
+        var events = listOf<EventDay>()
 
         //add one events
-        calendar.add(java.util.Calendar.DAY_OF_MONTH, 1) //1일에 이벤트 추가
-        //TODO! 오류 확인 및 코드 교체
-//        events += listOf(EventDay(calendar, view.context.getDrawable(R.drawable.round_for_calendar)))
-        events += listOf<EventDay>(EventDay(calendar, R.drawable.round_for_calendar))
+        calendar = java.util.Calendar.getInstance()
+        calendar.add(java.util.Calendar.DAY_OF_MONTH, 5) //3일에 이벤트 추가
 
-        calendar.add(java.util.Calendar.DAY_OF_MONTH, 10)
-        events += listOf<EventDay>(EventDay(calendar, R.drawable.round_for_calendar))
+        //TODO ERROR! 무슨짓을 하던 다음달로 설정됨
+        events += events.plus(EventDay(calendar, R.drawable.basicprofile_img))
+
+        var calendar2 : java.util.Calendar = java.util.Calendar.getInstance()
+        calendar2.add(java.util.Calendar.DAY_OF_MONTH, 7) //5일에 이벤트 추가
+        events += events.plus(EventDay(calendar2, R.drawable.profile_img))
 
         //event setting
         calendarView.setEvents(events)
 
         //set click listener for calendar
-        calendarView.setOnDayClickListener {
-            Toast.makeText(view.context, calendarView.selectedDates.toString(), Toast.LENGTH_SHORT).show()
+        calendarView.setOnDayClickListener { eventDay ->
+            run {
+                //TODO! 서버 통신 후 데이터 가져오기
+                Log.e("TAG", eventDay.calendar.time.date.toString())
+                Log.e("TAG", "한번 더")
+            }
         }
-
     }
+
+
 }

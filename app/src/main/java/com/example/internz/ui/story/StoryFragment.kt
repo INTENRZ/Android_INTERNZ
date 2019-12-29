@@ -1,3 +1,4 @@
+package com.example.internz.ui.story
 
 import android.content.Context
 import android.os.Bundle
@@ -21,7 +22,6 @@ import kotlinx.android.synthetic.*
 class StoryFragment : Fragment() {
 
     private val adapter: StoryAdapter = StoryAdapter()
-
     private lateinit var storyViewModel: StoryViewModel
 
     override fun onCreateView(
