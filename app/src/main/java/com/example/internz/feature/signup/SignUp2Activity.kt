@@ -127,7 +127,6 @@ class SignUp2Activity : AppCompatActivity() {
         btnSignUpFinish.setOnClickListener {
             //선택된 라디오버튼 정보(성별)
 
-            val userIdx = getUserIdx()
             val name = edtSignUp2Name.text.toString()
             val nick = edtSignUp2Nick.text.toString()
             val birth = edtSignUp2Birth.text.toString()
@@ -137,13 +136,15 @@ class SignUp2Activity : AppCompatActivity() {
                 gender = 1
             }
 
-            val signUp2Call : Call<BaseResponse<SignUp2Data>> = ApiServiceImpl.service.requestSignUp2(
-                userIdx,
+            val signUp2Call = ApiServiceImpl.service.requestSignUp2(
                 SignUp2RequestData(
-                    name,
-                    nick,
-                    birth,
-                    gender
+                    email = "aa",
+                    password = "bb",
+                    phone = "cc",
+                    name = "nn",
+                    nickname = "dd",
+                    age = "gg",
+                    sex = "0"
                 )
             )
 
@@ -158,7 +159,6 @@ class SignUp2Activity : AppCompatActivity() {
 
                     }
                 },
-
                 onFail = {
                         status, message -> toast(message)
                 }

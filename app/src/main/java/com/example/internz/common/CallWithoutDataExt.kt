@@ -5,31 +5,29 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-data class BaseResponse<T>(
+data class CallWithoutDataExt(
     val message: String,
     val status: Int,
-    val success: Boolean,
-    val data: T?
+    val success: Boolean
 )
 
 
-fun <T> Call<BaseResponse<T>>.enqueue(
+fun Call<CallWithoutDataExt>.enqueue(
     onError: (Throwable) -> Unit = onStandardError,
-    onSuccess: (T) -> Unit = {},
+    onSuccess: (CallWithoutDataExt) -> Unit = {},
     onFail: (status: Int, message: String) -> Unit = {_, _ -> Unit}
 ) {
     //ㅇㅋ
-    this.enqueue(object : Callback<BaseResponse<T>> {
-        override fun onFailure(call: Call<BaseResponse<T>>, t: Throwable) {
+    this.enqueue(object : Callback<CallWithoutDataExt> {
+        override fun onFailure(call: Call<CallWithoutDataExt>, t: Throwable) {
             Log.d("chohee", "실패")
             onError(t)
         }
 
-        override fun onResponse(call: Call<BaseResponse<T>>, response: Response<BaseResponse<T>>) {
+        override fun onResponse(call: Call<CallWithoutDataExt>, response: Response<CallWithoutDataExt>) {
             if (response.isSuccessful) {
                 Log.d("chohee", "응 성공")
-                response.body()?.data?.let {
-                    Log.d("chohee", it.toString())
+                response.body()?.let {
                     onSuccess(it)
 
                 } ?: onFail(response.body()?.status?:-1, response.body()?.message.orEmpty())

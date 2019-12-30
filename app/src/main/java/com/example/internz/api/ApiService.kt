@@ -1,6 +1,7 @@
 package com.example.internz.api
 
 import com.example.internz.common.BaseResponse
+import com.example.internz.common.CallWithoutDataExt
 import com.example.internz.data.jobselect.JobSelectData
 import com.example.internz.data.jobselect.JobSelectPutData
 import com.example.internz.data.profile.ProfileTimelineData
@@ -25,8 +26,8 @@ interface ApiService {
     fun requestSignUp(@Body body : SignUpRequestData) : Call<BaseResponse<SignUpData>>
 
     //회원가입 두번째 단계
-    @PUT("/user/signup2/{userIdx}") //TODO! 오류 확인
-    fun requestSignUp2(@Path("userIdx") userIdx : String, @Body body : SignUp2RequestData) : Call<BaseResponse<SignUp2Data>>
+    @POST("/user/signup2") //TODO! 오류 확인
+    fun requestSignUp2(@Body body : SignUp2RequestData) : Call<CallWithoutDataExt>
 
 
 //    @POST("/story/category")
