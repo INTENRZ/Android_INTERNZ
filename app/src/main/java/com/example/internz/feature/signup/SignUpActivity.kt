@@ -108,13 +108,10 @@ class SignUpActivity : AppCompatActivity() {
         //TODO! 모든 항목이 입력되어야 다음으로 넘어가도록 수정
         btnSignUpNext?.setOnClickListener {
             val email = edtSignUpEmail.text.toString()
-            val password = edtSignUpPwd.text.toString()
-            val password2 = edtSignUpPwdChk.text.toString()
-            val phone = edtSignUpPhone.text.toString()
 
             val signUpCall = ApiServiceImpl.service.requestSignUp(
                 SignUpRequestData(
-                    email, password, password2, phone
+                    email
                 )
             )
 
@@ -123,9 +120,8 @@ class SignUpActivity : AppCompatActivity() {
                 onSuccess = {
 
                     setUserIdx(it.userIndex)
-                    val intent = Intent(applicationContext, SignUp2Activity::class.java)
+                    val intent = Intent(this@SignUpActivity, SignUp2Activity::class.java)
                     startActivity(intent)
-                    Log.e("성공", "성공했다고 시발 ")
 
                 },
 

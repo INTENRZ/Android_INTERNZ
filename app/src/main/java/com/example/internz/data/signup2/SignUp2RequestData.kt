@@ -10,6 +10,10 @@ class SignUp2RequestData (
     val nickname : String,
     @SerializedName("age")
     val birth : String,
+    @SerializedName("password")
+    val password : String,
+    @SerializedName("phone")
+    val phone : String,
     @SerializedName("sex")
     val gender : Int //여자 : 0, 남자 : 1
 )

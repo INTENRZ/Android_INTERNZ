@@ -20,6 +20,7 @@ import com.example.internz.data.signup.SignUpRequestData
 import com.example.internz.data.signup2.SignUp2Data
 import com.example.internz.data.signup2.SignUp2RequestData
 import com.example.internz.feature.signin.SignInActivity
+import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.activity_sign_up2.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -128,10 +129,13 @@ class SignUp2Activity : AppCompatActivity() {
             //선택된 라디오버튼 정보(성별)
 
             val userIdx = getUserIdx()
+            val password = edtSignUpPwd.text.toString()
+            val phone = edtSignUpPhone.text.toString()
             val name = edtSignUp2Name.text.toString()
             val nick = edtSignUp2Nick.text.toString()
             val birth = edtSignUp2Birth.text.toString()
             var gender : Int = 0
+
             val radioButton = findViewById<RadioButton>(radioGroup.checkedRadioButtonId)
             if (radioButton.text.toString().equals("남성")) {
                 gender = 1
@@ -143,6 +147,8 @@ class SignUp2Activity : AppCompatActivity() {
                     name,
                     nick,
                     birth,
+                    password,
+                    phone,
                     gender
                 )
             )
