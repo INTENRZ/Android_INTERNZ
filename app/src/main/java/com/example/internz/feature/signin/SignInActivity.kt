@@ -5,15 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
+import com.example.internz.api.ApiServiceImpl.setToken
 import com.example.internz.common.BaseResponse
 import com.example.internz.common.enqueue
 import com.example.internz.common.toast
-import com.example.internz.data.signin.SignIn
-import com.example.internz.data.signin.SignIn.setUser
-import com.example.internz.data.signin.SignIn.setUserToken
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.feature.jobselect.JobSelectActivity
@@ -21,7 +20,6 @@ import com.example.internz.feature.signup.SignUpActivity
 import com.example.internz.ui.BottomBarActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import retrofit2.Call
-import retrofit2.Callback
 
 
 class SignInActivity : AppCompatActivity() {
@@ -90,7 +88,6 @@ class SignInActivity : AppCompatActivity() {
             //TODO! 파트장님이 extension 이용해서 서버 통신 구현하신 부분
             //로그인 요청
             val signIncall: Call<BaseResponse<SignInData>> = ApiServiceImpl.service.requestSignIn(
-
                 SignInRequestData(email,pwd)
             )
 
@@ -99,30 +96,30 @@ class SignInActivity : AppCompatActivity() {
                onSuccess = {
                    when {
                        it.isFirst == "0" -> {
-                           setUserToken(it.token)
+                           setToken(it.token)
+                           Log.e("TAG", "${it.token} 토큰입니다.")
                            val intent = Intent(applicationContext, JobSelectActivity::class.java)
                            startActivity(intent)
                            finish()
 
                        }
                        it.isFirst == "1" -> {
-                           setUserToken(it.token)
+                           setToken(it.token)
                            val intent = Intent(applicationContext, BottomBarActivity::class.java)
                            startActivity(intent)
                            finish()
-
                        }
-
                    }
                },
                 onFail = {status, message ->  toast(message)
                 }
             )
-            //회원가입
-            txtSignInSignUp?.setOnClickListener {
-                val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
-                startActivity(intent)
-            }
+        }
+
+        //회원가입
+        txtSignInSignUp?.setOnClickListener {
+            val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
+            startActivity(intent)
         }
     }
 

@@ -1,6 +1,8 @@
 package com.example.internz.api
 
 import com.example.internz.common.BaseResponse
+import com.example.internz.data.firstsignin.FirstSignInRequestData
+import com.example.internz.data.firstsignin.FirstSignInResponseData
 import com.example.internz.data.jobselect.JobSelectData
 import com.example.internz.data.jobselect.JobSelectPutData
 import com.example.internz.data.signin.SignInData
@@ -12,17 +14,6 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {
-    /*
-    //TODO! 파트장님이 수정하신 부분
-
-
-    @POST("/user/signup1")
-    fun requestSignUp(@Body body : SignUpRequestData) : Call<BaseResponse<SignUpData>>
-
-    @POST("/user/signup2/{useridx}")
-    fun requestSignUp2(@Path("useridx") useridx : String, @Body body : SignUp2RequestData) : Call<BaseResponse<SignUp2Data>>
-     */
-
     //로그인
     @POST("/user/signin")
     fun requestSignIn(@Body body: SignInRequestData) : Call<BaseResponse<SignInData>>
@@ -31,6 +22,13 @@ interface ApiService {
     @POST("/user/signup1")
     fun requestSignUp(@Body body : SignUpRequestData) : Call<SignUpData>
 
+    //관심직군 + 프로필 + 한줄소개 - old version
+//    @PUT("/user/taskandintro")
+//    fun requestSettingInFistSignIn(@Header("token") token : String, @Body body : FirstSignInRequestData) : Call<FirstSignInResponseData>
+
+    //관심직군 + 프로필 + 한줄소개 - new version
+    @PUT("/user/taskandintro")
+    fun requestSettingAtFirstSignIn(@Header("token") token : String, @Body body : FirstSignInRequestData) : Call<BaseResponse<FirstSignInResponseData>>
 
     @POST("/story/category")
     fun requestStory() : Call<List<StoryData>>

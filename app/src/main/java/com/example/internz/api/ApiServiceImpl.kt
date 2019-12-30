@@ -18,4 +18,8 @@ object ApiServiceImpl {
     fun setToken(token: String?) {
         this.token = token
     }
+
+    fun getToken() : String {
+        return token!!
+    }
 }

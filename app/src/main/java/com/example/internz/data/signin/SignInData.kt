@@ -5,7 +5,6 @@ import retrofit2.http.Query
 
 //서버 -> 클라이언트
 data class SignInData (
-
     @SerializedName("token")
     val token : String,
     @SerializedName("isFirst")

@@ -154,7 +154,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun changeBtnBackground() {
-        if (edtSignUpEmail.text.isEmpty() || edtSignUpPhoneNum.text.isEmpty() || (edtSignUpPwd.text.length >= 6) || (edtSignUpPwdChk.text.length >= 6)) {
+        if (edtSignUpEmail.text.isEmpty() || edtSignUpPhoneNum.text.isEmpty() || (edtSignUpPwd.text.length < 6) || (edtSignUpPwdChk.text.length < 6)) {
             btnSignUpNext.setBackgroundResource(R.drawable.btn_shape)
         } else {
             btnSignUpNext.setBackgroundResource(R.drawable.btn_shape_ok)
