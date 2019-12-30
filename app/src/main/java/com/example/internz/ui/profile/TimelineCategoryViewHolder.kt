@@ -1,7 +1,6 @@
 package com.example.internz.ui.profile
 
 import android.graphics.Color
-import android.util.Log
 import android.view.View
 import android.widget.CheckedTextView
 import android.widget.TextView
@@ -13,7 +12,7 @@ import com.example.internz.feature.jobselect.SelectHelper
 class TimelineCategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val category: CheckedTextView = itemView.findViewById(R.id.checktxt_filter)
     val adapter: TimelineCategoryAdapter = TimelineCategoryAdapter(itemView.context)
-    var categoryCheckedIndex = arrayOfNulls<Boolean>(6)
+
     fun bind(data: TimelineCategoryData){
         category.text = data.category
     }
