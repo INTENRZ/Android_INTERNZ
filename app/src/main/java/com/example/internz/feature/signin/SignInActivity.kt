@@ -114,11 +114,12 @@ class SignInActivity : AppCompatActivity() {
                 }
             )
 
-            //회원가입
-            txtSignInSignUp?.setOnClickListener {
-                val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
-                startActivity(intent)
-            }
+
+        }
+        //회원가입
+        txtSignInSignUp?.setOnClickListener {
+            val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
+            startActivity(intent)
         }
     }
 

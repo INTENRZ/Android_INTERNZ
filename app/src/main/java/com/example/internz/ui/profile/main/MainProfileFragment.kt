@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -66,78 +65,18 @@ class MainProfileFragment : Fragment() {
         rv_profile_timeline.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         /** 프로필 타임라인 조회 서버 통신 **/
+        // 여기 setUserId로 2자리에 넣어야함
         val timelineCall: Call<BaseResponse<List<ProfileTimelineData>>> = ApiServiceImpl.service.responseProfileTimelineList(ApiServiceImpl.getToken(), TimelineRequestData(2))
         timelineCall.enqueue(
             onSuccess = {
                 adapter_profile_mainProfile.data = it
-                Log.d("chohee", "응 들어옴")
             },
             onFail = {status, message ->  toast(message)
-                Log.d("chohee", "응 실패")
             }
         )
-
-//        adapter_profile_mainProfile.data = listOf(
-//            ProfileTimelineData(
-//
-//                timelineIdx = 11,
-//                userIdx = 2,
-//                category = "인턴",
-//                title = "NAVER SNOW Jam Studio 기획/운영팀",
-//                start_date = "19.01.01",
-//                end_date = "19.07.01"
-//            ),
-//            ProfileTimelineData(
-//                timelineIdx = 11,
-//                userIdx = 2,
-//                category = "인턴",
-//                title = "SK Telecom 서포터즈 T프렌즈 2기",
-//                start_date = "19.01.01",
-//                end_date = "19.07.01"
-//            ),
-//            ProfileTimelineData(
-//                timelineIdx = 11,
-//                userIdx = 2,
-//                category = "인턴",
-//                title = "SOPT 25기 기획팀 ",
-//                start_date = "19.01.01",
-//                end_date = "19.07.01"
-//            ),
-//            ProfileTimelineData(
-//                timelineIdx = 11,
-//                userIdx = 2,
-//                category = "인턴",
-//                title = "SK Telecom 서포터즈 T프렌즈 2기",
-//                start_date = "19.01.01",
-//                end_date = "19.07.01"
-//            ),
-//            ProfileTimelineData(
-//                timelineIdx = 11,
-//                userIdx = 2,
-//                category = "인턴",
-//                title = "인턴즈짱",
-//                start_date = "19.01.01",
-//                end_date = "19.07.01"
-//            ),
-//            ProfileTimelineData(
-//                timelineIdx = 11,
-//                userIdx = 2,
-//                category = "인턴",
-//                title = "리사이클러뷰 임",
-//                start_date = "19.01.01",
-//                end_date = "19.07.01"
-//            ),
-//            ProfileTimelineData(
-//                timelineIdx = 11,
-//                userIdx = 2,
-//                category = "인턴",
-//                title = "타임라인임~",
-//                start_date = "19.01.01",
-//                end_date = "19.07.01"
-//            )
-//        )
         adapter_profile_mainProfile.notifyDataSetChanged()
     }
+
 
     fun floatingClick(){
         img_profile_floating.setOnClickListener{
