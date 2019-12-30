@@ -14,12 +14,17 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.BaseResponse
+import com.example.internz.common.enqueue
+import com.example.internz.common.toast
 import com.example.internz.data.profile.ProfileTimelineData
 import com.example.internz.feature.jobselect.SelectHelper
 import com.example.internz.feature.message.MessageActivity
 import com.example.internz.ui.notification.NotificationViewModel
 import com.example.internz.ui.profile.TimelineAddActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
+import retrofit2.Call
 
 class MainProfileFragment : Fragment() {
 
@@ -58,50 +63,65 @@ class MainProfileFragment : Fragment() {
         adapter_profile_mainProfile = MainProfileAdapter(context!!)
         rv_profile_timeline.adapter = adapter_profile_mainProfile
         rv_profile_timeline.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        adapter_profile_mainProfile.data = listOf(
-            ProfileTimelineData(
-                timelineCategory = "인턴",
-                timelineTitle = "NAVER SNOW Jam Studio 기획/운영팀",
-                timelinePeriodStart = "19.01.01",
-                timelinePeriodEnd = "19.07.01"
-            ),
-            ProfileTimelineData(
-                timelineCategory = "인턴",
-                timelineTitle = "SK Telecom 서포터즈 T프렌즈 2기",
-                timelinePeriodStart = "19.01.01",
-                timelinePeriodEnd = "19.07.01"
-            ),
-            ProfileTimelineData(
-                timelineCategory = "인턴",
-                timelineTitle = "SOPT 25기 기획팀 ",
-                timelinePeriodStart = "19.01.01",
-                timelinePeriodEnd = "19.07.01"
-            ),
-            ProfileTimelineData(
-                timelineCategory = "인턴",
-                timelineTitle = "SK Telecom 서포터즈 T프렌즈 2기",
-                timelinePeriodStart = "19.01.01",
-                timelinePeriodEnd = "19.07.01"
-            ),
-            ProfileTimelineData(
-                timelineCategory = "인턴",
-                timelineTitle = "인턴즈짱",
-                timelinePeriodStart = "19.01.01",
-                timelinePeriodEnd = "19.07.01"
-            ),
-            ProfileTimelineData(
-                timelineCategory = "인턴",
-                timelineTitle = "리사이클러뷰 임",
-                timelinePeriodStart = "19.01.01",
-                timelinePeriodEnd = "19.07.01"
-            ),
-            ProfileTimelineData(
-                timelineCategory = "인턴",
-                timelineTitle = "타임라인임~",
-                timelinePeriodStart = "19.01.01",
-                timelinePeriodEnd = "19.07.01"
-            )
+
+        /* 프로필 타임라인 조회 서버 통신 */
+        val timelineCall: Call<BaseResponse<ProfileTimelineData>> = ApiServiceImpl.service.responseProfileTimelineList(ApiServiceImpl.getToken())
+
+        timelineCall.enqueue(
+
+            onSuccess = {
+                val data: ProfileTimelineData = it
+                Log.d("chohee", data.toString())
+            },
+            onFail = {status, message ->  toast(message)
+            }
         )
+
+
+//        adapter_profile_mainProfile.data = listOf(
+//            ProfileTimelineData(
+//                timelineCategory = "인턴",
+//                timelineTitle = "NAVER SNOW Jam Studio 기획/운영팀",
+//                timelinePeriodStart = "19.01.01",
+//                timelinePeriodEnd = "19.07.01"
+//            ),
+//            ProfileTimelineData(
+//                timelineCategory = "인턴",
+//                timelineTitle = "SK Telecom 서포터즈 T프렌즈 2기",
+//                timelinePeriodStart = "19.01.01",
+//                timelinePeriodEnd = "19.07.01"
+//            ),
+//            ProfileTimelineData(
+//                timelineCategory = "인턴",
+//                timelineTitle = "SOPT 25기 기획팀 ",
+//                timelinePeriodStart = "19.01.01",
+//                timelinePeriodEnd = "19.07.01"
+//            ),
+//            ProfileTimelineData(
+//                timelineCategory = "인턴",
+//                timelineTitle = "SK Telecom 서포터즈 T프렌즈 2기",
+//                timelinePeriodStart = "19.01.01",
+//                timelinePeriodEnd = "19.07.01"
+//            ),
+//            ProfileTimelineData(
+//                timelineCategory = "인턴",
+//                timelineTitle = "인턴즈짱",
+//                timelinePeriodStart = "19.01.01",
+//                timelinePeriodEnd = "19.07.01"
+//            ),
+//            ProfileTimelineData(
+//                timelineCategory = "인턴",
+//                timelineTitle = "리사이클러뷰 임",
+//                timelinePeriodStart = "19.01.01",
+//                timelinePeriodEnd = "19.07.01"
+//            ),
+//            ProfileTimelineData(
+//                timelineCategory = "인턴",
+//                timelineTitle = "타임라인임~",
+//                timelinePeriodStart = "19.01.01",
+//                timelinePeriodEnd = "19.07.01"
+//            )
+//        )
         adapter_profile_mainProfile.notifyDataSetChanged()
     }
 

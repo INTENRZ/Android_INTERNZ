@@ -3,6 +3,7 @@ package com.example.internz.api
 import com.example.internz.common.BaseResponse
 import com.example.internz.data.jobselect.JobSelectData
 import com.example.internz.data.jobselect.JobSelectPutData
+import com.example.internz.data.profile.ProfileTimelineData
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.data.signup.SignUpData
@@ -38,4 +39,9 @@ interface ApiService {
 
     @PUT("/user/task")
     fun putJobSelect(@Body body : JobSelectPutData) : Call<JobSelectData>
+
+    //프로필 타임라인 리스트 조회
+    @Headers("Accept: application/json")
+    @GET("/timeline")
+    fun responseProfileTimelineList (@Query("token") token: String) : Call<BaseResponse<ProfileTimelineData>>
 }

@@ -10,4 +10,5 @@ data class SignInData (
     val token : String,
     @SerializedName("isFirst")
     val isFirst : String //첫 로그인 : 0, 아닌 경우 : 1
+
 )

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.profile.ProfileTimelineData
 
+
 class MainProfileAdapter(private val context : Context) : RecyclerView.Adapter<MainProfileVeiwHolder>() {
 
     var data = listOf<ProfileTimelineData>()
