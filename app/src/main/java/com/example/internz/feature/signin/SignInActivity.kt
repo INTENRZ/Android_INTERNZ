@@ -12,6 +12,7 @@ import com.example.internz.common.BaseResponse
 import com.example.internz.common.enqueue
 import com.example.internz.common.toast
 import com.example.internz.data.signin.SignIn
+import com.example.internz.data.signin.SignIn.setUser
 import com.example.internz.data.signin.SignIn.setUserToken
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
@@ -93,33 +94,30 @@ class SignInActivity : AppCompatActivity() {
                 SignInRequestData(email,pwd)
             )
 
-            // it은 받아온 데이터 의미
-//            signIncall.enqueue(
-//
-//                onSuccess = {
-//                    val Str : String = it.token()
-//                    when(it) {
-//                        is == "0" -> {
-//                            setUserToken(it.token)
-//                            val intent = Intent(applicationContext, JobSelectActivity::class.java)
-//                            startActivity(intent)
-//                            finish()
-//                        }
-//
-//                        it.isFirst == "1" -> {
-//
-//                            setUserToken(it.token)
-//                            val intent = Intent(applicationContext, BottomBarActivity::class.java)
-//                            startActivity(intent)
-//                            finish()
-//                        }
-//                        else -> null
-//                    }
-//                }
-//                onFail = {
-//                })
+            signIncall.enqueue(
 
+               onSuccess = {
+                   when {
+                       it.isFirst == "0" -> {
+                           setUserToken(it.token)
+                           val intent = Intent(applicationContext, JobSelectActivity::class.java)
+                           startActivity(intent)
+                           finish()
 
+                       }
+                       it.isFirst == "1" -> {
+                           setUserToken(it.token)
+                           val intent = Intent(applicationContext, BottomBarActivity::class.java)
+                           startActivity(intent)
+                           finish()
+
+                       }
+
+                   }
+               },
+                onFail = {status, message ->  toast(message)
+                }
+            )
             //회원가입
             txtSignInSignUp?.setOnClickListener {
                 val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
