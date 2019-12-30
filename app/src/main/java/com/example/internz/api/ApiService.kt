@@ -2,6 +2,7 @@ package com.example.internz.api
 
 import com.example.internz.common.BaseResponse
 import com.example.internz.common.CallWithoutDataExt
+import com.example.internz.data.firstsignin.FirstSignInRequestData
 import com.example.internz.data.jobselect.JobSelectData
 import com.example.internz.data.jobselect.JobSelectPutData
 import com.example.internz.data.profile.ProfileTimelineData
@@ -29,11 +30,9 @@ interface ApiService {
     @POST("/user/signup2") //TODO! 오류 확인
     fun requestSignUp2(@Body body : SignUp2RequestData) : Call<CallWithoutDataExt>
 
+    @PUT("/user/taskandintro")
+    fun requestFirstSignIn(@Header("token") token : String, @Body body : FirstSignInRequestData) : Call<CallWithoutDataExt>
 
-//    @POST("/story/category")
-//    fun requestStory() : Call<List<StoryData>>
-//   fun requestStory(@Body body : String) : Call<List<StoryData>>
-//
     @PUT("/user/task")
     fun putJobSelect(@Body body : JobSelectPutData) : Call<JobSelectData>
 

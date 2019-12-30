@@ -139,11 +139,11 @@ class SignUp2Activity : AppCompatActivity() {
 
             val signUp2Call = ApiServiceImpl.service.requestSignUp2(
                 SignUp2RequestData(
-                    email = "bb",
+                    email = "cc",
                     password = "bb",
                     phone = "cc",
                     name = "nn",
-                    nickname = "ee",
+                    nickname = "e",
                     age = "gg",
                     sex = "0"
                 )
