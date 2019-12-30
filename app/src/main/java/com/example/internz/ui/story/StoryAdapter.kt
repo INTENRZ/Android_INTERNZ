@@ -24,7 +24,6 @@ class StoryAdapter(private val context : Context) : RecyclerView.Adapter<StoryVi
             val intent = Intent(context, DetailStoryActivity::class.java)
             context.startActivity(intent)
         }
-
     }
 
     override fun getItemCount(): Int {

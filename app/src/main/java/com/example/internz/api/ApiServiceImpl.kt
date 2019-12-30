@@ -6,7 +6,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiServiceImpl {
 
     private const val BASE_URL = "http://34.97.246.7:3000"
-    private lateinit var token : String
+    //TODO! 서버에서 토큰을 보내주지 않는 현상 발생
+    private var token : String? = null
     private lateinit var userIdx: String
 
     private val retrofit = Retrofit.Builder()

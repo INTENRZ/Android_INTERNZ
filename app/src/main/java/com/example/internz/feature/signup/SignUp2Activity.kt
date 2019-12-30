@@ -160,11 +160,9 @@ class SignUp2Activity : AppCompatActivity() {
                 },
 
                 onFail = {
-                    status, message -> toast(message)
+                        status, message -> toast(message)
                 }
             )
-
-
 
         }
     }

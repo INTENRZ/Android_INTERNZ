@@ -2,6 +2,7 @@ package com.example.internz.ui.profile
 
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -13,9 +14,9 @@ import com.example.internz.feature.jobselect.SelectHelper
 
 
 class TimelineCategoryAdapter(private val context: Context) : RecyclerView.Adapter<TimelineCategoryViewHolder>(){
-    var isAllChecked: Boolean = false
 
     var data = listOf<TimelineCategoryData>()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimelineCategoryViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.rv_filterbox_item, parent, false)
@@ -24,7 +25,6 @@ class TimelineCategoryAdapter(private val context: Context) : RecyclerView.Adapt
 
     override fun onBindViewHolder(holder: TimelineCategoryViewHolder, position: Int) {
         holder.bind(data[position])
-        isAllChecked = false
         holder.changeColor()
 
 //        holder.category.setOnClickListener{

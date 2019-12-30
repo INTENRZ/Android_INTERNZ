@@ -1,7 +1,6 @@
-package com.example.internz.ui.calendar
+package com.example.internz.feature.calendar
 
 import android.content.Context
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
