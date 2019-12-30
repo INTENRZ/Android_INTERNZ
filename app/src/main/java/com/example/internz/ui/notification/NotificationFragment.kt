@@ -3,6 +3,7 @@ package com.example.internz.ui.notification
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -164,7 +165,7 @@ class NotificationFragment : Fragment() {
         activity?.findViewById<ImageView>(R.id.imgNotiToCalendar)?.setOnClickListener {
             Log.e("TAG", "버튼이 눌렸습니다.")
             //TODO! fragment attach, detach, destroy..?
-//            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, CalendarFragment())?.commit()
+            startActivity(Intent(context, CalendarActivity::class.java))
         }
     }
 }

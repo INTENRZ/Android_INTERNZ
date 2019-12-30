@@ -137,48 +137,6 @@ class SignUp2Activity : AppCompatActivity() {
             startActivity(intent)
 
             Log.e("TAG", "${edtSignUpName.text.toString()}, ${edtSignUpNick.text.toString()}, ${edtSignUpBirth.text.toString()}, ${radioButton.text.toString()}")
-
-            //서버통신구현
-
-//            val call = ApiServiceImpl.service.requestSignUp2(
-//                userIndex,
-//                SignUp2RequestData(
-//                    edtSignUpName.text.toString(), edtSignUpNick.text.toString(), edtSignUpBirth.text.toString(), gender
-//                )
-//            )
-
-            /*
-            call.enqueue(
-                object : Callback<SignUp2Data> {
-                    override fun onFailure(call: Call<SignUp2Data>, t: Throwable) {
-                        Log.e("TAG", "SignUp2Activity Server is not activated")
-                    }
-
-                    override fun onResponse(
-                        call: Call<SignUp2Data>,
-                        response: Response<SignUp2Data>
-                    ) {
-                        if (response.isSuccessful) {
-                            if(response.body()?.success!!) {
-                                val intent =
-                                    Intent(this@SignUp2Activity, SignInActivity::class.java)
-                                //이전의 모든 액티비티 제거
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                                startActivity(intent)
-                            } else {
-                                Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
-
-                                //닉네임 재입력 요청
-                                edtSignUpNick.text.clear()
-                                edtSignUpNick.requestFocus()
-                            }
-                        } else {
-                            Log.e("TAG", "SignUp2Activiy Server broadcast fail")
-                        }
-                    }
-                }
-            )
-            */
         }
     }
 
