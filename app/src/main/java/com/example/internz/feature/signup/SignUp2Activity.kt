@@ -12,7 +12,11 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
+import com.example.internz.api.ApiServiceImpl.getUserIdx
+import com.example.internz.common.BaseResponse
 import com.example.internz.common.enqueue
+import com.example.internz.common.toast
+import com.example.internz.data.signup.SignUpRequestData
 import com.example.internz.data.signup2.SignUp2Data
 import com.example.internz.data.signup2.SignUp2RequestData
 import com.example.internz.feature.signin.SignInActivity
@@ -27,8 +31,6 @@ import retrofit2.Response
  * TODO! 상단바 뒤로가기 이미지뷰 기능 추가
  */
 class SignUp2Activity : AppCompatActivity() {
-    private lateinit var userIndex : String
-    private var gender : Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +45,7 @@ class SignUp2Activity : AppCompatActivity() {
 //        userIndex = intent.getStringExtra("userIndex")
 
         //이름
-        edtSignUpName.addTextChangedListener(
+        edtSignUp2Name.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
@@ -58,7 +60,7 @@ class SignUp2Activity : AppCompatActivity() {
         )
 
         //닉네임
-        edtSignUpNick.addTextChangedListener(
+        edtSignUp2Nick.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
@@ -73,7 +75,7 @@ class SignUp2Activity : AppCompatActivity() {
         )
 
         //생년월일
-        edtSignUpBirth.addTextChangedListener(
+        edtSignUp2Birth.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
@@ -124,66 +126,49 @@ class SignUp2Activity : AppCompatActivity() {
 
         btnSignUpFinish.setOnClickListener {
             //선택된 라디오버튼 정보(성별)
+
+            val userIdx = getUserIdx()
+            val name = edtSignUp2Name.text.toString()
+            val nick = edtSignUp2Nick.text.toString()
+            val birth = edtSignUp2Birth.text.toString()
+            var gender : Int = 0
             val radioButton = findViewById<RadioButton>(radioGroup.checkedRadioButtonId)
             if (radioButton.text.toString().equals("남성")) {
                 gender = 1
             }
 
-            //TODO! 해당 코드는 서버 통신 후 successful 안으로 넣어야 함
-            val intent =
-                Intent(this@SignUp2Activity, SignInActivity::class.java)
-            //이전의 모든 액티비티 제거
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+            val signUp2Call : Call<BaseResponse<SignUp2Data>> = ApiServiceImpl.service.requestSignUp2(
+                userIdx,
+                SignUp2RequestData(
+                    name,
+                    nick,
+                    birth,
+                    gender
+                )
+            )
 
-            Log.e("TAG", "${edtSignUpName.text.toString()}, ${edtSignUpNick.text.toString()}, ${edtSignUpBirth.text.toString()}, ${radioButton.text.toString()}")
+            signUp2Call.enqueue(
 
-            //서버통신구현
+                onSuccess = {
+                    if(it.success == true)
+                    {
+                        val intent = Intent(applicationContext, SignInActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        startActivity(intent)
 
-//            val call = ApiServiceImpl.service.requestSignUp2(
-//                userIndex,
-//                SignUp2RequestData(
-//                    edtSignUpName.text.toString(), edtSignUpNick.text.toString(), edtSignUpBirth.text.toString(), gender
-//                )
-//            )
-
-            /*
-            call.enqueue(
-                object : Callback<SignUp2Data> {
-                    override fun onFailure(call: Call<SignUp2Data>, t: Throwable) {
-                        Log.e("TAG", "SignUp2Activity Server is not activated")
                     }
+                },
 
-                    override fun onResponse(
-                        call: Call<SignUp2Data>,
-                        response: Response<SignUp2Data>
-                    ) {
-                        if (response.isSuccessful) {
-                            if(response.body()?.success!!) {
-                                val intent =
-                                    Intent(this@SignUp2Activity, SignInActivity::class.java)
-                                //이전의 모든 액티비티 제거
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                                startActivity(intent)
-                            } else {
-                                Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
-
-                                //닉네임 재입력 요청
-                                edtSignUpNick.text.clear()
-                                edtSignUpNick.requestFocus()
-                            }
-                        } else {
-                            Log.e("TAG", "SignUp2Activiy Server broadcast fail")
-                        }
-                    }
+                onFail = {
+                        status, message -> toast(message)
                 }
             )
-            */
+
         }
     }
 
     private fun changeBtnBackground() {
-        if (edtSignUpName.text.isEmpty() || edtSignUpNick.text.isEmpty() || (edtSignUpBirth.text.length < 6)) {
+        if (edtSignUp2Name.text.isEmpty() || edtSignUp2Nick.text.isEmpty() || (edtSignUp2Birth.text.length < 6)) {
             btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape)
         } else {
             if(imgbtnSignUpService.isSelected) {

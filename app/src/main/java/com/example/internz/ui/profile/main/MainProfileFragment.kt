@@ -19,9 +19,9 @@ import com.example.internz.common.BaseResponse
 import com.example.internz.common.enqueue
 import com.example.internz.common.toast
 import com.example.internz.data.profile.ProfileTimelineData
+import com.example.internz.data.profile.TimelineRequestData
 import com.example.internz.feature.jobselect.SelectHelper
 import com.example.internz.feature.message.MessageActivity
-import com.example.internz.ui.notification.NotificationViewModel
 import com.example.internz.ui.profile.TimelineAddActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
 import retrofit2.Call
@@ -59,67 +59,81 @@ class MainProfileFragment : Fragment() {
     }
 
     fun rvInit(){
+
         rv_profile_timeline = view!!.findViewById(R.id.rv_profile_timeline)
         adapter_profile_mainProfile = MainProfileAdapter(context!!)
         rv_profile_timeline.adapter = adapter_profile_mainProfile
         rv_profile_timeline.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        /* 프로필 타임라인 조회 서버 통신 */
-        val timelineCall: Call<BaseResponse<ProfileTimelineData>> = ApiServiceImpl.service.responseProfileTimelineList(ApiServiceImpl.getToken())
-
+        /** 프로필 타임라인 조회 서버 통신 **/
+        val timelineCall: Call<BaseResponse<List<ProfileTimelineData>>> = ApiServiceImpl.service.responseProfileTimelineList(ApiServiceImpl.getToken(), TimelineRequestData(2))
         timelineCall.enqueue(
-
             onSuccess = {
-                val data: ProfileTimelineData = it
-                Log.d("chohee", data.toString())
+                adapter_profile_mainProfile.data = it
+                Log.d("chohee", "응 들어옴")
             },
             onFail = {status, message ->  toast(message)
+                Log.d("chohee", "응 실패")
             }
         )
 
-
 //        adapter_profile_mainProfile.data = listOf(
 //            ProfileTimelineData(
-//                timelineCategory = "인턴",
-//                timelineTitle = "NAVER SNOW Jam Studio 기획/운영팀",
-//                timelinePeriodStart = "19.01.01",
-//                timelinePeriodEnd = "19.07.01"
+//
+//                timelineIdx = 11,
+//                userIdx = 2,
+//                category = "인턴",
+//                title = "NAVER SNOW Jam Studio 기획/운영팀",
+//                start_date = "19.01.01",
+//                end_date = "19.07.01"
 //            ),
 //            ProfileTimelineData(
-//                timelineCategory = "인턴",
-//                timelineTitle = "SK Telecom 서포터즈 T프렌즈 2기",
-//                timelinePeriodStart = "19.01.01",
-//                timelinePeriodEnd = "19.07.01"
+//                timelineIdx = 11,
+//                userIdx = 2,
+//                category = "인턴",
+//                title = "SK Telecom 서포터즈 T프렌즈 2기",
+//                start_date = "19.01.01",
+//                end_date = "19.07.01"
 //            ),
 //            ProfileTimelineData(
-//                timelineCategory = "인턴",
-//                timelineTitle = "SOPT 25기 기획팀 ",
-//                timelinePeriodStart = "19.01.01",
-//                timelinePeriodEnd = "19.07.01"
+//                timelineIdx = 11,
+//                userIdx = 2,
+//                category = "인턴",
+//                title = "SOPT 25기 기획팀 ",
+//                start_date = "19.01.01",
+//                end_date = "19.07.01"
 //            ),
 //            ProfileTimelineData(
-//                timelineCategory = "인턴",
-//                timelineTitle = "SK Telecom 서포터즈 T프렌즈 2기",
-//                timelinePeriodStart = "19.01.01",
-//                timelinePeriodEnd = "19.07.01"
+//                timelineIdx = 11,
+//                userIdx = 2,
+//                category = "인턴",
+//                title = "SK Telecom 서포터즈 T프렌즈 2기",
+//                start_date = "19.01.01",
+//                end_date = "19.07.01"
 //            ),
 //            ProfileTimelineData(
-//                timelineCategory = "인턴",
-//                timelineTitle = "인턴즈짱",
-//                timelinePeriodStart = "19.01.01",
-//                timelinePeriodEnd = "19.07.01"
+//                timelineIdx = 11,
+//                userIdx = 2,
+//                category = "인턴",
+//                title = "인턴즈짱",
+//                start_date = "19.01.01",
+//                end_date = "19.07.01"
 //            ),
 //            ProfileTimelineData(
-//                timelineCategory = "인턴",
-//                timelineTitle = "리사이클러뷰 임",
-//                timelinePeriodStart = "19.01.01",
-//                timelinePeriodEnd = "19.07.01"
+//                timelineIdx = 11,
+//                userIdx = 2,
+//                category = "인턴",
+//                title = "리사이클러뷰 임",
+//                start_date = "19.01.01",
+//                end_date = "19.07.01"
 //            ),
 //            ProfileTimelineData(
-//                timelineCategory = "인턴",
-//                timelineTitle = "타임라인임~",
-//                timelinePeriodStart = "19.01.01",
-//                timelinePeriodEnd = "19.07.01"
+//                timelineIdx = 11,
+//                userIdx = 2,
+//                category = "인턴",
+//                title = "타임라인임~",
+//                start_date = "19.01.01",
+//                end_date = "19.07.01"
 //            )
 //        )
         adapter_profile_mainProfile.notifyDataSetChanged()

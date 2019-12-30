@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -17,7 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
-
+    private var backKeyPressedTime : Long = 0
 
     // 액티비티가 프래그먼트를 멤버 변수화 해서 관리하겠다. 메모리 단위
     private val fragmentHome = MainHomeFragment()
@@ -75,6 +76,19 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
             else -> return false
         }
         return true
+    }
+
+    //뒤로가기 2번 종료
+    override fun onBackPressed() {
+        val toast : Toast = Toast.makeText(this, "\'뒤로\'버튼을 한 번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT)
+
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis()
+            toast.show()
+        } else if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+            toast.cancel()
+            finish()
+        }
     }
 
 

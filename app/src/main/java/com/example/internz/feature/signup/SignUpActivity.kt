@@ -1,6 +1,5 @@
 package com.example.internz.feature.signup
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,17 +7,15 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.ImageView
-import android.widget.Toast
 import com.example.internz.R
-import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.enqueue
-import com.example.internz.data.signup.SignUpData
+import com.example.internz.common.toast
 import com.example.internz.data.signup.SignUpRequestData
+import com.example.internz.feature.jobselect.JobSelectActivity
+import com.example.internz.ui.BottomBarActivity
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.api.ApiServiceImpl.setUserIdx
 import kotlinx.android.synthetic.main.activity_sign_up.*
-import kotlinx.android.synthetic.main.activity_sign_up2.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 /**
  * TODO! 상단바 뒤로가기 이미지뷰 기능 추가
@@ -26,11 +23,13 @@ import retrofit2.Response
 
 class SignUpActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        signUpFunction();
+        signUpFunction()
+        changeBtnBackground()
     }
 
     private fun signUpFunction() {
@@ -50,7 +49,7 @@ class SignUpActivity : AppCompatActivity() {
         )
 
         //이름
-        edtSignUpPhoneNum?.addTextChangedListener(
+        edtSignUpPhone?.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -108,44 +107,34 @@ class SignUpActivity : AppCompatActivity() {
         //다음(click_event)
         //TODO! 모든 항목이 입력되어야 다음으로 넘어가도록 수정
         btnSignUpNext?.setOnClickListener {
-            val call = ApiServiceImpl.service.requestSignUp(
+            val email = edtSignUpEmail.text.toString()
+            val password = edtSignUpPwd.text.toString()
+            val password2 = edtSignUpPwdChk.text.toString()
+            val phone = edtSignUpPhone.text.toString()
+
+            val signUpCall = ApiServiceImpl.service.requestSignUp(
                 SignUpRequestData(
-                    edtSignUpEmail.text.toString(), edtSignUpPwd.text.toString(), edtSignUpPwdChk.text.toString(), edtSignUpPhoneNum.text.toString()
+                    email, password, password2, phone
                 )
             )
 
-//            call.enqueue(
-//                object : Callback<SignUpData> {
-//                    override fun onFailure(call: Call<SignUpData>, t: Throwable) {
-//                        Log.e("TAG", "SignUpActivity Server is not activated")
-//                    }
-//
-//                    override fun onResponse(
-//                        call: Call<SignUpData>,
-//                        response: Response<SignUpData>
-//                    ) {
-//                        if (response.isSuccessful) {
-//                            if(response.body()?.success!!) { //회원 가입 성공
-//                                val intent =
-//                                    Intent(this@SignUpActivity, SignUp2Activity::class.java)
-//                                        .putExtra("userIndex", response.body()?.userIndex.toString())
-//                                startActivity(intent)
-//                            } else { //회원 가입 실패
-//                                Toast.makeText(applicationContext, response.body()?.message.toString(), Toast.LENGTH_SHORT).show()
-//
-//                                //이메일 재입력 요청
-//                                edtSignUpEmail.text.clear()
-//                                edtSignUpEmail.requestFocus()
-//                            }
-//                        }
-//                        else {
-//                            Log.e("TAG", "SignUpActivity Server broadcast fail")
-//                        }
-//                    }
-//                }
-//            )
-            startActivity(Intent(this, SignUp2Activity::class.java))
+            signUpCall.enqueue(
+
+                onSuccess = {
+
+                    setUserIdx(it.userIndex)
+                    val intent = Intent(applicationContext, SignUp2Activity::class.java)
+                    startActivity(intent)
+                    Log.e("성공", "성공했다고 시발 ")
+
+                },
+
+                onFail = {status, message ->  toast(message)
+                }
+            )
         }
+
+
 
         //뒤로가기(back button)
         findViewById<ImageView>(R.id.imgSignUpBack).setOnClickListener {
@@ -154,7 +143,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun changeBtnBackground() {
-        if (edtSignUpEmail.text.isEmpty() || edtSignUpPhoneNum.text.isEmpty() || (edtSignUpPwd.text.length >= 6) || (edtSignUpPwdChk.text.length >= 6)) {
+        if (edtSignUpEmail.text.isEmpty() || edtSignUpPhone.text.isEmpty() || (edtSignUpPwd.text.length < 6) || (edtSignUpPwdChk.text.length < 6)) {
             btnSignUpNext.setBackgroundResource(R.drawable.btn_shape)
         } else {
             btnSignUpNext.setBackgroundResource(R.drawable.btn_shape_ok)

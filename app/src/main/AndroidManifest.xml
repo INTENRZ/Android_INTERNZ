@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".feature.message.messagesend.MessageSendActivity"></activity>
+        <activity android:name=".feature.calendar.CalendarActivity"></activity>
+        <activity android:name=".feature.message.messagesend.MessageSendActivity" />
         <activity android:name=".feature.message.messagelist.MessageListActivity" />
         <activity android:name=".feature.message.MessageActivity" />
         <activity android:name=".ui.story.detailstory.DetailStoryActivity" />
@@ -32,7 +33,7 @@
             android:name=".feature.signin.SignInActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".feature.signup.SignUpActivity" />
-        <activity android:name=".ui.BottomBarActivity"/>
+        <activity android:name=".ui.BottomBarActivity" />
         <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

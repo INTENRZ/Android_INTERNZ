@@ -12,6 +12,7 @@ import android.text.method.KeyListener
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
@@ -103,12 +104,14 @@ class SetProfileActivity : AppCompatActivity() {
 
         //시작하기 click listener
         btnSetProfileStart.setOnClickListener {
-            //TODO! EditText의 길이 최소 20
             if (edtSetProfileContents.text.length < 20) {
                 edtSetProfileContents.requestFocus()
                 Toast.makeText(applicationContext, "20자 이상의 한줄 소개를 작성해주세요.", Toast.LENGTH_SHORT).show()
             } else {
-                startActivity(Intent(this, BottomBarActivity::class.java))
+                val intent = Intent(this@SetProfileActivity, BottomBarActivity::class.java)
+                startActivity(intent)
+
+                ActivityCompat.finishAffinity(this)
             }
         }
     }

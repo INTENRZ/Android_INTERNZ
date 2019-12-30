@@ -1,26 +1,22 @@
 package com.example.internz.ui.notification
 
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.widget.*
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.internz.R
 import com.example.internz.data.notification.NotificationListData
-import com.example.internz.ui.calendar.CalendarFragment
-import kotlinx.android.synthetic.main.fragment_calendar.*
+import com.example.internz.feature.calendar.CalendarActivity
 import kotlinx.android.synthetic.main.fragment_notification_list.*
 
 class NotificationFragment : Fragment() {
@@ -28,7 +24,6 @@ class NotificationFragment : Fragment() {
 
     private lateinit var rvNotificationList: RecyclerView
     private lateinit var notificationListAdapter : NotificationListAdapter
-    // private lateinit var txtNotilistfilter : Spinner
 
     private lateinit var notificationViewModel: NotificationViewModel
 
@@ -42,16 +37,18 @@ class NotificationFragment : Fragment() {
             ViewModelProviders.of(this).get(NotificationViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_notification_list, container, false)
 
+
         return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         makeNotificationList()
         makeSpinner()
-
     }
-fun makeSpinner() {
+
+    fun makeSpinner() {
 
         val spinner = view?.findViewById<Spinner>(R.id.notificationSpinner)
         val arrayAdapter = ArrayAdapter.createFromResource(view!!.context, R.array.spinner, android.R.layout.simple_spinner_item)
@@ -168,21 +165,7 @@ fun makeSpinner() {
         activity?.findViewById<ImageView>(R.id.imgNotiToCalendar)?.setOnClickListener {
             Log.e("TAG", "버튼이 눌렸습니다.")
             //TODO! fragment attach, detach, destroy..?
-            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, CalendarFragment())?.commit()
+            startActivity(Intent(context, CalendarActivity::class.java))
         }
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        Log.e("TAG", "notification_list_fragment 파괴됨")
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-
-        Log.e("TAG", "notification_list_fragment 완전히 파괴됨")
-    }
 }
-
-

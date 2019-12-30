@@ -1,63 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools"
+    app:contentView="@+id/content"
+    app:rightMenuView="@+id/right">
 
-
-    <TextView
-        android:id="@+id/txtNotilistTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"
-        android:text="에이피알"
-        android:textSize="16sp"
-        android:textColor="#212529"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/txtNotilistDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/txtNotilistTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="마케팅 콘텐츠 디자인"
-        android:textSize="16sp"/>
-
-    <TextView
-        android:id="@+id/txtNotilistDday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/txtNotilistDesc"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="3dp"
-        android:text="D-13"
-        android:textSize="14sp"
-        android:textColor="@color/colorDday"
-        android:textStyle="bold"/>
-
-    <ImageView
-        android:id="@+id/imgNotilistImg"
-        android:layout_width="138dp"
-        android:layout_height="45dp"
-        tools:layout_editor_absoluteX="270dp"
-        tools:layout_editor_absoluteY="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <ImageView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@drawable/rectangle_line"
-        app:layout_constraintTop_toBottomOf="@id/txtNotilistDday"
-        app:layout_constraintStart_toStartOf="parent"
-        android:backgroundTint="#e3e3e3"
-        android:layout_marginTop="16dp"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txtNotilistTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="에이피알"
+            android:textColor="#212529"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtNotilistDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="마케팅 콘텐츠 디자인"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtNotilistTitle" />
+
+        <TextView
+            android:id="@+id/txtNotilistDday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="8dp"
+            android:text="D-13"
+            android:textColor="@color/colorDday"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtNotilistDesc" />
+
+        <ImageView
+            android:id="@+id/imgNotilistImg"
+            android:layout_width="138dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@drawable/rectangle_line"
+            android:backgroundTint="#e3e3e3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/right"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:background="@color/colorBackground"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:padding="20dp"
+            android:text="추가"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textColor="@color/colorWhite"
+            android:fontFamily="@font/notosanscjkkrmedium"/>
+    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout>

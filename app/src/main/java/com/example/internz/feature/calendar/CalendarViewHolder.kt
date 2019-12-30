@@ -1,4 +1,4 @@
-package com.example.internz.ui.calendar
+package com.example.internz.feature.calendar
 
 import android.view.View
 import android.widget.ImageView
@@ -6,8 +6,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.calendar.CalendarData
-import kotlinx.android.synthetic.main.fragment_calendar.view.*
-import kotlinx.android.synthetic.main.rv_calendar_item.view.*
 
 class CalendarViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     private val view : View = view.findViewById(R.id.rvCalendarItem)

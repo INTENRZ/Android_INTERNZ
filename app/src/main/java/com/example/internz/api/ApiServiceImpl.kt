@@ -4,6 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiServiceImpl {
+
     private const val BASE_URL = "http://34.97.246.7:3000"
     private lateinit var token : String
     private lateinit var userIdx: String
