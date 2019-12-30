@@ -66,4 +66,7 @@ dependencies {
 
     //calendar
     implementation 'com.applandeo:material-calendar-view:1.7.0'
+
+    //swipe
+    implementation 'com.github.anzaizai:EasySwipeMenuLayout:1.1.4'
 }

@@ -8,11 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.widget.*
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,16 +36,19 @@ class NotificationFragment : Fragment() {
             ViewModelProviders.of(this).get(NotificationViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_notification_list, container, false)
 
+
         return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         makeNotificationList()
         makeSpinner()
-
     }
-fun makeSpinner() {
+
+    fun makeSpinner() {
+
         val spinner = view?.findViewById<Spinner>(R.id.notificationSpinner)
         val arrayAdapter = ArrayAdapter.createFromResource(view!!.context, R.array.spinner, android.R.layout.simple_spinner_item)
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -156,27 +155,16 @@ fun makeSpinner() {
                 desc = "마케팅 콘텐츠 디자인",
                 dday = "D-13"
             )
+
         )
 
         notificationListAdapter.notifyDataSetChanged()
 
         //공고 -> 캘린더 이동 imageview click listener
-        imgNotiToCalendar?.setOnClickListener {
-            startActivity(Intent(context, CalendarActivity::class.java))
+        activity?.findViewById<ImageView>(R.id.imgNotiToCalendar)?.setOnClickListener {
+            Log.e("TAG", "버튼이 눌렸습니다.")
+            //TODO! fragment attach, detach, destroy..?
+//            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.nav_host_fragment, CalendarFragment())?.commit()
         }
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        Log.e("TAG", "notification_list_fragment 파괴됨")
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-
-        Log.e("TAG", "notification_list_fragment 완전히 파괴됨")
-    }
 }
-
-

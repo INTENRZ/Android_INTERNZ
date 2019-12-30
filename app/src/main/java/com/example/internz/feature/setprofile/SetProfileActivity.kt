@@ -12,6 +12,7 @@ import android.text.method.KeyListener
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
@@ -107,9 +108,10 @@ class SetProfileActivity : AppCompatActivity() {
                 edtSetProfileContents.requestFocus()
                 Toast.makeText(applicationContext, "20자 이상의 한줄 소개를 작성해주세요.", Toast.LENGTH_SHORT).show()
             } else {
-                val intent = Intent(this, BottomBarActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                val intent = Intent(this@SetProfileActivity, BottomBarActivity::class.java)
                 startActivity(intent)
+
+                ActivityCompat.finishAffinity(this)
             }
         }
     }
