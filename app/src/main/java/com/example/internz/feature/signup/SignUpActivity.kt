@@ -108,7 +108,6 @@ class SignUpActivity : AppCompatActivity() {
         //TODO! 모든 항목이 입력되어야 다음으로 넘어가도록 수정
         btnSignUpNext?.setOnClickListener {
             val email = edtSignUpEmail.text.toString()
-
             val signUpCall = ApiServiceImpl.service.requestSignUp(
                 SignUpRequestData(
                     email

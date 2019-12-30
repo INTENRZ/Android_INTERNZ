@@ -20,6 +20,7 @@ import com.example.internz.data.signup.SignUpRequestData
 import com.example.internz.data.signup2.SignUp2Data
 import com.example.internz.data.signup2.SignUp2RequestData
 import com.example.internz.feature.signin.SignInActivity
+import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.activity_sign_up2.*
 import retrofit2.Call
 import retrofit2.Callback
