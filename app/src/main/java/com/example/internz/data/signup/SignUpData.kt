@@ -7,7 +7,7 @@ data class SignUpData(
     @SerializedName("message")
     val message: String?,
     @SerializedName("userIdx")
-    val userIndex: Int?, //TODO! 타입 컨펌
+    val userIndex: String, //TODO! 타입 컨펌
     @SerializedName("success")
-    val success : Boolean? //TODO! 타입 컨펌
+    val success : Boolean //TODO! 타입 컨펌
 )
