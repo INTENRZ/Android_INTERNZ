@@ -13,6 +13,6 @@ data class SignInData (
     val message : String,
     @SerializedName("token")
     val token : String,
-    @SerializedName("isnotFirst")
+    @SerializedName("isFirst")
     val isFirst : String //첫 로그인 : 0, 아닌 경우 : 1
 )

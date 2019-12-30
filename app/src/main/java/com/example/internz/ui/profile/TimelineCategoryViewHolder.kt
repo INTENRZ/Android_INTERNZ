@@ -19,9 +19,8 @@ class TimelineCategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemV
 
     fun changeColor(){
         itemView.setOnClickListener {
-            // checkedTextView 토글 시키기
-            //itemView.category.isChecked = false
-            //adapter.isAllChecked = false
+
+            // default가 false
             category.toggle()
 
 
