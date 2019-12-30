@@ -65,10 +65,10 @@
         android:lineSpacingExtra="28sp"
         android:textColor="#212529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtSignUpName" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSignUp2Name" />
 
     <EditText
-        android:id="@+id/edtSignUpNick"
+        android:id="@+id/edtSignUp2Nick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -91,10 +91,10 @@
         android:textSize="16sp"
         android:textColor="#212529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtSignUpNick" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSignUp2Nick" />
 
     <EditText
-        android:id="@+id/edtSignUpBirth"
+        android:id="@+id/edtSignUp2Birth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -118,7 +118,7 @@
         android:lineSpacingExtra="28sp"
         android:textColor="#212529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtSignUpBirth" />
+        app:layout_constraintTop_toBottomOf="@+id/edtSignUp2Birth" />
 
 
     <RadioGroup
@@ -238,7 +238,7 @@
         app:layout_constraintTop_toBottomOf="@+id/radioGroupSignUp" />
 
     <EditText
-        android:id="@+id/edtSignUpName"
+        android:id="@+id/edtSignUp2Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

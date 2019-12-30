@@ -3,7 +3,6 @@ package com.example.internz.ui.profile
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.timeline.TimelineCategoryData
@@ -30,6 +29,21 @@ class TimelineAddActivity : AppCompatActivity() {
         adapter_timeline_category = TimelineCategoryAdapter(this)
         rv_timeline_category.adapter = adapter_timeline_category
         rv_timeline_category.layoutManager = GridLayoutManager(this, 4)
+
+
+//        /* 프로필 타임라인 조회 서버 통신 */
+//        val timelineCall: Call<BaseResponse<ProfileTimelineData>> = ApiServiceImpl.service.responseProfileTimelineList(ApiServiceImpl.getToken())
+//
+//        timelineCall.enqueue(
+//
+//            onSuccess = {
+//                val data: ProfileTimelineData = it
+//                Log.d("chohee", data.toString())
+//            },
+//            onFail = {status, message ->  toast(message)
+//            }
+//        )
+
         adapter_timeline_category.data = listOf(
             TimelineCategoryData(
                 category = "인턴"

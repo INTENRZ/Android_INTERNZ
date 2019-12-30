@@ -119,7 +119,7 @@ class SetProfileActivity : AppCompatActivity() {
                 edtSetProfileContents.requestFocus()
                 Toast.makeText(applicationContext, "20자 이상의 한줄 소개를 작성해주세요.", Toast.LENGTH_SHORT).show()
             } else {
-
+                /*
                 //TODO! 서버 통신
                 val call = ApiServiceImpl.service.requestSettingAtFirstSignIn(
                     ApiServiceImpl.getToken(),
@@ -160,6 +160,7 @@ class SetProfileActivity : AppCompatActivity() {
                         Log.e("TAG", "통신 실패")
                     }
                 )
+                 */
 
 
 //                val call = ApiServiceImpl.service.requestSettingInFistSignIn(

@@ -25,13 +25,13 @@ class OtherProfileActivity : AppCompatActivity() {
         adapter_otherTimeline = MainProfileAdapter(this)
         rv_otherTimeline.adapter = adapter_otherTimeline
         rv_otherTimeline.layoutManager = LinearLayoutManager(this)
-        adapter_otherTimeline.data = listOf(
-            ProfileTimelineData(
-                timelineCategory = "인턴",
-                timelineTitle = "NAVER SNOW Jam Studio 기획/운영팀",
-                timelinePeriodStart = "19.01.01",
-                timelinePeriodEnd = "19.07.01"
-            )
-        )
+//        adapter_otherTimeline.data = listOf(
+//            ProfileTimelineData(
+//                timelineCategory = "인턴",
+//                timelineTitle = "NAVER SNOW Jam Studio 기획/운영팀",
+//                timelinePeriodStart = "19.01.01",
+//                timelinePeriodEnd = "19.07.01"
+//            )
+//        )
     }
 }

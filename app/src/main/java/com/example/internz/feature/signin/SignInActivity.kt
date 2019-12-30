@@ -92,15 +92,14 @@ class SignInActivity : AppCompatActivity() {
             )
 
             signIncall.enqueue(
-
                onSuccess = {
                    when {
                        it.isFirst == "0" -> {
                            setToken(it.token)
                            Log.e("TAG", "${it.token} 토큰입니다.")
+                           setToken(it.token)
                            val intent = Intent(applicationContext, JobSelectActivity::class.java)
                            startActivity(intent)
-                           finish()
 
                        }
                        it.isFirst == "1" -> {
@@ -120,6 +119,8 @@ class SignInActivity : AppCompatActivity() {
         txtSignInSignUp?.setOnClickListener {
             val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
             startActivity(intent)
+
+
         }
     }
 
@@ -136,3 +137,4 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 }
+

@@ -12,10 +12,15 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
+import com.example.internz.api.ApiServiceImpl.getUserIdx
+import com.example.internz.common.BaseResponse
 import com.example.internz.common.enqueue
+import com.example.internz.common.toast
+import com.example.internz.data.signup.SignUpRequestData
 import com.example.internz.data.signup2.SignUp2Data
 import com.example.internz.data.signup2.SignUp2RequestData
 import com.example.internz.feature.signin.SignInActivity
+import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.activity_sign_up2.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,8 +32,6 @@ import retrofit2.Response
  * TODO! 상단바 뒤로가기 이미지뷰 기능 추가
  */
 class SignUp2Activity : AppCompatActivity() {
-    private lateinit var userIndex : String
-    private var gender : Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +46,7 @@ class SignUp2Activity : AppCompatActivity() {
 //        userIndex = intent.getStringExtra("userIndex")
 
         //이름
-        edtSignUpName.addTextChangedListener(
+        edtSignUp2Name.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
@@ -58,7 +61,7 @@ class SignUp2Activity : AppCompatActivity() {
         )
 
         //닉네임
-        edtSignUpNick.addTextChangedListener(
+        edtSignUp2Nick.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
@@ -73,7 +76,7 @@ class SignUp2Activity : AppCompatActivity() {
         )
 
         //생년월일
-        edtSignUpBirth.addTextChangedListener(
+        edtSignUp2Birth.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
@@ -124,24 +127,49 @@ class SignUp2Activity : AppCompatActivity() {
 
         btnSignUpFinish.setOnClickListener {
             //선택된 라디오버튼 정보(성별)
+
+            val name = edtSignUp2Name.text.toString()
+            val nick = edtSignUp2Nick.text.toString()
+            val birth = edtSignUp2Birth.text.toString()
+            var gender : Int = 0
             val radioButton = findViewById<RadioButton>(radioGroup.checkedRadioButtonId)
             if (radioButton.text.toString().equals("남성")) {
                 gender = 1
             }
 
-            //TODO! 해당 코드는 서버 통신 후 successful 안으로 넣어야 함
-            val intent =
-                Intent(this@SignUp2Activity, SignInActivity::class.java)
-            //이전의 모든 액티비티 제거
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
+            val signUp2Call = ApiServiceImpl.service.requestSignUp2(
+                SignUp2RequestData(
+                    email = "bb",
+                    password = "bb",
+                    phone = "cc",
+                    name = "nn",
+                    nickname = "ee",
+                    age = "gg",
+                    sex = "0"
+                )
+            )
 
-            Log.e("TAG", "${edtSignUpName.text.toString()}, ${edtSignUpNick.text.toString()}, ${edtSignUpBirth.text.toString()}, ${radioButton.text.toString()}")
+            signUp2Call.enqueue(
+
+                onSuccess = {
+                    if(it.success == true)
+                    {
+                        val intent = Intent(applicationContext, SignInActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        startActivity(intent)
+
+                    }
+                },
+                onFail = {
+                        status, message -> toast(message)
+                }
+            )
+
         }
     }
 
     private fun changeBtnBackground() {
-        if (edtSignUpName.text.isEmpty() || edtSignUpNick.text.isEmpty() || (edtSignUpBirth.text.length < 6)) {
+        if (edtSignUp2Name.text.isEmpty() || edtSignUp2Nick.text.isEmpty() || (edtSignUp2Birth.text.length < 6)) {
             btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape)
         } else {
             if(imgbtnSignUpService.isSelected) {
