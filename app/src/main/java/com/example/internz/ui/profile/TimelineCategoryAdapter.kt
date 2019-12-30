@@ -12,9 +12,6 @@ import com.example.internz.feature.jobselect.SelectHelper
 
 
 
-
-
-
 class TimelineCategoryAdapter(private val context: Context) : RecyclerView.Adapter<TimelineCategoryViewHolder>(){
     var isAllChecked: Boolean = false
 
