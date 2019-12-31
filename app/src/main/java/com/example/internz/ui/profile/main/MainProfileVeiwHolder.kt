@@ -17,5 +17,6 @@ class MainProfileVeiwHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         timelineTitle.text = data.title
         timelinePeriod.text = data.start_date + " - " + data.end_date
         timelineCategory.text = data.category
+
     }
 }

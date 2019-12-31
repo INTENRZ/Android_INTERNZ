@@ -1,6 +1,7 @@
 package com.example.internz.feature.homerecomm
 
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -13,6 +14,7 @@ class HomerecommViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
     val img_thumbNail : ImageView = itemView.findViewById(R.id.img_itemRecommProfile_thumbnail)
     val txt_name : TextView = itemView.findViewById(R.id.txt_itemRecommProfile_name)
     val txt_introduce : TextView = itemView.findViewById(R.id.txt_itemRecommProfile_introduce)
+    val adapter = HomerecommAdapter(itemView.context)
 
     fun bind(data : RecommProfileData){
         txt_name.text = data.nickname

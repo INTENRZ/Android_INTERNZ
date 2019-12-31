@@ -50,7 +50,6 @@ class MainHomeFragment : Fragment() {
         rv_recomm_profile.adapter = adapter_recomm_profile
         rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-
         return view
     }
 

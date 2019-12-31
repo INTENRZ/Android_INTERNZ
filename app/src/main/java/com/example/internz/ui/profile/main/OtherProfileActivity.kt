@@ -3,6 +3,7 @@ package com.example.internz.ui.profile.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,9 +28,9 @@ class OtherProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_other_profile)
 
+        val userIdx = intent.getStringExtra("userIdx")
 
-        var userIdx = intent.getStringExtra("userIdx")
-        /* 프로필 정보 뷰 객체 초기화 */
+        /* 다른 사람 프로필 정보 뷰 객체 초기화 */
         val nickname = findViewById<TextView>(R.id.txt_otherProfile_name)
         val imgFace = findViewById<ImageView>(R.id.img_otherProfile_face)
         val followerNum = findViewById<TextView>(R.id.txt_otherProfile_follower_number)
@@ -39,10 +40,10 @@ class OtherProfileActivity : AppCompatActivity() {
         val job2 = findViewById<TextView>(R.id.txt_job2)
         val job3 = findViewById<TextView>(R.id.txt_job3)
 
-        val call: Call<BaseResponse<ProfileData>> = ApiServiceImpl.service.requestOtherProfile(ApiServiceImpl.getToken(), UserIdxRequestData( userIdx.toInt()))
-        call.enqueue(
+        /** 다른 사람 프로필 정보 조회 서버 통신 */
+        val profileCall: Call<BaseResponse<ProfileData>> = ApiServiceImpl.service.requestOtherProfile(ApiServiceImpl.getToken(), UserIdxRequestData( userIdx.toInt()))
+        profileCall.enqueue(
             onSuccess = {
-                Log.d("chohee", it.toString())
                 nickname.text = it.nickname
                 followerNum.text = it.followernumber
                 followingNum.text = it.followingnumber
@@ -61,9 +62,29 @@ class OtherProfileActivity : AppCompatActivity() {
             }
         )
 
+        /** 다른 사람 타임라인 조회 리사이클러뷰 서버 통신 */
+        rv_otherTimeline = findViewById(R.id.rv_otherProfile_timeline)
+        adapter_otherTimeline = MainProfileAdapter(this)
+        rv_otherTimeline.adapter = adapter_otherTimeline
+        rv_otherTimeline.layoutManager = LinearLayoutManager(this)
+
+        val call: Call<BaseResponse<List<ProfileTimelineData>>> = ApiServiceImpl.service.responseProfileTimelineList(ApiServiceImpl.getToken(), UserIdxRequestData(userIdx.toInt()))
+        call.enqueue(
+            onSuccess = {
+                //타임라인을 아무것도 가지고 있지 않는 다른 사람 프로필일 경우 "타임라인이 비어있습니다." 텍스트 띄우기
+                adapter_otherTimeline.data = it
+                txt_profile_black.visibility = View.INVISIBLE
+                adapter_otherTimeline.notifyDataSetChanged()
+            },
+            onFail = {status, message ->
+                if(message == "존재하지 않는 타임라인 입니다."){
+                    txt_profile_black.visibility = View.VISIBLE
+                }
+            }
+        )
 
         backBtn()
-        rvSetting()
+        //rvSetting()
     }
 
     /* 타임라인 리사이클러뷰 세팅 */
@@ -73,9 +94,6 @@ class OtherProfileActivity : AppCompatActivity() {
         rv_otherTimeline.adapter = adapter_otherTimeline
         rv_otherTimeline.layoutManager = LinearLayoutManager(this)
 
-
-        //val call: Call<>
-        //adapter_otherTimeline.notifyItemChanged()
     }
 
     fun backBtn(){
