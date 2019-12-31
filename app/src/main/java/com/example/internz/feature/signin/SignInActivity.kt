@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.api.ApiServiceImpl.setToken
+import com.example.internz.api.ApiServiceImpl.setUserIdx
 import com.example.internz.common.BaseResponse
 import com.example.internz.common.enqueue
 import com.example.internz.common.toast

@@ -20,7 +20,17 @@
         android:gravity="center_horizontal|center_vertical"
         android:background="#ffffff"/>
 
-    <androidx.core.widget.NestedScrollView
+    <ImageView
+        android:id="@+id/img_backarrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/timeline_detail_back_ic"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
+
+   <androidx.core.widget.NestedScrollView
         app:layout_constraintTop_toBottomOf="@+id/txt_otherProfile_main"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="#f4f4f4"

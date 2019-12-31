@@ -18,7 +18,6 @@ fun <T> Call<BaseResponse<T>>.enqueue(
     onSuccess: (T) -> Unit = {},
     onFail: (status: Int, message: String) -> Unit = {_, _ -> Unit}
 ) {
-    //ㅇㅋ
     this.enqueue(object : Callback<BaseResponse<T>> {
         override fun onFailure(call: Call<BaseResponse<T>>, t: Throwable) {
             onError(t)

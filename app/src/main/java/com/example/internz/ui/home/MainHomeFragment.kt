@@ -62,28 +62,29 @@ class MainHomeFragment : Fragment() {
         adapter_recomm_profile = HomerecommAdapter(context!!)
         rv_recomm_profile.adapter = adapter_recomm_profile
         rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        adapter_recomm_profile.data = listOf(
-            RecommData(
-                img_thumb = "ddd",
-                txt_name = "김초희",
-                txt_introduce = "ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ"
-            ),
-            RecommData(
-                img_thumb = "ddd",
-                txt_name = "최은지",
-                txt_introduce = "ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ"
-            ),
-            RecommData(
-                img_thumb = "ddd",
-                txt_name = "지현이",
-                txt_introduce = "ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ"
-            ),
-            RecommData(
-                img_thumb = "ddd",
-                txt_name = "윤주연",
-                txt_introduce = "ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ"
-            )
-        )
+
+//        adapter_recomm_profile.data = listOf(
+//            RecommData(
+//                img_thumb = "ddd",
+//                txt_name = "김초희",
+//                txt_introduce = "ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ"
+//            ),
+//            RecommData(
+//                img_thumb = "ddd",
+//                txt_name = "최은지",
+//                txt_introduce = "ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ"
+//            ),
+//            RecommData(
+//                img_thumb = "ddd",
+//                txt_name = "지현이",
+//                txt_introduce = "ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ"
+//            ),
+//            RecommData(
+//                img_thumb = "ddd",
+//                txt_name = "윤주연",
+//                txt_introduce = "ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ"
+//            )
+//        )
         adapter_recomm_profile.notifyDataSetChanged()
     }
 

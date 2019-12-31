@@ -66,7 +66,7 @@ class MainProfileFragment : Fragment() {
         val job3 = view.findViewById<TextView>(R.id.txt_job3)
 
         /* 프로필 정보 서버 요청 */
-        val profileCall: Call<BaseResponse<ProfileData>> = ApiServiceImpl.service.requestProfile(ApiServiceImpl.getToken(), UserIdxRequestData(2))
+        val profileCall: Call<BaseResponse<ProfileData>> = ApiServiceImpl.service.requestProfile(ApiServiceImpl.getToken())
         profileCall.enqueue(
             onSuccess = {
                 nickname.text = it.nickname
@@ -76,6 +76,12 @@ class MainProfileFragment : Fragment() {
                 job1.text = it.task_one
                 job2.text = it.task_two
                 job3.text = it.task_three
+                if(it.front_image == "undefined"){
+                    // 프로필 설정 이미지가 없을 경우 기본 이미지 지정
+                    imgFace.setImageDrawable(getResources().getDrawable(R.drawable.basicprofile_img))
+                }else{
+
+                }
             },
             onFail = {status, message ->  toast(message)
             }
@@ -94,10 +100,11 @@ class MainProfileFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(requestCode == TIMELINE_ADD_SUCCESS){
             if(resultCode == Activity.RESULT_OK){
-                /*프로필 조회 새로고침용 서버 요청*/
-                val timelineCall: Call<BaseResponse<List<ProfileTimelineData>>> = ApiServiceImpl.service.responseProfileTimelineList(ApiServiceImpl.getToken(),
-                    UserIdxRequestData(77)
-                )
+                /* 타임라인 조회 새로고침용 서버 요청*/
+                val timelineCall: Call<BaseResponse<List<ProfileTimelineData>>> = ApiServiceImpl.service.responseMyTimelineList(ApiServiceImpl.getToken())
+//                val timelineCall: Call<BaseResponse<List<ProfileTimelineData>>> = ApiServiceImpl.service.responseProfileTimelineList(ApiServiceImpl.getToken(),
+//                    UserIdxRequestData(77)
+//                )
                 timelineCall.enqueue(
                     onSuccess = {
                         adapter_profile_mainProfile.data = it
@@ -118,11 +125,11 @@ class MainProfileFragment : Fragment() {
         rv_profile_timeline.adapter = adapter_profile_mainProfile
         rv_profile_timeline.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        /** 프로필 타임라인 조회 서버 통신 **/
-        // 여기 setUserId로 2자리에 넣어야함
-        val timelineCall: Call<BaseResponse<List<ProfileTimelineData>>> = ApiServiceImpl.service.responseProfileTimelineList(ApiServiceImpl.getToken(),
-            UserIdxRequestData(77)
-        )
+        /** 자신의 타임라인 조회 서버 통신 */
+        val timelineCall: Call<BaseResponse<List<ProfileTimelineData>>> = ApiServiceImpl.service.responseMyTimelineList(ApiServiceImpl.getToken())
+//        val timelineCall: Call<BaseResponse<List<ProfileTimelineData>>> = ApiServiceImpl.service.responseProfileTimelineList(ApiServiceImpl.getToken(),
+//            UserIdxRequestData(77)
+//        )
         timelineCall.enqueue(
             onSuccess = {
                 adapter_profile_mainProfile.data = it

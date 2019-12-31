@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.profile.ProfileTimelineData
+import kotlinx.android.synthetic.main.activity_other_profile.*
 
 class OtherProfileActivity : AppCompatActivity() {
 
@@ -15,7 +16,7 @@ class OtherProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_other_profile)
-
+        backBtn()
         rvSetting()
     }
 
@@ -34,4 +35,11 @@ class OtherProfileActivity : AppCompatActivity() {
 //            )
 //        )
     }
+
+    fun backBtn(){
+        img_backarrow.setOnClickListener {
+            finish()
+        }
+    }
+
 }

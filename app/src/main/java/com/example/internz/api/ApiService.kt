@@ -38,16 +38,23 @@ interface ApiService {
     @PUT("/user/task")
     fun putJobSelect(@Body body : JobSelectPutData) : Call<JobSelectData>
 
-    //프로필 타임라인 리스트 조회
+    //타인 프로필 타임라인 리스트 조회
     @POST("/timeline/list")
     fun responseProfileTimelineList (@Header("token") token: String, @Body body: UserIdxRequestData) : Call<BaseResponse<List<ProfileTimelineData>>>
+
+    //자신 프로필 타임라인 리스트 조회
+    @POST("/timeline/list")
+    fun responseMyTimelineList (@Header("token") token: String) : Call<BaseResponse<List<ProfileTimelineData>>>
+
+    //메인 홈에 있는 추천 프로필 조회
+
 
     //새로운 타임라인 추가
     @POST("/timeline")
     fun requestTimelineAdd (@Header("token") token: String, @Body body: TimelineAddRequestData) : Call<BaseResponse<TimelineAddRequestData>>
 
-    //프로필 정보 조회
+    //자신 프로필 정보 조회
     @POST("/profile")
-    fun requestProfile(@Header("token") token: String, @Body body: UserIdxRequestData) : Call<BaseResponse<ProfileData>>
+    fun requestProfile(@Header("token") token: String) : Call<BaseResponse<ProfileData>>
 
 }
