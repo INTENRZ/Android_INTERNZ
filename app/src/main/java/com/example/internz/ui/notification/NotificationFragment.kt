@@ -65,14 +65,11 @@ class NotificationFragment : Fragment() {
                 //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.
                 when(position) {
                     0   ->  {
-                        Toast.makeText(context, "1", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "최신순 공고를 조회합니다.", Toast.LENGTH_SHORT).show()
+
                     }
                     1   ->  {
-                        Toast.makeText(context, "2", Toast.LENGTH_SHORT).show()
-                    }
-                    //...
-                    else -> {
-                        Toast.makeText(context, "3", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "조회순 공고를 조회합니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -81,7 +78,6 @@ class NotificationFragment : Fragment() {
 
             }
         }
-
     }
 
     fun makeNotificationList() {
@@ -105,81 +101,10 @@ class NotificationFragment : Fragment() {
             }
         )
 
-//        notificationListAdapter.data = listOf(
-//            NotificationListData(
-//                img = R.drawable.apr_corp,
-//                title = "에이피알",
-//                desc = "마케팅 콘텐츠 디자인",
-//                dday = "D-13"
-//            ),
-//            NotificationListData(
-//                img = R.drawable.apr_corp,
-//                title = "한국언론진흥재단",
-//                desc = "광고, 일반행정",
-//                dday = "D-13"
-//            ),
-//            NotificationListData(
-//                img = R.drawable.apr_corp,
-//                title = "라인스튜디오",
-//                desc = "모바일 게임 데이터 분석",
-//                dday = "D-13"
-//            ),
-//            NotificationListData(
-//                img = R.drawable.apr_corp,
-//                title = "쇼박스",
-//                desc = "마케팅팀",
-//                dday = "13"
-//            ),
-//            NotificationListData(
-//                img = R.drawable.apr_corp,
-//                title = "에이피알",
-//                desc = "마케팅 콘텐츠 디자인",
-//                dday = "D-13"
-//            ),
-//            NotificationListData(
-//                img = R.drawable.apr_corp,
-//                title = "에이피알",
-//                desc = "마케팅 콘텐츠 디자인",
-//                dday = "D-13"
-//            ),
-//            NotificationListData(
-//                img = R.drawable.apr_corp,
-//                title = "에이피알",
-//                desc = "마케팅 콘텐츠 디자인",
-//                dday = "D-13"
-//            ),
-//            NotificationListData(
-//                img = R.drawable.apr_corp,
-//                title = "에이피알",
-//                desc = "마케팅 콘텐츠 디자인",
-//                dday = "D-13"
-//            ),
-//            NotificationListData(
-//                img = R.drawable.apr_corp,
-//                title = "에이피알",
-//                desc = "마케팅 콘텐츠 디자인",
-//                dday = "D-13"
-//            ),
-//            NotificationListData(
-//                img = R.drawable.apr_corp,
-//                title = "에이피알",
-//                desc = "마케팅 콘텐츠 디자인",
-//                dday = "D-13"
-//            ),
-//            NotificationListData(
-//                img = R.drawable.apr_corp,
-//                title = "에이피알",
-//                desc = "마케팅 콘텐츠 디자인",
-//                dday = "D-13"
-//            )
-//        )
-
         notificationListAdapter.notifyDataSetChanged()
 
         //공고 -> 캘린더 이동 imageview click listener
         activity?.findViewById<ImageView>(R.id.imgNotiToCalendar)?.setOnClickListener {
-            Log.e("TAG", "버튼이 눌렸습니다.")
-            //TODO! fragment attach, detach, destroy..?
             startActivity(Intent(context, CalendarActivity::class.java))
         }
 

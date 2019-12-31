@@ -2,6 +2,7 @@ package com.example.internz.api
 
 import com.example.internz.common.BaseResponse
 import com.example.internz.common.CallWithoutDataExt
+import com.example.internz.data.filter.FilterResponseData
 import com.example.internz.data.firstsignin.FirstSignInRequestData
 import com.example.internz.data.jobselect.JobSelectData
 import com.example.internz.data.jobselect.JobSelectPutData
@@ -38,6 +39,10 @@ interface ApiService {
     //공고 최신 조회
     @GET("/job")
     fun requestAllNotification() : Call<BaseResponse<List<NotificationResponseData>>>
+
+    //공고 직군 필터링
+    @GET("/job/{task}")
+    fun requestJobFilter(@Path("task") task : String) : Call<BaseResponse<List<NotificationResponseData>>>
 
     @PUT("/user/task")
     fun putJobSelect(@Body body : JobSelectPutData) : Call<JobSelectData>

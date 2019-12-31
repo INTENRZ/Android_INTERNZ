@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.data.filter.FilterRequestData
+import com.example.internz.data.filter.FilterItem
 
 class FilterAdapter(private val context : Context) : RecyclerView.Adapter<FilterViewHolder>() {
-    var data = listOf<FilterRequestData>()
+    var data = listOf<FilterItem>()
 
     override fun getItemCount(): Int {
         return data.size

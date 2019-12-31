@@ -26,7 +26,6 @@ class NotificationListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     val desc : TextView = view.findViewById(R.id.txtNotilistDesc)
 
     fun bind(data : NotificationResponseData) {
-        //변수 초기화
         //TODO! 이미지 가운데 정렬 후 높이 맞춰야 함
         Glide
             .with(view.context)
@@ -43,9 +42,8 @@ class NotificationListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
         desc.text = data.team
 
-        //recycler item click listener
+        //recyclerview 선택시의 click event
         view.setOnClickListener {
-            Toast.makeText(view.context, "웹 뷰로 넘어가야 합니다.", Toast.LENGTH_SHORT).show()
             val intent = Intent(view.context, WebViewActivity::class.java)
                 .putExtra("url", data.url)
 
@@ -55,5 +53,7 @@ class NotificationListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         rightView.setOnClickListener {
             Toast.makeText(view.context, "캘린더에 추가되어야 합니다.", Toast.LENGTH_SHORT).show()
         }
+
+        //swipe 추가 선택시의 click event
     }
 }

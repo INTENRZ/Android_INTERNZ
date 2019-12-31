@@ -28,8 +28,8 @@ class WebViewActivity : AppCompatActivity() {
         webSetting.javaScriptEnabled = true //자바스크립트 허용
         webSetting.useWideViewPort = true //화면 사이즈 맞추기 허용
         webSetting.loadWithOverviewMode = true //컨텐츠 웹뷰보다 클 경우 스크린 크기에 맞게 조정
-        webSetting.setSupportZoom(false) //화면 줌 허용 여부
-        webSetting.builtInZoomControls = false //화면 두손가락 확대 축소 비허용
+        webSetting.setSupportZoom(true) //화면 줌 허용 여부
+        webSetting.builtInZoomControls = true //화면 두손가락 확대 축소 비허용
         webSetting.layoutAlgorithm = WebSettings.LayoutAlgorithm.SINGLE_COLUMN //컨텐츠 사이즈 맞추기
 
         //웹뷰 시작
