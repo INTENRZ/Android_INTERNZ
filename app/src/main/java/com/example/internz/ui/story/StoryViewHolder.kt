@@ -1,6 +1,7 @@
 package com.example.internz.ui.story
 
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +12,7 @@ import com.example.internz.ui.story.detailstory.DetailStoryActivity
 class StoryViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     private val view : View = view.findViewById(R.id.rvStoryItem)
 
+    private lateinit var storyIndex : String
     private val title : TextView = view.findViewById(R.id.txtStoryTitle)
     private val nickname : TextView = view.findViewById(R.id.txtStoryNick)
     private val date : TextView = view.findViewById(R.id.txtStoryDate)
@@ -20,13 +22,13 @@ class StoryViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         title.text = data.title
         nickname.text = data.nickname
         date.text = data.date
-        val storyIndex = data.storyIdx //스토리 인덱스
-
+        storyIndex = data.storyIdx.toString()
+        Log.e("TAG", "StoryViewHolder : storyIndex : ${storyIndex}")
 
         //스토리 click event
         view?.setOnClickListener {
             val intent = Intent(view.context, DetailStoryActivity::class.java)
-                .putExtra("userIndex", data.storyIdx)
+                .putExtra("storyIndex", storyIndex)
             view.context.startActivity(intent)
         }
     }

@@ -60,6 +60,11 @@ interface ApiService {
     @GET("/story/{storyIdx}/comment")
     fun requestComment(@Path("storyIdx") storyIdx: String) : Call<BaseResponse<List<CommentResponseData>>>
 
+    //스토리 댓글 생성
+    @POST("/story/{storyIdx}/comment")
+    fun requestMakeComment(@Path("storyIdx") storyIdx : String, @Header("token") token : String,
+                           @Body body : String) : Call<BaseResponse<List<CommentResponseData>>>
+
     @PUT("/user/task")
     fun putJobSelect(@Body body : JobSelectPutData) : Call<JobSelectData>
 

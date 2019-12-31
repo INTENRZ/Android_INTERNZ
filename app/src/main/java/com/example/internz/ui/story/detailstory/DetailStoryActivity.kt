@@ -25,10 +25,13 @@ class DetailStoryActivity : AppCompatActivity() {
     }
 
     private fun detailStoryFunction() {
+        Log.e("TAG", "DetailStoryActivity : storyIdx : ${intent.getStringExtra("storyIndex")}")
+
         //통신
         val call = ApiServiceImpl.service.requestDetailStory(
             ApiServiceImpl.getToken(),
-            intent.getStringExtra("storyIdx")
+//            intent.getStringExtra("storyIndex")
+        "15"
         )
 
         call.enqueue(
@@ -68,11 +71,11 @@ class DetailStoryActivity : AppCompatActivity() {
         imgDetailComment?.setOnClickListener {
             startActivity(
                 Intent(this, CommentActivity::class.java)
-                    .putExtra("storyIdx", intent.getStringExtra("storyIdx")))
+                    .putExtra("storyIndex", intent.getStringExtra("storyIndex")))
         }
 
-        //댓글(comment)로 이동 click listener
-        txtDetailCommentCtn?.setOnClickListener {
+        //댓글(comment) click listener
+        constDetail?.setOnClickListener {
             startActivity(Intent(this, CommentActivity::class.java))
         }
 

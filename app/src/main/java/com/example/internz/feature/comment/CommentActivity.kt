@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_comment.*
 class CommentActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter : CommentAdapter
+    private lateinit var storyIndex : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,9 +31,12 @@ class CommentActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+//        storyIndex = intent.getStringExtra("storyIndex")
+
         //TODO! 서버로 데이터 가져오기
         val call = ApiServiceImpl.service.requestComment(
-            intent.getStringExtra("storyIdx")
+//            storyIndex
+            "15"
         )
 
         call.enqueue(
@@ -50,8 +54,16 @@ class CommentActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
 
         //타임라인 delete click event
-        imgCommentDelete.setOnClickListener {
+        imgCommentDelete?.setOnClickListener {
             finish()
+        }
+
+        //edtiText
+        // edtCommentMake
+
+        //댓글 작성
+        imgCommentSend?.setOnClickListener {
+            //TODO! 서버 통신
         }
     }
 }
