@@ -124,7 +124,7 @@ class NotificationFragment : Fragment() {
                     Activity.RESULT_OK -> {
                         //서버 통신
                         val call = ApiServiceImpl.service.requestJobFilter(FilterHelper.filterText!!)
-                        
+
                         call.enqueue(
                             onSuccess = {
                                 notificationListAdapter.data = it

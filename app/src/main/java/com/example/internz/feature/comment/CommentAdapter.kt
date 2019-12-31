@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.comment.CommentData
+import com.example.internz.data.comment.CommentResponseData
 
 class CommentAdapter(private val context : Context) : RecyclerView.Adapter<CommentViewHolder>() {
-    var data = listOf<CommentData>()
+    var data = listOf<CommentResponseData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.rv_comment_item, parent, false)

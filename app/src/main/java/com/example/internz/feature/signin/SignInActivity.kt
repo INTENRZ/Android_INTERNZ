@@ -24,9 +24,6 @@ import java.util.regex.Pattern
 
 
 class SignInActivity : AppCompatActivity() {
-    //이메일 형식
-    private val pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE)
-
     private var backKeyPressedTime: Long = 0
     //다중 액티비티 종료
 
@@ -86,11 +83,6 @@ class SignInActivity : AppCompatActivity() {
                 Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
                 edtSignInPwd.requestFocus()
                 return@setOnClickListener
-            } else if (!pattern.matcher(edtSignInEmail.text.toString()).matches()) { //이상한 이메일 형식
-                Toast.makeText(this, "올바른 이메일 형식을 입력하세요.", Toast.LENGTH_SHORT).show()
-                edtSignInEmail.text.clear()
-                edtSignInEmail.requestFocus()
-                return@setOnClickListener
             }
 
             //TODO! 파트장님이 extension 이용해서 서버 통신 구현하신 부분
@@ -126,8 +118,6 @@ class SignInActivity : AppCompatActivity() {
         txtSignInSignUp?.setOnClickListener {
             val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
             startActivity(intent)
-
-
         }
     }
 

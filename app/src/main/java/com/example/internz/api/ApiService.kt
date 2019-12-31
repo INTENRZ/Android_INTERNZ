@@ -2,6 +2,7 @@ package com.example.internz.api
 
 import com.example.internz.common.BaseResponse
 import com.example.internz.common.CallWithoutDataExt
+import com.example.internz.data.comment.CommentResponseData
 import com.example.internz.data.filter.FilterResponseData
 import com.example.internz.data.firstsignin.FirstSignInRequestData
 import com.example.internz.data.jobselect.JobSelectData
@@ -15,6 +16,8 @@ import com.example.internz.data.signup.SignUpData
 import com.example.internz.data.signup.SignUpRequestData
 import com.example.internz.data.signup2.SignUp2Data
 import com.example.internz.data.signup2.SignUp2RequestData
+import com.example.internz.data.story.DetailStoryResponseData
+import com.example.internz.data.story.StoryCategoryRequestData
 import com.example.internz.data.story.StoryCategoryResponseData
 import retrofit2.Call
 import retrofit2.http.*
@@ -45,9 +48,17 @@ interface ApiService {
     @GET("/job/{task}")
     fun requestJobFilter(@Path("task") task : String) : Call<BaseResponse<List<NotificationResponseData>>>
 
-    //스토리 카테고리별 조회
-    @POST("/story/category")
-    fun requestCategoryStory(@Body body: String) : Call<BaseResponse<StoryCategoryResponseData>>
+    //스토리 카테고리/정렬 조회
+    @POST("/story/category/sort")
+    fun requestCategoryStory(@Body body: StoryCategoryRequestData) : Call<BaseResponse<List<StoryCategoryResponseData>>>
+
+    //스토리 내용 조회
+    @GET("/story/{storyIdx}")
+    fun requestDetailStory(@Header("token") token : String, @Path("storyIdx") storyIdx : String) : Call<BaseResponse<DetailStoryResponseData>>
+
+    //스토리 댓글 조회
+    @GET("/story/{storyIdx}/comment")
+    fun requestComment(@Path("storyIdx") storyIdx: String) : Call<BaseResponse<List<CommentResponseData>>>
 
     @PUT("/user/task")
     fun putJobSelect(@Body body : JobSelectPutData) : Call<JobSelectData>

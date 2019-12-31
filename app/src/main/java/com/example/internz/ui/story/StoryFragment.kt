@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
-import com.example.internz.data.story.StoryDataTemporal
-import com.example.internz.data.story.StoryDataTemporal2
+import com.example.internz.common.enqueue
+import com.example.internz.data.story.StoryCategoryRequestData
 import com.google.android.material.tabs.TabLayout
 
 
@@ -26,6 +26,7 @@ class StoryFragment : Fragment() {
 
     //사용자가 선택한 탭
     private var selectedTab : String = "전체"
+    private var selectedSort : String = "0"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,46 +58,16 @@ class StoryFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(view.context)
 
         //하단탭을 눌렀을때 기본으로 보여질 데이터 : 전체 + 최신순
-        //TODO!
-
-//        adapter.data = StoryDataTemporal().getStory()
-        adapter.notifyDataSetChanged()
+        requestServerBroadcast(selectedTab, selectedSort)
 
         //사용자가 선택한 탭
         view.findViewById<TabLayout>(R.id.tabStory).addOnTabSelectedListener(
             object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(p0: TabLayout.Tab?) {
-                    when(p0?.text) {
-                        "전체" -> {
-
-                        }
-                        "인턴" -> {
-
-                        }
-                        "대외활동" -> {
-
-                        }
-                        "공모전" -> {
-
-                        }
-                        "동아리" -> {
-
-                        }
-                        "자격증" -> {
-
-                        }
-                        "기타" -> {
-
-                        }
-                    }
-
-
-
                     selectedTab = p0?.text.toString()
 
-                    //TODO! 서버와 통신
-                    adapter.data = StoryDataTemporal2().getStory()
-                    adapter.notifyDataSetChanged()
+                    Log.e("TAG", "selectedTab : ${selectedTab}, selectedSort : ${selectedSort}")
+                    requestServerBroadcast(selectedTab, selectedSort)
                 }
 
                 override fun onTabReselected(p0: TabLayout.Tab?) {
@@ -111,20 +82,34 @@ class StoryFragment : Fragment() {
         spinner.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    when(position) {
-                        0 -> {
-                            //최신순 TODO! 서버요청
-                            Log.e("TAG", "StoryFragment의 최신순 조회")
-                        }
-                        1 -> {
-                            //조회순 TODO! 서버요청
-                            Log.e("TAG", "StoryFragment의 조회순 조회")
-                        }
-                    }
+                    selectedSort = position.toString()
+
+                    Log.e("TAG", "selectedTab : ${selectedTab}, selectedSort : ${selectedSort}")
+                    requestServerBroadcast(selectedTab, selectedSort)
                 }
 
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                 }
             }
+    }
+
+    private fun requestServerBroadcast(category : String, sort : String) {
+        val call = ApiServiceImpl.service.requestCategoryStory(
+            StoryCategoryRequestData(
+                category, sort
+            )
+        )
+
+        call.enqueue(
+            onSuccess = {
+                Log.e("TAG", "StoryFragment : onSuccess 메서드 실행")
+
+                adapter.data = it
+                adapter.notifyDataSetChanged()
+            },
+            onFail = {
+                status, message -> Log.e("TAG", "StoryFragment : onFail 메서드 실행, ${message}")
+            }
+        )
     }
 }

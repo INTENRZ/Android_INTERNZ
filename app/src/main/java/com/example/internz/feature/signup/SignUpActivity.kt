@@ -110,6 +110,9 @@ class SignUpActivity : AppCompatActivity() {
         //다음(click_event)
         //TODO! 모든 항목이 입력되어야 다음으로 넘어가도록 수정
         btnSignUpNext?.setOnClickListener {
+            val intent = Intent(applicationContext, SignUp2Activity::class.java)
+            startActivity(intent)
+
             //이메일 형식 검사
             if (!pattern.matcher(edtSignUpEmail.text.toString()).matches()) {
                 Toast.makeText(this, "올바른 이메일 형식을 입력하세요.", Toast.LENGTH_SHORT).show()
@@ -124,7 +127,6 @@ class SignUpActivity : AppCompatActivity() {
             )
 
             signUpCall.enqueue(
-
                 onSuccess = {
                     val intent = Intent(applicationContext, SignUp2Activity::class.java)
                     startActivity(intent)
