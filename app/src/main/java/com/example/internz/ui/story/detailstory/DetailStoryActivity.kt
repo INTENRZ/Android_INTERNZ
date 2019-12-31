@@ -13,22 +13,15 @@ import retrofit2.Call
 
 
 class DetailStoryActivity : AppCompatActivity() {
-
-    val storyIdx = intent.getStringExtra("storyIdx")
-
-    //val backicon : ImageView = findViewById(R.id.storyBackImg)
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_story)
 
-        requestDetailStory()
         detailStoryFunction()
     }
 
-    /** 상세 디테일 스토리 정보 서버 요청 */
-    fun requestDetailStory(){
-        val call: Call<BaseResponse<>>
-    }
+
 
     private fun detailStoryFunction() {
         //댓글(comment)로 이동 click listener
