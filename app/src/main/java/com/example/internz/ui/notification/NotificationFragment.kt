@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.notification.NotificationListData
 import com.example.internz.feature.calendar.CalendarActivity
+import com.example.internz.feature.filter.FilterActivity
 import kotlinx.android.synthetic.main.fragment_notification_list.*
 
 class NotificationFragment : Fragment() {
@@ -166,6 +167,12 @@ class NotificationFragment : Fragment() {
             Log.e("TAG", "버튼이 눌렸습니다.")
             //TODO! fragment attach, detach, destroy..?
             startActivity(Intent(context, CalendarActivity::class.java))
+        }
+
+        //필터 click event
+        imgNotiFilter?.setOnClickListener {
+            val intent = Intent(context, FilterActivity::class.java)
+            startActivity(intent)
         }
     }
 }
