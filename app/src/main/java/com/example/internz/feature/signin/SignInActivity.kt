@@ -86,33 +86,33 @@ class SignInActivity : AppCompatActivity() {
 
             //TODO! 파트장님이 extension 이용해서 서버 통신 구현하신 부분
             //로그인 요청
-            val signIncall: Call<BaseResponse<SignInData>> = ApiServiceImpl.service.requestSignIn(
+//            val signIncall: Call<BaseResponse<SignInData>> = ApiServiceImpl.service.requestSignIn(
+//
+//                SignInRequestData(email,pwd)
+//            )
 
-                SignInRequestData(email,pwd)
-            )
-
-            signIncall.enqueue(
-
-               onSuccess = {
-                   when {
-                       it.isFirst == "0" -> {
-                           setToken(it.token)
-                           val intent = Intent(applicationContext, JobSelectActivity::class.java)
-                           startActivity(intent)
-
-                       }
-                       it.isFirst == "1" -> {
-                           setToken(it.token)
-                           val intent = Intent(applicationContext, BottomBarActivity::class.java)
-                           startActivity(intent)
-
-                       }
-
-                   }
-               },
-                onFail = {status, message ->  toast(message)
-                }
-            )
+//            signIncall.enqueue(
+//
+//               onSuccess = {
+//                   when {
+//                       it.isFirst == "0" -> {
+//                           setToken(it.token)
+//                           val intent = Intent(applicationContext, JobSelectActivity::class.java)
+//                           startActivity(intent)
+//
+//                       }
+//                       it.isFirst == "1" -> {
+//                           setToken(it.token)
+//                           val intent = Intent(applicationContext, BottomBarActivity::class.java)
+//                           startActivity(intent)
+//
+//                       }
+//
+//                   }
+//               },
+//                onFail = {status, message ->  toast(message)
+//                }
+//            )
 
         }
 

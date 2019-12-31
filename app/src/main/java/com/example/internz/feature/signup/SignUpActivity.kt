@@ -12,10 +12,12 @@ import com.example.internz.common.enqueue
 import com.example.internz.common.toast
 import com.example.internz.data.signup.SignUpRequestData
 import com.example.internz.feature.jobselect.JobSelectActivity
-import com.example.internz.ui.BottomBarActivity
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.api.ApiServiceImpl.setUserIdx
+import com.example.internz.common.BaseResponse
+import com.example.internz.data.signup.SignUpData
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import retrofit2.Call
 
 /**
  * TODO! 상단바 뒤로가기 이미지뷰 기능 추가
@@ -105,11 +107,10 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         //다음(click_event)
-        //TODO! 모든 항목이 입력되어야 다음으로 넘어가도록 수정
         btnSignUpNext?.setOnClickListener {
             val email = edtSignUpEmail.text.toString()
 
-            val signUpCall = ApiServiceImpl.service.requestSignUp(
+            val signUpCall: Call<BaseResponse<SignUpData>> = ApiServiceImpl.service.requestSignUp(
                 SignUpRequestData(
                     email
                 )
@@ -119,14 +120,17 @@ class SignUpActivity : AppCompatActivity() {
 
                 onSuccess = {
 
-                    setUserIdx(it.userIndex)
-                    val intent = Intent(this@SignUpActivity, SignUp2Activity::class.java)
-                    startActivity(intent)
+                    if(it.success) {
+                        val intent = Intent(this@SignUpActivity, SignUp2Activity::class.java)
+                        startActivity(intent)
+                    }
+                    else
+                    {
+                        Log.e("hyuntaek", " onSuccess로 못들어 감 ")
+                    }
 
-                },
-
-                onFail = {status, message ->  toast(message)
                 }
+
             )
         }
 

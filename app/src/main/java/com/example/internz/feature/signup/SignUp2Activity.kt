@@ -141,34 +141,34 @@ class SignUp2Activity : AppCompatActivity() {
                 gender = 1
             }
 
-            val signUp2Call : Call<BaseResponse<SignUp2Data>> = ApiServiceImpl.service.requestSignUp2(
-                userIdx,
-                SignUp2RequestData(
-                    name,
-                    nick,
-                    birth,
-                    password,
-                    phone,
-                    gender
-                )
-            )
+//            val signUp2Call : Call<BaseResponse<SignUp2Data>> = ApiServiceImpl.service.requestSignUp2(
+//                userIdx,
+//                SignUp2RequestData(
+//                    name,
+//                    nick,
+//                    birth,
+//                    password,
+//                    phone,
+//                    gender
+//                )
+//            )
 
-            signUp2Call.enqueue(
-
-                onSuccess = {
-                    if(it.success == true)
-                    {
-                        val intent = Intent(applicationContext, SignInActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                        startActivity(intent)
-
-                    }
-                },
-
-                onFail = {
-                        status, message -> toast(message)
-                }
-            )
+//            signUp2Call.enqueue(
+//
+//                onSuccess = {
+//                    if(it.success == true)
+//                    {
+//                        val intent = Intent(applicationContext, SignInActivity::class.java)
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+//                        startActivity(intent)
+//
+//                    }
+//                },
+//
+//                onFail = {
+//                        status, message -> toast(message)
+//                }
+//            )
 
         }
     }

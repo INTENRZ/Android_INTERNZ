@@ -6,8 +6,6 @@ import com.google.gson.annotations.SerializedName
 data class SignUpData(
     @SerializedName("message")
     val message: String?,
-    @SerializedName("userIdx")
-    val userIndex: String, //TODO! 타입 컨펌
     @SerializedName("success")
     val success : Boolean //TODO! 타입 컨펌
 )

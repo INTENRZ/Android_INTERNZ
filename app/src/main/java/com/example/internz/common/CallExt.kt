@@ -8,14 +8,18 @@ import retrofit2.Response
 data class BaseResponse<T>(
     val message: String,
     val status: Int,
-    val success: Boolean,
-    val data: T?
+    val success: Boolean
 )
-
 fun <T> Call<BaseResponse<T>>.enqueue(
     onError: (Throwable) -> Unit = onStandardError,
-    onSuccess: (T) -> Unit = {},
-    onFail: (status: Int, message: String) -> Unit = {_, _ -> Unit}
+    onSuccess: (BaseResponse<T>) -> Unit = {},
+    onFail: (Response<BaseResponse<T>>) -> Unit = {
+        Log.v("CallError", it.errorBody()?.string()?:"")
+        Log.v("CallError", it.code().toString())
+        Log.v("CallError", it.toString())
+        Log.v("CallError", it.errorBody()?.toString()?:"")
+
+    }
 ) {
     this.enqueue(object : Callback<BaseResponse<T>> {
         override fun onFailure(call: Call<BaseResponse<T>>, t: Throwable) {
@@ -24,11 +28,11 @@ fun <T> Call<BaseResponse<T>>.enqueue(
 
         override fun onResponse(call: Call<BaseResponse<T>>, response: Response<BaseResponse<T>>) {
             if (response.isSuccessful) {
-                response.body()?.data?.let {
+                response.body()?.let {
                     onSuccess(it)
-                } ?: onFail(response.body()?.status?:-1, response.body()?.message.orEmpty())
+                } ?: onFail(response)
             } else {
-                onFail(response.body()?.status?:-1, response.body()?.message.orEmpty())
+                onFail(response)
             }
         }
     })
