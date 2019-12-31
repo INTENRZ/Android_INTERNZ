@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.calendar.CalendarData
+import com.example.internz.data.calendar.CalenderResponseData
 
 class CalendarAdapter(private val context : Context) : RecyclerView.Adapter<CalendarViewHolder>() {
-    var data = listOf<CalendarData>()
+    var data = listOf<CalenderResponseData>()
 
     override fun getItemCount(): Int {
         return data.size

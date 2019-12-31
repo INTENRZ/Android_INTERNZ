@@ -1,9 +1,9 @@
 package com.example.internz.ui.notification
 
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.provider.CalendarContract
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,12 +15,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.internz.R
-import com.example.internz.data.notification.NotificationListData
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
+import com.example.internz.common.toast
 import com.example.internz.feature.calendar.CalendarActivity
+import com.example.internz.feature.filter.FilterActivity
+import com.example.internz.feature.filter.FilterHelper
 import kotlinx.android.synthetic.main.fragment_notification_list.*
 
 class NotificationFragment : Fragment() {
-
+    private val REQUEST_CODE = 200
 
     private lateinit var rvNotificationList: RecyclerView
     private lateinit var notificationListAdapter : NotificationListAdapter
@@ -61,23 +65,18 @@ class NotificationFragment : Fragment() {
                 //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.
                 when(position) {
                     0   ->  {
-                        Toast.makeText(context, "1", Toast.LENGTH_SHORT).show()
+                        Log.e("TAG", "NotificationFragment : 최신순 공고를 조회합니다.")
+
                     }
                     1   ->  {
-                        Toast.makeText(context, "2", Toast.LENGTH_SHORT).show()
-                    }
-                    //...
-                    else -> {
-                        Toast.makeText(context, "3", Toast.LENGTH_SHORT).show()
+                        Log.e("TAG", "NotificationFragment : 조회순 공고를 조회합니다.")
                     }
                 }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-
             }
         }
-
     }
 
     fun makeNotificationList() {
@@ -89,83 +88,58 @@ class NotificationFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
 
-        notificationListAdapter.data = listOf(
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "한국언론진흥재단",
-                desc = "광고, 일반행정",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "라인스튜디오",
-                desc = "모바일 게임 데이터 분석",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "쇼박스",
-                desc = "마케팅팀",
-                dday = "13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            )
+        val call = ApiServiceImpl.service.requestAllNotification()
 
+        call.enqueue(
+            onSuccess = {
+                notificationListAdapter.data = it
+                notificationListAdapter.notifyDataSetChanged()
+            },
+            onFail = {
+                status, message -> toast(message)
+            }
         )
 
         notificationListAdapter.notifyDataSetChanged()
 
         //공고 -> 캘린더 이동 imageview click listener
         activity?.findViewById<ImageView>(R.id.imgNotiToCalendar)?.setOnClickListener {
-            Log.e("TAG", "버튼이 눌렸습니다.")
-            //TODO! fragment attach, detach, destroy..?
             startActivity(Intent(context, CalendarActivity::class.java))
         }
+
+        //필터 click event
+        imgNotiFilter?.setOnClickListener {
+            val intent = Intent(context, FilterActivity::class.java)
+
+            startActivityForResult(intent, REQUEST_CODE)
+        }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when(requestCode) {
+            REQUEST_CODE -> {
+                when(resultCode) {
+                    Activity.RESULT_OK -> {
+                        //서버 통신
+                        val call = ApiServiceImpl.service.requestJobFilter(FilterHelper.filterText!!)
+
+                        call.enqueue(
+                            onSuccess = {
+                                notificationListAdapter.data = it
+                                notificationListAdapter.notifyDataSetChanged()
+                            },
+                            onFail = {
+                                    status, message ->
+                                Log.e("TAG", "FilterActivity : status : ${status}, message : ${message}")
+                            }
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+
 }

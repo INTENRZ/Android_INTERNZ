@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.data.notification.NotificationListData
+import com.example.internz.data.notification.NotificationResponseData
 
 class NotificationListAdapter (private val context : Context) : RecyclerView.Adapter<NotificationListViewHolder>() {
-    var data =  listOf<NotificationListData>()
+    var data =  listOf<NotificationResponseData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationListViewHolder {
 

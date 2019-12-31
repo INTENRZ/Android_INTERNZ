@@ -10,7 +10,6 @@ import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.api.ApiServiceImpl.setToken
-import com.example.internz.api.ApiServiceImpl.setUserIdx
 import com.example.internz.common.BaseResponse
 import com.example.internz.common.enqueue
 import com.example.internz.common.toast
@@ -21,10 +20,10 @@ import com.example.internz.feature.signup.SignUpActivity
 import com.example.internz.ui.BottomBarActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import retrofit2.Call
+import java.util.regex.Pattern
 
 
 class SignInActivity : AppCompatActivity() {
-
     private var backKeyPressedTime: Long = 0
     //다중 액티비티 종료
 
@@ -76,11 +75,11 @@ class SignInActivity : AppCompatActivity() {
             val pwd = edtSignInPwd.text.toString()
 
             //로그인 요청 to Server 불가
-            if (email.isEmpty()) {
+            if (email.isEmpty()) { //이메일 미기입
                 toast("이메일을 입력하세요.")
                 edtSignInEmail.requestFocus()
                 return@setOnClickListener
-            } else if (pwd.isEmpty()) {
+            } else if (pwd.isEmpty()) { //비밀번호 미기입
                 Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
                 edtSignInPwd.requestFocus()
                 return@setOnClickListener
@@ -118,8 +117,6 @@ class SignInActivity : AppCompatActivity() {
         txtSignInSignUp?.setOnClickListener {
             val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
             startActivity(intent)
-
-
         }
     }
 

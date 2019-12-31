@@ -10,10 +10,17 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
+import com.example.internz.api.ApiService
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
 import com.example.internz.common.toast
+import com.example.internz.data.firstsignin.FirstSignInRequestData
+import com.example.internz.feature.SelectHelper
+import com.example.internz.ui.BottomBarActivity
 import kotlinx.android.synthetic.main.activity_set_profile.*
 
 class SetProfileActivity : AppCompatActivity() {
@@ -107,9 +114,7 @@ class SetProfileActivity : AppCompatActivity() {
                 edtSetProfileContents.requestFocus()
                 Toast.makeText(applicationContext, "20자 이상의 한줄 소개를 작성해주세요.", Toast.LENGTH_SHORT).show()
             } else {
-                /*
-                //TODO! 서버 통신
-                val call = ApiServiceImpl.service.requestSettingAtFirstSignIn(
+                val call = ApiServiceImpl.service.requestFirstSignIn(
                     ApiServiceImpl.getToken(),
                     FirstSignInRequestData(
                         SelectHelper.arrayList.get(0),
@@ -121,80 +126,16 @@ class SetProfileActivity : AppCompatActivity() {
                 )
 
                 call.enqueue(
-                    //통신 성공
                     onSuccess = {
-                        when(it.status) {
-                            "200" -> {
-                                //입력 완료 후 BottomBarActivity 이동
-                                val intent = Intent(this@SetProfileActivity, BottomBarActivity::class.java)
-                                startActivity(intent)
+                        val intent = Intent(this@SetProfileActivity, BottomBarActivity::class.java)
+                        startActivity(intent)
 
-                                ActivityCompat.finishAffinity(activity)
-                                Log.e("TAG", "status는 200입니다.")
-                            }
-                            "100" -> {
-                                Toast.makeText(applicationContext, it.message, Toast.LENGTH_SHORT).show()
-                                Log.e("TAG", "status는 100입니다.")
-                            }
-                            "110" -> {
-                                Toast.makeText(applicationContext, it.message, Toast.LENGTH_SHORT).show()
-                                Log.e("TAG", "status는 110입니다.")
-                            }
-                        }
+                        ActivityCompat.finishAffinity(activity)
                     },
-                    //통신 실패
                     onFail = {
                         status, message -> toast(message)
-                        Log.e("TAG", "통신 실패")
                     }
                 )
-                 */
-
-
-//                val call = ApiServiceImpl.service.requestSettingInFistSignIn(
-//                    ApiServiceImpl.getToken(),
-//                    FirstSignInRequestData(
-//                        SelectHelper.arrayList.get(0),
-//                        SelectHelper.arrayList.get(1),
-//                        SelectHelper.arrayList.get(2),
-//                        imagePath,
-//                        edtSetProfileContents.text.toString()
-//                    )
-//                )
-//
-//                call.enqueue(
-//                    object : Callback<FirstSignInResponseData> {
-//                        override fun onFailure(call: Call<FirstSignInResponseData>, t: Throwable) {
-//                            Log.e("TAG", "FirstSignInResponseData is not activated")
-//                        }
-//
-//                        override fun onResponse(
-//                            call: Call<FirstSignInResponseData>,
-//                            response: Response<FirstSignInResponseData>
-//                        ) {
-//                            if (response.isSuccessful) {
-//                                if(response.body()?.status.equals("200")) {
-//                                    val intent = Intent(this@SetProfileActivity, BottomBarActivity::class.java)
-//                                    startActivity(intent)
-//
-//                                    ActivityCompat.finishAffinity(activity)
-//                                }
-//                                else if (response.body()?.status.equals("100")) {
-//                                    Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
-//                                }
-//                                else if (response.body()?.status.equals("110")) {
-//                                    Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
-//                                }
-//                                else {
-//                                    //...
-//                                }
-//                            }
-//                            else {
-//                                Log.e("TAG", "FirstSignInResponseData broadcast fail")
-//                            }
-//                        }
-//                    }
-//                )
             }
         }
     }
