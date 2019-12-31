@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.home.StoryData
+import com.example.internz.data.home.TodayStoryData
 import com.example.internz.ui.profile.main.OtherProfileActivity
 import com.example.internz.ui.story.detailstory.DetailStoryActivity
 
 class HomestoryAdapter(private val context : Context) : RecyclerView.Adapter<HomestoryViewHolder>() {
 
-    var data = listOf<StoryData>()
+//    var data = listOf<StoryData>()
+    var data = listOf<TodayStoryData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomestoryViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.rv_home_story_item, parent, false)

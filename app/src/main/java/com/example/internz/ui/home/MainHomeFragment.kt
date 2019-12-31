@@ -2,6 +2,7 @@ package com.example.internz.ui.home
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +12,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
 import com.example.internz.R
-import com.example.internz.data.home.RecommData
-import com.example.internz.data.home.StoryData
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.BaseResponse
+import com.example.internz.common.enqueue
+import com.example.internz.common.toast
+import com.example.internz.data.home.HomeResponseData
 import com.example.internz.feature.homestory.HomestoryAdapter
 import com.example.internz.feature.homecustomnotification.CustomNotificationAdapter
 import com.example.internz.feature.homerecomm.HomerecommAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
+import retrofit2.Call
 
 class MainHomeFragment : Fragment() {
     private lateinit var rv_recomm_profile: RecyclerView
@@ -32,21 +37,72 @@ class MainHomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
 
+
     ): View? {
         // 하단 탭에 필요한 코드
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_main_home, container, false)
+
+        /* 추천 프로필 리사이클러뷰 세팅 + 통신 */
+        rv_recomm_profile = view!!.findViewById(R.id.rv_home_recommProfile)
+        adapter_recomm_profile = HomerecommAdapter(context!!)
+        rv_recomm_profile.adapter = adapter_recomm_profile
+        rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+
         return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        /* 추천 프로필 리사이클러뷰 세팅 */
+        rv_recomm_profile = view!!.findViewById(R.id.rv_home_recommProfile)
+        adapter_recomm_profile = HomerecommAdapter(context!!)
+        rv_recomm_profile.adapter = adapter_recomm_profile
+        rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        /* 맞춤 공고 리사이클러뷰 세팅 */
+
+        /* 오늘의 스토리 리사이클러뷰 세팅 */
+        rv_home_story = view!!.findViewById(R.id.rv_homestory)
+        apdater_homestory = HomestoryAdapter(context!!)
+        rv_home_story.adapter = apdater_homestory
+        rv_home_story.layoutManager = LinearLayoutManager(context!!, LinearLayoutManager.VERTICAL, false)
+
+//        val customAdapter : PagerAdapter = CustomNotificationAdapter(childFragmentManager)
+//        viewpager.adapter = customAdapter
+//        tablayout.setupWithViewPager(viewpager)
+
+        responseMainHome()
         rvCustom()
-        rvRecommProfile()
-        rvStory()
+        //rvRecommProfile()
+        //rvStory()
     }
 
+    /* 메인 홈 "맞춤 공고", "추천 프로필", "오늘의 스토리" 서버 통신 */
+    fun responseMainHome(){
+        val call: Call<BaseResponse<HomeResponseData>> = ApiServiceImpl.service.responseMainHome(ApiServiceImpl.getToken())
+        call.enqueue(
+            onSuccess = {
+                Log.d("chohee", "통신 성공")
+                // 메인 홈 추천 프로필에 데이터 세팅
+                adapter_recomm_profile.data = it.profile
+                adapter_recomm_profile.notifyDataSetChanged()
+
+                // 메인 오늘의 스토리에 데이터 세팅
+                apdater_homestory.data = it.story
+                rv_home_story.overScrollMode = View.OVER_SCROLL_NEVER
+                apdater_homestory.notifyDataSetChanged()
+
+                // 메인 맞춤 공고에 데이터 세팅
+
+            },
+            onFail = {status, message ->  toast(message)
+                Log.d("chohee", "실패요 ㅜ")
+            }
+        )
+    }
 
     fun rvCustom() {
 
@@ -58,7 +114,7 @@ class MainHomeFragment : Fragment() {
 
     /* home 화면 "추천 프로필" 리사이클러뷰 init */
     fun rvRecommProfile(){
-        rv_recomm_profile = view!!.findViewById(R.id.rv_home_recommProfile)
+//        rv_recomm_profile = view!!.findViewById(R.id.rv_home_recommProfile)
         adapter_recomm_profile = HomerecommAdapter(context!!)
         rv_recomm_profile.adapter = adapter_recomm_profile
         rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -96,24 +152,24 @@ class MainHomeFragment : Fragment() {
         rv_home_story.layoutManager = LinearLayoutManager(context!!, LinearLayoutManager.VERTICAL, false)
 
 
-        apdater_homestory.data = listOf(
-            StoryData(
-                img = R.drawable.home_recomm_story3_img,
-                desc = "영화번역가는 AI 때문에 사라질 직업인가"
-            ),
-            StoryData(
-                img = R.drawable.home_recomm_story3_img,
-                desc = "코딩 테스트부터 코딩 인턴까지 코딩에 대한 A to Z"
-            ),
-            StoryData(
-                img = R.drawable.home_recomm_story3_img,
-                desc = "디자인 인턴 합격까지 과정! 서류부터 면접까지!"
-            ),
-            StoryData(
-                img = R.drawable.home_recomm_story3_img,
-                desc = "비 전공자가 알아본 외국계 디자인 인턴과정"
-            )
-        )
+//        apdater_homestory.data = listOf(
+//            StoryData(
+//                img = R.drawable.home_recomm_story3_img,
+//                desc = "영화번역가는 AI 때문에 사라질 직업인가"
+//            ),
+//            StoryData(
+//                img = R.drawable.home_recomm_story3_img,
+//                desc = "코딩 테스트부터 코딩 인턴까지 코딩에 대한 A to Z"
+//            ),
+//            StoryData(
+//                img = R.drawable.home_recomm_story3_img,
+//                desc = "디자인 인턴 합격까지 과정! 서류부터 면접까지!"
+//            ),
+//            StoryData(
+//                img = R.drawable.home_recomm_story3_img,
+//                desc = "비 전공자가 알아본 외국계 디자인 인턴과정"
+//            )
+//        )
 
         rv_home_story.overScrollMode = View.OVER_SCROLL_NEVER
 

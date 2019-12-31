@@ -7,6 +7,7 @@ import com.example.internz.data.jobselect.JobSelectPutData
 import com.example.internz.data.profile.ProfileTimelineData
 import com.example.internz.data.profile.TimelineAddRequestData
 import com.example.internz.data.UserIdxRequestData
+import com.example.internz.data.home.HomeResponseData
 import com.example.internz.data.profile.ProfileData
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
@@ -46,8 +47,9 @@ interface ApiService {
     @POST("/timeline/list")
     fun responseMyTimelineList (@Header("token") token: String) : Call<BaseResponse<List<ProfileTimelineData>>>
 
-    //메인 홈에 있는 추천 프로필 조회
-
+    //메인 홈에 있는 데이터 조회
+    @GET("/home")
+    fun responseMainHome(@Header("token") token: String) : Call<BaseResponse<HomeResponseData>>
 
     //새로운 타임라인 추가
     @POST("/timeline")
