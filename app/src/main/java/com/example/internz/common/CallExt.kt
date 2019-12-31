@@ -28,7 +28,6 @@ fun <T> Call<BaseResponse<T>>.enqueue(
             if (response.isSuccessful) {
                 response.body()?.data?.let {
                     onSuccess(it)
-
                 } ?: onFail(response.body()?.status?:-1, response.body()?.message.orEmpty())
             } else {
                 onFail(response.body()?.status?:-1, response.body()?.message.orEmpty())

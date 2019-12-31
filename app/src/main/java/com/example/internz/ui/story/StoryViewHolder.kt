@@ -23,12 +23,13 @@ class StoryViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         nickname.text = data.nickname
         date.text = data.date
         storyIndex = data.storyIdx.toString()
-        Log.e("TAG", "StoryViewHolder : storyIndex : ${storyIndex}")
+
+        StoryHelper.setStoryIndex(data.storyIdx.toString())
 
         //스토리 click event
         view?.setOnClickListener {
             val intent = Intent(view.context, DetailStoryActivity::class.java)
-                .putExtra("storyIndex", storyIndex)
+            StoryHelper.setStoryIndex(storyIndex)
             view.context.startActivity(intent)
         }
     }

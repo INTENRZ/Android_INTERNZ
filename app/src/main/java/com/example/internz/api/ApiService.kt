@@ -19,6 +19,7 @@ import com.example.internz.data.signup2.SignUp2RequestData
 import com.example.internz.data.story.DetailStoryResponseData
 import com.example.internz.data.story.StoryCategoryRequestData
 import com.example.internz.data.story.StoryCategoryResponseData
+import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -54,7 +55,7 @@ interface ApiService {
 
     //스토리 내용 조회
     @GET("/story/{storyIdx}")
-    fun requestDetailStory(@Header("token") token : String, @Path("storyIdx") storyIdx : String) : Call<BaseResponse<DetailStoryResponseData>>
+    fun requestDetailStory(@Header("token") token : String, @Path("storyIdx") storyIdx : String) : Call<BaseResponse<List<DetailStoryResponseData>>>
 
     //스토리 댓글 조회
     @GET("/story/{storyIdx}/comment")
@@ -62,8 +63,8 @@ interface ApiService {
 
     //스토리 댓글 생성
     @POST("/story/{storyIdx}/comment")
-    fun requestMakeComment(@Path("storyIdx") storyIdx : String, @Header("token") token : String,
-                           @Body body : String) : Call<BaseResponse<List<CommentResponseData>>>
+    fun requestMakeComment(@Header("token") token : String, @Path("storyIdx") storyIdx : String,
+                           @Body content : String) : Call<BaseResponse<List<CommentResponseData>>>
 
     @PUT("/user/task")
     fun putJobSelect(@Body body : JobSelectPutData) : Call<JobSelectData>
