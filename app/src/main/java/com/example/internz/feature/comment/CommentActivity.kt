@@ -10,6 +10,7 @@ import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.enqueue
 import com.example.internz.data.comment.CommentDataTemporal
+import com.example.internz.data.comment.CommentRequestData
 import com.example.internz.ui.story.StoryHelper
 import kotlinx.android.synthetic.main.activity_comment.*
 
@@ -46,10 +47,10 @@ class CommentActivity : AppCompatActivity() {
                 val call = ApiServiceImpl.service.requestMakeComment(
                     ApiServiceImpl.getToken(),
                     StoryHelper.getStoryIndex(),
-                    edtCommentMake.text.toString()
+                    CommentRequestData(edtCommentMake.text.toString())
                 )
 
-                Log.e("TAG", "CommentActivity : ${StoryHelper.getStoryIndex()}, ${ApiServiceImpl.getToken()}, ${edtCommentMake.text.toString()}")
+                Log.e("TAG", "CommentActivity : ${StoryHelper.getStoryIndex()}, ${ApiServiceImpl.getToken()}}")
 
                 call.enqueue(
                     onSuccess = {
@@ -57,10 +58,11 @@ class CommentActivity : AppCompatActivity() {
                         adapter.data = it
                         adapter.notifyDataSetChanged()
 
-                        Log.e("TAG", "CommentActivity : onSuccess 메서드 실행됨")
-
                         //댓글 리스트도 갱신
                         getComment()
+                        Log.e("TAG", "CommentActivity : onSuccess 메서드 실행됨")
+
+                        edtCommentMake.text.clear()
                     },
                     onFail = { status, message ->
                         Log.e("TAG", "CommentActivity : onFail 메서드 실행됨, ${message}")

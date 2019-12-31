@@ -9,15 +9,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.applandeo.materialcalendarview.CalendarView
 import com.applandeo.materialcalendarview.EventDay
 import com.example.internz.R
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
 import com.example.internz.data.calendar.CalendarDataTemporal
 import kotlinx.android.synthetic.main.activity_calendar.*
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.util.*
 
 class CalendarActivity : AppCompatActivity() {
-    private lateinit var recyclerView : RecyclerView
-    private lateinit var adapter : CalendarAdapter
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: CalendarAdapter
 
     //달력
-    private lateinit var calendar : java.util.Calendar
+    private lateinit var calendar: java.util.Calendar
     private lateinit var calendarView: CalendarView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,20 +33,36 @@ class CalendarActivity : AppCompatActivity() {
     }
 
     private fun calendarFunction() {
-
-        //RecyclerView setting
+        //하단 recycler view 목록 지정
         recyclerView = findViewById(R.id.rvCalendar)
-        adapter =
-            CalendarAdapter(this)
+        adapter = CalendarAdapter(this)
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        adapter.data = CalendarDataTemporal().getCalendarData()
-        adapter.notifyDataSetChanged()
+        val localDateTime = LocalDateTime.now(ZoneId.of("Asia/Seoul"))
+        val date = localDateTime.toString().substring(0, 7)
+        Log.e("TAG", "${date}")
 
-        if(adapter.itemCount == 0) {
+        //공고 -> 캘린더 액티비티 이동시 띄울 전체 달력 데이터
+        val call = ApiServiceImpl.service.requestCalenderMonth(ApiServiceImpl.getToken(), date)
+
+        call.enqueue(
+            onSuccess = {
+                adapter.data = it
+                adapter.notifyDataSetChanged()
+
+                Log.e("TAG", "CalendarActivity : onSuccess 메서드 실행됨")
+            },
+            onFail = {
+                status, message -> Log.e("TAG", "CalendarActivity : onFail 메서드 실행됨")
+            }
+        )
+
+        if (adapter.itemCount == 0) {
             txtCalendarEmpty.text = "공고를 추가해주세요."
+        } else {
+            txtCalendarEmpty.text = ""
         }
 
         //스크롤 이펙트 제거
@@ -62,7 +83,7 @@ class CalendarActivity : AppCompatActivity() {
         //TODO ERROR! 무슨짓을 하던 다음달로 설정됨
         events += events.plus(EventDay(calendar, R.drawable.basicprofile_img))
 
-        var calendar2 : java.util.Calendar = java.util.Calendar.getInstance()
+        var calendar2: java.util.Calendar = java.util.Calendar.getInstance()
         calendar2.add(java.util.Calendar.DAY_OF_MONTH, 7) //5일에 이벤트 추가
         events += events.plus(EventDay(calendar2, R.drawable.profile_img))
 

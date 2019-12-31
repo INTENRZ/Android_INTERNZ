@@ -2,6 +2,8 @@ package com.example.internz.api
 
 import com.example.internz.common.BaseResponse
 import com.example.internz.common.CallWithoutDataExt
+import com.example.internz.data.calendar.CalenderResponseData
+import com.example.internz.data.comment.CommentRequestData
 import com.example.internz.data.comment.CommentResponseData
 import com.example.internz.data.filter.FilterResponseData
 import com.example.internz.data.firstsignin.FirstSignInRequestData
@@ -64,7 +66,11 @@ interface ApiService {
     //스토리 댓글 생성
     @POST("/story/{storyIdx}/comment")
     fun requestMakeComment(@Header("token") token : String, @Path("storyIdx") storyIdx : String,
-                           @Body content : String) : Call<BaseResponse<List<CommentResponseData>>>
+                           @Body content : CommentRequestData) : Call<BaseResponse<List<CommentResponseData>>>
+
+    //캘린더 홈 조회
+    @GET("/calender/home/{month}")
+    fun requestCalenderMonth(@Header("token") token : String, @Path("month") month : String) : Call<BaseResponse<List<CalenderResponseData>>>
 
     @PUT("/user/task")
     fun putJobSelect(@Body body : JobSelectPutData) : Call<JobSelectData>
