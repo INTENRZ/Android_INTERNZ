@@ -27,8 +27,9 @@
 
         <TextView
             android:id="@+id/txtNotilistDesc"
-            android:layout_width="wrap_content"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
             android:text="마케팅 콘텐츠 디자인"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"

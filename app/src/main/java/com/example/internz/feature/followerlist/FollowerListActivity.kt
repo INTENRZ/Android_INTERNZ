@@ -6,9 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.follow.FollowerData
-import com.example.internz.data.notification.NotificationListData
-import com.example.internz.ui.notification.NotificationListAdapter
-import com.example.internz.ui.notification.NotificationViewModel
 
 class FollowerListActivity : AppCompatActivity() {
 

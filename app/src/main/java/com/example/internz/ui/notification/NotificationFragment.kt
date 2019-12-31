@@ -15,7 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.internz.R
-import com.example.internz.data.notification.NotificationListData
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
+import com.example.internz.common.toast
+import com.example.internz.data.notification.NotificationResponseData
 import com.example.internz.feature.calendar.CalendarActivity
 import com.example.internz.feature.filter.FilterActivity
 import kotlinx.android.synthetic.main.fragment_notification_list.*
@@ -90,75 +93,86 @@ class NotificationFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
 
-        notificationListAdapter.data = listOf(
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "한국언론진흥재단",
-                desc = "광고, 일반행정",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "라인스튜디오",
-                desc = "모바일 게임 데이터 분석",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "쇼박스",
-                desc = "마케팅팀",
-                dday = "13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            ),
-            NotificationListData(
-                img = R.drawable.apr_corp,
-                title = "에이피알",
-                desc = "마케팅 콘텐츠 디자인",
-                dday = "D-13"
-            )
+        val call = ApiServiceImpl.service.requestAllNotification()
 
+        call.enqueue(
+            onSuccess = {
+                notificationListAdapter.data = it
+                notificationListAdapter.notifyDataSetChanged()
+            },
+            onFail = {
+                status, message -> toast(message)
+            }
         )
+
+//        notificationListAdapter.data = listOf(
+//            NotificationListData(
+//                img = R.drawable.apr_corp,
+//                title = "에이피알",
+//                desc = "마케팅 콘텐츠 디자인",
+//                dday = "D-13"
+//            ),
+//            NotificationListData(
+//                img = R.drawable.apr_corp,
+//                title = "한국언론진흥재단",
+//                desc = "광고, 일반행정",
+//                dday = "D-13"
+//            ),
+//            NotificationListData(
+//                img = R.drawable.apr_corp,
+//                title = "라인스튜디오",
+//                desc = "모바일 게임 데이터 분석",
+//                dday = "D-13"
+//            ),
+//            NotificationListData(
+//                img = R.drawable.apr_corp,
+//                title = "쇼박스",
+//                desc = "마케팅팀",
+//                dday = "13"
+//            ),
+//            NotificationListData(
+//                img = R.drawable.apr_corp,
+//                title = "에이피알",
+//                desc = "마케팅 콘텐츠 디자인",
+//                dday = "D-13"
+//            ),
+//            NotificationListData(
+//                img = R.drawable.apr_corp,
+//                title = "에이피알",
+//                desc = "마케팅 콘텐츠 디자인",
+//                dday = "D-13"
+//            ),
+//            NotificationListData(
+//                img = R.drawable.apr_corp,
+//                title = "에이피알",
+//                desc = "마케팅 콘텐츠 디자인",
+//                dday = "D-13"
+//            ),
+//            NotificationListData(
+//                img = R.drawable.apr_corp,
+//                title = "에이피알",
+//                desc = "마케팅 콘텐츠 디자인",
+//                dday = "D-13"
+//            ),
+//            NotificationListData(
+//                img = R.drawable.apr_corp,
+//                title = "에이피알",
+//                desc = "마케팅 콘텐츠 디자인",
+//                dday = "D-13"
+//            ),
+//            NotificationListData(
+//                img = R.drawable.apr_corp,
+//                title = "에이피알",
+//                desc = "마케팅 콘텐츠 디자인",
+//                dday = "D-13"
+//            ),
+//            NotificationListData(
+//                img = R.drawable.apr_corp,
+//                title = "에이피알",
+//                desc = "마케팅 콘텐츠 디자인",
+//                dday = "D-13"
+//            )
+//        )
 
         notificationListAdapter.notifyDataSetChanged()
 
