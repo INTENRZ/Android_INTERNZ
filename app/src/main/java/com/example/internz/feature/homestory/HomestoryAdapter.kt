@@ -27,9 +27,9 @@ class HomestoryAdapter(private val context : Context) : RecyclerView.Adapter<Hom
 
     override fun onBindViewHolder(holder: HomestoryViewHolder, position: Int) {
         holder.bind(data[position])
-        holder.itemView.setOnClickListener{
-            val intent = Intent(context, DetailStoryActivity::class.java)
-            context.startActivity(intent)
-        }
+//        holder.itemView.setOnClickListener{
+//            val intent = Intent(context, DetailStoryActivity::class.java)
+//            context.startActivity(intent)
+//        }
     }
 }

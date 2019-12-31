@@ -45,10 +45,10 @@ class MainHomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_main_home, container, false)
 
         /* 추천 프로필 리사이클러뷰 세팅 + 통신 위한 리사이클러뷰, 어댑터 초기화 */
-        rv_recomm_profile = view!!.findViewById(R.id.rv_home_recommProfile)
-        adapter_recomm_profile = HomerecommAdapter(context!!)
-        rv_recomm_profile.adapter = adapter_recomm_profile
-        rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+//        rv_recomm_profile = view!!.findViewById(R.id.rv_home_recommProfile)
+//        adapter_recomm_profile = HomerecommAdapter(context!!)
+//        rv_recomm_profile.adapter = adapter_recomm_profile
+//        rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         return view
     }
@@ -75,11 +75,10 @@ class MainHomeFragment : Fragment() {
 
         responseMainHome()
         rvCustom()
-        //rvRecommProfile()
-        //rvStory()
+
     }
 
-    /* 메인 홈 "맞춤 공고", "추천 프로필", "오늘의 스토리" 서버 통신 */
+    /** 메인 홈 "맞춤 공고", "추천 프로필", "오늘의 스토리" 서버 통신 */
     fun responseMainHome(){
         val call: Call<BaseResponse<HomeResponseData>> = ApiServiceImpl.service.responseMainHome(ApiServiceImpl.getToken())
         call.enqueue(
@@ -115,29 +114,6 @@ class MainHomeFragment : Fragment() {
         adapter_recomm_profile = HomerecommAdapter(context!!)
         rv_recomm_profile.adapter = adapter_recomm_profile
         rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-
-//        adapter_recomm_profile.data = listOf(
-//            RecommData(
-//                img_thumb = "ddd",
-//                txt_name = "김초희",
-//                txt_introduce = "ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ"
-//            ),
-//            RecommData(
-//                img_thumb = "ddd",
-//                txt_name = "최은지",
-//                txt_introduce = "ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ"
-//            ),
-//            RecommData(
-//                img_thumb = "ddd",
-//                txt_name = "지현이",
-//                txt_introduce = "ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ"
-//            ),
-//            RecommData(
-//                img_thumb = "ddd",
-//                txt_name = "윤주연",
-//                txt_introduce = "ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ"
-//            )
-//        )
         adapter_recomm_profile.notifyDataSetChanged()
     }
 
@@ -147,26 +123,6 @@ class MainHomeFragment : Fragment() {
         apdater_homestory = HomestoryAdapter(context!!)
         rv_home_story.adapter = apdater_homestory
         rv_home_story.layoutManager = LinearLayoutManager(context!!, LinearLayoutManager.VERTICAL, false)
-
-
-//        apdater_homestory.data = listOf(
-//            StoryData(
-//                img = R.drawable.home_recomm_story3_img,
-//                desc = "영화번역가는 AI 때문에 사라질 직업인가"
-//            ),
-//            StoryData(
-//                img = R.drawable.home_recomm_story3_img,
-//                desc = "코딩 테스트부터 코딩 인턴까지 코딩에 대한 A to Z"
-//            ),
-//            StoryData(
-//                img = R.drawable.home_recomm_story3_img,
-//                desc = "디자인 인턴 합격까지 과정! 서류부터 면접까지!"
-//            ),
-//            StoryData(
-//                img = R.drawable.home_recomm_story3_img,
-//                desc = "비 전공자가 알아본 외국계 디자인 인턴과정"
-//            )
-//        )
 
         rv_home_story.overScrollMode = View.OVER_SCROLL_NEVER
 

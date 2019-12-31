@@ -20,12 +20,12 @@ import com.example.internz.common.BaseResponse
 import com.example.internz.common.enqueue
 import com.example.internz.common.toast
 import com.example.internz.data.profile.ProfileTimelineData
-import com.example.internz.data.UserIdxRequestData
 import com.example.internz.data.profile.ProfileData
 import com.example.internz.feature.SelectHelper
 import com.example.internz.feature.message.MessageActivity
 import com.example.internz.ui.profile.TimelineAddActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.fragment_profile.txt_profile_black
 import retrofit2.Call
 
 class MainProfileFragment : Fragment() {
@@ -102,15 +102,13 @@ class MainProfileFragment : Fragment() {
             if(resultCode == Activity.RESULT_OK){
                 /* 타임라인 조회 새로고침용 서버 요청*/
                 val timelineCall: Call<BaseResponse<List<ProfileTimelineData>>> = ApiServiceImpl.service.responseMyTimelineList(ApiServiceImpl.getToken())
-//                val timelineCall: Call<BaseResponse<List<ProfileTimelineData>>> = ApiServiceImpl.service.responseProfileTimelineList(ApiServiceImpl.getToken(),
-//                    UserIdxRequestData(77)
-//                )
+
                 timelineCall.enqueue(
                     onSuccess = {
                         adapter_profile_mainProfile.data = it
                         adapter_profile_mainProfile.notifyDataSetChanged()
                     },
-                    onFail = {status, message ->  toast(message)
+                    onFail = {status, message ->
                     }
                 )
 
@@ -127,17 +125,20 @@ class MainProfileFragment : Fragment() {
 
         /** 자신의 타임라인 조회 서버 통신 */
         val timelineCall: Call<BaseResponse<List<ProfileTimelineData>>> = ApiServiceImpl.service.responseMyTimelineList(ApiServiceImpl.getToken())
-//        val timelineCall: Call<BaseResponse<List<ProfileTimelineData>>> = ApiServiceImpl.service.responseProfileTimelineList(ApiServiceImpl.getToken(),
-//            UserIdxRequestData(77)
-//        )
+
         timelineCall.enqueue(
             onSuccess = {
                 adapter_profile_mainProfile.data = it
+                adapter_profile_mainProfile.notifyDataSetChanged()
             },
-            onFail = {status, message ->  toast(message)
+            onFail = {status, message ->
+                // 자신의 타임라인이 하나도 존재하지 않을 때 "타임라인이 비어있습니다." 텍스트 띄우기
+                if(message == "존재하지 않는 타임라인 입니다."){
+                    txt_profile_black.visibility = View.VISIBLE
+                }
             }
         )
-        adapter_profile_mainProfile.notifyDataSetChanged()
+
 
     }
 
