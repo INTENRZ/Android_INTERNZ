@@ -13,7 +13,7 @@ import retrofit2.Call
 
 
 class DetailStoryActivity : AppCompatActivity() {
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_story)
