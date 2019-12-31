@@ -3,19 +3,14 @@ package com.example.internz.feature.jobselect
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.api.ApiServiceImpl
-import com.example.internz.data.jobselect.JobSelectData
 import com.example.internz.data.jobselect.JobSelectItem
-import com.example.internz.data.jobselect.JobSelectPutData
+import com.example.internz.feature.SelectHelper
 import com.example.internz.feature.setprofile.SetProfileActivity
 import kotlinx.android.synthetic.main.activity_job_select.*
-import retrofit2.Call
-import retrofit2.Response
 
 class JobSelectActivity : AppCompatActivity() {
     private lateinit var recylerView : RecyclerView

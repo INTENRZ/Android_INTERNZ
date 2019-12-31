@@ -5,12 +5,12 @@ import com.example.internz.common.CallWithoutDataExt
 import com.example.internz.data.jobselect.JobSelectData
 import com.example.internz.data.jobselect.JobSelectPutData
 import com.example.internz.data.profile.ProfileTimelineData
-import com.example.internz.data.profile.TimelineRequestData
+import com.example.internz.data.profile.TimelineAddRequestData
+import com.example.internz.data.UserIdxRequestData
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.data.signup.SignUpData
 import com.example.internz.data.signup.SignUpRequestData
-import com.example.internz.data.signup2.SignUp2Data
 import com.example.internz.data.signup2.SignUp2RequestData
 import retrofit2.Call
 import retrofit2.http.*
@@ -39,5 +39,14 @@ interface ApiService {
 
     //프로필 타임라인 리스트 조회
     @POST("/timeline/list")
-    fun responseProfileTimelineList (@Header("token") token: String, @Body body: TimelineRequestData) : Call<BaseResponse<List<ProfileTimelineData>>>
+    fun responseProfileTimelineList (@Header("token") token: String, @Body body: UserIdxRequestData) : Call<BaseResponse<List<ProfileTimelineData>>>
+
+    //새로운 타임라인 추가
+    @POST("/timeline")
+    fun requestTimelineAdd (@Header("token") token: String, @Body body: TimelineAddRequestData) : Call<BaseResponse<TimelineAddRequestData>>
+
+    //프로필 조회
+    @POST("/profile")
+    fun requestProfile(@Header("token") token: String, @Body body: UserIdxRequestData) : Call<BaseResponse<ProfileTimelineData>>
+
 }
