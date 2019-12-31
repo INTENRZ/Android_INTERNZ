@@ -19,5 +19,6 @@ class HomestoryViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     {
         //photo.setImageDrawable(ResourcesCompat.getDrawable(itemView.resources, data.img, null))
         desc.text = data.title
+
     }
 }

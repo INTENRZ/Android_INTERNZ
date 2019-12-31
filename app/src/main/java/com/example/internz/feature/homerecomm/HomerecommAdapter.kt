@@ -23,10 +23,10 @@ class HomerecommAdapter(private val context : Context) : RecyclerView.Adapter<Ho
     override fun onBindViewHolder(holderMain: HomerecommViewHolder, position: Int) {
         holderMain.bind(data[position])
 
-        holderMain.itemView.setOnClickListener{
-            val intent = Intent(context, OtherProfileActivity::class.java)
-            context.startActivity(intent)
-        }
+//        holderMain.itemView.setOnClickListener{
+//            val intent = Intent(context, OtherProfileActivity::class.java)
+//            context.startActivity(intent)
+//        }
     }
 
     override fun getItemCount(): Int {

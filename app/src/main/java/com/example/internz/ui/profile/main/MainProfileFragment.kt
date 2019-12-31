@@ -66,7 +66,7 @@ class MainProfileFragment : Fragment() {
         val job3 = view.findViewById<TextView>(R.id.txt_job3)
 
         /* 프로필 정보 서버 요청 */
-        val profileCall: Call<BaseResponse<ProfileData>> = ApiServiceImpl.service.requestProfile(ApiServiceImpl.getToken())
+        val profileCall: Call<BaseResponse<ProfileData>> = ApiServiceImpl.service.requestMyProfile(ApiServiceImpl.getToken())
         profileCall.enqueue(
             onSuccess = {
                 nickname.text = it.nickname

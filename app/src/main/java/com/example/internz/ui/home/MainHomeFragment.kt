@@ -44,7 +44,7 @@ class MainHomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_main_home, container, false)
 
-        /* 추천 프로필 리사이클러뷰 세팅 + 통신 */
+        /* 추천 프로필 리사이클러뷰 세팅 + 통신 위한 리사이클러뷰, 어댑터 초기화 */
         rv_recomm_profile = view!!.findViewById(R.id.rv_home_recommProfile)
         adapter_recomm_profile = HomerecommAdapter(context!!)
         rv_recomm_profile.adapter = adapter_recomm_profile
@@ -85,7 +85,6 @@ class MainHomeFragment : Fragment() {
         val call: Call<BaseResponse<HomeResponseData>> = ApiServiceImpl.service.responseMainHome(ApiServiceImpl.getToken())
         call.enqueue(
             onSuccess = {
-                Log.d("chohee", "통신 성공")
                 // 메인 홈 추천 프로필에 데이터 세팅
                 adapter_recomm_profile.data = it.profile
                 adapter_recomm_profile.notifyDataSetChanged()
@@ -99,7 +98,6 @@ class MainHomeFragment : Fragment() {
 
             },
             onFail = {status, message ->  toast(message)
-                Log.d("chohee", "실패요 ㅜ")
             }
         )
     }
