@@ -96,15 +96,12 @@ class SignInActivity : AppCompatActivity() {
                    when {
                        it.isFirst == "0" -> {
                            setToken(it.token)
-                           Log.d("chohee1", it.token)
-                           Log.e("TAG", "${it.token} 토큰입니다.")
                            val intent = Intent(applicationContext, JobSelectActivity::class.java)
                            startActivity(intent)
 
                        }
                        it.isFirst == "1" -> {
                            setToken(it.token)
-                           Log.d("chohee2", it.token)
                            val intent = Intent(applicationContext, BottomBarActivity::class.java)
                            startActivity(intent)
                            finish()

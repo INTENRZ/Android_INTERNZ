@@ -72,4 +72,5 @@ dependencies {
 
     //swipe for refresh
     implementation 'androidx.appcompat:appcompat:1.0.0'
+
 }

@@ -7,6 +7,7 @@ import com.example.internz.data.jobselect.JobSelectPutData
 import com.example.internz.data.profile.ProfileTimelineData
 import com.example.internz.data.profile.TimelineAddRequestData
 import com.example.internz.data.UserIdxRequestData
+import com.example.internz.data.profile.ProfileData
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.data.signup.SignUpData
@@ -45,8 +46,8 @@ interface ApiService {
     @POST("/timeline")
     fun requestTimelineAdd (@Header("token") token: String, @Body body: TimelineAddRequestData) : Call<BaseResponse<TimelineAddRequestData>>
 
-    //프로필 조회
+    //프로필 정보 조회
     @POST("/profile")
-    fun requestProfile(@Header("token") token: String, @Body body: UserIdxRequestData) : Call<BaseResponse<ProfileTimelineData>>
+    fun requestProfile(@Header("token") token: String, @Body body: UserIdxRequestData) : Call<BaseResponse<ProfileData>>
 
 }

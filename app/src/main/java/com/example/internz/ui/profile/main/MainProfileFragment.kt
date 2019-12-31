@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,7 @@ import com.example.internz.common.enqueue
 import com.example.internz.common.toast
 import com.example.internz.data.profile.ProfileTimelineData
 import com.example.internz.data.UserIdxRequestData
+import com.example.internz.data.profile.ProfileData
 import com.example.internz.feature.SelectHelper
 import com.example.internz.feature.message.MessageActivity
 import com.example.internz.ui.profile.TimelineAddActivity
@@ -53,27 +55,31 @@ class MainProfileFragment : Fragment() {
             startActivity(intent)
         }
 
-//        val nickname = view.findViewById<TextView>(R.id.txt_profile_name)
-//        val imgFace = view.findViewById<ImageView>(R.id.img_profile_face)
-//        val followerNum = view.findViewById<TextView>(R.id.txt_profile_follower_number)
-//        val followingNum = view.findViewById<TextView>(R.id.txt_profile_following_number)
-//        val introduce = view.findViewById<TextView>(R.id.txt_profile_intoduce)
-//        val job1 = view.findViewById<TextView>(R.id.txt_job1)
-//        val job2 = view.findViewById<TextView>(R.id.txt_job2)
-//        val job3 = view.findViewById<TextView>(R.id.txt_job3)
+        /* 프로필 정보 뷰 객체 초기화 */
+        val nickname = view.findViewById<TextView>(R.id.txt_profile_name)
+        val imgFace = view.findViewById<ImageView>(R.id.img_profile_face)
+        val followerNum = view.findViewById<TextView>(R.id.txt_profile_follower_number)
+        val followingNum = view.findViewById<TextView>(R.id.txt_profile_following_number)
+        val introduce = view.findViewById<TextView>(R.id.txt_profile_intoduce)
+        val job1 = view.findViewById<TextView>(R.id.txt_job1)
+        val job2 = view.findViewById<TextView>(R.id.txt_job2)
+        val job3 = view.findViewById<TextView>(R.id.txt_job3)
 
-
-//        /* 프로필 정보 서버 요청 */
-//        val profileCall: Call<BaseResponse<ProfileTimelineData>> = ApiServiceImpl.service.requestProfile(ApiServiceImpl.getToken(), UserIdxRequestData(77))
-//        profileCall.enqueue(
-//            onSuccess = {
-//               Log.d("chohee", "통신성공")
-//            },
-//            onFail = {status, message ->  toast(message)
-//            }
-//        )
-        /* 프로필 정보 뷰 객체 선언 및 초기화 */
-
+        /* 프로필 정보 서버 요청 */
+        val profileCall: Call<BaseResponse<ProfileData>> = ApiServiceImpl.service.requestProfile(ApiServiceImpl.getToken(), UserIdxRequestData(2))
+        profileCall.enqueue(
+            onSuccess = {
+                nickname.text = it.nickname
+                followerNum.text = it.followernumber
+                followingNum.text = it.followingnumber
+                introduce.text = it.introduce
+                job1.text = it.task_one
+                job2.text = it.task_two
+                job3.text = it.task_three
+            },
+            onFail = {status, message ->  toast(message)
+            }
+        )
 
         return view
     }
