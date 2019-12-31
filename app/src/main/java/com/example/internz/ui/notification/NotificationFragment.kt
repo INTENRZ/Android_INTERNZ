@@ -1,9 +1,9 @@
 package com.example.internz.ui.notification
 
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.provider.CalendarContract
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,13 +18,13 @@ import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.enqueue
 import com.example.internz.common.toast
-import com.example.internz.data.notification.NotificationResponseData
 import com.example.internz.feature.calendar.CalendarActivity
 import com.example.internz.feature.filter.FilterActivity
+import com.example.internz.feature.filter.FilterHelper
 import kotlinx.android.synthetic.main.fragment_notification_list.*
 
 class NotificationFragment : Fragment() {
-
+    private val REQUEST_CODE = 200
 
     private lateinit var rvNotificationList: RecyclerView
     private lateinit var notificationListAdapter : NotificationListAdapter
@@ -65,17 +65,16 @@ class NotificationFragment : Fragment() {
                 //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.
                 when(position) {
                     0   ->  {
-                        Toast.makeText(context, "최신순 공고를 조회합니다.", Toast.LENGTH_SHORT).show()
+                        Log.e("TAG", "NotificationFragment : 최신순 공고를 조회합니다.")
 
                     }
                     1   ->  {
-                        Toast.makeText(context, "조회순 공고를 조회합니다.", Toast.LENGTH_SHORT).show()
+                        Log.e("TAG", "NotificationFragment : 조회순 공고를 조회합니다.")
                     }
                 }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-
             }
         }
     }
@@ -111,7 +110,36 @@ class NotificationFragment : Fragment() {
         //필터 click event
         imgNotiFilter?.setOnClickListener {
             val intent = Intent(context, FilterActivity::class.java)
-            startActivity(intent)
+
+            startActivityForResult(intent, REQUEST_CODE)
         }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when(requestCode) {
+            REQUEST_CODE -> {
+                when(resultCode) {
+                    Activity.RESULT_OK -> {
+                        //서버 통신
+                        val call = ApiServiceImpl.service.requestJobFilter(FilterHelper.filterText!!)
+                        
+                        call.enqueue(
+                            onSuccess = {
+                                notificationListAdapter.data = it
+                                notificationListAdapter.notifyDataSetChanged()
+                            },
+                            onFail = {
+                                    status, message ->
+                                Log.e("TAG", "FilterActivity : status : ${status}, message : ${message}")
+                            }
+                        )
+                    }
+                }
+            }
+        }
+    }
+
+
 }

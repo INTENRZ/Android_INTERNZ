@@ -15,6 +15,7 @@ import com.example.internz.data.signup.SignUpData
 import com.example.internz.data.signup.SignUpRequestData
 import com.example.internz.data.signup2.SignUp2Data
 import com.example.internz.data.signup2.SignUp2RequestData
+import com.example.internz.data.story.StoryCategoryResponseData
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -43,6 +44,10 @@ interface ApiService {
     //공고 직군 필터링
     @GET("/job/{task}")
     fun requestJobFilter(@Path("task") task : String) : Call<BaseResponse<List<NotificationResponseData>>>
+
+    //스토리 카테고리별 조회
+    @POST("/story/category")
+    fun requestCategoryStory(@Body body: String) : Call<BaseResponse<StoryCategoryResponseData>>
 
     @PUT("/user/task")
     fun putJobSelect(@Body body : JobSelectPutData) : Call<JobSelectData>

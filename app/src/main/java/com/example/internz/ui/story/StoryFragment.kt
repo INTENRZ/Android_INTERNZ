@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
+import com.example.internz.api.ApiServiceImpl
 import com.example.internz.data.story.StoryDataTemporal
 import com.example.internz.data.story.StoryDataTemporal2
 import com.google.android.material.tabs.TabLayout
@@ -55,13 +56,42 @@ class StoryFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(view.context)
 
-        adapter.data = StoryDataTemporal().getStory()
+        //하단탭을 눌렀을때 기본으로 보여질 데이터 : 전체 + 최신순
+        //TODO!
+
+//        adapter.data = StoryDataTemporal().getStory()
         adapter.notifyDataSetChanged()
 
         //사용자가 선택한 탭
         view.findViewById<TabLayout>(R.id.tabStory).addOnTabSelectedListener(
             object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(p0: TabLayout.Tab?) {
+                    when(p0?.text) {
+                        "전체" -> {
+
+                        }
+                        "인턴" -> {
+
+                        }
+                        "대외활동" -> {
+
+                        }
+                        "공모전" -> {
+
+                        }
+                        "동아리" -> {
+
+                        }
+                        "자격증" -> {
+
+                        }
+                        "기타" -> {
+
+                        }
+                    }
+
+
+
                     selectedTab = p0?.text.toString()
 
                     //TODO! 서버와 통신

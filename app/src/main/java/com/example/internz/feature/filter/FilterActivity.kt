@@ -1,5 +1,7 @@
 package com.example.internz.feature.filter
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,13 +13,14 @@ import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.enqueue
 import com.example.internz.common.toast
 import com.example.internz.data.filter.FilterItem
+import com.example.internz.ui.notification.NotificationFragment
 import com.example.internz.ui.notification.NotificationListAdapter
+import com.example.internz.ui.story.StoryFragment
 import kotlinx.android.synthetic.main.activity_filter.*
 
 class FilterActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter : FilterAdapter
-    private lateinit var notificationAdapter : NotificationListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +33,6 @@ class FilterActivity : AppCompatActivity() {
         //변수 초기화
         recyclerView = findViewById(R.id.rvFilter)
         adapter = FilterAdapter(this)
-        notificationAdapter = NotificationListAdapter(this)
 
         recyclerView.adapter = adapter
         recyclerView.layoutManager = GridLayoutManager(this, 4)
@@ -72,25 +74,12 @@ class FilterActivity : AppCompatActivity() {
                 Toast.makeText(this, "1개의 필터를 선택해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            else {
+                setResult(Activity.RESULT_OK)
 
-            //서버 통신
-            val call = ApiServiceImpl.service.requestJobFilter(FilterHelper.filterText.toString())
-
-            call.enqueue(
-                onSuccess = {
-                    notificationAdapter.data = it
-                    notificationAdapter.notifyDataSetChanged()
-
-                    //FilterHelper 초기화
-                    FilterHelper.count = 0
-                    finish()
-                },
-                onFail = {
-                    status, message -> {
-                        Log.e("TAG", "FilterActivity : status : ${status}, message : ${message}")
-                    }
-                }
-            )
+                FilterHelper.count = 0
+                finish()
+            }
         }
 
         imgFilterBack?.setOnClickListener {
