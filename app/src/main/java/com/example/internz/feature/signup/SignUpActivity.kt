@@ -18,13 +18,14 @@ import com.example.internz.ui.BottomBarActivity
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.api.ApiServiceImpl.setUserIdx
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import java.util.regex.Pattern
 
 /**
  * TODO! 상단바 뒤로가기 이미지뷰 기능 추가
  */
 
 class SignUpActivity : AppCompatActivity() {
-
+    private val pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,6 +110,12 @@ class SignUpActivity : AppCompatActivity() {
         //다음(click_event)
         //TODO! 모든 항목이 입력되어야 다음으로 넘어가도록 수정
         btnSignUpNext?.setOnClickListener {
+            //이메일 형식 검사
+            if (!pattern.matcher(edtSignUpEmail.text.toString()).matches()) {
+                Toast.makeText(this, "올바른 이메일 형식을 입력하세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val email = edtSignUpEmail.text.toString()
             val signUpCall = ApiServiceImpl.service.requestSignUp(
                 SignUpRequestData(

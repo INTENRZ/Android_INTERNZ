@@ -20,9 +20,12 @@ import com.example.internz.feature.signup.SignUpActivity
 import com.example.internz.ui.BottomBarActivity
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import retrofit2.Call
+import java.util.regex.Pattern
 
 
 class SignInActivity : AppCompatActivity() {
+    //이메일 형식
+    private val pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE)
 
     private var backKeyPressedTime: Long = 0
     //다중 액티비티 종료
@@ -75,13 +78,18 @@ class SignInActivity : AppCompatActivity() {
             val pwd = edtSignInPwd.text.toString()
 
             //로그인 요청 to Server 불가
-            if (email.isEmpty()) {
+            if (email.isEmpty()) { //이메일 미기입
                 toast("이메일을 입력하세요.")
                 edtSignInEmail.requestFocus()
                 return@setOnClickListener
-            } else if (pwd.isEmpty()) {
+            } else if (pwd.isEmpty()) { //비밀번호 미기입
                 Toast.makeText(this, "비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()
                 edtSignInPwd.requestFocus()
+                return@setOnClickListener
+            } else if (!pattern.matcher(edtSignInEmail.text.toString()).matches()) { //이상한 이메일 형식
+                Toast.makeText(this, "올바른 이메일 형식을 입력하세요.", Toast.LENGTH_SHORT).show()
+                edtSignInEmail.text.clear()
+                edtSignInEmail.requestFocus()
                 return@setOnClickListener
             }
 

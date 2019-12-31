@@ -40,7 +40,7 @@ class JobSelectViewHolder(view : View) : RecyclerView.ViewHolder(view) {
                 }
             }
             Log.e("TAG", "선택된 관심 직무 : ${SelectHelper.arrayList}")
-            
+
         }
     }
 }
