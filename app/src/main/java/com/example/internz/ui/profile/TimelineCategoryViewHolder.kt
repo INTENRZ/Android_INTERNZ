@@ -1,13 +1,13 @@
 package com.example.internz.ui.profile
 
 import android.graphics.Color
+import android.util.Log
 import android.view.View
 import android.widget.CheckedTextView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.timeline.TimelineCategoryData
-import com.example.internz.feature.jobselect.SelectHelper
+import com.example.internz.feature.SelectHelper
 
 class TimelineCategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val category: CheckedTextView = itemView.findViewById(R.id.checktxt_filter)
@@ -20,6 +20,9 @@ class TimelineCategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemV
     fun changeColor(){
         itemView.setOnClickListener {
             category.toggle()
+
+            SelectHelper.categoryWhat = adapterPosition
+            Log.d("chohee", SelectHelper.categoryWhat.toString())
             // 글자 색도 바꾸기
             if(category.isChecked == true){
                 //TODO(하나만 노란색이 되게 해야함)

@@ -10,7 +10,6 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.enqueue
-import com.example.internz.data.story.DetailStoryResponseData
 import com.example.internz.feature.comment.CommentActivity
 import com.example.internz.ui.story.StoryHelper
 import kotlinx.android.synthetic.main.activity_detail_story.*

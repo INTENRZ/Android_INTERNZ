@@ -20,7 +20,17 @@
         android:gravity="center_horizontal|center_vertical"
         android:background="#ffffff"/>
 
-    <androidx.core.widget.NestedScrollView
+    <ImageView
+        android:id="@+id/img_backarrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/timeline_detail_back_ic"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
+
+   <androidx.core.widget.NestedScrollView
         app:layout_constraintTop_toBottomOf="@+id/txt_otherProfile_main"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="#f4f4f4"
@@ -60,20 +70,20 @@
                 app:layout_constraintEnd_toEndOf="@id/img_otherProfile_face_border"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/profile_img"/>
+                android:src="@drawable/basicprofile_img"/>
+
             <!-- 프로필 이름 텍스트 -->
             <TextView
                 android:id="@+id/txt_otherProfile_name"
-                app:layout_constraintTop_toBottomOf="@+id/img_otherProfile_bar"
-                app:layout_constraintStart_toEndOf="@+id/img_otherProfile_face_border"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="8dp"
-                android:text="인턴즈"
-                android:textSize="18sp"
                 android:textColor="#212529"
-                android:textStyle="bold"/>
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/img_otherProfile_face_border"
+                app:layout_constraintTop_toBottomOf="@+id/img_otherProfile_bar" />
 
             <ImageView
                 android:id="@+id/img_otherProfile_following"
@@ -112,15 +122,14 @@
             <!--팔로워 수 -->
             <TextView
                 android:id="@+id/txt_otherProfile_follower_number"
-                app:layout_constraintStart_toEndOf="@+id/txt_otherProfile_follower"
-                app:layout_constraintTop_toBottomOf="@id/img_otherProfile_face_border"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="9dp"
+                android:layout_height="11dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="16dp"
-                android:text="12"
+                android:textColor="#212529"
                 android:textSize="12sp"
-                android:textColor="#212529"/>
+                app:layout_constraintStart_toEndOf="@+id/txt_otherProfile_follower"
+                app:layout_constraintTop_toBottomOf="@id/img_otherProfile_face_border" />
 
             <!--팔로우 텍스트 -->
             <TextView
@@ -137,14 +146,13 @@
 
             <!--팔로우 수 -->
             <TextView
-                android:id="@+id/txt_otherProfile_follow_number"
+                android:id="@+id/txt_otherProfile_following_number"
                 app:layout_constraintStart_toEndOf="@id/txt_otherProfile_follow"
                 app:layout_constraintTop_toBottomOf="@id/img_otherProfile_face_border"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="16dp"
-                android:text="24"
                 android:textSize="12sp"
                 android:textColor="#212529"/>
 
@@ -159,8 +167,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="서비스 기획과 리서치를 좋아하는 UXUI 디자이너입니다.
-요즘은 구독, 개인화 서비스에 관심이 많습니다."
                 android:textSize="14sp"
                 android:textColor="#212529"/>
 
@@ -178,7 +184,6 @@
                 android:paddingRight="8dp"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
-                android:text="디자인"
                 android:textColor="#212529"
                 android:textSize="14sp"/>
 
@@ -196,7 +201,7 @@
                 android:paddingRight="8dp"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
-                android:text="마케팅"
+
                 android:textColor="#212529"
                 android:textSize="14sp"/>
 
@@ -214,7 +219,6 @@
                 android:paddingRight="8dp"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
-                android:text="IT"
                 android:textColor="#212529"
                 android:textSize="14sp"/>
 
@@ -236,6 +240,7 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
@@ -244,14 +249,15 @@
     <TextView
         android:id="@+id/txt_profile_black"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/img_profile_floating"
-        android:layout_marginBottom="60dp"
+        app:layout_constraintVertical_bias="0.7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible"
         android:text="타임라인이 비어있습니다."
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textColor="#dbdbdb"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

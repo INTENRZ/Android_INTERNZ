@@ -1,8 +1,8 @@
-package com.example.internz.data.profile
+package com.example.internz.data
 
 import com.google.gson.annotations.SerializedName
 
-data class TimelineRequestData (
+data class UserIdxRequestData (
     @SerializedName("userIdx")
     val userIdx: Int
 )

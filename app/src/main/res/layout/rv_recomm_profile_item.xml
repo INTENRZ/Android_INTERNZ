@@ -5,15 +5,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- home 화면 추천 프로필 리사이클러뷰 아이템 - 컨테이너 -->
-    <ImageView
-        android:id="@+id/img_itemRecommProfile_container"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/home_recomm_profile_shadow_btn"/>
 
     <!-- home 화면 추천 프로필 리사이클러뷰 아이템 - 프로필 썸네일 이미지 뷰 -->
+    <ImageView
+        android:id="@+id/img_itemRecommProfile_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/home_recomm_profile_shadow_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/img_itemRecommProfile_thumbnail"
         app:layout_constraintTop_toTopOf="parent"
@@ -45,12 +46,14 @@
         app:layout_constraintTop_toBottomOf="@+id/img_itemRecommProfile_thumbnail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.45"
         android:layout_width="173dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
         android:text="서비스 기획과 리서치를 좋아하는 UXUI 디자이너입니다."
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:textColor="#212529"
 
         />

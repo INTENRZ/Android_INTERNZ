@@ -7,9 +7,9 @@ import android.widget.CheckedTextView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.load.engine.Resource
 import com.example.internz.R
 import com.example.internz.data.jobselect.JobSelectItem
+import com.example.internz.feature.SelectHelper
 
 class JobSelectViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 

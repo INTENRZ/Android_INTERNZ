@@ -1,16 +1,11 @@
 package com.example.internz.ui.profile
 
 import android.content.Context
-import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.timeline.TimelineCategoryData
-import com.example.internz.feature.jobselect.SelectHelper
-
 
 
 class TimelineCategoryAdapter(private val context: Context) : RecyclerView.Adapter<TimelineCategoryViewHolder>(){

@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.text.method.KeyListener
-import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -21,13 +19,9 @@ import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.enqueue
 import com.example.internz.common.toast
 import com.example.internz.data.firstsignin.FirstSignInRequestData
-import com.example.internz.data.firstsignin.FirstSignInResponseData
-import com.example.internz.feature.jobselect.SelectHelper
+import com.example.internz.feature.SelectHelper
 import com.example.internz.ui.BottomBarActivity
 import kotlinx.android.synthetic.main.activity_set_profile.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class SetProfileActivity : AppCompatActivity() {
     private var imagePath : String = ""

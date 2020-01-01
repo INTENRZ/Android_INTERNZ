@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -24,6 +24,7 @@
         app:layout_constraintTop_toBottomOf="@id/txtHomeCustomFirstTitle"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:text="마케팅 콘텐츠 디자인"
         android:textSize="16sp"/>
 

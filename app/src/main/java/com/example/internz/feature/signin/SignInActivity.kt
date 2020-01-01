@@ -97,7 +97,6 @@ class SignInActivity : AppCompatActivity() {
                    when {
                        it.isFirst == "0" -> {
                            setToken(it.token)
-                           Log.e("TAG", "${it.token} 토큰입니다.")
                            val intent = Intent(applicationContext, JobSelectActivity::class.java)
                            startActivity(intent)
 
