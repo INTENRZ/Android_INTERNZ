@@ -36,7 +36,8 @@
         <activity
             android:name=".feature.signin.SignInActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".feature.signup.SignUpActivity" />
+        <activity android:name=".feature.signup.SignUpActivity"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".ui.BottomBarActivity" />
         <activity android:name=".ui.SplashActivity">
             <intent-filter>
