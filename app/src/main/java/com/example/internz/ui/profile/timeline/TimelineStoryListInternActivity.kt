@@ -48,7 +48,7 @@ class TimelineStoryListInternActivity : AppCompatActivity() {
         val timelineStoryListcall = ApiServiceImpl.service.requestStoryList(ApiServiceImpl.getToken(), timelineIdx.toString())
         timelineStoryListcall.enqueue(
             onSuccess = {
-                if(it[it.size-1].isMe == 1) {
+                if(it[it.size-1].isMe == 0) {
                     // 자신의 스토리 리스트가 아닐 경우 글쓰기 버튼 안보이게 하기
                     img_storylist_floatingBtn.visibility = View.INVISIBLE
                 }else{

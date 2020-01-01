@@ -35,8 +35,6 @@ class TimelineStoryListInternViewHolder (view : View) : RecyclerView.ViewHolder(
 
         itemView.setOnClickListener {
             val intent = Intent(itemView.context, DetailStoryActivity::class.java)
-            Log.d("chohee", "눌림")
-            //Log.d("chohee", timelineStoryListInternAdapter.data[adapterPosition].storyIdx.toString())
             StoryHelper.setStoryIndex(internData.storyIdx.toString())
             itemView.context.startActivity(intent)
         }
