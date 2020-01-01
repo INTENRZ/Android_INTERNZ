@@ -22,10 +22,13 @@ import com.example.internz.common.toast
 import com.example.internz.data.profile.ProfileTimelineData
 import com.example.internz.data.profile.ProfileData
 import com.example.internz.feature.SelectHelper
+import com.example.internz.feature.followerlist.FollowerListActivity
+import com.example.internz.feature.followinglist.FollowingListActivity
 import com.example.internz.feature.message.MessageActivity
 import com.example.internz.ui.profile.TimelineAddActivity
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.txt_profile_black
+import org.w3c.dom.Text
 import retrofit2.Call
 
 class MainProfileFragment : Fragment() {
@@ -94,8 +97,36 @@ class MainProfileFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         rvInit()
         floatingClick()
+        follow()
     }
 
+    private fun follow () {
+        val follower : TextView = view!!.findViewById(R.id.txt_profile_follower)
+        val followerNum : TextView = view!!.findViewById(R.id.txt_profile_follower_number)
+
+        val following : TextView = view!!.findViewById(R.id.txt_profile_following)
+        val followingNum : TextView = view!!.findViewById(R.id.txt_profile_following_number)
+
+        follower.setOnClickListener {
+            val intent = Intent(this@MainProfileFragment.context , FollowerListActivity::class.java)
+            startActivity(intent)
+        }
+
+        followerNum.setOnClickListener {
+            val intent = Intent(this@MainProfileFragment.context  , FollowerListActivity::class.java)
+            startActivity(intent)
+        }
+
+        following.setOnClickListener {
+            val intent = Intent(this@MainProfileFragment.context  , FollowingListActivity::class.java)
+            startActivity(intent)
+        }
+
+        followingNum.setOnClickListener {
+            val intent = Intent(this@MainProfileFragment.context , FollowingListActivity::class.java)
+            startActivity(intent)
+        }
+    }
     /* 타임라인 추가 후 새로고침 */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(requestCode == TIMELINE_ADD_SUCCESS){
@@ -108,7 +139,7 @@ class MainProfileFragment : Fragment() {
                         adapter_profile_mainProfile.data = it
                         adapter_profile_mainProfile.notifyDataSetChanged()
                     },
-                    onFail = {status, message ->
+                    onFail = {status, message -> toast(message)
                     }
                 )
 

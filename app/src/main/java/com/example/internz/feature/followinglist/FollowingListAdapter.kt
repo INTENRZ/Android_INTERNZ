@@ -13,7 +13,7 @@ class FollowingListAdapter (private val context : Context) : RecyclerView.Adapte
     var data = listOf<FollowingData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowingListViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.rv_follower_item, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.rv_following_item, parent, false)
         return FollowingListViewHolder(view)
     }
 

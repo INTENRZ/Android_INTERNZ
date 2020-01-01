@@ -103,7 +103,6 @@ class StoryFragment : Fragment() {
         call.enqueue(
             onSuccess = {
                 Log.e("TAG", "StoryFragment : onSuccess 메서드 실행")
-
                 adapter.data = it
                 adapter.notifyDataSetChanged()
             },

@@ -21,6 +21,8 @@
         <activity android:name=".feature.web.WebViewActivity"></activity>
         <activity android:name=".feature.filter.FilterActivity" />
         <activity android:name=".feature.calendar.CalendarActivity" />
+        <activity android:name=".feature.followerlist.FollowerListActivity"/>
+        <activity android:name=".feature.followinglist.FollowingListActivity"/>
         <activity android:name=".feature.message.messagesend.MessageSendActivity" />
         <activity android:name=".feature.message.messagelist.MessageListActivity" />
         <activity android:name=".feature.message.MessageActivity" />
