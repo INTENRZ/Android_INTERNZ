@@ -10,5 +10,6 @@ data class TimelineStoryListInternData (
     var content : String?,
     var count : Int,
     var created_date : String,
-    var updated_date : String
+    var updated_date : String,
+    var isMe : Int
 )

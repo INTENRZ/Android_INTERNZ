@@ -3,7 +3,6 @@ package com.example.internz.ui.profile.timeline
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.profile.TimelineStoryListInternData

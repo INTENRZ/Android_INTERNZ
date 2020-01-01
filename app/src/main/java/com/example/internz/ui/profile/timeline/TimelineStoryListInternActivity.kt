@@ -3,18 +3,15 @@ package com.example.internz.ui.profile.timeline
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.enqueue
-import com.example.internz.data.profile.TimelineStoryListInternData
 import com.example.internz.ui.profile.timeline.TimelineStoryHelper.timelineIdx
 import kotlinx.android.synthetic.main.activity_timeline_storylist_intern.*
-import kotlinx.android.synthetic.main.fragment_profile.*
-import retrofit2.Call
+
 
 class TimelineStoryListInternActivity : AppCompatActivity() {
 
@@ -22,21 +19,13 @@ class TimelineStoryListInternActivity : AppCompatActivity() {
     private lateinit var rvTimelineStoryListIntern : RecyclerView
     private lateinit var timelineStoryListAdapterIntern: TimelineStoryListInternAdapter
 
-    // 이거 null 임
-//    val extras = intent.extras
-//    val timelineIdx : String = extras?.getString("timelineidx").toString()
-
-//    Bundle extras = getIntent().getExtras();
-//String foo = extras.getString("FOO");
-
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_timeline_storylist_intern)
         rvTimelineStoryListinit()
+        backBtn()
 
     }
 
@@ -52,6 +41,13 @@ class TimelineStoryListInternActivity : AppCompatActivity() {
         val timelineStoryListcall = ApiServiceImpl.service.requestStoryList(ApiServiceImpl.getToken(), timelineIdx.toString())
         timelineStoryListcall.enqueue(
             onSuccess = {
+                if(it[it.size-1].isMe == 1) {
+                    // 자신의 스토리 리스트가 아닐 경우 글쓰기 버튼 안보이게 하기
+                    img_storylist_floatingBtn.visibility = View.INVISIBLE
+                }else{
+                    // 자신의 스토리 리스트일 경우 글쓰기 버튼 안보이게 하기
+                    img_storylist_floatingBtn.visibility = View.VISIBLE
+                }
                 timelineStoryListAdapterIntern.data = it
                 timelineStoryListAdapterIntern.notifyDataSetChanged()
             },
@@ -62,27 +58,13 @@ class TimelineStoryListInternActivity : AppCompatActivity() {
                 }
             }
         )
+    }
 
-
-//        timelineStoryListAdapterIntern.data = listOf(
-//            TimelineStoryListInternData(
-//                desc = "영화 번역가는 AI 때문에 사라질 직업인가.",
-//                date = "12.23",
-//                img = R.drawable.home_recomm_story3_img
-//            ),
-//            TimelineStoryListInternData(
-//                desc = "영화 번역가는 AI 때문에 사라질 직업인가.",
-//                date = "12.23",
-//                img = R.drawable.home_recomm_story3_img
-//            ),
-//            TimelineStoryListInternData(
-//                desc = "영화 번역가는 AI 때문에 사라질 직업인가.",
-//                date = "12.23",
-//                img = R.drawable.home_recomm_story3_img
-//            )
-//        )
-
-
+    /* 뒤로가기 화살표 클릭 리스너 */
+    fun backBtn(){
+        img_backBtn.setOnClickListener {
+            finish()
+        }
     }
 }
 

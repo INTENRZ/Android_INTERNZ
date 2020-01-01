@@ -18,8 +18,8 @@
             android:id="@+id/img_backBtn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:src="@drawable/timeline_detail_back_ic"/>
