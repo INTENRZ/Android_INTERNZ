@@ -74,5 +74,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.0'
 
     //calendar 두 번째 달력
-    implementation 'com.github.applikeysolutions:cosmocalendar:1.0.4'
+//    implementation 'com.github.applikeysolutions:cosmocalendar:1.0.4'
+
+    //calendar 세 번째 달력
+    implementation 'com.prolificinteractive:material-calendarview:1.4.3'
 }

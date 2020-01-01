@@ -53,24 +53,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calendarActionBar">
 
-        <com.kizitonwose.calendarview.CalendarView
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
             android:id="@+id/Calendar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cv_orientation="vertical"
-            app:headerColor="@color/colorWhite"
-            app:headerLabelColor="#000000"
-            app:todayLabelColor="#000000"
-            app:selectionColor="@color/colorBackground"
+            app:mcv_selectionColor="@color/colorBackground"
+            app:mcv_showOtherDates="defaults"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+<!--  calendar 첫번째에서 지정해줄 attribute      -->
+<!--            app:headerColor="@color/colorWhite"-->
+<!--            app:headerLabelColor="#000000"-->
+<!--            app:todayLabelColor="#000000"-->
+<!--            app:selectionColor="@color/colorBackground"-->
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="330dp"
+        android:layout_height="280dp"
         android:background="#f4f4f4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

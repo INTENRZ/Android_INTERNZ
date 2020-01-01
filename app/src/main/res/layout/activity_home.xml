@@ -40,7 +40,9 @@
         app:labelVisibilityMode="unlabeled"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/bottom_nav_menu"
-        app:itemIconSize="@dimen/day_label_focus_size_events_disabled" />
+        app:itemIconSize="@dimen/activity_vertical_margin" />
+<!--  원래 위의 itemIconSize는 아래 속성이었음  -->
+<!--    @dimen/day_label_focus_size_events_disabled-->
 <!--app:itemIconTint="@color/colorBlack"-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,6 +23,7 @@ import com.example.internz.data.signup2.SignUp2RequestData
 import com.example.internz.data.story.DetailStoryResponseData
 import com.example.internz.data.story.StoryCategoryRequestData
 import com.example.internz.data.story.StoryCategoryResponseData
+import com.example.internz.feature.calendar.CalenderResponseDayData
 import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.http.*
@@ -101,6 +102,12 @@ interface ApiService {
     @POST("/timeline")
     fun requestTimelineAdd (@Header("token") token: String, @Body body: TimelineAddRequestData) : Call<BaseResponse<TimelineAddRequestData>>
 
+    //날짜별 공고 조회(달력)
+    @GET("/calender/{day}")
+    fun requestCalenderDay(@Path("day") day : String, @Header("token") token : String) : Call<BaseResponse<List<CalenderResponseData>>>
 
+    //캘린더에 공고 추가
+    @POST("/calender/{jobIdx}")
+    fun requestAddNotification(@Path("jobIdx") jobIdx: String, @Header("token") token: String) : Call<CallWithoutDataExt>
 
 }

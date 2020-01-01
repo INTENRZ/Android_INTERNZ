@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
 import com.example.internz.data.notification.NotificationResponseData
 import com.example.internz.feature.web.WebViewActivity
 import retrofit2.http.Url
@@ -20,6 +22,7 @@ class NotificationListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     private val view : View = view.findViewById(R.id.content) //recycler item view
     val rightView : View = view.findViewById(R.id.right) //swipe view
 
+    var jobIdx : Int? = null
     val photo : ImageView = view.findViewById(R.id.imgNotilistImg)
     val title : TextView = view.findViewById(R.id.txtNotilistTitle)
     val dday : TextView = view.findViewById(R.id.txtNotilistDday)
@@ -41,6 +44,7 @@ class NotificationListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         }
 
         desc.text = data.team
+        jobIdx = 5 //TODO! 캘린더 추가시 필요한 jobIdx 수정 필요
 
         //recyclerview 선택시의 click event
         view.setOnClickListener {
@@ -50,10 +54,24 @@ class NotificationListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
             view.context.startActivity(intent)
         }
 
+        //스와이프 후 공고 캘린더에 추가
         rightView.setOnClickListener {
-            Toast.makeText(view.context, "캘린더에 추가되어야 합니다.", Toast.LENGTH_SHORT).show()
-        }
+            val call = ApiServiceImpl.service.requestAddNotification(
+                jobIdx.toString(), //TODO! jobIdx를 어떻게하면 가장 효과적으로 받아올 수 있을까?
+                ApiServiceImpl.getToken()
+            )
 
-        //swipe 추가 선택시의 click event
+            call.enqueue(
+                onSuccess = {
+                    if (it.success.toString().equals("true")) {
+                        Toast.makeText(view.context, "${desc.text}의 공고가 캘린더에 추가되었습니다.", Toast.LENGTH_SHORT).show()
+                        Log.e("TAG", "NotificationListViewHolder : onSuccess 메서드 실행됨")
+                    }
+                },
+                onFail = {
+                    status, message -> Log.e("TAG", "NotificationListViewHolder : onFail 메서드 실행됨")
+                }
+            )
+        }
     }
 }

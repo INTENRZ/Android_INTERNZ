@@ -12,7 +12,6 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
-import com.example.internz.api.ApiServiceImpl.getUserIdx
 import com.example.internz.common.BaseResponse
 import com.example.internz.common.enqueue
 import com.example.internz.common.toast

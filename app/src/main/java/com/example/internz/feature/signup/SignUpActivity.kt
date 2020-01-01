@@ -16,7 +16,6 @@ import com.example.internz.data.signup.SignUpRequestData
 import com.example.internz.feature.jobselect.JobSelectActivity
 import com.example.internz.ui.BottomBarActivity
 import com.example.internz.api.ApiServiceImpl
-import com.example.internz.api.ApiServiceImpl.setUserIdx
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.util.regex.Pattern
 

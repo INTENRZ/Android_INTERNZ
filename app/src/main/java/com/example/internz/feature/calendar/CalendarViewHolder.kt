@@ -15,7 +15,7 @@ class CalendarViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
     //TODO! 색상 및 이미지를 우리가 결정하는것으로 변경
     private val logo : ImageView = view.findViewById(R.id.imgCalendarLogo)
-    private val color : ImageView = view.findViewById(R.id.imgCalendarColor)
+//    private val color : ImageView = view.findViewById(R.id.imgCalendarColor)
     private val name : TextView = view.findViewById(R.id.imgCalendarName)
     private val team : TextView = view.findViewById(R.id.imgCalendarTeam)
     private val date : TextView = view.findViewById(R.id.txtCalendarDate)
@@ -32,7 +32,7 @@ class CalendarViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         //회사 로고
         Glide.with(view.context).load(data.logo).into(logo)
         //랜덤 색상
-        color.setColorFilter(Color.parseColor(CalendarHelper.getColor()))
+//        color.setColorFilter(Color.parseColor(CalendarHelper.getColor()))
 
     }
 }
