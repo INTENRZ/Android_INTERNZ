@@ -1,5 +1,6 @@
 package com.example.internz.feature.signup
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,15 +8,16 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.common.enqueue
 import com.example.internz.common.toast
 import com.example.internz.data.signup.SignUpRequestData
 import com.example.internz.feature.jobselect.JobSelectActivity
+import com.example.internz.ui.BottomBarActivity
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.api.ApiServiceImpl.setUserIdx
-import com.example.internz.common.BaseResponse
-import com.example.internz.data.signup.SignUpData
+import com.example.internz.common.CallWithoutDataExt
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import retrofit2.Call
 
@@ -31,7 +33,6 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
         signUpFunction()
-        changeBtnBackground()
     }
 
     private fun signUpFunction() {
@@ -107,30 +108,28 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         //다음(click_event)
+        //TODO! 모든 항목이 입력되어야 다음으로 넘어가도록 수정
         btnSignUpNext?.setOnClickListener {
             val email = edtSignUpEmail.text.toString()
-
-            val signUpCall: Call<BaseResponse<SignUpData>> = ApiServiceImpl.service.requestSignUp(
-                SignUpRequestData(
-                    email
-                )
+            val password = edtSignUpPwd.text.toString()
+            val phone = edtSignUpPhone.text.toString()
+            val signUpCall : Call<CallWithoutDataExt> = ApiServiceImpl.service.requestSignUp(
+                SignUpRequestData(email)
             )
 
+            Log.e("aaaa", "성공")
             signUpCall.enqueue(
 
                 onSuccess = {
+                    val intent = Intent(applicationContext, SignUp2Activity::class.java)
+                    intent.putExtra("email", email)
+                    intent.putExtra("password", password)
+                    intent.putExtra("phone" , phone)
+                    startActivity(intent)
+                },
 
-                    if(it.success) {
-                        val intent = Intent(this@SignUpActivity, SignUp2Activity::class.java)
-                        startActivity(intent)
-                    }
-                    else
-                    {
-                        Log.e("hyuntaek", " onSuccess로 못들어 감 ")
-                    }
-
+                onFail = {status, message ->  toast("Fail")
                 }
-
             )
         }
 

@@ -70,39 +70,9 @@ class JobSelectActivity : AppCompatActivity() {
         //다음(click_event)
         btnJobSelectNext.setOnClickListener {
             if(SelectHelper.count == 3) {
-                //서버 통신
-                val call = ApiServiceImpl.service.putJobSelect(
-                    JobSelectPutData(SelectHelper.arrayList.get(0),
-                        SelectHelper.arrayList.get(1),
-                        SelectHelper.arrayList.get(2)))
-
-                call.enqueue(
-                    object : retrofit2.Callback<JobSelectData> {
-                        override fun onFailure(call: Call<JobSelectData>, t: Throwable) {
-                            Log.e("TAG", "JobSelectActiviy 서버 통신 불가")
-                        }
-
-                        override fun onResponse(
-                            call: Call<JobSelectData>,
-                            response: Response<JobSelectData>
-                        ) {
-                            if (response.isSuccessful) {
-                                if(response.body()?.status!!) {
-                                    val intent = Intent(applicationContext, SetProfileActivity::class.java)
-                                    startActivity(intent)
-                                } else {
-                                    Log.e("TAG", response.body()?.message.toString())
-                                }
-                            }
-                            else {
-                                //서버 통신 불가
-                            }
-                        }
-                    }
-                )
-
                 val intent = Intent(this, SetProfileActivity::class.java)
                 startActivity(intent)
+
             } else {
                 Toast.makeText(this, "세 개의 관심직무를 선택하세요.", Toast.LENGTH_SHORT).show()
             }

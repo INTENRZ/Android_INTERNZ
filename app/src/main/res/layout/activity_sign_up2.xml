@@ -127,6 +127,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteX="0dp">
 
         <RadioButton
@@ -217,9 +218,10 @@
         android:background="@drawable/btn_shape"
         android:text="완료"
         android:textColor="@color/colorWhite"
+        android:layout_marginTop="12dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtSignUpMarketing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

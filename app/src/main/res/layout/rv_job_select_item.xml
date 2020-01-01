@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
+    <CheckedTextView
         android:id="@+id/rvJobSelectBtn"
         android:layout_width="86dp"
         android:layout_height="33dp"
@@ -15,6 +15,7 @@
         android:checked="false"
         android:background="@drawable/btn_for_job_selecter"
         android:text="직무이름"
+        android:textAlignment="center"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="4dp"
         android:layout_marginRight="4dp"

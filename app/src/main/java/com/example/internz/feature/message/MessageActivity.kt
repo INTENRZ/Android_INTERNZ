@@ -44,11 +44,11 @@ class MessageActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListene
     }
 
     override fun onRefresh() {
+        Toast.makeText(this, "새로고침할 코드가 추가되어야 합니다.", Toast.LENGTH_SHORT).show()
 
         Handler().postDelayed({
-            Toast.makeText(this, "새로고침할 코드가 추가되어야 합니다.", Toast.LENGTH_SHORT).show()
-        }, 1000)
+            swipe.isRefreshing = false
 
-        swipe.isRefreshing = false
+        }, 1000)
     }
 }

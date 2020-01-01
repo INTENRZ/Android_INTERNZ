@@ -1,11 +1,11 @@
 package com.example.internz.data.profile
 
-import android.widget.TextView
-
 
 data class ProfileTimelineData (
-    val timelineCategory: String,
-    val timelineTitle: String,
-    val timelinePeriodStart: String,
-    val timelinePeriodEnd: String
+    val timelineIdx: Int,
+    val userIdx: Int,
+    val title: String,
+    val start_date: String,
+    val end_date: String,
+    val category: String
 )

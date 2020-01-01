@@ -3,7 +3,6 @@ package com.example.internz.ui.profile.main
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.profile.ProfileTimelineData
@@ -15,9 +14,7 @@ class MainProfileVeiwHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     val timelinePeriod : TextView = itemView.findViewById(R.id.txt_profile_timeline_period)
 
     fun bind(data: ProfileTimelineData){
-        timelineTitle.text = data.timelineTitle
-        timelinePeriod.text = data.timelinePeriodStart + " - " + data.timelinePeriodEnd
+        timelineTitle.text = data.title
+        timelinePeriod.text = data.start_date + " - " + data.end_date
     }
-
-
 }

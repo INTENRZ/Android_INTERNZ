@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Toast
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
@@ -86,33 +87,33 @@ class SignInActivity : AppCompatActivity() {
 
             //TODO! 파트장님이 extension 이용해서 서버 통신 구현하신 부분
             //로그인 요청
-//            val signIncall: Call<BaseResponse<SignInData>> = ApiServiceImpl.service.requestSignIn(
-//
-//                SignInRequestData(email,pwd)
-//            )
+            val signIncall: Call<BaseResponse<SignInData>> = ApiServiceImpl.service.requestSignIn(
 
-//            signIncall.enqueue(
-//
-//               onSuccess = {
-//                   when {
-//                       it.isFirst == "0" -> {
-//                           setToken(it.token)
-//                           val intent = Intent(applicationContext, JobSelectActivity::class.java)
-//                           startActivity(intent)
-//
-//                       }
-//                       it.isFirst == "1" -> {
-//                           setToken(it.token)
-//                           val intent = Intent(applicationContext, BottomBarActivity::class.java)
-//                           startActivity(intent)
-//
-//                       }
-//
-//                   }
-//               },
-//                onFail = {status, message ->  toast(message)
-//                }
-//            )
+                SignInRequestData(email,pwd)
+            )
+
+            signIncall.enqueue(
+
+               onSuccess = {
+                   when {
+                       it.isFirst == "0" -> {
+                           setToken(it.token)
+                           val intent = Intent(applicationContext, JobSelectActivity::class.java)
+                           startActivity(intent)
+
+                       }
+                       it.isFirst == "1" -> {
+                           setToken(it.token)
+                           val intent = Intent(applicationContext, BottomBarActivity::class.java)
+                           startActivity(intent)
+
+                       }
+
+                   }
+               },
+                onFail = {status, message ->  toast(message)
+                }
+            )
 
         }
 
@@ -120,6 +121,8 @@ class SignInActivity : AppCompatActivity() {
         txtSignInSignUp?.setOnClickListener {
             val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
             startActivity(intent)
+
+
         }
     }
 

@@ -16,11 +16,21 @@ import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
 import com.example.internz.common.toast
+import com.example.internz.data.firstsignin.FirstSignInRequestData
+import com.example.internz.data.firstsignin.FirstSignInResponseData
+import com.example.internz.feature.jobselect.SelectHelper
 import com.example.internz.ui.BottomBarActivity
 import kotlinx.android.synthetic.main.activity_set_profile.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SetProfileActivity : AppCompatActivity() {
+    private var imagePath : String = ""
+    private lateinit var activity : Activity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +41,7 @@ class SetProfileActivity : AppCompatActivity() {
 
     private fun setProfileActivity() {
         imgSetProfile.makeCircle()
+        activity = this
 
         //기본 이미지 click listener 지정
         imgSetProfile.setOnClickListener {
@@ -108,10 +119,94 @@ class SetProfileActivity : AppCompatActivity() {
                 edtSetProfileContents.requestFocus()
                 Toast.makeText(applicationContext, "20자 이상의 한줄 소개를 작성해주세요.", Toast.LENGTH_SHORT).show()
             } else {
-                val intent = Intent(this@SetProfileActivity, BottomBarActivity::class.java)
-                startActivity(intent)
+                /*
+                //TODO! 서버 통신
+                val call = ApiServiceImpl.service.requestSettingAtFirstSignIn(
+                    ApiServiceImpl.getToken(),
+                    FirstSignInRequestData(
+                        SelectHelper.arrayList.get(0),
+                        SelectHelper.arrayList.get(1),
+                        SelectHelper.arrayList.get(2),
+                        imagePath,
+                        edtSetProfileContents.text.toString()
+                    )
+                )
 
-                ActivityCompat.finishAffinity(this)
+                call.enqueue(
+                    //통신 성공
+                    onSuccess = {
+                        when(it.status) {
+                            "200" -> {
+                                //입력 완료 후 BottomBarActivity 이동
+                                val intent = Intent(this@SetProfileActivity, BottomBarActivity::class.java)
+                                startActivity(intent)
+
+                                ActivityCompat.finishAffinity(activity)
+                                Log.e("TAG", "status는 200입니다.")
+                            }
+                            "100" -> {
+                                Toast.makeText(applicationContext, it.message, Toast.LENGTH_SHORT).show()
+                                Log.e("TAG", "status는 100입니다.")
+                            }
+                            "110" -> {
+                                Toast.makeText(applicationContext, it.message, Toast.LENGTH_SHORT).show()
+                                Log.e("TAG", "status는 110입니다.")
+                            }
+                        }
+                    },
+                    //통신 실패
+                    onFail = {
+                        status, message -> toast(message)
+                        Log.e("TAG", "통신 실패")
+                    }
+                )
+                 */
+
+
+//                val call = ApiServiceImpl.service.requestSettingInFistSignIn(
+//                    ApiServiceImpl.getToken(),
+//                    FirstSignInRequestData(
+//                        SelectHelper.arrayList.get(0),
+//                        SelectHelper.arrayList.get(1),
+//                        SelectHelper.arrayList.get(2),
+//                        imagePath,
+//                        edtSetProfileContents.text.toString()
+//                    )
+//                )
+//
+//                call.enqueue(
+//                    object : Callback<FirstSignInResponseData> {
+//                        override fun onFailure(call: Call<FirstSignInResponseData>, t: Throwable) {
+//                            Log.e("TAG", "FirstSignInResponseData is not activated")
+//                        }
+//
+//                        override fun onResponse(
+//                            call: Call<FirstSignInResponseData>,
+//                            response: Response<FirstSignInResponseData>
+//                        ) {
+//                            if (response.isSuccessful) {
+//                                if(response.body()?.status.equals("200")) {
+//                                    val intent = Intent(this@SetProfileActivity, BottomBarActivity::class.java)
+//                                    startActivity(intent)
+//
+//                                    ActivityCompat.finishAffinity(activity)
+//                                }
+//                                else if (response.body()?.status.equals("100")) {
+//                                    Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
+//                                }
+//                                else if (response.body()?.status.equals("110")) {
+//                                    Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
+//                                }
+//                                else {
+//                                    //...
+//                                }
+//                            }
+//                            else {
+//                                Log.e("TAG", "FirstSignInResponseData broadcast fail")
+//                            }
+//                        }
+//                    }
+//                )
             }
         }
     }
@@ -159,6 +254,7 @@ class SetProfileActivity : AppCompatActivity() {
                 .apply(RequestOptions.circleCropTransform())
                 .into(imgSetProfile)
 
+            imagePath = data?.data.toString()
         }
     }
 
