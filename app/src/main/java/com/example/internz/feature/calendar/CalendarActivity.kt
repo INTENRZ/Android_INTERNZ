@@ -130,10 +130,6 @@ class CalendarActivity : AppCompatActivity() {
                 override fun shouldDecorate(day: CalendarDay?): Boolean {
                     formattedDate = dayFormatter.format(day?.date)
 
-                    Log.e("TAG", "이번달 전체 공고 : ${CalendarHelper.monthDay}")
-                    Log.e("TAG", "비교할 대상 : ${formattedDate}")
-                    Log.e("TAG", "비교 결과 : ${CalendarHelper.monthDay.contains(formattedDate)}")
-
                     return CalendarHelper.monthDay.contains(formattedDate)
                 }
             },
