@@ -1,12 +1,14 @@
 package com.example.internz.ui.profile.main
 
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.profile.ProfileTimelineData
+import com.example.internz.ui.profile.timeline.TimelineStoryHelper
 import com.example.internz.ui.profile.timeline.TimelineStoryListInternActivity
 
 
@@ -22,7 +24,10 @@ class MainProfileVeiwHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
 
         itemView.setOnClickListener {
             val intent = Intent(itemView.context, TimelineStoryListInternActivity::class.java)
+            TimelineStoryHelper.timelineIdx = data.timelineIdx
+//            intent.putExtra("timelineIdx", data.timelineIdx.toString())
             itemView.context.startActivity(intent)
+
         }
     }
 }

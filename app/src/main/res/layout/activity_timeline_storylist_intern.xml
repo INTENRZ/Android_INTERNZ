@@ -89,4 +89,28 @@
         android:layout_marginStart="18dp"
         android:layout_marginEnd="18dp"/>
 
+    <ImageView
+        android:id="@+id/img_storylist_floatingBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/storywrite_floating_btn"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/txt_none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="스토리가 없습니다."
+        android:textColor="#bfbfbf"
+        android:textSize="18sp"
+        android:visibility="invisible"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

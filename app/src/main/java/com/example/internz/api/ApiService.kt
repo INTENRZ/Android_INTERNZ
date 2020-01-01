@@ -15,6 +15,7 @@ import com.example.internz.data.profile.TimelineAddRequestData
 import com.example.internz.data.UserIdxRequestData
 import com.example.internz.data.home.HomeResponseData
 import com.example.internz.data.profile.ProfileData
+import com.example.internz.data.profile.TimelineStoryListInternData
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.data.signup.SignUpRequestData
@@ -100,6 +101,8 @@ interface ApiService {
     @POST("/timeline")
     fun requestTimelineAdd (@Header("token") token: String, @Body body: TimelineAddRequestData) : Call<BaseResponse<TimelineAddRequestData>>
 
-
+    // 각 타임라인의 스토리 리스트 조회
+    @GET("/timeline/{timelineIdx}/story")
+    fun requestStoryList(@Header("token") token: String, @Path("timelineIdx") timelineIdx : String) : Call<BaseResponse<List<TimelineStoryListInternData>>>
 
 }

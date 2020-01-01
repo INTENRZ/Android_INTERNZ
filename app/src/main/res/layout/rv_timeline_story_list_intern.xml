@@ -7,7 +7,7 @@
 
 
     <TextView
-        android:id="@+id/txtTimelineStoryListInternDesc"
+        android:id="@+id/txtTimelineStoryListInternTitle"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,13 +23,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="17dp"
         android:text="12.13"
         android:textColor="#212529"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/bar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTimelineStoryListInternDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTimelineStoryListInternTitle" />
 
     <ImageView
         android:id="@+id/imgTimelineStoryListInternImg"

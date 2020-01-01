@@ -10,16 +10,16 @@ import com.example.internz.data.profile.TimelineStoryListInternData
 
 class TimelineStoryListInternViewHolder (view : View) : RecyclerView.ViewHolder(view) {
 
-    val desc : TextView = view.findViewById(R.id.txtTimelineStoryListInternDesc)
+    val title : TextView = view.findViewById(R.id.txtTimelineStoryListInternTitle)
     val date : TextView = view.findViewById(R.id.txtTimelineStoryListInternDate)
     val img : ImageView = view.findViewById(R.id.imgTimelineStoryListInternImg)
 
     fun bind(internData : TimelineStoryListInternData)
     {
 
-        desc.text = internData.desc
-        date.text = internData.date
-        img.setImageDrawable(ResourcesCompat.getDrawable(itemView.resources, internData.img, null))
+        title.text = internData.title
+        date.text = internData.updated_date
+        //img.setImageDrawable(ResourcesCompat.getDrawable(itemView.resources, internData.img, null))
 
     }
 }
