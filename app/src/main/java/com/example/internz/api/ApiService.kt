@@ -73,7 +73,7 @@ interface ApiService {
 
     //캘린더 홈 조회
     @GET("/calender/home/{month}")
-    fun requestCalenderMonth(@Header("token") token : String, @Path("month") month : String) : Call<BaseResponse<List<CalenderResponseData>>>
+    fun requestCalenderMonth(@Path("month") month : String, @Header("token") token : String) : Call<BaseResponse<List<CalenderResponseData>>>
 
     @PUT("/user/task")
     fun putJobSelect(@Body body : JobSelectPutData) : Call<JobSelectData>

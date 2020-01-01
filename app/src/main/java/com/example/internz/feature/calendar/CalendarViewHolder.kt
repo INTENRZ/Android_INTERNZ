@@ -1,6 +1,7 @@
 package com.example.internz.feature.calendar
 
 import android.graphics.Color
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,7 +16,6 @@ class CalendarViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
     //TODO! 색상 및 이미지를 우리가 결정하는것으로 변경
     private val logo : ImageView = view.findViewById(R.id.imgCalendarLogo)
-//    private val color : ImageView = view.findViewById(R.id.imgCalendarColor)
     private val name : TextView = view.findViewById(R.id.imgCalendarName)
     private val team : TextView = view.findViewById(R.id.imgCalendarTeam)
     private val date : TextView = view.findViewById(R.id.txtCalendarDate)
@@ -31,8 +31,9 @@ class CalendarViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         }
         //회사 로고
         Glide.with(view.context).load(data.logo).into(logo)
-        //랜덤 색상
-//        color.setColorFilter(Color.parseColor(CalendarHelper.getColor()))
 
+        //날짜 저장(decoration 위함)
+        CalendarHelper.setMonthDay(data.end_date)
+        Log.e("TAG", "data.end_date : ${data.end_date}")
     }
 }

@@ -38,7 +38,7 @@
 
     <TextView
         android:id="@+id/imgCalendarTeam"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:fontFamily="@font/notosanscjkkrregular"
@@ -56,7 +56,6 @@
         android:layout_height="39dp"
         android:layout_marginTop="7dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/internz_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

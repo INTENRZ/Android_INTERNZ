@@ -20,11 +20,9 @@ object ApiServiceImpl {
 
     fun setToken(token: String) {
         this.token = token
-        Log.e("TAG", "setToken : ${token}")
     }
 
     fun getToken() : String {
-        Log.e("TAG", "getToken : ${token}")
         return token
     }
 

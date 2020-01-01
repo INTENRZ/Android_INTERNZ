@@ -112,7 +112,7 @@ class StoryFragment : Fragment() {
                 status, message ->
                     Log.e("TAG", "StoryFragment : onFail 메서드 실행, ${message}")
                     run {
-                    //데이터가 없는 것으로 초기화
+                        //데이터가 없는 경우 recycler view data 초기화
                         adapter.data = emptyList()
                         adapter.notifyDataSetChanged()
                         Log.e("TAG", "StoryFragment : onFail 안의 run 실행됨")
