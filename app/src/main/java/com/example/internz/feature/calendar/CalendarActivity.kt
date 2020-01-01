@@ -44,6 +44,13 @@ class CalendarActivity : AppCompatActivity() {
     }
 
     private fun calendarFunction() {
+        //Calendar에 공고 리스트가 존재하지 않는 경우 추가할 텍스트
+        if (adapter.itemCount == 0) {
+            txtCalendarEmpty.text = "공고를 추가해주세요."
+        } else {
+            txtCalendarEmpty.text = ""
+        }
+
         //하단 recycler view 목록 지정
         recyclerView = findViewById(R.id.rvCalendar)
         adapter = CalendarAdapter(this)
@@ -52,8 +59,6 @@ class CalendarActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         //YEAR-MONTH 통신 시작
-//        val localDateTime = LocalDateTime.now(ZoneId.of("Asia/Seoul"))
-//        val date = localDateTime.toString().substring(0, 7)
         formattedDate = monthFormatter.format(Date())
         Log.e("TAG", "YEAR-MONTH : ${formattedDate}")
 
@@ -72,13 +77,6 @@ class CalendarActivity : AppCompatActivity() {
                 Log.e("TAG", "CalendarActivity : onFail 메서드 실행됨")
             }
         )
-
-        //Calendar에 공고 리스트가 존재하지 않는 경우 추가할 텍스트
-        if (adapter.itemCount == 0) {
-            txtCalendarEmpty.text = "공고를 추가해주세요."
-        } else {
-            txtCalendarEmpty.text = ""
-        }
 
         //스크롤 이펙트 제거
         findViewById<RecyclerView>(R.id.rvCalendar).overScrollMode = View.OVER_SCROLL_NEVER
@@ -179,25 +177,3 @@ class CalendarActivity : AppCompatActivity() {
         }
     }
 }
-
-//    //YEAR-MONTH 형태로 반환 (달(month)별 캘린더 조회에 필요)
-//    private fun getDate(year : Int, month : Int) : String {
-//        var m : String? = null
-//        when(month) {
-//            0 -> m = "01"
-//            1 -> m = "02"
-//            2 -> m = "03"
-//            3 -> m = "04"
-//            4 -> m = "05"
-//            5 -> m = "06"
-//            6 -> m = "07"
-//            7 -> m = "08"
-//            8 -> m = "09"
-//            9 -> m = "10"
-//            10 -> m = "11"
-//            11 -> m = "12"
-//        }
-//
-//        return year.toString() + "-" + m
-//    }
-//}
