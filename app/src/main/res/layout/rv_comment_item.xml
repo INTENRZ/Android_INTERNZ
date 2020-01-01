@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/imgCommentProfile"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="16dp"
@@ -30,7 +30,7 @@
         android:textSize="12sp"
         android:lineSpacingExtra="6sp"
         app:layout_constraintBottom_toTopOf="@+id/txtCommentContents"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintStart_toEndOf="@+id/imgCommentProfile"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -45,7 +45,7 @@
         android:lineSpacingExtra="3sp"
         android:textColor="#212529"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+        app:layout_constraintTop_toBottomOf="@+id/imgCommentProfile" />
 
     <TextView
         android:id="@+id/txtCommentDate"

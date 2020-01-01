@@ -5,6 +5,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.comment.CommentData
+import com.example.internz.data.comment.CommentResponseData
 import kotlinx.android.synthetic.main.activity_comment.view.*
 
 class CommentViewHolder(view : View) : RecyclerView.ViewHolder(view) {
@@ -13,9 +14,9 @@ class CommentViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     private val date : TextView = view.findViewById(R.id.txtCommentDate)
     private val time : TextView = view.findViewById(R.id.txtCommentTime)
 
-    fun bind(data : CommentData) {
+    fun bind(data : CommentResponseData) {
         nickname.text = data.nickname
-        comments.text = data.comments
+        comments.text = data.content
         date.text = data.date
         time.text = data.date
     }

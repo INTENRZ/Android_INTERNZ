@@ -32,7 +32,6 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
         R.id.frag_navigation_notice to fragmentNotification,
         R.id.frag_navigation_story to fragmentStory,
         R.id.frag_navigation_profile to fragmentProfile
-
     )
 
     // active는 현재 보여지는 화면
@@ -45,10 +44,6 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navView.setOnNavigationItemSelectedListener(this)
-
-        // val navController = findNavController(R.id.nav_host_fragment)
-        // navView.setupWithNavController(navController)
-
 
         //for each문은 자동으로 처음부터 끝까지 리스트 접근, 그래서 manager가 관리 , 관리하기 위해서는 add로 manager한테 권한주기
         // 그리고 hide로 전부 숨긴다.
