@@ -22,7 +22,7 @@ class TimelineStoryListInternActivity : AppCompatActivity() {
 
     fun rvTimelineStoryListinit() {
 
-        rvTimelineStoryListIntern = findViewById(R.id.rv_profile_timeline)
+        rvTimelineStoryListIntern = findViewById(R.id.rv_timeline_innerlist)
         timelineStoryListAdapterIntern =
             TimelineStoryListInternAdapter(this)
         rvTimelineStoryListIntern.adapter = timelineStoryListAdapterIntern

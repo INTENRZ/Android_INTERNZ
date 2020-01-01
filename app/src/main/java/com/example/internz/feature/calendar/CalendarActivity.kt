@@ -37,7 +37,7 @@ class CalendarActivity : AppCompatActivity() {
 
     private fun calendarFunction() {
         //변수 초기화
-        calendarView = findViewById(R.id.Calendar)
+       // calendarView = findViewById(R.id.Calendar)
 
         //달력의 방향 지정
         calendarView.calendarOrientation = 0

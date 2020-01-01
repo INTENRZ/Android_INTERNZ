@@ -1,11 +1,13 @@
 package com.example.internz.ui.profile.main
 
+import android.content.Intent
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.profile.ProfileTimelineData
+import com.example.internz.ui.profile.timeline.TimelineStoryListInternActivity
 
 
 class MainProfileVeiwHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -18,5 +20,9 @@ class MainProfileVeiwHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         timelinePeriod.text = data.start_date + " - " + data.end_date
         timelineCategory.text = data.category
 
+        itemView.setOnClickListener {
+            val intent = Intent(itemView.context, TimelineStoryListInternActivity::class.java)
+            itemView.context.startActivity(intent)
+        }
     }
 }
