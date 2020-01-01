@@ -34,6 +34,5 @@ class CalendarViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
         //날짜 저장(decoration 위함)
         CalendarHelper.setMonthDay(data.end_date)
-        Log.e("TAG", "data.end_date : ${data.end_date}")
     }
 }

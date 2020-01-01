@@ -3,10 +3,14 @@ package com.example.internz.feature.calendar
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Color
+import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.provider.CalendarContract
+import android.text.style.ForegroundColorSpan
+import android.text.style.RelativeSizeSpan
+import android.text.style.StyleSpan
 import android.util.EventLog
 import android.util.Log
 import android.view.View
@@ -17,6 +21,7 @@ import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.enqueue
 import com.prolificinteractive.materialcalendarview.*
+import com.prolificinteractive.materialcalendarview.spans.DotSpan
 import kotlinx.android.synthetic.main.activity_calendar.*
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
@@ -32,7 +37,7 @@ class CalendarActivity : AppCompatActivity() {
     private lateinit var calendarView: com.prolificinteractive.materialcalendarview.MaterialCalendarView
 
     //날짜 형식 지정
-    private var dayFormatter = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
+    private var dayFormatter = SimpleDateFormat("MM-dd", Locale.KOREA)
     private var monthFormatter = SimpleDateFormat("yyyy-MM", Locale.KOREA)
     private var formattedDate: String = ""
 
@@ -90,24 +95,32 @@ class CalendarActivity : AppCompatActivity() {
             object : DayViewDecorator {
                 //커스텀 여부에 따라 호출됨
                 override fun decorate(view: DayViewFacade?) {
-                    //TODO! 디자인에서 달력에 추가하는 이미지 수정해줘야 함
-                    view?.setBackgroundDrawable(getDrawable(R.drawable.circle_for_calendar)!!)
+                    view?.addSpan(DotSpan(8f, Color.parseColor("#ffc200")))
                 }
 
                 //달력에 날짜 띄울때 decoration이 필요한지 판단
                 override fun shouldDecorate(day: CalendarDay?): Boolean {
                     //TODO! 사용자가 공고 리스트에서 추가한 날짜와 일치하는 날만 decorator 추가
-                    for (days in CalendarHelper.monthDay) {
-                        val m = days.substring(0, 2)
-                        val d = days.substring(3)
+                    val formattedDate = dayFormatter.format(day?.date)
+                    Log.e("TAG", "CalendarActivity : ${formattedDate}")
 
-                        if (m.equals(day?.month) && d.equals(day?.day)) {
-                            return true
-                        } else {
-                            return false
-                        }
-                    }
-                    return false //TODO! 오류 확인
+                    return CalendarHelper.monthDay.contains(formattedDate)
+                }
+            }
+        )
+
+        //TODAY 표시를 위한 데코레이터
+        calendarView.addDecorator(
+            object : DayViewDecorator {
+                override fun decorate(view: DayViewFacade?) {
+                    view?.addSpan(ForegroundColorSpan(Color.BLACK))
+                    view?.addSpan(StyleSpan(Typeface.BOLD))
+                    view?.addSpan(RelativeSizeSpan(1.2f))
+                }
+
+                //TODAY 표시
+                override fun shouldDecorate(day: CalendarDay?): Boolean {
+                    return CalendarDay.today() != null && day?.equals(CalendarDay.today())!!
                 }
             }
         )
@@ -120,6 +133,7 @@ class CalendarActivity : AppCompatActivity() {
                     date: CalendarDay,
                     selected: Boolean
                 ) {
+                    //clearselection메서드 발견, 이걸로 전체 <-> 요일 변환 가능할 것 같음
                     //전체공고는 달력을 클릭했을때만 보여주기로 하고, 각 날짜를 클릭했을때의 공고를 보여주자
 //                    formattedDate = dayFormatter.format(date.toString())
                     //선택한 날짜 YEAR-MONTH-DAY로 변환하기

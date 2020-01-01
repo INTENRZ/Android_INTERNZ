@@ -4,14 +4,14 @@ import android.util.Log
 
 object CalendarHelper {
     //변수 초기화
-    var monthDay = listOf<String>()
+    var monthDay = setOf<String>()
 
-    fun setMonthDay(day: String) {
-        monthDay += monthDay.plus(day.substring(5))
+    fun setMonthDay(day: String?) {
+        monthDay += monthDay.plus(day?.substring(5)!!)
         Log.e("TAG", "CalendarHelper, monthDay : ${monthDay}")
     }
 
-    fun getMonthDayCustom(): List<String> {
+    fun getMonthDayCustom(): Set<String> {
         return monthDay
     }
 }
