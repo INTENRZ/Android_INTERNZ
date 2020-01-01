@@ -42,7 +42,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:fontFamily="@font/notosanscjkkrregular"
-        android:lineSpacingExtra="7sp"
         android:text="마케팅팀"
         android:textColor="#212529"
         android:textSize="15sp"

@@ -59,6 +59,8 @@ class NotificationListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
         //스와이프 후 공고 캘린더에 추가
         rightView?.setOnClickListener {
+            Log.e("TAG", "스와이프 레이아웃 클릭되었습니다.")
+
             val call = ApiServiceImpl.service.requestAddNotification(
                 jobIdx.toString(),
                 ApiServiceImpl.getToken()
@@ -66,16 +68,16 @@ class NotificationListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
             call.enqueue(
                 onSuccess = {
-                    if (it.success.toString().equals("true")) {
-                        Toast.makeText(
-                            view.context,
-                            "${data.team}이(가) 캘린더에 추가되었습니다.",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    Log.e("TAG", "${it.success.toString()}")
+
+                    if (it.success.toString().equals("false")) {
+                        Toast.makeText(view.context, "이미 캘린더에 추가된 공고입니다.", Toast.LENGTH_SHORT).show()
+                    }else {
+                        Toast.makeText(view.context, "${desc.text}이(가) 캘린더에 추가되었습니다.", Toast.LENGTH_SHORT).show()
                     }
                 },
                 onFail = { status, message ->
-                    Toast.makeText(view.context, message, Toast.LENGTH_SHORT).show()
+                    Log.e("TAG", "${message}")
                 }
             )
         }
