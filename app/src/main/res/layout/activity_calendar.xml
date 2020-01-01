@@ -53,10 +53,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calendarActionBar">
 
-        <com.applikeysolutions.cosmocalendar.view.CalendarView
+        <com.kizitonwose.calendarview.CalendarView
             android:id="@+id/Calendar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cv_orientation="vertical"
             app:headerColor="@color/colorWhite"
             app:headerLabelColor="#000000"
             app:todayLabelColor="#000000"
