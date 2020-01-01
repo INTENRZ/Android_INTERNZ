@@ -79,6 +79,7 @@ class CommentActivity : AppCompatActivity() {
         val call = ApiServiceImpl.service.requestComment(
             StoryHelper.getStoryIndex()
         )
+        Log.e("TAG", "CommentActivity의 storyindex : ${StoryHelper.getStoryIndex()}")
 
         call.enqueue(
             onSuccess = {

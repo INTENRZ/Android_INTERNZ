@@ -20,7 +20,6 @@ fun Call<CallWithoutDataExt>.enqueue(
     //ㅇㅋ
     this.enqueue(object : Callback<CallWithoutDataExt> {
         override fun onFailure(call: Call<CallWithoutDataExt>, t: Throwable) {
-            Log.e("TAG", "onFailure")
             onError(t)
         }
 
@@ -28,10 +27,8 @@ fun Call<CallWithoutDataExt>.enqueue(
             if (response.isSuccessful) {
                 response.body()?.let {
                     onSuccess(it)
-                    Log.e("TAG", "${it.toString()}")
                 } ?: onFail(response.body()?.status?:-1, response.body()?.message.orEmpty())
             } else {
-                Log.e("TAG", "onFail2")
                 onFail(response.body()?.status?:-1, response.body()?.message.orEmpty())
             }
         }

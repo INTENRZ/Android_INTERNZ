@@ -103,19 +103,17 @@ class StoryFragment : Fragment() {
 
         call.enqueue(
             onSuccess = {
-                Log.e("TAG", "StoryFragment : onSuccess 메서드 실행")
 
                 adapter.data = it
                 adapter.notifyDataSetChanged()
+
             },
             onFail = {
                 status, message ->
-                    Log.e("TAG", "StoryFragment : onFail 메서드 실행, ${message}")
                     run {
                         //데이터가 없는 경우 recycler view data 초기화
                         adapter.data = emptyList()
                         adapter.notifyDataSetChanged()
-                        Log.e("TAG", "StoryFragment : onFail 안의 run 실행됨")
                 }
             }
         )

@@ -16,11 +16,13 @@ import kotlinx.android.synthetic.main.activity_detail_story.*
 
 
 class DetailStoryActivity : AppCompatActivity() {
+    //storyIndex 가 intent 로 넘어옴
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_story)
 
+        Log.e("TAG", "storyIndex : ${StoryHelper.getStoryIndex()}")
         detailStoryFunction()
     }
 
