@@ -3,6 +3,7 @@ package com.example.internz.ui.profile.timeline
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +11,7 @@ import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.enqueue
 import com.example.internz.ui.profile.timeline.TimelineStoryHelper.timelineIdx
+import com.example.internz.ui.story.StoryHelper
 import kotlinx.android.synthetic.main.activity_timeline_storylist_intern.*
 
 
@@ -20,12 +22,16 @@ class TimelineStoryListInternActivity : AppCompatActivity() {
     private lateinit var timelineStoryListAdapterIntern: TimelineStoryListInternAdapter
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_timeline_storylist_intern)
         rvTimelineStoryListinit()
         backBtn()
+        ingToast()
+
+        txt_storylist_category.text = TimelineStoryHelper.category
+        txt_timelineinnerlist_title.text = TimelineStoryHelper.title
+        txt_timelineinnerlist_date.text = TimelineStoryHelper.period
 
     }
 
@@ -38,6 +44,7 @@ class TimelineStoryListInternActivity : AppCompatActivity() {
         rvTimelineStoryListIntern.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         /** 각 타임라인에 들어가면 보이는 '스토리 리스트' 서버 통신 요청 */
+        Log.d("chohee", timelineIdx.toString())
         val timelineStoryListcall = ApiServiceImpl.service.requestStoryList(ApiServiceImpl.getToken(), timelineIdx.toString())
         timelineStoryListcall.enqueue(
             onSuccess = {
@@ -66,6 +73,15 @@ class TimelineStoryListInternActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    /* 준비중인 기능 토스트 */
+    fun ingToast(){
+        img_storylist_floatingBtn.setOnClickListener {
+            Toast.makeText(this, "준비중인 기능입니다.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
 }
 
 

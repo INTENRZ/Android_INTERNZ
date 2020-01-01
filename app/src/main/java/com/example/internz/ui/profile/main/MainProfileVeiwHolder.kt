@@ -25,6 +25,9 @@ class MainProfileVeiwHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
         itemView.setOnClickListener {
             val intent = Intent(itemView.context, TimelineStoryListInternActivity::class.java)
             TimelineStoryHelper.timelineIdx = data.timelineIdx
+            TimelineStoryHelper.category = data.category
+            TimelineStoryHelper.title = data.title
+            TimelineStoryHelper.period = data.start_date + " - " + data.end_date
 //            intent.putExtra("timelineIdx", data.timelineIdx.toString())
             itemView.context.startActivity(intent)
 

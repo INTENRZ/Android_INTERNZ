@@ -36,12 +36,13 @@
             android:layout_marginEnd="16dp"/>
 
         <TextView
-            android:id="@+id/txt_storylist"
+            android:id="@+id/txt_storylist_category"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_backBtn"
             android:text="인턴"
             android:textSize="14sp"
             android:textColor="#ffffff"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/btn_for_job_selected"
@@ -59,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="NAVER SNOW Jam Studio 기획/운영팀"
             app:layout_constraintStart_toStartOf="@id/constraint"
-            app:layout_constraintTop_toBottomOf="@+id/txt_storylist"
+            app:layout_constraintTop_toBottomOf="@+id/txt_storylist_category"
             android:layout_marginTop="4dp"
             android:textSize="16sp"
             android:textColor="#212529"
@@ -72,7 +73,7 @@
             app:layout_constraintTop_toBottomOf="@id/txt_timelineinnerlist_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:text="19.01.01 - 19.07.01"
             android:textColor="#707070"
