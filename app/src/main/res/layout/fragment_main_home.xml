@@ -18,7 +18,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="196dp"
-                android:src="@drawable/home_event_btn"
+                android:src="@drawable/home_main_img"
+                android:scaleType="fitXY"
                 android:background="#f5bd1d"/>
 
             <!-- home 화면 "맞춤 공고" 제목 텍스트 뷰 -->
