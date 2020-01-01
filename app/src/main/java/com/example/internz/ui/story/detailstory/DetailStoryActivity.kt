@@ -1,6 +1,7 @@
 package com.example.internz.ui.story.detailstory
 
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_detail_story.*
 
 
 class DetailStoryActivity : AppCompatActivity() {
-    //storyIndex 가 intent 로 넘어옴
+    private val REQUEST_CODE = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +29,46 @@ class DetailStoryActivity : AppCompatActivity() {
 
     private fun detailStoryFunction() {
         //통신
+        requestBroadcast()
+
+        //스크랩 버튼
+        imgDetailScrap?.setOnClickListener {
+            //TODO! selecter 지정 필요
+            //TODO! 서버 통신 필요
+        }
+
+        //댓글(comment) click listener
+        constDetail?.setOnClickListener {
+//            startActivity(Intent(this, CommentActivity::class.java))
+            startActivityForResult(Intent(this, CommentActivity::class.java), REQUEST_CODE)
+        }
+
+        //팔로우 버튼
+        imgDetailFollow?.setOnClickListener {
+            //TODO! 팔로우
+        }
+
+        //뒤로 가기 click listener
+        storyBackImg?.setOnClickListener {
+            this.finish()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when(requestCode) {
+            REQUEST_CODE -> {
+                when(resultCode) {
+                    Activity.RESULT_OK -> {
+                        requestBroadcast()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun requestBroadcast() {
         val call = ApiServiceImpl.service.requestDetailStory(
             ApiServiceImpl.getToken(),
             StoryHelper.getStoryIndex()
@@ -57,36 +98,9 @@ class DetailStoryActivity : AppCompatActivity() {
                 Log.e("TAG", "DetailStoryActivity : onSuccess 메서드 실행됨")
             },
             onFail = {
-                status, message -> Log.e("TAG", "DetailStoryActivity : onFail 메서드 실행됨")
+                    status, message -> Log.e("TAG", "DetailStoryActivity : onFail 메서드 실행됨")
             }
         )
-
-        //스크랩 버튼
-        imgDetailScrap?.setOnClickListener {
-            //TODO! selecter 지정 필요
-            //TODO! 서버 통신 필요
-        }
-
-        //댓글(comment)로 이동 click listener
-        imgDetailComment?.setOnClickListener {
-            startActivity(
-                Intent(this, CommentActivity::class.java))
-        }
-
-        //댓글(comment) click listener
-        constDetail?.setOnClickListener {
-            startActivity(Intent(this, CommentActivity::class.java))
-        }
-
-        //팔로우 버튼
-        imgDetailFollow?.setOnClickListener {
-            //TODO! 팔로우
-        }
-
-        //뒤로 가기 click listener
-        storyBackImg?.setOnClickListener {
-            this.finish()
-        }
     }
 }
 
