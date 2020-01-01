@@ -32,7 +32,7 @@ class CalendarViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         //회사 로고
         Glide.with(view.context).load(data.logo).into(logo)
 
-        //날짜 저장(decoration 위함)
-        CalendarHelper.setMonthDay(data.end_date)
+//        //날짜 저장(decoration 위함)
+//        CalendarHelper.setMonthDay(data.end_date)
     }
 }
