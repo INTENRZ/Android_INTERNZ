@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -98,6 +99,7 @@ class MainProfileFragment : Fragment() {
         rvInit()
         floatingClick()
         follow()
+        laterDevelop()
     }
 
     private fun follow () {
@@ -177,10 +179,21 @@ class MainProfileFragment : Fragment() {
     fun floatingClick(){
         img_profile_floating.setOnClickListener{
             // 타임라인 추가 도중 뒤로가기 눌렀을 때 count 값 초기화
-            SelectHelper.categoryCount = 0
+            SelectHelper.categoryCountInit()
 
             val intent = Intent(context, TimelineAddActivity::class.java)
             startActivityForResult(intent, TIMELINE_ADD_SUCCESS)
         }
+    }
+
+    /* 기능 구현 부족한 부분들 토스트 처리 */
+    fun laterDevelop(){
+        img_profile_following.setOnClickListener {
+            Toast.makeText(context, "팔로우, 팔로잉 기능을 준비중입니다. 조금만 기다려주세요.", Toast.LENGTH_SHORT).show()
+        }
+        img_profile_massage.setOnClickListener {
+            Toast.makeText(context, "쪽지 기능을 준비중입니다. 조금만 기다려주세요.", Toast.LENGTH_SHORT).show()
+        }
+
     }
 }

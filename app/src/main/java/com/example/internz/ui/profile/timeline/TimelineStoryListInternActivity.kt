@@ -11,7 +11,6 @@ import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.enqueue
 import com.example.internz.ui.profile.timeline.TimelineStoryHelper.timelineIdx
-import com.example.internz.ui.story.StoryHelper
 import kotlinx.android.synthetic.main.activity_timeline_storylist_intern.*
 
 
@@ -27,7 +26,7 @@ class TimelineStoryListInternActivity : AppCompatActivity() {
         setContentView(R.layout.activity_timeline_storylist_intern)
         rvTimelineStoryListinit()
         backBtn()
-        ingToast()
+        laterDevelop()
 
         txt_storylist_category.text = TimelineStoryHelper.category
         txt_timelineinnerlist_title.text = TimelineStoryHelper.title
@@ -75,9 +74,13 @@ class TimelineStoryListInternActivity : AppCompatActivity() {
     }
 
     /* 준비중인 기능 토스트 */
-    fun ingToast(){
+    fun laterDevelop(){
         img_storylist_floatingBtn.setOnClickListener {
-            Toast.makeText(this, "준비중인 기능입니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "스토리 작성 기능을 준비중입니다. 조금만 기다려주세요.", Toast.LENGTH_SHORT).show()
+        }
+
+        img_menu.setOnClickListener {
+            Toast.makeText(this, "설정 기능을 준비중입니다. 조금만 기다려주세요.", Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -3,6 +3,7 @@ package com.example.internz.ui.profile.timeline
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
@@ -20,8 +21,19 @@ class TimelineStoryListInternAdapter (private val context : Context) : RecyclerV
     }
 
     override fun onBindViewHolder(holder : TimelineStoryListInternViewHolder, position: Int) {
-        Log.d("chohee", itemCount.toString())
         holder.bind(data[position])
+
+        /* 서버에서 받은 데이터 중 isMe 가 데이터에 들어가 빈 리사이클러뷰가 생기는 경우 방지 */
+        if(position == data.size-1){
+            holder.title.text = ""
+            holder.date.text = ""
+            holder.img.visibility = View.INVISIBLE
+            holder.bar.visibility = View.INVISIBLE
+        }else{
+            holder.title.text = data[position].title
+            holder.date.text = data[position].updated_date
+        }
+
     }
 
     override fun getItemCount(): Int {
