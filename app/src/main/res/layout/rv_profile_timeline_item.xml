@@ -56,6 +56,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/text_backgruond"
         android:text="인턴"
+        android:fontFamily="@font/notosanscjkkrmedium"
         android:textSize="12sp"
         android:textColor="#212529"/>
 
@@ -68,6 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="8dp"
+        android:fontFamily="@font/notosanscjkkrbold"
         android:text="NAVER SNOW Jam Studio 기획/운영팀"
         android:textSize="12sp"
         android:textColor="#212529"
@@ -76,13 +78,13 @@
     <!-- 뒤로가기 이미지 -->
     <ImageView
         android:id="@+id/img_profile_timeline_back"
-        app:layout_constraintStart_toEndOf="@+id/txt_profile_timeline_title"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="4dp"
         android:layout_width="16dp"
         android:layout_height="16dp"
-        android:src="@drawable/back_ic"/>
+        android:layout_marginLeft="4dp"
+        android:src="@drawable/back_ic"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_profile_timeline_title"
+        app:layout_constraintStart_toEndOf="@+id/txt_profile_timeline_title"
+        app:layout_constraintTop_toTopOf="@+id/txt_profile_timeline_title" />
 
     <!-- 날짜 텍스트 -->
     <TextView
@@ -91,10 +93,11 @@
         app:layout_constraintBottom_toBottomOf="@id/img_profile_timeline_background"
         app:layout_constraintEnd_toEndOf="@id/img_profile_timeline_background"
         app:layout_constraintHorizontal_bias="0.1"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="6dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="19.01.01 ~ 19.07.01"
+        android:fontFamily="@font/notosanscjkkrregular"
         android:textSize="12sp"
         android:textColor="#707070"/>
 

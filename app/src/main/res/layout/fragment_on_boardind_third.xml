@@ -61,6 +61,8 @@
         app:layout_constraintVertical_bias="0.95"
         android:text="시작하기"
         android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:fontFamily="@font/notosanscjkkrbold"
         android:background="@drawable/btn_shape_ok"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"/>

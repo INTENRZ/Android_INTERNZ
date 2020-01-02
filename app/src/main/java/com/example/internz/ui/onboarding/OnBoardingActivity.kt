@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.viewpager.widget.PagerAdapter
 import com.example.internz.R
 import com.example.internz.feature.homecustomnotification.CustomNotificationAdapter
@@ -31,6 +32,8 @@ class OnBoardingActivity : AppCompatActivity() {
         viewpager2.adapter = onboardAdapter
         tablayout2.setupWithViewPager(viewpager2)
 
+        //인디케이터
+        onBoardingIndicator.setViewPager(viewpager2)
+        
     }
-
 }

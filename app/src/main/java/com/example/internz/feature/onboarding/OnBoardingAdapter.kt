@@ -9,7 +9,6 @@ import androidx.fragment.app.FragmentPagerAdapter
 
 class OnBoardingAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)  {
 
-
     private var fragments : ArrayList<Fragment> = ArrayList()
 
     override fun getItem(position: Int): Fragment {

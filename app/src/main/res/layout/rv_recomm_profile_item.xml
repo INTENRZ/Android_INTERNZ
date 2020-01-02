@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="한한한"
+        android:fontFamily="@font/notosanscjkkrmedium"
         android:textSize="14sp"
         android:textColor="#212529"/>
 
@@ -53,6 +54,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:text="서비스 기획과 리서치를 좋아하는 UXUI 디자이너입니다."
+        android:fontFamily="@font/notosanscjkkrregular"
         android:textSize="14sp"
         android:textColor="#212529"
         android:maxLines="2"
