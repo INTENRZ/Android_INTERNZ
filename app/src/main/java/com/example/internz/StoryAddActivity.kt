@@ -81,7 +81,7 @@ class StoryAddActivity : AppCompatActivity() {
     }
 
 
-    /* 등록버튼 클릭시 스토리 추가 서버 통신 요청 */
+    /** 등록버튼 클릭시 스토리 추가 서버 통신 요청 */
     fun addBtn(){
         txt_storyAdd_add.setOnClickListener {
             if(addOK == true){
