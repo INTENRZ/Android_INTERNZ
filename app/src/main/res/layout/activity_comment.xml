@@ -52,7 +52,8 @@
         android:background="#f5f5f5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_weight="1">
 
         <EditText
             android:id="@+id/edtCommentMake"
@@ -64,6 +65,7 @@
             android:inputType="textPersonName"
             android:background="@drawable/background_for_btn_in_comment"
             android:hint="댓글을 남겨보세요."
+            android:alpha="0.5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

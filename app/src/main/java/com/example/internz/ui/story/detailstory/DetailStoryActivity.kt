@@ -86,7 +86,7 @@ class DetailStoryActivity : AppCompatActivity() {
                 //upper layout
                 txtDetailTitle.text = data.title //제목
                 txtDetailNick.text = data.nickname //닉네임
-                txtDetailDate.text = data.date //날짜
+                txtDetailDate.text = data.date.replace("-", ".") //날짜
 
                 //middle layout
                 txtMain.text = data.contents //내용

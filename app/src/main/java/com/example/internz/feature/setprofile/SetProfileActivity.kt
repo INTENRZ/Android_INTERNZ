@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -31,6 +32,7 @@ class SetProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_set_profile)
 
+        broadcastForNickname()
         setProfileActivity()
     }
 
@@ -194,5 +196,22 @@ class SetProfileActivity : AppCompatActivity() {
             .load(this.drawable)
             .apply(RequestOptions.circleCropTransform())
             .into(this)
+    }
+
+    private fun broadcastForNickname() {
+        val call = ApiServiceImpl.service.requestNickname(
+            ApiServiceImpl.getToken()
+        )
+
+        Log.e("TAG", "${ApiServiceImpl.getToken()}")
+
+        call.enqueue(
+            onSuccess = {
+                textView14.text = it.nickname
+            },
+            onFail = {
+                status, message -> Log.e("TAG", "SetProfileActivity : 닉네임 받아오는 통신 FAIL ${status}, ${message}")
+            }
+        )
     }
 }
