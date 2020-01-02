@@ -14,17 +14,18 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:fontFamily="@font/notosanscjkkrbold"
         android:text="에이피알"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/txtHomeCustomFirstDesc"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/txtHomeCustomFirstTitle"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:text="마케팅 콘텐츠 디자인"
         android:textSize="16sp"/>
 

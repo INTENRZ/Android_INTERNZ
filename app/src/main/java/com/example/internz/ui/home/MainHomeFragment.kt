@@ -16,13 +16,14 @@ import com.example.internz.common.BaseResponse
 import com.example.internz.common.enqueue
 import com.example.internz.common.toast
 import com.example.internz.data.home.HomeResponseData
-import com.example.internz.data.home.TodayStoryData
 import com.example.internz.feature.homestory.HomestoryAdapter
 import com.example.internz.feature.homecustomnotification.CustomNotificationAdapter
 import com.example.internz.feature.homerecomm.HomerecommAdapter
-import com.example.internz.ui.story.StoryHelper
-import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
+import me.relex.circleindicator.CircleIndicator
+import kotlinx.android.synthetic.main.fragment_home.tablayout
+import kotlinx.android.synthetic.main.fragment_home.viewpager
+
 
 class MainHomeFragment : Fragment() {
     private lateinit var rv_recomm_profile: RecyclerView
@@ -43,7 +44,7 @@ class MainHomeFragment : Fragment() {
         // 하단 탭에 필요한 코드
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_main_home, container, false)
+        val view = inflater.inflate(com.example.internz.R.layout.fragment_main_home, container, false)
 
         /* 추천 프로필 리사이클러뷰 세팅 + 통신 위한 리사이클러뷰, 어댑터 초기화 */
 //        rv_recomm_profile = view!!.findViewById(R.id.rv_home_recommProfile)
@@ -57,7 +58,7 @@ class MainHomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         /* 추천 프로필 리사이클러뷰 세팅 */
-        rv_recomm_profile = view!!.findViewById(R.id.rv_home_recommProfile)
+        rv_recomm_profile = view!!.findViewById(com.example.internz.R.id.rv_home_recommProfile)
         adapter_recomm_profile = HomerecommAdapter(context!!)
         rv_recomm_profile.adapter = adapter_recomm_profile
         rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -65,7 +66,7 @@ class MainHomeFragment : Fragment() {
         /* 맞춤 공고 리사이클러뷰 세팅 */
 
         /* 오늘의 스토리 리사이클러뷰 세팅 */
-        rv_home_story = view!!.findViewById(R.id.rv_homestory)
+        rv_home_story = view!!.findViewById(com.example.internz.R.id.rv_homestory)
         adapter_homestory = HomestoryAdapter(context!!)
         rv_home_story.adapter = adapter_homestory
         rv_home_story.layoutManager = LinearLayoutManager(context!!, LinearLayoutManager.VERTICAL, false)
@@ -103,6 +104,9 @@ class MainHomeFragment : Fragment() {
         val customAdapter : PagerAdapter = CustomNotificationAdapter(childFragmentManager)
         viewpager.adapter = customAdapter
         tablayout.setupWithViewPager(viewpager)
+
+        val indicator : CircleIndicator = view!!.findViewById(R.id.indicator)
+        indicator.setViewPager(viewpager)
 
     }
 

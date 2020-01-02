@@ -8,6 +8,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.internz.R
 import com.example.internz.feature.signin.SignInActivity
+import com.example.internz.ui.onboarding.OnBoardingFirstActivity
 
 class SplashActivity : AppCompatActivity() {
 
