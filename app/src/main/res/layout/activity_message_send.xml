@@ -96,6 +96,7 @@
             android:textColorHint="#dbdbdb"
             android:textSize="16sp"
             android:textColor="@color/colorBlack"
+            t
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

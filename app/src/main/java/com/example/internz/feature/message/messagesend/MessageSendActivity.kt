@@ -68,11 +68,13 @@ class MessageSendActivity : AppCompatActivity() {
             MessageSendRequestData(ApiServiceImpl.getReceiverIdx().toInt(), edtSendMessage.text.toString())
         )
 
+        Log.e("TAG", "${ApiServiceImpl.getReceiverIdx()}, ${edtSendMessage.text.toString()}")
+
         call.enqueue(
             onSuccess = {
-                if(it.success.equals("true")) {
+                if(it.success.toString().equals("true")) {
                     Toast.makeText(this, "전송 완료", Toast.LENGTH_SHORT).show()
-                    setResult(Activity.RESULT_OK) //TODO! list activity로 돌아가서 새로고침하기 구현
+                    setResult(Activity.RESULT_OK)
 
                     finish()
                 } else {
