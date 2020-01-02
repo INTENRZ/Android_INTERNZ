@@ -3,6 +3,7 @@ package com.example.internz.feature.jobselect
 import android.graphics.Color
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.CheckedTextView
 import android.widget.TextView
 import android.widget.Toast
@@ -27,6 +28,11 @@ class JobSelectViewHolder(view : View) : RecyclerView.ViewHolder(view) {
                     job.setTextColor(Color.parseColor("#000000"))
                     SelectHelper.count--
                     SelectHelper.arrayList.remove(job.text.toString())
+
+                    //TODO! 숫자가 3개라면 백그라운드 색상 변환
+                    if (SelectHelper.count == 3) {
+                        view.findViewById<Button>(R.id.btnJobSelectNext).setBackgroundResource(R.drawable.btn_shape_ok)
+                    }
                 }
                 false -> {
                     if (SelectHelper.count < 3) {

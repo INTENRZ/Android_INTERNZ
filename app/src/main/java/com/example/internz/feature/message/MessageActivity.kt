@@ -54,7 +54,7 @@ class MessageActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListene
         Handler().postDelayed({
             swipe.isRefreshing = false
 
-        }, 1000)
+        }, 500)
     }
 
     private fun getMessageData() {

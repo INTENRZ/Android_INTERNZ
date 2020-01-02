@@ -52,12 +52,12 @@ interface ApiService {
     fun requestFirstSignIn(@Header("token") token : String, @Body body : FirstSignInRequestData) : Call<CallWithoutDataExt>
 
     //공고 최신 조회
-    @GET("/job")
-    fun requestAllNotification() : Call<BaseResponse<List<NotificationResponseData>>>
+//    @GET("/job")
+//    fun requestAllNotification() : Call<BaseResponse<List<NotificationResponseData>>>
 
     //공고 직군 필터링
-    @GET("/job/{task}")
-    fun requestJobFilter(@Path("task") task : String) : Call<BaseResponse<List<NotificationResponseData>>>
+//    @GET("/job/{task}")
+//    fun requestJobFilter(@Path("task") task : String) : Call<BaseResponse<List<NotificationResponseData>>>
 
     //스토리 카테고리/정렬 조회
     @POST("/story/category/sort")
@@ -120,8 +120,8 @@ interface ApiService {
     fun requestStoryList(@Header("token") token: String, @Path("timelineIdx") timelineIdx : String) : Call<BaseResponse<List<TimelineStoryListInternData>>>
 
     //지난 공고 조회
-    @GET("/job/past")
-    fun requestPastNotification() : Call<BaseResponse<List<NotificationResponseData>>>
+//    @GET("/job/past")
+//    fun requestPastNotification() : Call<BaseResponse<List<NotificationResponseData>>>
     
     //닉네임
     @GET("/user/nickname")
@@ -139,4 +139,9 @@ interface ApiService {
     @POST("/letter/others")
     fun requestSendMessage(@Header("token") token : String,
                            @Body body : MessageSendRequestData) : Call<CallWithoutDataExt>
+
+    //공고 직군 필터링
+    @GET("/job/{task}/{sort}")
+    fun requestNotification(@Path("task") task : String,
+                            @Path("sort") sort : String) : Call<BaseResponse<List<NotificationResponseData>>>
 }
