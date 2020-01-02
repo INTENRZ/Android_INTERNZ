@@ -28,6 +28,7 @@ class MainProfileVeiwHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
             TimelineStoryHelper.category = data.category
             TimelineStoryHelper.title = data.title
             TimelineStoryHelper.period = data.start_date + " - " + data.end_date
+            Log.d("chohee타임라인스토리인덱스", data.timelineIdx.toString())
 //            intent.putExtra("timelineIdx", data.timelineIdx.toString())
             itemView.context.startActivity(intent)
 

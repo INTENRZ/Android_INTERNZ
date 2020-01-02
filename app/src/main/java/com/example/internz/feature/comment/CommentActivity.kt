@@ -1,5 +1,6 @@
 package com.example.internz.feature.comment
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -38,6 +39,7 @@ class CommentActivity : AppCompatActivity() {
 
         //타임라인 delete click event
         imgCommentDelete?.setOnClickListener {
+            setResult(Activity.RESULT_OK)
             finish()
         }
 
@@ -79,6 +81,7 @@ class CommentActivity : AppCompatActivity() {
         val call = ApiServiceImpl.service.requestComment(
             StoryHelper.getStoryIndex()
         )
+        Log.e("TAG", "CommentActivity의 storyindex : ${StoryHelper.getStoryIndex()}")
 
         call.enqueue(
             onSuccess = {
@@ -91,5 +94,11 @@ class CommentActivity : AppCompatActivity() {
                     status, message -> Log.e("TAG", "CommentActivity : onFail 메서드 실행됨")
             }
         )
+    }
+
+    override fun onBackPressed() {
+        setResult(Activity.RESULT_OK)
+
+        super.onBackPressed()
     }
 }

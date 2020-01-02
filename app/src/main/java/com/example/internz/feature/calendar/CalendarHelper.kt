@@ -1,30 +1,16 @@
 package com.example.internz.feature.calendar
 
-object CalendarHelper {
-    var color = listOf<String>()
-    var count = 0
+import android.util.Log
 
-    fun CalendarHelper() {
-        color += listOf<String>(
-            "#FF0000",
-            "#0054FF",
-            "#FF007F",
-            "#00D8FF",
-            "#191919",
-            "#2F9D27",
-            "#8041D9",
-            "#FF5E00",
-            "#ABF200",
-            "#747474",
-            "#993800"
-        )
+object CalendarHelper {
+    //변수 초기화
+    var monthDay = setOf<String>()
+
+    fun setMonthDay(day: String?) {
+        monthDay = monthDay.plus(day?.substring(5)!!)
     }
 
-    fun getColor() : String {
-        if (count > 10) {
-            count = 0
-        }
-
-        return color[count]
+    fun getMonthDayCustom(): Set<String> {
+        return monthDay
     }
 }

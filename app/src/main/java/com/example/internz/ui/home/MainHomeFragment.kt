@@ -2,7 +2,6 @@ package com.example.internz.ui.home
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,15 +19,18 @@ import com.example.internz.data.home.HomeResponseData
 import com.example.internz.feature.homestory.HomestoryAdapter
 import com.example.internz.feature.homecustomnotification.CustomNotificationAdapter
 import com.example.internz.feature.homerecomm.HomerecommAdapter
-import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
+import me.relex.circleindicator.CircleIndicator
+import kotlinx.android.synthetic.main.fragment_home.tablayout
+import kotlinx.android.synthetic.main.fragment_home.viewpager
+
 
 class MainHomeFragment : Fragment() {
     private lateinit var rv_recomm_profile: RecyclerView
     private lateinit var adapter_recomm_profile: HomerecommAdapter
 
     private lateinit var rv_home_story: RecyclerView
-    private lateinit var apdater_homestory: HomestoryAdapter
+    private lateinit var adapter_homestory: HomestoryAdapter
 
     private lateinit var homeViewModel: HomeViewModel
 
@@ -42,7 +44,7 @@ class MainHomeFragment : Fragment() {
         // 하단 탭에 필요한 코드
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_main_home, container, false)
+        val view = inflater.inflate(com.example.internz.R.layout.fragment_main_home, container, false)
 
         return view
     }
@@ -50,16 +52,17 @@ class MainHomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         /* 추천 프로필 리사이클러뷰 세팅 */
-        rv_recomm_profile = view!!.findViewById(R.id.rv_home_recommProfile)
+        rv_recomm_profile = view!!.findViewById(com.example.internz.R.id.rv_home_recommProfile)
         adapter_recomm_profile = HomerecommAdapter(context!!)
         rv_recomm_profile.adapter = adapter_recomm_profile
         rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         /* 오늘의 스토리 리사이클러뷰 세팅 */
-        rv_home_story = view!!.findViewById(R.id.rv_homestory)
-        apdater_homestory = HomestoryAdapter(context!!)
-        rv_home_story.adapter = apdater_homestory
+        rv_home_story = view!!.findViewById(com.example.internz.R.id.rv_homestory)
+        adapter_homestory = HomestoryAdapter(context!!)
+        rv_home_story.adapter = adapter_homestory
         rv_home_story.layoutManager = LinearLayoutManager(context!!, LinearLayoutManager.VERTICAL, false)
+
 
         responseMainHome()
         rvCustom()
@@ -76,9 +79,9 @@ class MainHomeFragment : Fragment() {
                 adapter_recomm_profile.notifyDataSetChanged()
 
                 // 메인 오늘의 스토리에 데이터 세팅
-                apdater_homestory.data = it.story
+                adapter_homestory.data = it.story
                 rv_home_story.overScrollMode = View.OVER_SCROLL_NEVER
-                apdater_homestory.notifyDataSetChanged()
+                adapter_homestory.notifyDataSetChanged()
 
 
             },
@@ -93,26 +96,10 @@ class MainHomeFragment : Fragment() {
         viewpager.adapter = customAdapter
         tablayout.setupWithViewPager(viewpager)
 
+        val indicator : CircleIndicator = view!!.findViewById(R.id.indicator)
+        indicator.setViewPager(viewpager)
+
     }
 
-    /* home 화면 "추천 프로필" 리사이클러뷰 init */
-    fun rvRecommProfile(){
-//        rv_recomm_profile = view!!.findViewById(R.id.rv_home_recommProfile)
-        adapter_recomm_profile = HomerecommAdapter(context!!)
-        rv_recomm_profile.adapter = adapter_recomm_profile
-        rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        adapter_recomm_profile.notifyDataSetChanged()
-    }
 
-    fun rvStory() {
-
-        rv_home_story = view!!.findViewById(R.id.rv_homestory)
-        apdater_homestory = HomestoryAdapter(context!!)
-        rv_home_story.adapter = apdater_homestory
-        rv_home_story.layoutManager = LinearLayoutManager(context!!, LinearLayoutManager.VERTICAL, false)
-
-        rv_home_story.overScrollMode = View.OVER_SCROLL_NEVER
-
-        apdater_homestory.notifyDataSetChanged()
-    }
 }

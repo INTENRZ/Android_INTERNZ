@@ -23,11 +23,11 @@ class HomerecommViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         txt_name.text = data.nickname
         txt_introduce.text = data.introduce
 
-        itemView.setOnClickListener{
-            val intent = Intent(itemView.context, OtherProfileActivity::class.java)
-            intent.putExtra("userIdx", data.userIdx.toString())
-            itemView.context.startActivity(intent)
-        }
+//        itemView.setOnClickListener{
+//            val intent = Intent(itemView.context, OtherProfileActivity::class.java)
+//            intent.putExtra("userIdx", data.userIdx.toString())
+//            itemView.context.startActivity(intent)
+//        }
     }
 
 

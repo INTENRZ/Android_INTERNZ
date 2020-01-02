@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.data.home.StoryData
 import com.example.internz.data.home.TodayStoryData
 import com.example.internz.ui.profile.main.OtherProfileActivity
 import com.example.internz.ui.story.StoryHelper

@@ -10,8 +10,10 @@ import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.BaseResponse
 import com.example.internz.api.ApiServiceImpl.getUserIdx
 import com.example.internz.common.CallWithoutDataExt
 import com.example.internz.common.enqueue
@@ -41,53 +43,7 @@ class SignUp2Activity : AppCompatActivity() {
     }
 
     private fun signUpFunction() {
-        //사용자의 고유 인덱스 초기화
-//        userIndex = intent.getStringExtra("userIndex")
 
-        //이름
-        edtSignUp2Name.addTextChangedListener(
-            object : TextWatcher {
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
-
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                    changeBtnBackground()
-                }
-            }
-        )
-
-        //닉네임
-        edtSignUp2Nick.addTextChangedListener(
-            object : TextWatcher {
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
-
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                    changeBtnBackground()
-                }
-            }
-        )
-
-        //생년월일
-        edtSignUp2Birth.addTextChangedListener(
-            object : TextWatcher {
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
-
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                }
-
-                override fun afterTextChanged(p0: Editable?) {
-                    changeBtnBackground()
-                }
-            }
-        )
 
         //성별(radio_group)
         val radioGroup = findViewById<RadioGroup>(R.id.radioGroupSignUp)
@@ -97,35 +53,23 @@ class SignUp2Activity : AppCompatActivity() {
             when(imgbtnSignUpService.isSelected) {
                 true -> imgbtnSignUpService.isSelected = false
                 false -> imgbtnSignUpService.isSelected = true
-            }
-        }
 
-        //마케팅 정보 수신 동의(image_button)
-        imgbtnSignUpMarketing.setOnClickListener {
-            when(imgbtnSignUpMarketing.isSelected) {
-                true -> imgbtnSignUpMarketing.isSelected = false
-                false -> imgbtnSignUpMarketing.isSelected = true
             }
+            btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape_ok)
         }
 
         //서비스 이용 약관 동의(TextView)
         txtSignUpService.setOnClickListener {
-            when(imgbtnSignUpService.isSelected) {
-                true -> imgbtnSignUpService.isSelected = false
-                false -> imgbtnSignUpService.isSelected = true
+            when(txtSignUpService.isSelected) {
+                true -> txtSignUpService.isSelected = false
+                false -> txtSignUpService.isSelected = true
+
             }
+            btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape_ok)
         }
 
-        //마케팅 정보 수신 동의(TextView)
-        txtSignUpMarketing.setOnClickListener {
-            when(imgbtnSignUpMarketing.isSelected) {
-                true -> imgbtnSignUpMarketing.isSelected = false
-                false -> imgbtnSignUpMarketing.isSelected = true
-            }
-        }
 
         btnSignUpFinish.setOnClickListener {
-            //선택된 라디오버튼 정보(성별)
 
             val intent = getIntent()
             val name : String = edtSignUp2Name.text.toString()
@@ -135,6 +79,7 @@ class SignUp2Activity : AppCompatActivity() {
             val phone : String = intent.getStringExtra("phone")
             val age : String = edtSignUp2Birth.text.toString()
             var sex : String ="0"
+
             val radioButton = findViewById<RadioButton>(radioGroup.checkedRadioButtonId)
             if (radioButton.text.toString().equals("남성")) {
                 sex = "1"
@@ -160,19 +105,6 @@ class SignUp2Activity : AppCompatActivity() {
                 }
             )
 
-        }
-    }
-
-    private fun changeBtnBackground() {
-        if (edtSignUp2Name.text.isEmpty() || edtSignUp2Nick.text.isEmpty() || (edtSignUp2Birth.text.length != 6)) {
-            btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape)
-        } else {
-            if(imgbtnSignUpService.isSelected) {
-                btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape_ok)
-            } else {
-                Toast.makeText(applicationContext, "서비스 이용 약관동의를 선택하세요.", Toast.LENGTH_SHORT).show()
-                txtSignUpService.requestFocus()
-            }
         }
     }
 }

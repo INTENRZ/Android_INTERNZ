@@ -14,17 +14,19 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:text="에이피알"
+        android:fontFamily="@font/notosanscjkkrbold"
+        android:text="SHOWBOX"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/txtHomeCustomSecondDesc"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/txtHomeCustomSecondTitle"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="16dp"
-        android:text="마케팅 콘텐츠 디자인"
+        android:layout_marginTop="5dp"
+        android:text="마케팅 팀"
         android:textSize="16sp"/>
 
     <TextView
@@ -35,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="3dp"
         android:layout_marginStart="16dp"
-        android:text="D-13"
+        android:text="D-5"
         android:textSize="14sp"
         android:textColor="@color/colorDday"/>
 
@@ -45,11 +47,12 @@
         android:layout_height="45dp"
         tools:layout_editor_absoluteX="270dp"
         tools:layout_editor_absoluteY="25dp"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/apr_corp"/>
+        android:src = "@drawable/showbox"/>
 
 
 

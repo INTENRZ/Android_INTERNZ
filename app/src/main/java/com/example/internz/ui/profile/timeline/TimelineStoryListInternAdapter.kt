@@ -1,6 +1,7 @@
 package com.example.internz.ui.profile.timeline
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.profile.TimelineStoryListInternData
 import com.example.internz.ui.story.StoryHelper
+import com.example.internz.ui.story.detailstory.DetailStoryActivity
 
 class TimelineStoryListInternAdapter (private val context : Context) : RecyclerView.Adapter<TimelineStoryListInternViewHolder>() {
 
@@ -31,7 +33,15 @@ class TimelineStoryListInternAdapter (private val context : Context) : RecyclerV
             holder.bar.visibility = View.INVISIBLE
         }else{
             holder.title.text = data[position].title
-            holder.date.text = data[position].updated_date
+            holder.date.text = data[position].created_date
+        }
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DetailStoryActivity::class.java)
+            StoryHelper.setStoryIndex(data[position].storyIdx.toString())
+            StoryHelper.setUserIndex(data[position].userIdx.toString())
+            Log.d("chohee_setUserIdx", StoryHelper.getUserIndex())
+            holder.itemView.context.startActivity(intent)
         }
 
     }

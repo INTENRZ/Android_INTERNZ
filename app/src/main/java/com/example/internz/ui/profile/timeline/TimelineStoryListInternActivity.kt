@@ -43,7 +43,6 @@ class TimelineStoryListInternActivity : AppCompatActivity() {
         rvTimelineStoryListIntern.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         /** 각 타임라인에 들어가면 보이는 '스토리 리스트' 서버 통신 요청 */
-        Log.d("chohee", timelineIdx.toString())
         val timelineStoryListcall = ApiServiceImpl.service.requestStoryList(ApiServiceImpl.getToken(), timelineIdx.toString())
         timelineStoryListcall.enqueue(
             onSuccess = {

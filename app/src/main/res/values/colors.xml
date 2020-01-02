@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#ffc200</color>
     <color name="colorPrimaryDark">#00000000</color>
-    <color name="colorAccent">#ffc200</color>
+    <color name="colorAccent">#FFC200</color>
     <color name="colorDday">#ffbc00</color>
     <color name="colorBackground">#ffc200</color>
     <color name="colorWhite">#FFFFFF</color>

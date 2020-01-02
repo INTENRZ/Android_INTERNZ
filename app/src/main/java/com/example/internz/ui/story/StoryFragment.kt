@@ -16,6 +16,7 @@ import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.enqueue
 import com.example.internz.data.story.StoryCategoryRequestData
+import com.example.internz.data.story.StoryCategoryResponseData
 import com.google.android.material.tabs.TabLayout
 
 
@@ -105,9 +106,15 @@ class StoryFragment : Fragment() {
                 Log.e("TAG", "StoryFragment : onSuccess 메서드 실행")
                 adapter.data = it
                 adapter.notifyDataSetChanged()
+
             },
             onFail = {
-                status, message -> Log.e("TAG", "StoryFragment : onFail 메서드 실행, ${message}")
+                status, message ->
+                    run {
+                        //데이터가 없는 경우 recycler view data 초기화
+                        adapter.data = emptyList()
+                        adapter.notifyDataSetChanged()
+                }
             }
         )
     }

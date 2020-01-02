@@ -1,23 +1,33 @@
 package com.example.internz.feature.calendar
 
-import android.graphics.Insets.add
+import android.content.Context
+import android.content.res.Resources
+import android.graphics.Color
+import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.provider.CalendarContract
+import android.text.style.ForegroundColorSpan
+import android.text.style.RelativeSizeSpan
+import android.text.style.StyleSpan
+import android.util.EventLog
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.applikeysolutions.cosmocalendar.selection.RangeSelectionManager
-import com.applikeysolutions.cosmocalendar.selection.SingleSelectionManager
-import com.applikeysolutions.cosmocalendar.utils.SelectionType
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.enqueue
+import com.prolificinteractive.materialcalendarview.*
+import com.prolificinteractive.materialcalendarview.spans.DotSpan
 import kotlinx.android.synthetic.main.activity_calendar.*
+import kotlinx.android.synthetic.main.activity_sign_up2.view.*
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.*
-import kotlin.collections.HashSet
 
 
 class CalendarActivity : AppCompatActivity() {
@@ -25,8 +35,13 @@ class CalendarActivity : AppCompatActivity() {
     private lateinit var adapter: CalendarAdapter
 
     //달력
-//    private lateinit var calendar: java.util.Calendar
-    private lateinit var calendarView: com.applikeysolutions.cosmocalendar.view.CalendarView
+    private lateinit var calendarView: com.prolificinteractive.materialcalendarview.MaterialCalendarView
+
+    //날짜 형식 지정
+    private var dayFormatter = SimpleDateFormat("MM-dd", Locale.KOREA)
+    private var monthFormatter = SimpleDateFormat("yyyy-MM", Locale.KOREA)
+    private var allFormatter = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
+    private var formattedDate: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,130 +51,207 @@ class CalendarActivity : AppCompatActivity() {
     }
 
     private fun calendarFunction() {
-        //변수 초기화
-       // calendarView = findViewById(R.id.Calendar)
+        initialVariable()
+        makeRecyclerView()
+        displayCalendar()
+        getDayData()
 
-        //달력의 방향 지정
-        calendarView.calendarOrientation = 0
-
-        //달력 타입 지정
-        calendarView.selectionType = SelectionType.SINGLE
-
-        //달력 click event
-        if (calendarView.selectionManager is SingleSelectionManager) {
-            val singleSelectionManager = calendarView.selectionManager
-
-
-            Log.e("TAG", singleSelectionManager.toString())
+        //calendar -> 공고 이동 imageview click listener
+        imgCalendarToNoti.setOnClickListener {
+            this.finish()
         }
+    }
 
-        //하단 recycler view 목록 지정
+    //변수 초기화
+    private fun initialVariable() {
+        //RecyclerView
         recyclerView = findViewById(R.id.rvCalendar)
         adapter = CalendarAdapter(this)
 
+        //스크롤 이펙트 제거
+        findViewById<RecyclerView>(R.id.rvCalendar).overScrollMode = View.OVER_SCROLL_NEVER
+
+        //달력
+        calendarView = findViewById(R.id.Calendar)
+    }
+
+    //하단 Recycler View 띄우기
+    private fun makeRecyclerView() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val localDateTime = LocalDateTime.now(ZoneId.of("Asia/Seoul"))
-        val date = localDateTime.toString().substring(0, 7)
-        Log.e("TAG", "${date}")
+        //YEAR-MONTH
+        val yearMonth = monthFormatter.format(Date())
 
-        //공고 -> 캘린더 액티비티 이동시 띄울 전체 달력 데이터
-        val call = ApiServiceImpl.service.requestCalenderMonth(ApiServiceImpl.getToken(), date)
+        val call = ApiServiceImpl.service.requestCalenderMonth(
+            yearMonth,
+            ApiServiceImpl.getToken()
+        )
 
         call.enqueue(
             onSuccess = {
                 adapter.data = it
                 adapter.notifyDataSetChanged()
 
-                Log.e("TAG", "CalendarActivity : onSuccess 메서드 실행됨")
+                //전체 공고 데이터 Helper에 저장
+                for (i in it) {
+                    CalendarHelper.setMonthDay(i.end_date)
+                }
+                Log.e("TAG", "이번달 전체 공고 : ${CalendarHelper.monthDay}")
+
+                //데코레이션 추가
+                decorationSetting()
             },
             onFail = {
-                    status, message -> Log.e("TAG", "CalendarActivity : onFail 메서드 실행됨")
+                status, message -> Log.e("TAG", "YEAR_MONTH에 해당하는 공고가 없습니다.")
+
+                run {
+                    if(status == 381) { //MONTH에 해당하는 공고가 없는 경우
+                        txtCalendarEmpty.text = "공고를 추가해주세요."
+
+                        //recyclerview 초기화
+                        adapter.data = emptyList()
+                        adapter.notifyDataSetChanged()
+                    }
+                }
             }
         )
+    }
 
-        if (adapter.itemCount == 0) {
-            txtCalendarEmpty.text = "공고를 추가해주세요."
-        } else {
-            txtCalendarEmpty.text = ""
+    //decoration setting
+    private fun decorationSetting() {
+        calendarView.addDecorators( //상단 calendar의 공고 decoration
+            object : DayViewDecorator {
+                override fun decorate(view: DayViewFacade?) {
+                    //텍스트 밑에 점 찍기
+                    view?.addSpan(DotSpan(8f, Color.parseColor("#ffc200")))
+                }
+
+                override fun shouldDecorate(day: CalendarDay?): Boolean {
+                    formattedDate = dayFormatter.format(day?.date)
+
+                    return CalendarHelper.monthDay.contains(formattedDate)
+                }
+            },
+            object : DayViewDecorator { //상단 calendar의 today decoration
+                override fun decorate(view: DayViewFacade?) {
+                    //텍스트 형식 지정
+                    view?.addSpan(StyleSpan(Typeface.BOLD))
+                    view?.addSpan(ForegroundColorSpan(Color.BLACK))
+//                    view?.addSpan(RelativeSizeSpan(1.4f))
+                }
+
+                override fun shouldDecorate(day: CalendarDay?): Boolean {
+                    return CalendarDay.today() != null && day?.equals(CalendarDay.today())!!
+                }
+            }
+        )
+    }
+
+    //상단 calendar의 공고 decoration setting
+    private fun markNotification() {
+        object : DayViewDecorator {
+            override fun decorate(view: DayViewFacade?) {
+                //텍스트 밑에 점 찍기
+                view?.addSpan(DotSpan(8f, Color.parseColor("ffc200")))
+            }
+
+            override fun shouldDecorate(day: CalendarDay?): Boolean {
+                formattedDate = dayFormatter.format(day?.date)
+                return CalendarHelper.monthDay.contains(formattedDate)
+            }
         }
+    }
 
-        //스크롤 이펙트 제거
-        findViewById<RecyclerView>(R.id.rvCalendar).overScrollMode = View.OVER_SCROLL_NEVER
+    //상단 calendar의 월별 캘린더 띄우기
+    private fun displayCalendar() {
+        calendarView?.setOnMonthChangedListener(
+            object : OnMonthChangedListener {
+                override fun onMonthChanged(widget: MaterialCalendarView?, date: CalendarDay?) {
+                    CalendarHelper.monthDay = emptySet() //저장된 일자 초기화
+                    formattedDate = monthFormatter.format(date?.date)
+
+                    val call = ApiServiceImpl.service.requestCalenderMonth(
+                        formattedDate,
+                        ApiServiceImpl.getToken()
+                    )
+
+                    call.enqueue(
+                        onSuccess = {
+                            //텍스트 초기화
+                            txtCalendarEmpty.text = ""
+
+                            adapter.data = it
+                            adapter.notifyDataSetChanged()
+
+                            //전체 공고 데이터 Helper에 저장
+                            for (i in it) {
+                                CalendarHelper.setMonthDay(i.end_date)
+                            }
+
+                            //decoration
+                            decorationSetting()
+                        },
+                        onFail = {
+                            status, message -> Log.e("TAG", "달을 바꿨을때의 통신 onFail")
+                            run {
+                                txtCalendarEmpty.text = "공고를 추가해주세요."
+
+                                adapter.data = emptyList()
+                                adapter.notifyDataSetChanged()
+                            }
+                        }
+                    )
+                }
+            }
+        )
+    }
+
+    //달력 날짜에 따른 서버 통신 구현
+    private fun getDayData() {
+        calendarView?.setOnDateChangedListener(
+            object : OnDateSelectedListener {
+                override fun onDateSelected(
+                    widget: MaterialCalendarView,
+                    date: CalendarDay,
+                    selected: Boolean
+                ) {
+                    //선택한 날짜 YEAR_MONTh_DAY로 변환
+                    formattedDate = allFormatter.format(date?.date)
+
+                    //달력 클릭 날짜에 따른 서버 통신 구현
+                    val call = ApiServiceImpl.service.requestCalenderDay(
+                        formattedDate,
+                        ApiServiceImpl.getToken()
+                    )
+
+                    call.enqueue(
+                        onSuccess = {
+                            //배경 텍스트 초기화
+                            txtCalendarEmpty.text = ""
+
+                            if (selected) {
+                                widget.clearFocus()
+                            }
+
+                            adapter.data = it
+                            adapter.notifyDataSetChanged()
+                        },
+                        onFail = {
+                            status, message -> Log.e("TAG", "YEAR_MONTH_DAY onfail")
+                            run {
+                                if(status == 380) {
+                                    //배경 텍스트 초기화
+                                    txtCalendarEmpty.text = "공고를 추가해주세요."
+
+                                    adapter.data = emptyList()
+                                    adapter.notifyDataSetChanged()
+                                }
+                            }
+                        }
+                    )
+                }
+            }
+        )
     }
 }
-
-//    private fun calendarFunction() {
-//        //하단 recycler view 목록 지정
-//        recyclerView = findViewById(R.id.rvCalendar)
-//        adapter = CalendarAdapter(this)
-//
-//        recyclerView.adapter = adapter
-//        recyclerView.layoutManager = LinearLayoutManager(this)
-//
-//        val localDateTime = LocalDateTime.now(ZoneId.of("Asia/Seoul"))
-//        val date = localDateTime.toString().substring(0, 7)
-//        Log.e("TAG", "${date}")
-//
-//        //공고 -> 캘린더 액티비티 이동시 띄울 전체 달력 데이터
-//        val call = ApiServiceImpl.service.requestCalenderMonth(ApiServiceImpl.getToken(), date)
-//
-//        call.enqueue(
-//            onSuccess = {
-//                adapter.data = it
-//                adapter.notifyDataSetChanged()
-//
-//                Log.e("TAG", "CalendarActivity : onSuccess 메서드 실행됨")
-//            },
-//            onFail = {
-//                status, message -> Log.e("TAG", "CalendarActivity : onFail 메서드 실행됨")
-//            }
-//        )
-//
-//        if (adapter.itemCount == 0) {
-//            txtCalendarEmpty.text = "공고를 추가해주세요."
-//        } else {
-//            txtCalendarEmpty.text = ""
-//        }
-//
-//        //스크롤 이펙트 제거
-//        findViewById<RecyclerView>(R.id.rvCalendar).overScrollMode = View.OVER_SCROLL_NEVER
-//
-//        //Calendar Setting
-//        calendarView = findViewById(R.id.Calendar)
-//        var events = listOf<EventDay>()
-//
-//        //image setting
-//        calendarView.setForwardButtonImage(resources.getDrawable(R.drawable.notice_calendar_next_ic))
-//        calendarView.setPreviousButtonImage(resources.getDrawable(R.drawable.notice_calendar_before_ic))
-//
-//        //add one events
-//        calendar = java.util.Calendar.getInstance()
-//        calendar.add(java.util.Calendar.DAY_OF_MONTH, 5) //3일에 이벤트 추가
-//
-//        //TODO ERROR! 무슨짓을 하던 다음달로 설정됨
-//        events += events.plus(EventDay(calendar, R.drawable.basicprofile_img))
-//
-//        var calendar2: java.util.Calendar = java.util.Calendar.getInstance()
-//        calendar2.add(java.util.Calendar.DAY_OF_MONTH, 7) //5일에 이벤트 추가
-//        events += events.plus(EventDay(calendar2, R.drawable.profile_img))
-//
-//        //event setting
-//        calendarView.setEvents(events)
-//
-//        //set click listener for calendar
-//        calendarView.setOnDayClickListener { eventDay ->
-//            run {
-//                //TODO! 서버 통신 후 데이터 가져오기
-//                Log.e("TAG", eventDay.calendar.time.date.toString())
-//                Log.e("TAG", "한번 더")
-//            }
-//        }
-//
-//        //calendar -> 공고 이동 imageview click listener
-//        imgCalendarToNoti.setOnClickListener {
-//            this.finish()
-//        }
-//    }
-//

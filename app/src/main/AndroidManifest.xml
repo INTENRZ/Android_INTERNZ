@@ -26,6 +26,8 @@
         <activity android:name=".feature.message.messagesend.MessageSendActivity" />
         <activity android:name=".feature.message.messagelist.MessageListActivity" />
         <activity android:name=".feature.message.MessageActivity" />
+        <activity android:name=".ui.onboarding.OnBoardingSecondActivity"/>
+        <activity android:name=".ui.onboarding.OnBoardingFirstActivity"/>
         <activity android:name=".ui.story.detailstory.DetailStoryActivity" />
         <activity android:name=".ui.profile.main.OtherProfileActivity" />
         <activity android:name=".ui.profile.TimelineAddActivity" />
@@ -37,7 +39,8 @@
         <activity
             android:name=".feature.signin.SignInActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".feature.signup.SignUpActivity" />
+        <activity android:name=".feature.signup.SignUpActivity"
+            android:windowSoftInputMode="adjustNothing"/>
         <activity android:name=".ui.BottomBarActivity" />
         <activity android:name=".ui.SplashActivity">
             <intent-filter>

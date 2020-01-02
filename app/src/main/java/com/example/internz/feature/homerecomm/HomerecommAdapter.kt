@@ -12,6 +12,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
 import com.example.internz.data.home.RecommProfileData
 import com.example.internz.ui.profile.main.OtherProfileActivity
+import com.example.internz.ui.story.StoryHelper
 
 
 class HomerecommAdapter(private val context : Context) : RecyclerView.Adapter<HomerecommViewHolder>() {
@@ -43,6 +44,13 @@ class HomerecommAdapter(private val context : Context) : RecyclerView.Adapter<Ho
                 .apply(RequestOptions.circleCropTransform())
                 .into(holderMain.img_thumbNail)
 //            Log.d("chohee", data[position].front_image)
+        }
+
+        holderMain.itemView.setOnClickListener{
+            val intent = Intent(holderMain.itemView.context, OtherProfileActivity::class.java)
+            StoryHelper.setUserIndex(data[position].userIdx.toString())
+//            intent.putExtra("userIdx", data.userIdx.toString())
+            holderMain.itemView.context.startActivity(intent)
         }
     }
 
