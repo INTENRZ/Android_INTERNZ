@@ -22,9 +22,7 @@ import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.data.signup.SignUpRequestData
 import com.example.internz.data.signup2.SignUp2RequestData
-import com.example.internz.data.story.DetailStoryResponseData
-import com.example.internz.data.story.StoryCategoryRequestData
-import com.example.internz.data.story.StoryCategoryResponseData
+import com.example.internz.data.story.*
 import com.example.internz.data.timeline.NicknameResponseData
 import com.example.internz.feature.calendar.CalenderResponseDayData
 import org.w3c.dom.Text
@@ -130,4 +128,8 @@ interface ApiService {
     //닉네임
     @GET("/user/nickname")
     fun requestNickname(@Header("token") token : String) : Call<BaseResponse<NicknameResponseData>>
+
+    @POST("/timeline/{timelineIdx}/story")
+    fun requestStoryAdd(@Header("token") token: String, @Path("timelineIdx") timelineIdx : Int, @Body body: StoryAddRequestData) : Call<BaseResponse<StoryAddReponseData>>
+
 }

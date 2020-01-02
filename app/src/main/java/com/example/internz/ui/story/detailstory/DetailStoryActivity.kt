@@ -15,6 +15,7 @@ import com.example.internz.feature.comment.CommentActivity
 import com.example.internz.ui.profile.main.OtherProfileActivity
 import com.example.internz.ui.story.StoryHelper
 import kotlinx.android.synthetic.main.activity_detail_story.*
+import kotlinx.android.synthetic.main.activity_story_add.*
 
 
 class DetailStoryActivity : AppCompatActivity() {
@@ -126,5 +127,7 @@ class DetailStoryActivity : AppCompatActivity() {
             }
         )
     }
+
+
 }
 
