@@ -15,6 +15,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.BaseResponse
@@ -27,6 +29,7 @@ import com.example.internz.feature.followerlist.FollowerListActivity
 import com.example.internz.feature.followinglist.FollowingListActivity
 import com.example.internz.feature.message.MessageActivity
 import com.example.internz.ui.profile.TimelineAddActivity
+import kotlinx.android.synthetic.main.activity_detail_story.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.txt_profile_black
 import org.w3c.dom.Text
@@ -80,11 +83,16 @@ class MainProfileFragment : Fragment() {
                 job1.text = it.task_one
                 job2.text = it.task_two
                 job3.text = it.task_three
-                if(it.front_image == "undefined"){
-                    // 프로필 설정 이미지가 없을 경우 기본 이미지 지정
+                if(it.front_image == null){
+                    // 프로필 이미지가 없을 경우 기본 이미지 적용
                     imgFace.setImageDrawable(getResources().getDrawable(R.drawable.basicprofile_img))
                 }else{
-
+                    // 프로필 이미지가 있을 경우 해당 이미지 적용
+                    Glide 
+                        .with(this)
+                        .load(it.front_image)
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(img_profile_face)
                 }
             },
             onFail = {status, message ->  toast(message)
