@@ -5,6 +5,7 @@ import com.example.internz.common.CallWithoutDataExt
 import com.example.internz.data.calendar.CalenderResponseData
 import com.example.internz.data.comment.CommentRequestData
 import com.example.internz.data.comment.CommentResponseData
+import com.example.internz.data.filter.FilterResponseData
 import com.example.internz.data.firstsignin.FirstSignInRequestData
 import com.example.internz.data.jobselect.JobSelectData
 import com.example.internz.data.jobselect.JobSelectPutData
@@ -16,6 +17,7 @@ import com.example.internz.data.follow.FollowerResponseData
 import com.example.internz.data.follow.FollowingResponseData
 import com.example.internz.data.home.HomeResponseData
 import com.example.internz.data.profile.ProfileData
+import com.example.internz.data.profile.TimelineStoryListInternData
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.data.signup.SignUpRequestData
@@ -23,6 +25,8 @@ import com.example.internz.data.signup2.SignUp2RequestData
 import com.example.internz.data.story.DetailStoryResponseData
 import com.example.internz.data.story.StoryCategoryRequestData
 import com.example.internz.data.story.StoryCategoryResponseData
+import com.example.internz.data.timeline.NicknameResponseData
+import com.example.internz.feature.calendar.CalenderResponseDayData
 import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.http.*
@@ -72,7 +76,7 @@ interface ApiService {
 
     //캘린더 홈 조회
     @GET("/calender/home/{month}")
-    fun requestCalenderMonth(@Header("token") token : String, @Path("month") month : String) : Call<BaseResponse<List<CalenderResponseData>>>
+    fun requestCalenderMonth(@Path("month") month : String, @Header("token") token : String) : Call<BaseResponse<List<CalenderResponseData>>>
 
     @PUT("/user/task")
     fun putJobSelect(@Body body : JobSelectPutData) : Call<JobSelectData>
@@ -108,6 +112,22 @@ interface ApiService {
     // 나의 팔로 리스트 조회
     @GET("/profile/follower")
     fun requestFollwer(@Header("token") token: String) : Call<BaseResponse<List<FollowerResponseData>>>
+    //날짜별 공고 조회(달력)
+    @GET("/calender/{day}")
+    fun requestCalenderDay(@Path("day") day : String, @Header("token") token : String) : Call<BaseResponse<List<CalenderResponseData>>>
 
+    //캘린더에 공고 추가
+    @POST("/calender/{jobIdx}")
+    fun requestAddNotification(@Path("jobIdx") jobIdx: String, @Header("token") token: String) : Call<CallWithoutDataExt>
+    // 각 타임라인의 스토리 리스트 조회
+    @GET("/timeline/{timelineIdx}/story")
+    fun requestStoryList(@Header("token") token: String, @Path("timelineIdx") timelineIdx : String) : Call<BaseResponse<List<TimelineStoryListInternData>>>
 
+    //지난 공고 조회
+    @GET("/job/past")
+    fun requestPastNotification() : Call<BaseResponse<List<NotificationResponseData>>>
+
+    //닉네임
+    @GET("/user/nickname")
+    fun requestNickname(@Header("token") token : String) : Call<BaseResponse<NicknameResponseData>>
 }

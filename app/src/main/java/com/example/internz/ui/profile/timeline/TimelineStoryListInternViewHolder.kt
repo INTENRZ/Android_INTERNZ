@@ -1,25 +1,30 @@
 package com.example.internz.ui.profile.timeline
 
+import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.profile.TimelineStoryListInternData
+import com.example.internz.ui.story.StoryHelper
+import com.example.internz.ui.story.detailstory.DetailStoryActivity
 
 class TimelineStoryListInternViewHolder (view : View) : RecyclerView.ViewHolder(view) {
 
-    val desc : TextView = view.findViewById(R.id.txtTimelineStoryListInternDesc)
+    val title : TextView = view.findViewById(R.id.txtTimelineStoryListInternTitle)
     val date : TextView = view.findViewById(R.id.txtTimelineStoryListInternDate)
     val img : ImageView = view.findViewById(R.id.imgTimelineStoryListInternImg)
+    val bar : View = view.findViewById(R.id.bar)
 
     fun bind(internData : TimelineStoryListInternData)
     {
-
-        desc.text = internData.desc
-        date.text = internData.date
-        img.setImageDrawable(ResourcesCompat.getDrawable(itemView.resources, internData.img, null))
+//        itemView.setOnClickListener {
+//            val intent = Intent(itemView.context, DetailStoryActivity::class.java)
+//            StoryHelper.setStoryIndex(internData.storyIdx.toString())
+//            itemView.context.startActivity(intent)
+//        }
 
     }
 }

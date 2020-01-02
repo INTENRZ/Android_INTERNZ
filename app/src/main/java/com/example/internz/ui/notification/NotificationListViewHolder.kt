@@ -1,6 +1,7 @@
 package com.example.internz.ui.notification
 
 import android.content.Intent
+import android.graphics.Color
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
 import com.example.internz.data.notification.NotificationResponseData
 import com.example.internz.feature.web.WebViewActivity
 import retrofit2.http.Url
@@ -18,8 +21,9 @@ import java.net.URL
 
 class NotificationListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     private val view : View = view.findViewById(R.id.content) //recycler item view
-    val rightView : View = view.findViewById(R.id.right) //swipe view
+    private val rightView : View = view.findViewById(R.id.right) //swipe view
 
+    var jobIdx : Int? = null
     val photo : ImageView = view.findViewById(R.id.imgNotilistImg)
     val title : TextView = view.findViewById(R.id.txtNotilistTitle)
     val dday : TextView = view.findViewById(R.id.txtNotilistDday)
@@ -42,6 +46,9 @@ class NotificationListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
         desc.text = data.team
 
+        //공고 add에 필요한 jobIdx 저장됨
+        jobIdx = data.jobIdx
+
         //recyclerview 선택시의 click event
         view.setOnClickListener {
             val intent = Intent(view.context, WebViewActivity::class.java)
@@ -50,10 +57,31 @@ class NotificationListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
             view.context.startActivity(intent)
         }
 
-        rightView.setOnClickListener {
-            Toast.makeText(view.context, "캘린더에 추가되어야 합니다.", Toast.LENGTH_SHORT).show()
-        }
+        //스와이프 후 공고 캘린더에 추가
+        rightView?.setOnClickListener {
+            Log.e("TAG", "스와이프 레이아웃 클릭되었습니다.")
 
-        //swipe 추가 선택시의 click event
+            val call = ApiServiceImpl.service.requestAddNotification(
+                jobIdx.toString(),
+                ApiServiceImpl.getToken()
+            )
+
+            call.enqueue(
+                onSuccess = {
+                    Log.e("TAG", "${it.success.toString()}")
+
+                    if (it.success.toString().equals("false")) {
+                        //기존 방법 : Toast만 띄움
+                        Toast.makeText(view.context, "이미 캘린더에 추가된 공고입니다.", Toast.LENGTH_SHORT).show()
+
+                    }else {
+                        Toast.makeText(view.context, "${desc.text}이(가) 캘린더에 추가되었습니다.", Toast.LENGTH_SHORT).show()
+                    }
+                },
+                onFail = { status, message ->
+                    Log.e("TAG", "${message}")
+                }
+            )
+        }
     }
 }

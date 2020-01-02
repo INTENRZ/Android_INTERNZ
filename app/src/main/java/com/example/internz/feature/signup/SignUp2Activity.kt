@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.BaseResponse
 import com.example.internz.api.ApiServiceImpl.getUserIdx
 import com.example.internz.common.CallWithoutDataExt
 import com.example.internz.common.enqueue
@@ -106,6 +107,4 @@ class SignUp2Activity : AppCompatActivity() {
 
         }
     }
-
-
 }

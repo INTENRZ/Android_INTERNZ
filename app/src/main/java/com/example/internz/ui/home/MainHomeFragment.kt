@@ -46,12 +46,6 @@ class MainHomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(com.example.internz.R.layout.fragment_main_home, container, false)
 
-        /* 추천 프로필 리사이클러뷰 세팅 + 통신 위한 리사이클러뷰, 어댑터 초기화 */
-//        rv_recomm_profile = view!!.findViewById(R.id.rv_home_recommProfile)
-//        adapter_recomm_profile = HomerecommAdapter(context!!)
-//        rv_recomm_profile.adapter = adapter_recomm_profile
-//        rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-
         return view
     }
 
@@ -62,8 +56,6 @@ class MainHomeFragment : Fragment() {
         adapter_recomm_profile = HomerecommAdapter(context!!)
         rv_recomm_profile.adapter = adapter_recomm_profile
         rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-
-        /* 맞춤 공고 리사이클러뷰 세팅 */
 
         /* 오늘의 스토리 리사이클러뷰 세팅 */
         rv_home_story = view!!.findViewById(com.example.internz.R.id.rv_homestory)
@@ -77,7 +69,7 @@ class MainHomeFragment : Fragment() {
 
     }
 
-    /** 메인 홈 "맞춤 공고", "추천 프로필", "오늘의 스토리" 서버 통신 */
+    /** 메인 홈 "추천 프로필", "오늘의 스토리" 서버 통신 */
     fun responseMainHome(){
         val call: Call<BaseResponse<HomeResponseData>> = ApiServiceImpl.service.responseMainHome(ApiServiceImpl.getToken())
         call.enqueue(
@@ -91,7 +83,6 @@ class MainHomeFragment : Fragment() {
                 rv_home_story.overScrollMode = View.OVER_SCROLL_NEVER
                 adapter_homestory.notifyDataSetChanged()
 
-                // 메인 맞춤 공고에 데이터 세팅
 
             },
             onFail = {status, message ->  toast(message)

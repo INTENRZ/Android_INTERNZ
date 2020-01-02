@@ -73,10 +73,9 @@ dependencies {
     //swipe for refresh
     implementation 'androidx.appcompat:appcompat:1.0.0'
 
-    //calendar new library
-    implementation 'com.github.applikeysolutions:cosmocalendar:1.0.4'
-
     //indicator circle 표시
     implementation 'me.relex:circleindicator:1.2.2'
 
+    //calendar 세 번째 달력
+    implementation 'com.prolificinteractive:material-calendarview:1.4.3'
 }

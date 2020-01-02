@@ -15,5 +15,7 @@ data class NotificationResponseData (
     @SerializedName("logo")
     val logo : String, //오른편에 보일 회사 로고
     @SerializedName("team")
-    val team : String //회사의 공고 설명
+    val team : String, //회사의 공고 설명
+    @SerializedName("jobIdx")
+    val jobIdx : Int
 )

@@ -27,7 +27,6 @@ fun Call<CallWithoutDataExt>.enqueue(
             if (response.isSuccessful) {
                 response.body()?.let {
                     onSuccess(it)
-
                 } ?: onFail(response.body()?.status?:-1, response.body()?.message.orEmpty())
             } else {
                 onFail(response.body()?.status?:-1, response.body()?.message.orEmpty())

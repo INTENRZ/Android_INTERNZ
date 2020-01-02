@@ -249,15 +249,86 @@
 
     <!-- 카테고리 그리드 리사이클러 뷰 -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_timelineadd"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_timelineadd_category"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    android:id="@+id/rv_timelineadd"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/txt_timelineadd_category"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginTop="15dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="16dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_category"-->
+<!--        tools:layout_editor_absoluteX="0dp">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/category1"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:layout_width="83dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="인턴"-->
+<!--            android:textSize="14sp"-->
+<!--            android:textColor="#212529"-->
+<!--            android:gravity="center"-->
+<!--            android:paddingTop="5dp"-->
+<!--            android:paddingBottom="5dp"-->
+<!--            android:background="@drawable/category_border"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/category2"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/category1"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:layout_width="83dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="대외활동"-->
+<!--            android:textSize="14sp"-->
+<!--            android:textColor="#212529"-->
+<!--            android:gravity="center"-->
+<!--            android:paddingTop="5dp"-->
+<!--            android:paddingBottom="5dp"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:background="@drawable/category_border"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/category3"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/category2"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:layout_width="83dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="공모전"-->
+<!--            android:textSize="14sp"-->
+<!--            android:textColor="#212529"-->
+<!--            android:gravity="center"-->
+<!--            android:paddingTop="5dp"-->
+<!--            android:paddingBottom="5dp"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:background="@drawable/category_border"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/category4"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/category3"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            android:layout_width="83dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="동아리"-->
+<!--            android:textSize="14sp"-->
+<!--            android:textColor="#212529"-->
+<!--            android:gravity="center"-->
+<!--            android:paddingTop="5dp"-->
+<!--            android:paddingBottom="5dp"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:background="@drawable/category_border"/>-->
+<!--        -->
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

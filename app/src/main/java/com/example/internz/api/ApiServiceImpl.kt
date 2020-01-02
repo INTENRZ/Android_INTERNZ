@@ -1,13 +1,14 @@
 package com.example.internz.api
 
+import android.util.Log
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiServiceImpl {
-
     private const val BASE_URL = "http://34.97.246.7:3000"
     private lateinit var token : String
-    private lateinit var userIdx: String
+    private lateinit var userIdx : String
+
     //TODO! 서버에서 토큰을 보내주지 않는 현상 발생
 
     private val retrofit = Retrofit.Builder()
@@ -32,4 +33,5 @@ object ApiServiceImpl {
     fun getUserIdx() : String {
         return userIdx
     }
+
 }
