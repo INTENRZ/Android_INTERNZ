@@ -1,4 +1,4 @@
-package com.example.internz
+package com.example.internz.ui.story
 
 import android.app.Activity
 import android.graphics.Color
@@ -6,16 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.Toast
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.enqueue
 import com.example.internz.data.story.StoryAddRequestData
 import com.example.internz.ui.profile.timeline.TimelineStoryHelper
-import com.example.internz.ui.story.StoryHelper
-import kotlinx.android.synthetic.main.activity_detail_story.*
 import kotlinx.android.synthetic.main.activity_story_add.*
 
 class StoryAddActivity : AppCompatActivity() {
