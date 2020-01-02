@@ -5,13 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.data.follow.FollowerData
-import com.example.internz.feature.homerecomm.HomerecommViewHolder
+import com.example.internz.data.follow.FollowerResponseData
 
 
 class FollowerListAdapter (private val context : Context) : RecyclerView.Adapter<FollowerListViewHolder>() {
 
-    var data = listOf<FollowerData>()
+    var data = listOf<FollowerResponseData>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FollowerListViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.rv_follower_item, parent, false)
@@ -26,8 +25,6 @@ class FollowerListAdapter (private val context : Context) : RecyclerView.Adapter
     override fun onBindViewHolder(holder: FollowerListViewHolder, position: Int) {
 
         holder.bind(data[position])
-        holder.itemView.setOnClickListener {
 
-        }
     }
 }

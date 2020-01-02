@@ -13,6 +13,8 @@ import com.example.internz.data.notification.NotificationResponseData
 import com.example.internz.data.profile.ProfileTimelineData
 import com.example.internz.data.profile.TimelineAddRequestData
 import com.example.internz.data.UserIdxRequestData
+import com.example.internz.data.follow.FollowerResponseData
+import com.example.internz.data.follow.FollowingResponseData
 import com.example.internz.data.home.HomeResponseData
 import com.example.internz.data.profile.ProfileData
 import com.example.internz.data.profile.TimelineStoryListInternData
@@ -103,6 +105,13 @@ interface ApiService {
     @POST("/timeline")
     fun requestTimelineAdd (@Header("token") token: String, @Body body: TimelineAddRequestData) : Call<BaseResponse<TimelineAddRequestData>>
 
+    // 나의 팔로잉 리스트 조회
+    @GET("/profile/following")
+    fun requestFollwing(@Header("token") token: String) : Call<BaseResponse<List<FollowingResponseData>>>
+
+    // 나의 팔로 리스트 조회
+    @GET("/profile/follower")
+    fun requestFollwer(@Header("token") token: String) : Call<BaseResponse<List<FollowerResponseData>>>
     //날짜별 공고 조회(달력)
     @GET("/calender/{day}")
     fun requestCalenderDay(@Path("day") day : String, @Header("token") token : String) : Call<BaseResponse<List<CalenderResponseData>>>
@@ -117,7 +126,7 @@ interface ApiService {
     //지난 공고 조회
     @GET("/job/past")
     fun requestPastNotification() : Call<BaseResponse<List<NotificationResponseData>>>
-    
+
     //닉네임
     @GET("/user/nickname")
     fun requestNickname(@Header("token") token : String) : Call<BaseResponse<NicknameResponseData>>
