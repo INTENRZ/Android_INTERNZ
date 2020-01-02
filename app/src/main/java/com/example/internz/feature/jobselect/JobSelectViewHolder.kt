@@ -14,6 +14,7 @@ import com.example.internz.data.jobselect.JobSelectItem
 import com.example.internz.feature.SelectHelper
 import kotlinx.android.synthetic.main.activity_job_select.*
 
+/*
 class JobSelectViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
     private val view : View = view.findViewById(R.id.rvJobSelectItem)
@@ -40,6 +41,10 @@ class JobSelectViewHolder(view : View) : RecyclerView.ViewHolder(view) {
                     } else {
                         Toast.makeText(view.context, "세 개의 직무를 선택할 수 있습니다.", Toast.LENGTH_SHORT).show()
                     }
+
+                    if (SelectHelper.count == 3) {
+
+                    }
                 }
             }
             Log.e("TAG", "선택된 관심 직무 : ${SelectHelper.arrayList}")
@@ -47,3 +52,5 @@ class JobSelectViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         }
     }
 }
+
+ */

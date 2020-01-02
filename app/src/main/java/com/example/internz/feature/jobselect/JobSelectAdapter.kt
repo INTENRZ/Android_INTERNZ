@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.jobselect.JobSelectItem
 
+/*
 class JobSelectAdapter(private val context : Context) : RecyclerView.Adapter<JobSelectViewHolder>() {
     var data = listOf<JobSelectItem>()
 
@@ -23,3 +24,5 @@ class JobSelectAdapter(private val context : Context) : RecyclerView.Adapter<Job
         return data.size
     }
 }
+
+ */
