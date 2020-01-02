@@ -5,7 +5,6 @@ import com.example.internz.common.CallWithoutDataExt
 import com.example.internz.data.calendar.CalenderResponseData
 import com.example.internz.data.comment.CommentRequestData
 import com.example.internz.data.comment.CommentResponseData
-import com.example.internz.data.filter.FilterResponseData
 import com.example.internz.data.firstsignin.FirstSignInRequestData
 import com.example.internz.data.jobselect.JobSelectData
 import com.example.internz.data.jobselect.JobSelectPutData
@@ -13,6 +12,8 @@ import com.example.internz.data.notification.NotificationResponseData
 import com.example.internz.data.profile.ProfileTimelineData
 import com.example.internz.data.profile.TimelineAddRequestData
 import com.example.internz.data.UserIdxRequestData
+import com.example.internz.data.follow.FollowerResponseData
+import com.example.internz.data.follow.FollowingResponseData
 import com.example.internz.data.home.HomeResponseData
 import com.example.internz.data.profile.ProfileData
 import com.example.internz.data.signin.SignInData
@@ -100,6 +101,13 @@ interface ApiService {
     @POST("/timeline")
     fun requestTimelineAdd (@Header("token") token: String, @Body body: TimelineAddRequestData) : Call<BaseResponse<TimelineAddRequestData>>
 
+    // 나의 팔로잉 리스트 조회
+    @GET("/profile/following")
+    fun requestFollwing(@Header("token") token: String) : Call<BaseResponse<List<FollowingResponseData>>>
+
+    // 나의 팔로 리스트 조회
+    @GET("/profile/follower")
+    fun requestFollwer(@Header("token") token: String) : Call<BaseResponse<List<FollowerResponseData>>>
 
 
 }

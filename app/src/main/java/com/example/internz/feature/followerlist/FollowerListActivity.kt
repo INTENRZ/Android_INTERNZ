@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.data.follow.FollowerData
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
+import com.example.internz.common.toast
 
 class FollowerListActivity : AppCompatActivity() {
 
@@ -25,27 +27,18 @@ class FollowerListActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
 
-        followerListAdapter.data = listOf(
-            FollowerData(
-                profileImg = R.drawable.apr_corp,
-                name = "오현택",
-                desc = "서비스 기획과 리서치를 좋아하는 UX/UI 디자이너 입니다."
-            ),
-            FollowerData(
-                profileImg = R.drawable.apr_corp,
-                name = "오현택",
-                desc = "서비스 기획과 리서치를 좋아하는 UX/UI 디자이너 입니다."
-                ),
-            FollowerData(
-                profileImg = R.drawable.apr_corp,
-                name = "오현택",
-                desc = "서비스 기획과 리서치를 좋아하는 UX/UI 디자이너 입니다."
-                )
+        val followerCall = ApiServiceImpl.service.requestFollwer(ApiServiceImpl.getToken())
 
+
+        followerCall.enqueue(
+
+            onSuccess = {
+                followerListAdapter.data = it
+                followerListAdapter.notifyDataSetChanged()
+            },
+
+            onFail = {status, message -> toast(message)  }
         )
-
-
-            followerListAdapter.notifyDataSetChanged()
 
     }
 }
