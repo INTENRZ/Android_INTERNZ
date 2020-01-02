@@ -37,7 +37,7 @@
         android:layout_marginRight="16dp"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:src="@drawable/rectangle_shape"
+        android:src="@drawable/rectangle_shape_timeline"
         />
 
     <!-- 카테고리 텍스트 -->

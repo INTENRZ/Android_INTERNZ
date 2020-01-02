@@ -26,9 +26,7 @@ import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.data.signup.SignUpRequestData
 import com.example.internz.data.signup2.SignUp2RequestData
-import com.example.internz.data.story.DetailStoryResponseData
-import com.example.internz.data.story.StoryCategoryRequestData
-import com.example.internz.data.story.StoryCategoryResponseData
+import com.example.internz.data.story.*
 import com.example.internz.data.timeline.NicknameResponseData
 import com.example.internz.feature.calendar.CalenderResponseDayData
 import org.w3c.dom.Text
@@ -141,4 +139,9 @@ interface ApiService {
     @GET("/job/{task}/{sort}")
     fun requestNotification(@Path("task") task : String,
                             @Path("sort") sort : String) : Call<BaseResponse<List<NotificationResponseData>>>
+
+    //타임라인
+    @POST("/timeline/{timelineIdx}/story")
+    fun requestStoryAdd(@Header("token") token: String, @Path("timelineIdx") timelineIdx : Int, @Body body: StoryAddRequestData) : Call<BaseResponse<StoryAddReponseData>>
+
 }
