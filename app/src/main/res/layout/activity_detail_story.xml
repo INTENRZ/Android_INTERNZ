@@ -212,14 +212,13 @@
 
         <TextView
             android:id="@+id/txt_detailStory_introduce"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profileImg"
             android:layout_marginTop="12dp"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="16dp"
-            android:text="되돌리고 싶다 ~ 널알기전에 그때로~"/>
+            android:layout_marginEnd="16dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
