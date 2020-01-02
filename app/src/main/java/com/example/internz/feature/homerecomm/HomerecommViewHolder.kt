@@ -5,7 +5,10 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
 import com.example.internz.data.home.RecommProfileData
 import com.example.internz.ui.profile.main.OtherProfileActivity
