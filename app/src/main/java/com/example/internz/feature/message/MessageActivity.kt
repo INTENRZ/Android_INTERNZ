@@ -3,11 +3,14 @@ package com.example.internz.feature.message
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.internz.R
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
 import com.example.internz.data.messagelist.MessageDataTemp
 import kotlinx.android.synthetic.main.activity_message.*
 
@@ -30,8 +33,10 @@ class MessageActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListene
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        adapter.data = MessageDataTemp().getMessage()
-        adapter.notifyDataSetChanged()
+        getMessageData()
+
+//        adapter.data = MessageDataTemp().getMessage()
+//        adapter.notifyDataSetChanged()
 
         //swipe for refresh
         swipe = findViewById(R.id.swipeRefresh)
@@ -44,11 +49,34 @@ class MessageActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListene
     }
 
     override fun onRefresh() {
-        Toast.makeText(this, "새로고침할 코드가 추가되어야 합니다.", Toast.LENGTH_SHORT).show()
+        getMessageData()
 
         Handler().postDelayed({
             swipe.isRefreshing = false
 
         }, 1000)
+    }
+
+    private fun getMessageData() {
+        val call = ApiServiceImpl.service.requestMessage(
+            ApiServiceImpl.getToken()
+        )
+
+        call.enqueue(
+            onSuccess = {
+                //쪽지가 없을시 보여줄 메시지
+                emptyMessage.text = ""
+
+                adapter.data = it
+                adapter.notifyDataSetChanged()
+            },
+            onFail = {
+                status, message -> Log.e("TAG", "MessageActivity : 메시지 가져오기 FAIL ${status}, ${message}")
+                run {
+                    //쪽지가 없을시 보여줄 메시지
+                    emptyMessage.text = "주고받은 쪽지가 없습니다."
+                }
+            }
+        )
     }
 }

@@ -200,7 +200,8 @@ class MainProfileFragment : Fragment() {
             Toast.makeText(context, "팔로우, 팔로잉 기능을 준비중입니다. 조금만 기다려주세요.", Toast.LENGTH_SHORT).show()
         }
         img_profile_massage.setOnClickListener {
-            Toast.makeText(context, "쪽지 기능을 준비중입니다. 조금만 기다려주세요.", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(context, "쪽지 기능을 준비중입니다. 조금만 기다려주세요.", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this@MainProfileFragment.context, MessageActivity::class.java))
         }
 
     }

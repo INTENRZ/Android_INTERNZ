@@ -14,6 +14,9 @@ import com.example.internz.data.profile.ProfileTimelineData
 import com.example.internz.data.profile.TimelineAddRequestData
 import com.example.internz.data.UserIdxRequestData
 import com.example.internz.data.home.HomeResponseData
+import com.example.internz.data.message.MessageListRequestData
+import com.example.internz.data.message.MessageListResponseData
+import com.example.internz.data.message.MessageResponseData
 import com.example.internz.data.profile.ProfileData
 import com.example.internz.data.profile.TimelineStoryListInternData
 import com.example.internz.data.signin.SignInData
@@ -121,4 +124,12 @@ interface ApiService {
     //닉네임
     @GET("/user/nickname")
     fun requestNickname(@Header("token") token : String) : Call<BaseResponse<NicknameResponseData>>
+
+    //쪽지 첫화면 데이터 가져오기(쪽지 목록 조회)
+    @GET("/letter/others/list")
+    fun requestMessage(@Header("token") token : String) : Call<BaseResponse<List<MessageResponseData>>>
+
+    //쪽지 두번째 화면 데이터 가져오기(쪽지 내용 조회)
+    @GET("/letter/others")
+    fun requestMessageList(@Header("token") token : String, @Body body : MessageListRequestData) : Call<BaseResponse<List<MessageListResponseData>>>
 }
