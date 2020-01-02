@@ -24,9 +24,4 @@ class OnBoardingAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm, BEHAVIO
         fragments.add(fragment)
 
     }
-//
-//    fun replaceFragment(index : Int , fragment2: Fragment) {
-//        fragments.removeAt(index)
-//        fragments.add(fragment2)
-//    }
 }
