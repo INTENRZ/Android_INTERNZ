@@ -98,7 +98,7 @@ class FilterActivity : AppCompatActivity() {
 
     inner class FilterAdapter(private val context : Context) : RecyclerView.Adapter<FilterViewHolder>() {
         var data = listOf<FilterItem>()
-        lateinit var v : View //findV를 사용할 수 있는 recycler view
+//        lateinit var v : View //findV를 사용할 수 있는 recycler view
 
         override fun getItemCount(): Int {
             return data.size
@@ -134,39 +134,11 @@ class FilterActivity : AppCompatActivity() {
                     }
                 }
             }
-
-            /*
-            button.setOnClickListener {
-                when (button.isChecked) {
-                    true -> {
-                        button.toggle()
-                        button.setTextColor(Color.parseColor("#000000"))
-
-                        FilterHelper.count--
-                        FilterHelper.filterText = null
-                    }
-                    false -> {
-                        if (FilterHelper.count < 1) {
-                            button.toggle()
-                            button.setTextColor(Color.parseColor("#ffc200"))
-
-                            FilterHelper.count++
-                            FilterHelper.filterText = button.text.toString()
-
-                            Log.e("TAG", FilterHelper.filterText?.toString())
-                        } else {
-                            Toast.makeText(view.context, "한 개의 직무를 선택할 수 있습니다.", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
-            }
-            */
-
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilterViewHolder {
             val view = LayoutInflater.from(context).inflate(R.layout.rv_filter_item, parent, false)
-            this.v = view //findV를 수행할 view 저장
+//            this.v = view //findV를 수행할 view 저장
 
             return FilterViewHolder(view)
         }
