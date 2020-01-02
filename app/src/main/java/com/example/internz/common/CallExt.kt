@@ -10,9 +10,7 @@ data class BaseResponse<T>(
     val status: Int,
     val success: Boolean,
     val data: T?
-)
-
-
+) 
 fun <T> Call<BaseResponse<T>>.enqueue(
     onError: (Throwable) -> Unit = onStandardError,
     onSuccess: (T) -> Unit = {},

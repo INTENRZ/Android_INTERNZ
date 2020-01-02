@@ -24,6 +24,7 @@ import java.util.regex.Pattern
 
 
 class SignInActivity : AppCompatActivity() {
+
     private var backKeyPressedTime: Long = 0
     //다중 액티비티 종료
 
@@ -107,7 +108,9 @@ class SignInActivity : AppCompatActivity() {
                            val intent = Intent(applicationContext, BottomBarActivity::class.java)
                            startActivity(intent)
                            finish()
+
                        }
+
                    }
                },
                 onFail = {status, message ->  toast(message)
@@ -119,6 +122,8 @@ class SignInActivity : AppCompatActivity() {
         txtSignInSignUp?.setOnClickListener {
             val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
             startActivity(intent)
+
+
         }
     }
 

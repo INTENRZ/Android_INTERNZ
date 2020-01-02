@@ -53,6 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     app:tabMode="fixed"
+                    app:tabIndicatorColor="#ffffff"
                     app:layout_constraintStart_toStartOf="@id/CustomConstraint"
                     app:layout_constraintEnd_toEndOf="@id/CustomConstraint"
                     app:layout_constraintTop_toTopOf="@id/CustomConstraint"
@@ -60,6 +61,17 @@
                     android:layout_marginTop="12dp"
                     android:layout_marginEnd="16dp" />
 
+                 <me.relex.circleindicator.CircleIndicator
+                    android:id="@+id/indicator"
+                    app:ci_drawable="@drawable/black_radius"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                     app:ci_height="5dp"
+                     app:ci_width="5dp"
+                     app:ci_margin="4dp"
+                     app:layout_constraintBottom_toBottomOf="@id/CustomConstraint"
+                     app:layout_constraintStart_toStartOf="@id/CustomConstraint"
+                     app:layout_constraintEnd_toEndOf="@id/CustomConstraint"/>
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewpager"
                     android:layout_width="match_parent"

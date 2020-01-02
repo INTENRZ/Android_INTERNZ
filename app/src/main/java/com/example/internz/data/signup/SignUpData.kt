@@ -1,9 +1,0 @@
-package com.example.internz.data.signup
-
-import com.google.gson.annotations.SerializedName
-
-//서버 -> 클라이언트
-data class SignUpData(
-    @SerializedName("dummy")
-    val dummy : String
-)

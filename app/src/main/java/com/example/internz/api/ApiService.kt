@@ -17,7 +17,6 @@ import com.example.internz.data.home.HomeResponseData
 import com.example.internz.data.profile.ProfileData
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
-import com.example.internz.data.signup.SignUpData
 import com.example.internz.data.signup.SignUpRequestData
 import com.example.internz.data.signup2.SignUp2RequestData
 import com.example.internz.data.story.DetailStoryResponseData
@@ -36,7 +35,7 @@ interface ApiService {
 
     //회원가입 첫번째 단계
     @POST("/user/signup1")
-    fun requestSignUp(@Body body : SignUpRequestData) : Call<BaseResponse<SignUpData>>
+    fun requestSignUp(@Body body : SignUpRequestData) : Call<CallWithoutDataExt>
 
     //회원가입 두번째 단계
     @POST("/user/signup2") //TODO! 오류 확인

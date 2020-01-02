@@ -16,8 +16,11 @@ import com.example.internz.data.signup.SignUpRequestData
 import com.example.internz.feature.jobselect.JobSelectActivity
 import com.example.internz.ui.BottomBarActivity
 import com.example.internz.api.ApiServiceImpl
+import com.example.internz.api.ApiServiceImpl.setUserIdx
+import com.example.internz.common.CallWithoutDataExt
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.util.regex.Pattern
+import retrofit2.Call
 
 /**
  * TODO! 상단바 뒤로가기 이미지뷰 기능 추가
@@ -31,7 +34,6 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
 
         signUpFunction()
-        changeBtnBackground()
     }
 
     private fun signUpFunction() {
@@ -109,8 +111,6 @@ class SignUpActivity : AppCompatActivity() {
         //다음(click_event)
         //TODO! 모든 항목이 입력되어야 다음으로 넘어가도록 수정
         btnSignUpNext?.setOnClickListener {
-            val intent = Intent(applicationContext, SignUp2Activity::class.java)
-            startActivity(intent)
 
             //이메일 형식 검사
             if (!pattern.matcher(edtSignUpEmail.text.toString()).matches()) {
@@ -119,15 +119,19 @@ class SignUpActivity : AppCompatActivity() {
             }
 
             val email = edtSignUpEmail.text.toString()
-            val signUpCall = ApiServiceImpl.service.requestSignUp(
-                SignUpRequestData(
-                    email
-                )
+            val password = edtSignUpPwd.text.toString()
+            val phone = edtSignUpPhone.text.toString()
+            val signUpCall : Call<CallWithoutDataExt> = ApiServiceImpl.service.requestSignUp(
+                SignUpRequestData(email)
             )
 
             signUpCall.enqueue(
+
                 onSuccess = {
                     val intent = Intent(applicationContext, SignUp2Activity::class.java)
+                    intent.putExtra("email", email)
+                    intent.putExtra("password", password)
+                    intent.putExtra("phone" , phone)
                     startActivity(intent)
                 },
 

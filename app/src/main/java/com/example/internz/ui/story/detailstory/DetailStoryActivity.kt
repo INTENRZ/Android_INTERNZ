@@ -37,14 +37,18 @@ class DetailStoryActivity : AppCompatActivity() {
             //TODO! 서버 통신 필요
         }
 
-        //댓글(comment) click listener
-        constDetail?.setOnClickListener {
-//            startActivity(Intent(this, CommentActivity::class.java))
+        //댓글 아이콘 click event
+        imgCommentIcon?.setOnClickListener{
+            startActivityForResult(Intent(this, CommentActivity::class.java), REQUEST_CODE)
+        }
+
+        //댓글 텍스트 click listener
+        txtCommentCount?.setOnClickListener {
             startActivityForResult(Intent(this, CommentActivity::class.java), REQUEST_CODE)
         }
 
         //팔로우 버튼
-        imgDetailFollow?.setOnClickListener {
+        imgFollow?.setOnClickListener {
             //TODO! 팔로우
         }
 
@@ -74,26 +78,29 @@ class DetailStoryActivity : AppCompatActivity() {
             StoryHelper.getStoryIndex()
         )
 
+        Log.e("TAG", "storyIndex : ${StoryHelper.getStoryIndex()} ")
+
         call.enqueue(
             onSuccess = {
                 val data = it.get(0)
                 //upper layout
                 txtDetailTitle.text = data.title //제목
-                txtDetailNick1.text = data.nickname //닉네임
+                txtDetailNick.text = data.nickname //닉네임
                 txtDetailDate.text = data.date //날짜
 
                 //middle layout
-                txtDetailContents.text = data.contents //내용
-                txtDetailCommentCtn.text = data.commentCount.toString() //댓글 개수
+                txtMain.text = data.contents //내용
+                txtCommentCount.text = data.commentCount.toString() //댓글 개수
 
                 //below layout
                 Glide //사용자 이미지 프로필
                     .with(this)
                     .load(data.profile)
                     .apply(RequestOptions.circleCropTransform())
-                    .into(imgDetailProfile)
+                    .into(profileImg)
+
                 txtDetailNick.text = data.nickname
-                txtDetailIntroduce.text = data.introduce
+                txtDetailTitle.text = data.introduce
 
                 Log.e("TAG", "DetailStoryActivity : onSuccess 메서드 실행됨")
             },

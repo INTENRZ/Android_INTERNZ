@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.data.home.StoryData
 import com.example.internz.data.story.StoryCategoryResponseData
 import com.example.internz.ui.story.detailstory.DetailStoryActivity
 
