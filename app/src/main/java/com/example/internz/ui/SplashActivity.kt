@@ -1,5 +1,6 @@
 package com.example.internz.ui
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -8,7 +9,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.internz.R
 import com.example.internz.feature.signin.SignInActivity
-import com.example.internz.ui.onboarding.OnBoardingFirstActivity
+import com.example.internz.ui.onboarding.OnBoardingActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -18,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
 
         //3초간 스플래쉬 show
         Handler().postDelayed({
-            val intent = Intent(this@SplashActivity, SignInActivity::class.java)
+            val intent = Intent(this@SplashActivity, OnBoardingActivity::class.java)
             startActivity(intent)
             finish()
         }, 3000)

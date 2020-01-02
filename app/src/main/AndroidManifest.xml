@@ -26,8 +26,7 @@
         <activity android:name=".feature.message.messagesend.MessageSendActivity" />
         <activity android:name=".feature.message.messagelist.MessageListActivity" />
         <activity android:name=".feature.message.MessageActivity" />
-        <activity android:name=".ui.onboarding.OnBoardingSecondActivity"/>
-        <activity android:name=".ui.onboarding.OnBoardingFirstActivity"/>
+        <activity android:name=".ui.onboarding.OnBoardingActivity"/>
         <activity android:name=".ui.story.detailstory.DetailStoryActivity" />
         <activity android:name=".ui.profile.main.OtherProfileActivity" />
         <activity android:name=".ui.profile.TimelineAddActivity" />

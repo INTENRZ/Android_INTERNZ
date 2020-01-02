@@ -73,15 +73,6 @@
                 android:textColor="#212529"
                 android:textStyle="bold"/>
 
-            <ImageView
-                android:id="@+id/img_profile_following"
-                app:layout_constraintTop_toBottomOf="@+id/img_profile_massage"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
-                android:src="@drawable/following_btn"/>
 
             <!-- 쪽지 보내기 이미지 버튼 -->
             <ImageView
@@ -129,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
-                android:text="팔로우"
+                android:text="팔로잉"
                 android:textSize="12sp"
                 android:textColor="#212529"/>
 

@@ -1,12 +1,16 @@
 package com.example.internz.feature.followinglist
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.internz.R
-import com.example.internz.data.follow.FollowerData
-import com.example.internz.data.follow.FollowingData
+import com.example.internz.api.ApiServiceImpl
+import com.example.internz.common.enqueue
+import com.example.internz.common.toast
+import kotlinx.android.synthetic.main.activity_detail_story.*
 
 class FollowingListActivity : AppCompatActivity() {
 
@@ -25,28 +29,23 @@ class FollowingListActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
 
-        followingListAdapter.data = listOf(
-            FollowingData(
-                profileImg = R.drawable.apr_corp,
-                name = "오현택",
-                desc = "서비스 기획과 리서치를 좋아하는 UX/UI 디자이너 입니다."
-            ),
-            FollowingData(
-                profileImg = R.drawable.apr_corp,
-                name = "오현택",
-                desc = "서비스 기획과 리서치를 좋아하는 UX/UI 디자이너 입니다."
-            ),
-            FollowingData(
-                profileImg = R.drawable.apr_corp,
-                name = "오현택",
-                desc = "서비스 기획과 리서치를 좋아하는 UX/UI 디자이너 입니다."
-            )
+        val followingCall= ApiServiceImpl.service.requestFollwing(ApiServiceImpl.getToken())
 
+        followingCall.enqueue(
+
+            onSuccess = {
+                followingListAdapter.data = it
+                followingListAdapter.notifyDataSetChanged()
+
+            },
+
+            onFail = {
+                status, message -> toast(message)
+            }
         )
 
-        followingListAdapter.notifyDataSetChanged()
-
     }
+
 }
 
 
