@@ -71,7 +71,9 @@ class NotificationListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
                     Log.e("TAG", "${it.success.toString()}")
 
                     if (it.success.toString().equals("false")) {
+                        //기존 방법 : Toast만 띄움
                         Toast.makeText(view.context, "이미 캘린더에 추가된 공고입니다.", Toast.LENGTH_SHORT).show()
+
                     }else {
                         Toast.makeText(view.context, "${desc.text}이(가) 캘린더에 추가되었습니다.", Toast.LENGTH_SHORT).show()
                     }

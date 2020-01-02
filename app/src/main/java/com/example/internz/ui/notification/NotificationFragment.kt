@@ -55,7 +55,7 @@ class NotificationFragment : Fragment() {
     fun makeSpinner() {
 
         val spinner = view?.findViewById<Spinner>(R.id.notificationSpinner)
-        val arrayAdapter = ArrayAdapter.createFromResource(view!!.context, R.array.spinner, android.R.layout.simple_spinner_item)
+        val arrayAdapter = ArrayAdapter.createFromResource(view!!.context, R.array.notiSpinner, android.R.layout.simple_spinner_item)
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner?.adapter = arrayAdapter
 
@@ -65,11 +65,12 @@ class NotificationFragment : Fragment() {
                 //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.
                 when(position) {
                     0   ->  {
-                        Log.e("TAG", "NotificationFragment : 최신순 공고를 조회합니다.")
-
+                        Log.e("TAG", "NotificationFragment : 전체 공고를 조회합니다.")
+                        requestNoti()
                     }
                     1   ->  {
-                        Log.e("TAG", "NotificationFragment : 조회순 공고를 조회합니다.")
+                        Log.e("TAG", "NotificationFragment : 지난 공고를 조회합니다.")
+                        requestPastData()
                     }
                 }
             }
@@ -88,19 +89,7 @@ class NotificationFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
 
-        val call = ApiServiceImpl.service.requestAllNotification()
-
-        call.enqueue(
-            onSuccess = {
-                notificationListAdapter.data = it
-                notificationListAdapter.notifyDataSetChanged()
-            },
-            onFail = {
-                status, message -> toast(message)
-            }
-        )
-
-        notificationListAdapter.notifyDataSetChanged()
+        requestNoti()
 
         //공고 -> 캘린더 이동 imageview click listener
         activity?.findViewById<ImageView>(R.id.imgNotiToCalendar)?.setOnClickListener {
@@ -141,5 +130,33 @@ class NotificationFragment : Fragment() {
         }
     }
 
+    private fun requestNoti() {
+        val call = ApiServiceImpl.service.requestAllNotification()
 
+        call.enqueue(
+            onSuccess = {
+                notificationListAdapter.data = it
+                notificationListAdapter.notifyDataSetChanged()
+            },
+            onFail = {
+                    status, message -> toast(message)
+            }
+        )
+    }
+
+    private fun requestPastData() {
+        val call = ApiServiceImpl.service.requestPastNotification()
+
+        call.enqueue(
+            onSuccess = {
+                notificationListAdapter.data = it
+                notificationListAdapter.notifyDataSetChanged()
+
+                Log.e("TAG", "지난 공고 조회 SUCCESS")
+            },
+            onFail = {
+                status, message -> Log.e("TAG", "지난 공고 조회 FAIL : ${status}, ${message}")
+            }
+        )
+    }
 }

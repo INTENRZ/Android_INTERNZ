@@ -32,8 +32,9 @@
         <activity android:name=".ui.profile.main.OtherProfileActivity" />
         <activity android:name=".ui.profile.TimelineAddActivity" />
         <activity android:name=".feature.setprofile.SetProfileActivity" />
+        <activity android:name=".feature.comment.CommentActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".ui.profile.timeline.TimelineStoryListInternActivity" />
-        <activity android:name=".feature.comment.CommentActivity" />
         <activity android:name=".feature.jobselect.JobSelectActivity" />
         <activity android:name=".feature.signup.SignUp2Activity" />
         <activity

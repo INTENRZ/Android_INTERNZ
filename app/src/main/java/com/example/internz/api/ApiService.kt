@@ -23,6 +23,7 @@ import com.example.internz.data.signup2.SignUp2RequestData
 import com.example.internz.data.story.DetailStoryResponseData
 import com.example.internz.data.story.StoryCategoryRequestData
 import com.example.internz.data.story.StoryCategoryResponseData
+import com.example.internz.data.timeline.NicknameResponseData
 import com.example.internz.feature.calendar.CalenderResponseDayData
 import org.w3c.dom.Text
 import retrofit2.Call
@@ -113,4 +114,11 @@ interface ApiService {
     @GET("/timeline/{timelineIdx}/story")
     fun requestStoryList(@Header("token") token: String, @Path("timelineIdx") timelineIdx : String) : Call<BaseResponse<List<TimelineStoryListInternData>>>
 
+    //지난 공고 조회
+    @GET("/job/past")
+    fun requestPastNotification() : Call<BaseResponse<List<NotificationResponseData>>>
+    
+    //닉네임
+    @GET("/user/nickname")
+    fun requestNickname(@Header("token") token : String) : Call<BaseResponse<NicknameResponseData>>
 }

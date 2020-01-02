@@ -26,13 +26,13 @@ class CalendarViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         //날짜
         if (data.day < 0) {
             date.text = "D" + data.day.toString()
-        } else {
+        } else if (data.day == 0){
+            date.text = "D-DAY"
+        }
+        else {
             date.text = "D+" + data.day.toString()
         }
         //회사 로고
         Glide.with(view.context).load(data.logo).into(logo)
-
-//        //날짜 저장(decoration 위함)
-//        CalendarHelper.setMonthDay(data.end_date)
     }
 }

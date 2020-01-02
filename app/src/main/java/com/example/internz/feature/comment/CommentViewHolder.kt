@@ -17,7 +17,11 @@ class CommentViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     fun bind(data : CommentResponseData) {
         nickname.text = data.nickname
         comments.text = data.content
-        date.text = data.date
-        time.text = data.date
+
+        val newDate = data.date.replace("-",".")
+        //날짜
+        date.text = newDate.substring(5, 10)
+        //시간
+        time.text = newDate.substring(11)
     }
 }

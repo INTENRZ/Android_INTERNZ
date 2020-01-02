@@ -101,7 +101,7 @@ class DetailStoryActivity : AppCompatActivity() {
                 //upper layout
                 txtDetailTitle.text = data.title //제목
                 txtDetailNick.text = data.nickname //닉네임
-                txtDetailDate.text = data.date //날짜
+                txtDetailDate.text = data.date.replace("-",".") //날짜
                 txt_detailStory_nickname.text = data.nickname
                 txt_detailStory_introduce.text = data.introduce
                 StoryHelper.setUserIndex(data.userIndex.toString())
