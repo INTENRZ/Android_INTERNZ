@@ -26,7 +26,7 @@ class CalendarViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         //날짜
         if (data.day < 0) {
             date.text = "D" + data.day.toString()
-        } else if (data.day == 0){ 
+        } else if (data.day == 0){
             date.text = "D-DAY"
         }
         else {

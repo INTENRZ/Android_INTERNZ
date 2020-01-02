@@ -168,6 +168,11 @@ class CalendarActivity : AppCompatActivity() {
         calendarView?.setOnMonthChangedListener(
             object : OnMonthChangedListener {
                 override fun onMonthChanged(widget: MaterialCalendarView?, date: CalendarDay?) {
+                    //달력에 사용자가 선택한 날짜 표시 제거 //TODO! 오류확인하고 알아서 제거
+                    widget?.clearFocus()
+                    widget?.clearSelection()
+                    widget?.clearAnimation()
+
                     CalendarHelper.monthDay = emptySet() //저장된 일자 초기화
                     formattedDate = monthFormatter.format(date?.date)
 
@@ -191,6 +196,9 @@ class CalendarActivity : AppCompatActivity() {
 
                             //decoration
                             decorationSetting()
+
+                            //달을 바꿨을 때의 selection 초기화
+
                         },
                         onFail = {
                             status, message -> Log.e("TAG", "달을 바꿨을때의 통신 onFail")

@@ -37,7 +37,6 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
     // active는 현재 보여지는 화면
     private lateinit var active: Fragment
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
