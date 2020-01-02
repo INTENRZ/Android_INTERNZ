@@ -109,4 +109,7 @@ interface ApiService {
     @POST("/calender/{jobIdx}")
     fun requestAddNotification(@Path("jobIdx") jobIdx: String, @Header("token") token: String) : Call<CallWithoutDataExt>
 
+    //지난 공고 조회
+    @GET("/job/past")
+    fun requestPastNotification() : Call<BaseResponse<List<NotificationResponseData>>>
 }
