@@ -25,8 +25,9 @@ class MessageAdapter(private val context : Context) : RecyclerView.Adapter<Messa
 
         holder.itemView?.setOnClickListener {
             val intent = Intent(holder.itemView.context, MessageListActivity::class.java)
-                .putExtra("userIndex", data[position].uesrIdx.toString()) //유저인덱스 넘김
             holder.itemView.context.startActivity(intent)
+
+            ApiServiceImpl.setUserIdx(data[position].uesrIdx.toString())
         }
     }
 

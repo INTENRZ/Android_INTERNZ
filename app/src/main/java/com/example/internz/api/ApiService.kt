@@ -17,6 +17,7 @@ import com.example.internz.data.home.HomeResponseData
 import com.example.internz.data.message.MessageListRequestData
 import com.example.internz.data.message.MessageListResponseData
 import com.example.internz.data.message.MessageResponseData
+import com.example.internz.data.message.MessageSendRequestData
 import com.example.internz.data.profile.ProfileData
 import com.example.internz.data.profile.TimelineStoryListInternData
 import com.example.internz.data.signin.SignInData
@@ -113,6 +114,7 @@ interface ApiService {
     //캘린더에 공고 추가
     @POST("/calender/{jobIdx}")
     fun requestAddNotification(@Path("jobIdx") jobIdx: String, @Header("token") token: String) : Call<CallWithoutDataExt>
+
     // 각 타임라인의 스토리 리스트 조회
     @GET("/timeline/{timelineIdx}/story")
     fun requestStoryList(@Header("token") token: String, @Path("timelineIdx") timelineIdx : String) : Call<BaseResponse<List<TimelineStoryListInternData>>>
@@ -130,6 +132,11 @@ interface ApiService {
     fun requestMessage(@Header("token") token : String) : Call<BaseResponse<List<MessageResponseData>>>
 
     //쪽지 두번째 화면 데이터 가져오기(쪽지 내용 조회)
-    @GET("/letter/others")
+    @POST("/letter/others/message")
     fun requestMessageList(@Header("token") token : String, @Body body : MessageListRequestData) : Call<BaseResponse<List<MessageListResponseData>>>
+
+    //쪽지 전송
+    @POST("/letter/others")
+    fun requestSendMessage(@Header("token") token : String,
+                           @Body body : MessageSendRequestData) : Call<CallWithoutDataExt>
 }

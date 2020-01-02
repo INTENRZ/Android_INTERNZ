@@ -200,7 +200,7 @@ class MainProfileFragment : Fragment() {
             Toast.makeText(context, "팔로우, 팔로잉 기능을 준비중입니다. 조금만 기다려주세요.", Toast.LENGTH_SHORT).show()
         }
         img_profile_massage.setOnClickListener {
-//            Toast.makeText(context, "쪽지 기능을 준비중입니다. 조금만 기다려주세요.", Toast.LENGTH_SHORT).show()
+            //TODO! isme 판단해서 나일경우 목록, 상대방일경우 전송 페이지 띄우기
             startActivity(Intent(this@MainProfileFragment.context, MessageActivity::class.java))
         }
 

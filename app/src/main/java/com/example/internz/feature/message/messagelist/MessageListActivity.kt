@@ -29,8 +29,6 @@ class MessageListActivity : AppCompatActivity() {
     }
 
     private fun messageListFunction() {
-        //유저 인덱스 저장
-//        ApiServiceImpl.setUserIdx(intent.getStringExtra("userIndex"))
 
         //변수 초기화
         recyclerView = findViewById(R.id.rvList)
@@ -56,7 +54,7 @@ class MessageListActivity : AppCompatActivity() {
     private fun getMessageData() {
         val call = ApiServiceImpl.service.requestMessageList(
             ApiServiceImpl.getToken(),
-            MessageListRequestData(intent.getStringExtra("userIndex").toInt())
+            MessageListRequestData(ApiServiceImpl.getUserIdx().toInt())
         )
 
         call.enqueue(

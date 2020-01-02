@@ -23,20 +23,21 @@ class MessageListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
     fun bind(data : MessageListResponseData) {
         //보낸쪽지 or 받은쪽지 판단
-        if(data.receiver.equals(ApiServiceImpl.getUserIdx())) {
-            txtSendOrReceive.text = "보낸 쪽지"
+        if(data.receiver.toString().equals(ApiServiceImpl.getUserIdx())) {
+            txtSendOrReceive.text = "받은 쪽지"
             txtSendOrReceive.setTextColor(Color.parseColor("#ffc200"))
         }
         else {
-            txtSendOrReceive.text = "받은 쪽지"
+            txtSendOrReceive.text = "보낸 쪽지"
             txtSendOrReceive.setTextColor(Color.parseColor("#03b462"))
+            ApiServiceImpl.setReceiverIdx(data.sender.toString()) //쪽지보내기 위해 sender index 저장
         }
 
         txtContents.text = data.content
 
         //TODO! 날짜 및 시간 제대로 출력되는지 확인
         date.text = data.date.replace("-",".").substring(2,10)
-        time.text = data.date.substring(12,16)
+        time.text = data.date.substring(11,16)
 
         //click listener 지정
         view.setOnClickListener {
