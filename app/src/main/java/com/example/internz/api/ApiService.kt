@@ -15,6 +15,7 @@ import com.example.internz.data.profile.TimelineAddRequestData
 import com.example.internz.data.UserIdxRequestData
 import com.example.internz.data.home.HomeResponseData
 import com.example.internz.data.profile.ProfileData
+import com.example.internz.data.profile.TimelineStoryListInternData
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.data.signup.SignUpRequestData
@@ -109,6 +110,9 @@ interface ApiService {
     //캘린더에 공고 추가
     @POST("/calender/{jobIdx}")
     fun requestAddNotification(@Path("jobIdx") jobIdx: String, @Header("token") token: String) : Call<CallWithoutDataExt>
+    // 각 타임라인의 스토리 리스트 조회
+    @GET("/timeline/{timelineIdx}/story")
+    fun requestStoryList(@Header("token") token: String, @Path("timelineIdx") timelineIdx : String) : Call<BaseResponse<List<TimelineStoryListInternData>>>
 
     //지난 공고 조회
     @GET("/job/past")

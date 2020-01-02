@@ -55,6 +55,7 @@
         android:text="서비스 기획과 리서치를 좋아하는 UXUI 디자이너입니다."
         android:textSize="14sp"
         android:textColor="#212529"
-
+        android:maxLines="2"
+        android:ellipsize="end"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

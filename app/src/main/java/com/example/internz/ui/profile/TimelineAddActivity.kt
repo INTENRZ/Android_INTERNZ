@@ -91,7 +91,6 @@ class TimelineAddActivity : AppCompatActivity() {
 
         deleteBtn()
 
-        timelindAddRequest()
 
     }
 
@@ -135,13 +134,5 @@ class TimelineAddActivity : AppCompatActivity() {
         }
     }
 
-
-    fun timelindAddRequest(){
-//        val call: Call<CallWithoutDataExt> = ApiServiceImpl.service.requestTimelineAdd(ApiServiceImpl.getToken(),
-//            TimelineAddRequestData(
-//
-//            )
-//        )
-    }
 
 }

@@ -8,6 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.BaseResponse
@@ -16,6 +18,7 @@ import com.example.internz.common.toast
 import com.example.internz.data.UserIdxRequestData
 import com.example.internz.data.profile.ProfileData
 import com.example.internz.data.profile.ProfileTimelineData
+import com.example.internz.ui.story.StoryHelper
 import kotlinx.android.synthetic.main.activity_other_profile.*
 import retrofit2.Call
 
@@ -28,7 +31,8 @@ class OtherProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_other_profile)
 
-        val userIdx = intent.getStringExtra("userIdx")
+        //val userIdx = intent.getStringExtra("userIdx")
+        val userIdx = StoryHelper.getUserIndex()
 
         /* 다른 사람 프로필 정보 뷰 객체 초기화 */
         val nickname = findViewById<TextView>(R.id.txt_otherProfile_name)
@@ -51,11 +55,17 @@ class OtherProfileActivity : AppCompatActivity() {
                 job1.text = it.task_one
                 job2.text = it.task_two
                 job3.text = it.task_three
+
                 if(it.front_image == "undefined"){
                     // 프로필 설정 이미지가 없을 경우 기본 이미지 지정
                     imgFace.setImageDrawable(getResources().getDrawable(R.drawable.basicprofile_img))
                 }else{
 
+                    Glide //사용자 이미지 프로필
+                        .with(this)
+                        .load(it.front_image)
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(imgFace)
                 }
             },
             onFail = {status, message ->  toast(message)

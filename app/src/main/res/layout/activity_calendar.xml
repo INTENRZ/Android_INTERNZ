@@ -41,6 +41,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
+        android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#e3e3e3"
@@ -53,12 +54,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calendarActionBar">
 
+
         <com.prolificinteractive.materialcalendarview.MaterialCalendarView
             android:id="@+id/Calendar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:mcv_selectionColor="@color/colorBackground"
-            app:mcv_showOtherDates="defaults"
+            app:headerColor="@color/colorWhite"
+            app:headerLabelColor="#000000"
+            app:todayLabelColor="#000000"
+            app:selectionColor="@color/colorBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

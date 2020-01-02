@@ -12,12 +12,14 @@ import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.enqueue
 import com.example.internz.feature.comment.CommentActivity
+import com.example.internz.ui.profile.main.OtherProfileActivity
 import com.example.internz.ui.story.StoryHelper
 import kotlinx.android.synthetic.main.activity_detail_story.*
 
 
 class DetailStoryActivity : AppCompatActivity() {
     private val REQUEST_CODE = 100
+    private var userIdx: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +58,19 @@ class DetailStoryActivity : AppCompatActivity() {
         storyBackImg?.setOnClickListener {
             this.finish()
         }
+
+        txt_detailStory_nickname.setOnClickListener {
+            val intent = Intent(this, OtherProfileActivity::class.java)
+
+//            intent.putExtra("userIdx", userIdx)
+            startActivity(intent)
+        }
+
+        profileImg.setOnClickListener {
+            val intent = Intent(this, OtherProfileActivity::class.java)
+//            intent.putExtra("userIdx", userIdx)
+            startActivity(intent)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -86,7 +101,12 @@ class DetailStoryActivity : AppCompatActivity() {
                 //upper layout
                 txtDetailTitle.text = data.title //제목
                 txtDetailNick.text = data.nickname //닉네임
-                txtDetailDate.text = data.date.replace("-", ".") //날짜
+                txtDetailDate.text = data.date.replace("-",".") //날짜
+                txt_detailStory_nickname.text = data.nickname
+                txt_detailStory_introduce.text = data.introduce
+                StoryHelper.setUserIndex(data.userIndex.toString())
+                //userIdx = data.userIndex
+                Log.d("chohee요기", StoryHelper.getUserIndex())
 
                 //middle layout
                 txtMain.text = data.contents //내용
@@ -98,9 +118,6 @@ class DetailStoryActivity : AppCompatActivity() {
                     .load(data.profile)
                     .apply(RequestOptions.circleCropTransform())
                     .into(profileImg)
-
-                txtDetailNick.text = data.nickname
-                txtDetailTitle.text = data.introduce
 
                 Log.e("TAG", "DetailStoryActivity : onSuccess 메서드 실행됨")
             },

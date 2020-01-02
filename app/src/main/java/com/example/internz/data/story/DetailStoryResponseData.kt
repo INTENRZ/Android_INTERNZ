@@ -2,7 +2,7 @@ package com.example.internz.data.story
 
 import com.google.gson.annotations.SerializedName
 
-//TODO! userIndex 받지 않기로 함
+
 data class DetailStoryResponseData(
     @SerializedName("title")
     val title: String,

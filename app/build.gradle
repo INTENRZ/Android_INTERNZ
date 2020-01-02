@@ -64,6 +64,9 @@ dependencies {
     //hdodenhof 원형 이미지
     implementation 'de.hdodenhof:circleimageview:3.0.1'
 
+    //calendar
+    implementation 'com.applandeo:material-calendar-view:1.7.0'
+
     //swipe for notification
     implementation 'com.github.anzaizai:EasySwipeMenuLayout:1.1.4'
 

@@ -20,12 +20,12 @@ class HomestoryViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     {
         //photo.setImageDrawable(ResourcesCompat.getDrawable(itemView.resources, data.img, null))
         desc.text = data.title
-        StoryHelper.setStoryIndex(data.storyIdx)
-        itemView.setOnClickListener{
-            val intent = Intent(itemView.context, DetailStoryActivity::class.java)
-            intent.putExtra("storyIdx", data.storyIdx)
-            itemView.context.startActivity(intent)
-        }
+//        StoryHelper.setStoryIndex(data.storyIdx)
+//        itemView.setOnClickListener{
+//            val intent = Intent(itemView.context, DetailStoryActivity::class.java)
+//            intent.putExtra("storyIdx", data.storyIdx)
+//            itemView.context.startActivity(intent)
+//        }
 
     }
 }

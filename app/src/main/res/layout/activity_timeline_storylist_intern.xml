@@ -8,29 +8,110 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="170dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:background="#ffffff">
 
+
+        <ImageView
+            android:id="@+id/img_backBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/timeline_detail_back_ic"/>
+
+
+        <ImageView
+            android:id="@+id/img_menu"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/timeline_detail_menu_ic"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"/>
+
         <TextView
+            android:id="@+id/txt_storylist_category"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_backBtn"
+            android:text="인턴"
+            android:textSize="14sp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_for_job_selected"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"/>
+
+        <TextView
+            android:id="@+id/txt_timelineinnerlist_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="NAVER SNOW Jam Studio 기획/운영팀"
             app:layout_constraintStart_toStartOf="@id/constraint"
-            app:layout_constraintTop_toTopOf="@id/constraint"
+            app:layout_constraintTop_toBottomOf="@+id/txt_storylist_category"
+            android:layout_marginTop="4dp"
             android:textSize="16sp"
-            android:layout_marginTop="90dp"
+            android:textColor="#212529"
+            android:textStyle="bold"
             android:layout_marginStart="18dp"/>
+
+        <TextView
+            android:id="@+id/txt_timelineinnerlist_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_timelineinnerlist_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:text="19.01.01 - 19.07.01"
+            android:textColor="#707070"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_timeline_innerlist"
         android:layout_width="match_parent"
         android:layout_height="549dp"
         app:layout_constraintTop_toBottomOf="@id/constraint"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="18dp"
         android:layout_marginEnd="18dp"/>
+
+    <ImageView
+        android:id="@+id/img_storylist_floatingBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/storywrite_floating_btn"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/txt_none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="스토리가 없습니다."
+        android:textColor="#bfbfbf"
+        android:textSize="18sp"
+        android:visibility="invisible"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
