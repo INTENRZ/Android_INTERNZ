@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
             android:id="@+id/imgCalendarToNoti"
@@ -22,7 +22,7 @@
             android:background="@drawable/notice_list_ic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintHorizontal_bias="0.96"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -62,23 +62,19 @@
             android:layout_height="wrap_content"
             app:headerColor="@color/colorWhite"
             app:headerLabelColor="#000000"
-            app:todayLabelColor="#000000"
-            app:selectionColor="@color/colorBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-<!--  calendar 첫번째에서 지정해줄 attribute      -->
-<!--            app:headerColor="@color/colorWhite"-->
-<!--            app:headerLabelColor="#000000"-->
-<!--            app:todayLabelColor="#000000"-->
-<!--            app:selectionColor="@color/colorBackground"-->
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:mcv_tileHeight="50dp"
+            app:selectionColor="@color/colorBackground"
+            app:todayLabelColor="#000000" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="5dp"
         android:background="#f4f4f4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,11 +84,12 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCalendar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

@@ -25,6 +25,7 @@ import com.example.internz.ui.BottomBarActivity
 import kotlinx.android.synthetic.main.activity_set_profile.*
 
 class SetProfileActivity : AppCompatActivity() {
+
     private var imagePath : String = ""
     private lateinit var activity : Activity
 
@@ -44,7 +45,7 @@ class SetProfileActivity : AppCompatActivity() {
         imgSetProfile.setOnClickListener {
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if(checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) ==
-                        PackageManager.PERMISSION_DENIED) {
+                    PackageManager.PERMISSION_DENIED) {
                     //권한 거부
                     val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
                     //권한 요청 팝업 생성
@@ -119,13 +120,15 @@ class SetProfileActivity : AppCompatActivity() {
                 val call = ApiServiceImpl.service.requestFirstSignIn(
                     ApiServiceImpl.getToken(),
                     FirstSignInRequestData(
-                        SelectHelper.arrayList.get(0),
-                        SelectHelper.arrayList.get(1),
-                        SelectHelper.arrayList.get(2),
+                        SelectHelper.arrayList[0],
+                        SelectHelper.arrayList[1],
+                        SelectHelper.arrayList[2],
                         imagePath,
                         edtSetProfileContents.text.toString()
                     )
                 )
+
+                Log.e("TAG", "${SelectHelper.arrayList[0]},${SelectHelper.arrayList[1]},${SelectHelper.arrayList[2]},${imagePath},${edtSetProfileContents.text.toString()}")
 
                 call.enqueue(
                     onSuccess = {
@@ -135,7 +138,7 @@ class SetProfileActivity : AppCompatActivity() {
                         ActivityCompat.finishAffinity(activity)
                     },
                     onFail = {
-                        status, message -> toast(message)
+                            status, message -> toast(message)
                     }
                 )
             }
@@ -186,6 +189,7 @@ class SetProfileActivity : AppCompatActivity() {
                 .into(imgSetProfile)
 
             imagePath = data?.data.toString()
+            Log.e("TAG", "${imagePath}")
         }
     }
 
@@ -210,7 +214,7 @@ class SetProfileActivity : AppCompatActivity() {
                 textView14.text = it.nickname
             },
             onFail = {
-                status, message -> Log.e("TAG", "SetProfileActivity : 닉네임 받아오는 통신 FAIL ${status}, ${message}")
+                    status, message -> Log.e("TAG", "SetProfileActivity : 닉네임 받아오는 통신 FAIL ${status}, ${message}")
             }
         )
     }

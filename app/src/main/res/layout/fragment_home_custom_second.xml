@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/notosanscjkkrmedium"
+        android:fontFamily="@font/notosanscjkkrbold"
         android:textColor="#212529"
         android:text="SHOWBOX"
         android:textSize="16sp" />

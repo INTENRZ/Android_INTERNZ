@@ -26,6 +26,7 @@ import kotlinx.android.synthetic.main.activity_sign_up2.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.regex.Pattern
 
 /**
  * TODO! 이름, 닉네임, 생년월일, 성별을 서버에 전달해야 함
@@ -33,7 +34,7 @@ import retrofit2.Response
  * TODO! 상단바 뒤로가기 이미지뷰 기능 추가
  */
 class SignUp2Activity : AppCompatActivity() {
-
+    private val nameP = Pattern.compile("^[가-힣]*\$", Pattern.CASE_INSENSITIVE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,7 +110,7 @@ class SignUp2Activity : AppCompatActivity() {
         btnSignUpFinish.setOnClickListener {
 
 
-            if(edtSignUp2Name.length()<2)
+            if(!nameP.matcher(edtSignUp2Name.text.toString()).matches())
             {
                 Toast.makeText(this, "올바른 이름을 입력해 주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener

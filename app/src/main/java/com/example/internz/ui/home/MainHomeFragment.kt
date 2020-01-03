@@ -3,13 +3,16 @@ package com.example.internz.ui.home
 
 import android.graphics.Insets.add
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SnapHelper
 import androidx.viewpager.widget.PagerAdapter
 import com.example.internz.R
 import com.example.internz.api.ApiServiceImpl
@@ -23,6 +26,7 @@ import com.example.internz.feature.homecustomnotification.FirstFragment
 import com.example.internz.feature.homecustomnotification.SecondFragment
 import com.example.internz.feature.homecustomnotification.ThirdFragment
 import com.example.internz.feature.homerecomm.HomerecommAdapter
+import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper
 import retrofit2.Call
 import me.relex.circleindicator.CircleIndicator
 import kotlinx.android.synthetic.main.fragment_main_home.viewpager
@@ -62,12 +66,15 @@ class MainHomeFragment : Fragment() {
         rv_recomm_profile.adapter = adapter_recomm_profile
         rv_recomm_profile.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
+        //apply SnapHelper
+        val snapHelper = GravitySnapHelper(Gravity.START)
+        snapHelper.attachToRecyclerView(rv_recomm_profile)
+
         /* 오늘의 스토리 리사이클러뷰 세팅 */
         rv_home_story = view!!.findViewById(com.example.internz.R.id.rv_homestory)
         adapter_homestory = HomestoryAdapter(context!!)
         rv_home_story.adapter = adapter_homestory
         rv_home_story.layoutManager = LinearLayoutManager(context!!, LinearLayoutManager.VERTICAL, false)
-
 
         responseMainHome()
         rvCustom()
@@ -102,8 +109,5 @@ class MainHomeFragment : Fragment() {
         tablayout.setupWithViewPager(viewpager)
         val indicator : CircleIndicator = view!!.findViewById(R.id.indicator)
         indicator.setViewPager(viewpager)
-
     }
-
-
 }

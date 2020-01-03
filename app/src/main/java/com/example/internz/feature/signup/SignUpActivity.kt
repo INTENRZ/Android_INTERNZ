@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -28,6 +29,7 @@ import retrofit2.Call
 
 class SignUpActivity : AppCompatActivity() {
     private val pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE)
+    private val numberP = Pattern.compile("^01(?:0|1|[6-9])[.-]?(\\d{3}|\\d{4})[.-]?(\\d{4})$", Pattern.CASE_INSENSITIVE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +54,7 @@ class SignUpActivity : AppCompatActivity() {
             }
         )
 
-        //이름
+        //전화번호
         edtSignUpPhone?.addTextChangedListener(
             object : TextWatcher {
                 override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -68,6 +70,7 @@ class SignUpActivity : AppCompatActivity() {
                 }
             }
         )
+        edtSignUpPhone?.addTextChangedListener(PhoneNumberFormattingTextWatcher())
 
         //비밀번호
         edtSignUpPwd?.addTextChangedListener(
@@ -111,7 +114,6 @@ class SignUpActivity : AppCompatActivity() {
         //다음(click_event)
         //TODO! 모든 항목이 입력되어야 다음으로 넘어가도록 수정
         btnSignUpNext?.setOnClickListener {
-
             //이메일 형식 검사
             if (!pattern.matcher(edtSignUpEmail.text.toString()).matches()) {
                 Toast.makeText(this, "올바른 이메일 형식을 입력하세요.", Toast.LENGTH_SHORT).show()
@@ -130,16 +132,16 @@ class SignUpActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if(edtSignUpPhone.length() != 11 )
+            if(!numberP.matcher(edtSignUpPhone.text.toString()).matches())
             {
                 Toast.makeText(this, "올바른 휴대폰 번호를 입력해 주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-
             val email = edtSignUpEmail.text.toString()
             val password = edtSignUpPwd.text.toString()
-            val phone = edtSignUpPhone.text.toString()
+            val phone = edtSignUpPhone.text.toString().replace("-","")
+            Log.e("TAG", "phone : ${phone}")
             val signUpCall : Call<CallWithoutDataExt> = ApiServiceImpl.service.requestSignUp(
                 SignUpRequestData(email)
             )
@@ -154,12 +156,14 @@ class SignUpActivity : AppCompatActivity() {
                     startActivity(intent)
                 },
 
-                onFail = {status, message ->  toast(message)
+                onFail = {status, message ->  toast("이미 존재하는 이메일입니다.")
+                    run{
+                        edtSignUpEmail.requestFocus()
+                        edtSignUpEmail.text.clear()
+                    }
                 }
             )
         }
-
-
 
         //뒤로가기(back button)
         findViewById<ImageView>(R.id.imgSignUpBack).setOnClickListener {

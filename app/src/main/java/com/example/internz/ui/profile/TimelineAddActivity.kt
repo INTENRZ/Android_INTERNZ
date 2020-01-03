@@ -57,9 +57,9 @@ class TimelineAddActivity : AppCompatActivity() {
 //        val et_endMonth = findViewById<EditText>(R.id.edt_timelineadd_period_month_end)
        // val et_endDay = findViewById<EditText>(R.id.edt_timelineadd_period_day_end)
 
-        timelineCategoryRv()
 
         //timelineCategoryRv()
+        timelineCategoryRv()
 
         /* 등록버튼 클릭시 edittext에 작성한 텍스트 받기 + 서버 통신 */
         txt_timelineadd_add.setOnClickListener {

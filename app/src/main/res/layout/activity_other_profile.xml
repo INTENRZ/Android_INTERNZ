@@ -125,8 +125,8 @@
             <!--팔로워 수 -->
             <TextView
                 android:id="@+id/txt_otherProfile_follower_number"
-                android:layout_width="9dp"
-                android:layout_height="11dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="16dp"
                 android:textColor="#212529"
