@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".feature.signup.SignUp2Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -98,6 +99,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="35dp"
         android:text="생년월일"
+        android:inputType="number"
         android:fontFamily="@font/notosanscjkkrmedium"
         android:textSize="16sp"
         android:textColor="#212529"

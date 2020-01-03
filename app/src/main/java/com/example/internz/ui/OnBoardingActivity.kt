@@ -1,4 +1,4 @@
-package com.example.internz.ui.onboarding
+package com.example.internz.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -34,6 +34,5 @@ class OnBoardingActivity : AppCompatActivity() {
 
         //인디케이터
         onBoardingIndicator.setViewPager(viewpager2)
-        
     }
 }

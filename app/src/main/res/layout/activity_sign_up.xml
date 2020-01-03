@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".feature.signup.SignUpActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -160,7 +161,7 @@
             android:layout_marginEnd="16dp"
             android:ems="10"
             android:hint="핸드폰 번호를 입력해주세요."
-            android:inputType="textPersonName"
+            android:inputType="phone"
             android:maxLength="13"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

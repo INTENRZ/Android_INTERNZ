@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".feature.message.messagesend.MessageSendActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,7 +46,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintHorizontal_bias="0.96"
             android:background="@drawable/messagesend_ic"
-            android:text="전송"
             android:fontFamily="@font/notosanscjkkrmedium"
             android:textSize="15sp"
             android:textColor="#dbdbdb"
