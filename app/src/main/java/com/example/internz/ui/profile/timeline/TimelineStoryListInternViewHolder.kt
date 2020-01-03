@@ -20,6 +20,8 @@ class TimelineStoryListInternViewHolder (view : View) : RecyclerView.ViewHolder(
 
     fun bind(internData : TimelineStoryListInternData)
     {
+        title.text = internData.title
+        date.text = internData.created_date
 //        itemView.setOnClickListener {
 //            val intent = Intent(itemView.context, DetailStoryActivity::class.java)
 //            StoryHelper.setStoryIndex(internData.storyIdx.toString())
