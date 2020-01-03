@@ -216,7 +216,7 @@
 
     <br>
 
-# 5. Extension function & Lambda
+# 5. Extension function 
 
 - Body에 data가 없는 경우 사용한 Extension function
 
@@ -298,6 +298,77 @@ private val onStandardError: (Throwable) -> Unit = {
 서버에서 받는 body에 기본적으로 포함된 status, message, success가 아닌 추가로 data가 있을 경우를 대비하여 data가 추가된 확장 함수를 만듦
 
 <br>
+
+# 6. Lambda
+
+- 코드를 간결하게 하기 위해 람다 표현식 사용
+~~~kotlin
+onError: (Throwable) -> Unit = onStandardError,
+onSuccess: (CallWithoutDataExt) -> Unit = {},
+onFail: (status: Int, message: String) -> Unit = {_, _ -> Unit}
+~~~
+
+
+~~~kotlin
+followingNum.setOnClickListener {
+    val intent = Intent(this@MainProfileFragment.context , FollowingListActivity::class.java)
+    startActivity(intent)
+}
+~~~
+
+<br>
+
+# 7. Constraint Layout example
+
+- onBoardingActivity
+
+~~~kotlin
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app = "http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:tabMode="fixed"
+        app:tabIndicatorColor="#ffffff"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/onBoardingIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="80dp"
+        app:ci_drawable="@drawable/yellow_radius"
+        app:ci_drawable_unselected="@drawable/black_radius"
+        app:ci_height="5dp"
+        app:ci_width="5dp"
+        app:ci_margin="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+~~~
+
 
 # Contributor
 
