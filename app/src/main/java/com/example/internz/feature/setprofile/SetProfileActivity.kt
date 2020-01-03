@@ -119,13 +119,15 @@ class SetProfileActivity : AppCompatActivity() {
                 val call = ApiServiceImpl.service.requestFirstSignIn(
                     ApiServiceImpl.getToken(),
                     FirstSignInRequestData(
-                        SelectHelper.arrayList.get(0),
-                        SelectHelper.arrayList.get(1),
-                        SelectHelper.arrayList.get(2),
+                        SelectHelper.arrayList[0],
+                        SelectHelper.arrayList[1],
+                        SelectHelper.arrayList[2],
                         imagePath,
                         edtSetProfileContents.text.toString()
                     )
                 )
+
+                Log.e("TAG", "${SelectHelper.arrayList[0]},${SelectHelper.arrayList[1]},${SelectHelper.arrayList[2]},${imagePath},${edtSetProfileContents.text.toString()}")
 
                 call.enqueue(
                     onSuccess = {

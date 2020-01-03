@@ -196,6 +196,4 @@ class TimelineAddActivity : AppCompatActivity() {
             category.text = data.category
         }
     }
-
-
 }

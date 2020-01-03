@@ -78,4 +78,7 @@ dependencies {
 
     //calendar 세 번째 달력
     implementation 'com.prolificinteractive:material-calendarview:1.4.3'
+
+    //snaphelper
+    implementation 'com.github.rubensousa:gravitysnaphelper:2.2.0'
 }
