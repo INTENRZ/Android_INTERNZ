@@ -54,8 +54,10 @@ class MessageListActivity : AppCompatActivity() {
     private fun getMessageData() {
         val call = ApiServiceImpl.service.requestMessageList(
             ApiServiceImpl.getToken(),
-            MessageListRequestData(ApiServiceImpl.getUserIdx().toInt())
+            MessageListRequestData(ApiServiceImpl.getReceiverIdx().toInt())
         )
+
+        Log.e("TAG", "내가 서버로 보낸 receiver 인덱스 : ${ApiServiceImpl.getReceiverIdx()}")
 
         call.enqueue(
             onSuccess = {

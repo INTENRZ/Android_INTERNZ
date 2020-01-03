@@ -80,14 +80,16 @@
                             android:textStyle="bold" />
 
                         <!-- home 화면 "추천 프로필" 리사이클러 뷰 -->
-                        <androidx.recyclerview.widget.RecyclerView
+                        <com.github.rubensousa.gravitysnaphelper.GravitySnapRecyclerView
                             android:id="@+id/rv_home_recommProfile"
                             app:layout_constraintTop_toBottomOf="@+id/txt_home_profile"
                             app:layout_constraintStart_toStartOf="parent"
+                            app:snapGravity="start"
+                            app:snapEnabled="true"
                             android:layout_marginLeft="2.5dp"
                             android:layout_width="match_parent"
                             android:layout_height="146dp">
-                        </androidx.recyclerview.widget.RecyclerView>
+                        </com.github.rubensousa.gravitysnaphelper.GravitySnapRecyclerView>
 
                         <!-- home 화면 "오늘의 스토리" 제목 텍스트 뷰 -->
                         <TextView

@@ -65,10 +65,11 @@ class MessageSendActivity : AppCompatActivity() {
     private fun sendMessage() {
         val call = ApiServiceImpl.service.requestSendMessage(
             ApiServiceImpl.getToken(),
-            MessageSendRequestData(ApiServiceImpl.getReceiverIdx().toInt(), edtSendMessage.text.toString())
+            MessageSendRequestData(ApiServiceImpl.getReceiverIdx().toInt(),
+            edtSendMessage.text.toString())
         )
 
-        Log.e("TAG", "${ApiServiceImpl.getReceiverIdx()}, ${edtSendMessage.text.toString()}")
+        Log.e("TAG", "${ApiServiceImpl.getReceiverIdx()}")
 
         call.enqueue(
             onSuccess = {

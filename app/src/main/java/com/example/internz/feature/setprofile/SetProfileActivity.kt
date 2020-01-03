@@ -188,6 +188,7 @@ class SetProfileActivity : AppCompatActivity() {
                 .into(imgSetProfile)
 
             imagePath = data?.data.toString()
+            Log.e("TAG", "${imagePath}")
         }
     }
 

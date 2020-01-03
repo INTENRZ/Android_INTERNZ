@@ -22,20 +22,23 @@ class MessageListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     private val time : TextView = view.findViewById(R.id.txtListItemTime)
 
     fun bind(data : MessageListResponseData) {
+        //상대방(receiver)의 index = ApiServiceImp.getReceiverIndex()
+        val other = ApiServiceImpl.getReceiverIdx() //내가 아닌 상대방의 인덱스
+        // sender == other일 경우 받은 쪽지, 아닐 경우 보낸 쪽지
+
         //보낸쪽지 or 받은쪽지 판단
-        if(data.receiver.toString().equals(ApiServiceImpl.getUserIdx())) {
+        if(data.sender.toString().equals(other)) { //받은 쪽지
             txtSendOrReceive.text = "받은 쪽지"
             txtSendOrReceive.setTextColor(Color.parseColor("#ffc200"))
-        }
-        else {
+        } else { //보낸 쪽지
             txtSendOrReceive.text = "보낸 쪽지"
             txtSendOrReceive.setTextColor(Color.parseColor("#03b462"))
-            ApiServiceImpl.setReceiverIdx(data.sender.toString()) //쪽지보내기 위해 sender index 저장
         }
 
+        //쪽지의 내용
         txtContents.text = data.content
 
-        //TODO! 날짜 및 시간 제대로 출력되는지 확인
+        //날짜 및 시간 형식 변환
         date.text = data.date.replace("-",".").substring(2,10)
         time.text = data.date.substring(11,16)
 
