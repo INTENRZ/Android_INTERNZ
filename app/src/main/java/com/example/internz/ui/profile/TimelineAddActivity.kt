@@ -5,8 +5,12 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
@@ -17,6 +21,9 @@ import com.example.internz.common.toast
 import com.example.internz.data.profile.TimelineAddRequestData
 import com.example.internz.data.timeline.TimelineCategoryData
 import com.example.internz.feature.SelectHelper
+import com.example.internz.ui.DatePickderHelper
+import com.example.internz.ui.EndDatePicker
+import com.example.internz.ui.StartDatePicker
 import kotlinx.android.synthetic.main.activity_timeline_add.*
 import retrofit2.Call
 
@@ -28,8 +35,8 @@ class TimelineAddActivity : AppCompatActivity() {
     // 서버에 넘겨줄 데이터들 선언
     private lateinit var category : String
     private lateinit var title : String
-    private lateinit var startDate : String
-    private lateinit var endDate : String
+//    private lateinit var startDate : String
+//    private lateinit var endDate : String
 
 
 
@@ -38,29 +45,30 @@ class TimelineAddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_timeline_add)
         val et_title = findViewById<EditText>(R.id.edt_timelineadd_title)
-        val et_startYear = findViewById<EditText>(R.id.edt_timelineadd_period_year)
-        val et_startMonth = findViewById<EditText>(R.id.edt_timelineadd_period_month)
-        val et_startDay = findViewById<EditText>(R.id.edt_timelineadd_period_day)
-        val et_endYear = findViewById<EditText>(R.id.edt_timelineadd_period_year_end)
-        val et_endMonth = findViewById<EditText>(R.id.edt_timelineadd_period_month_end)
-        val et_endDay = findViewById<EditText>(R.id.edt_timelineadd_period_day_end)
+//        val et_startYear = findViewById<EditText>(R.id.edt_timelineadd_period_year)
+//        val et_startMonth = findViewById<EditText>(R.id.edt_timelineadd_period_month)
+//        val et_startDay = findViewById<EditText>(R.id.edt_timelineadd_period_day)
+//        val et_endYear = findViewById<EditText>(R.id.edt_timelineadd_period_year_end)
+//        val et_endMonth = findViewById<EditText>(R.id.edt_timelineadd_period_month_end)
+       // val et_endDay = findViewById<EditText>(R.id.edt_timelineadd_period_day_end)
 
         timelineCategoryRv()
-        
+
 
         /* 등록버튼 클릭시 edittext에 작성한 텍스트 받기 + 서버 통신 */
         txt_timelineadd_add.setOnClickListener {
-            val startYear = et_startYear.text.toString()
-            val startMonth = et_startMonth.text.toString()
-            val startDay = et_startDay.text.toString()
-            val endYear = et_endYear.text.toString()
-            val endMonth = et_endMonth.text.toString()
-            val endDay = et_endDay.text.toString()
+            Log.d("chohee", DatePickderHelper.startDate)
+//            val startYear = et_startYear.text.toString()
+//            val startMonth = et_startMonth.text.toString()
+//            val startDay = et_startDay.text.toString()
+//            val endYear = et_endYear.text.toString()
+//            val endMonth = et_endMonth.text.toString()
+           // val endDay = et_endDay.text.toString()
 
             // 타임라인 추가하기 위해 서버에 넘겨줄 데이터들
             title = et_title.text.toString()
-            startDate = startYear + "-"  + startMonth + "-" + startDay
-            endDate = endYear + "-"  + endMonth + "-" + endDay
+//            startDate = startYear + "-"  + startMonth + "-" + startDay
+//            endDate = endYear + "-"  + endMonth + "-" + endDay
             when(SelectHelper.categoryWhat){
                 0 -> category = "인턴"
                 1 -> category = "대외활동"
@@ -73,8 +81,8 @@ class TimelineAddActivity : AppCompatActivity() {
             /* 타임라인 추가 서버 요청 */
             val call: Call<BaseResponse<TimelineAddRequestData>> = ApiServiceImpl.service.requestTimelineAdd(ApiServiceImpl.getToken(), TimelineAddRequestData(
                 title,
-                startDate,
-                endDate,
+                DatePickderHelper.startDate,
+                DatePickderHelper.endDate,
                 category)
             )
 
@@ -134,6 +142,17 @@ class TimelineAddActivity : AppCompatActivity() {
         img_timelineadd_delete.setOnClickListener {
             finish()
         }
+    }
+
+    fun showStartDatePickerDialog(v : View) {
+        val newFragment : DialogFragment = StartDatePicker()
+        newFragment.show(supportFragmentManager, "startDatePicker")
+    }
+
+
+    fun showEndDatePickerDialog(v: View) {
+        val newFragment = EndDatePicker()
+        newFragment.show(supportFragmentManager, "endDatePicker")
     }
 
 

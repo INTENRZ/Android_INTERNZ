@@ -80,8 +80,7 @@
         android:textSize="16sp"
         android:hint="활동 내용, 회사명, 담당 직무 등을 적어주세요."
         android:layout_height="50dp"
-        android:singleLine="true"
-        android:nextFocusDown="@id/edt_timelineadd_period_year">
+        android:singleLine="true">
     </EditText>
 
 
@@ -102,146 +101,61 @@
         android:fontFamily="@font/notosanscjkkrmedium"/>
 
     <!--타임라인 활동기간 년도 작성 뷰-->
-    <EditText
-        android:id="@+id/edt_timelineadd_period_year"
-        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_period"
+    <TextView
+        android:id="@+id/btn_startDate"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_period"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="시작날짜"
+        android:textSize="16sp"
+        android:textColor="#212529"
+        android:fontFamily="@font/notosanscjkkrmedium"
         android:background="@drawable/txt_border"
-        android:layout_marginTop="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
-        android:paddingStart="6dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:inputType="number"
-        android:maxLength="4"
-        android:hint="년도"
-        android:textSize="16sp"
-        android:textColorHint="#212529"
-        android:layout_width="61dp"
-        android:layout_height="32dp"
-        android:singleLine="true"
-        android:nextFocusDown="@id/edt_timelineadd_period_month"/>
-
-    <!--타임라인 활동기간 월 작성 뷰-->
-    <EditText
-        android:id="@+id/edt_timelineadd_period_month"
-        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_period"
-        app:layout_constraintStart_toEndOf="@+id/edt_timelineadd_period_year"
-        android:background="@drawable/txt_border"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
-        android:paddingStart="6dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:inputType="number"
-        android:maxLength="2"
-        android:hint="월"
-        android:textSize="16sp"
-        android:textColorHint="#212529"
-        android:layout_width="45dp"
-        android:layout_height="32dp"
-        android:singleLine="true"
-        android:nextFocusDown="@id/edt_timelineadd_period_day"/>
-
-    <!--타임라인 활동기간 일 작성 뷰-->
-    <EditText
-        android:id="@+id/edt_timelineadd_period_day"
-        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_period"
-        app:layout_constraintStart_toEndOf="@+id/edt_timelineadd_period_month"
-        android:background="@drawable/txt_border"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="5dp"
-        android:inputType="number"
-        android:paddingStart="6dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:maxLength="2"
-        android:hint="일"
-        android:textSize="16sp"
-        android:textColorHint="#212529"
-        android:layout_width="45dp"
-        android:layout_height="32dp"
-        android:singleLine="true"
-        android:nextFocusDown="@id/edt_timelineadd_period_year_end"/>
+        android:onClick="showStartDatePickerDialog" />
 
     <View
-        app:layout_constraintTop_toTopOf="@id/edt_timelineadd_period_day"
-        app:layout_constraintBottom_toBottomOf="@id/edt_timelineadd_period_day"
-        app:layout_constraintStart_toEndOf="@id/edt_timelineadd_period_day"
-        app:layout_constraintEnd_toStartOf="@+id/edt_timelineadd_period_year_end"
-        android:layout_marginLeft="5dp"
-        android:background="#000000"
+        android:id="@+id/v_date_bar"
+        app:layout_constraintStart_toEndOf="@id/btn_startDate"
+        app:layout_constraintTop_toTopOf="@+id/btn_startDate"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_startDate"
+        app:layout_constraintEnd_toStartOf="@+id/btn_endDate"
+        android:layout_marginStart="16dp"
         android:layout_width="20dp"
-        android:layout_height="1dp"/>
+        android:layout_height="2dp"
+        android:background="#212529"/>
 
-    <!--타임라인 활동기간 일 작성 뷰-->
-    <EditText
-        android:id="@+id/edt_timelineadd_period_day_end"
-        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_period"
-        app:layout_constraintEnd_toEndOf="parent"
+    <TextView
+        android:id="@+id/btn_endDate"
+        app:layout_constraintTop_toTopOf="@+id/btn_startDate"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_startDate"
+        app:layout_constraintStart_toEndOf="@+id/v_date_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="종료날짜"
+        android:textSize="16sp"
+        android:textColor="#212529"
+        android:fontFamily="@font/notosanscjkkrmedium"
         android:background="@drawable/txt_border"
-        app:layout_constraintHorizontal_bias="0.03"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:inputType="number"
-        android:paddingStart="6dp"
+        android:layout_marginStart="16dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:maxLength="2"
-        android:hint="일"
-        android:textSize="16sp"
-        android:textColorHint="#212529"
-        android:layout_width="45dp"
-        android:layout_height="32dp"/>
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:onClick="showEndDatePickerDialog" />
 
-    <!--타임라인 활동기간 월 작성 뷰-->
-    <EditText
-        android:id="@+id/edt_timelineadd_period_month_end"
-        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_period"
-        app:layout_constraintEnd_toStartOf="@id/edt_timelineadd_period_day_end"
-        android:background="@drawable/txt_border"
-        app:layout_constraintHorizontal_bias="0.03"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp"
-        android:inputType="number"
-        android:paddingStart="6dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:maxLength="2"
-        android:hint="월"
-        android:textSize="16sp"
-        android:textColorHint="#212529"
-        android:layout_width="45dp"
-        android:layout_height="32dp"
-        android:singleLine="true"
-        android:nextFocusDown="@id/edt_timelineadd_period_day_end"/>
-
-    <!--타임라인 활동기간 년도 작성 뷰-->
-    <EditText
-        android:id="@+id/edt_timelineadd_period_year_end"
-        app:layout_constraintTop_toBottomOf="@+id/txt_timelineadd_period"
-        app:layout_constraintEnd_toStartOf="@+id/edt_timelineadd_period_month_end"
-        android:background="@drawable/txt_border"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        android:inputType="number"
-        android:paddingStart="6dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:maxLength="4"
-        android:hint="년도"
-        android:textSize="16sp"
-        android:textColorHint="#212529"
-        android:layout_width="61dp"
-        android:layout_height="32dp"
-        android:singleLine="true"
-        android:nextFocusDown="@id/edt_timelineadd_period_month_end"/>
 
     <!--타임라인 카테고리 텍스트 -->
     <TextView
         android:id="@+id/txt_timelineadd_category"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_timelineadd_period_year_end"
+        app:layout_constraintTop_toBottomOf="@+id/btn_startDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"

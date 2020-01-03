@@ -70,7 +70,7 @@ class MainHomeFragment : Fragment() {
     }
 
     /** 메인 홈 "추천 프로필", "오늘의 스토리" 서버 통신 */
-    fun responseMainHome(){
+    private fun responseMainHome(){
         val call: Call<BaseResponse<HomeResponseData>> = ApiServiceImpl.service.responseMainHome(ApiServiceImpl.getToken())
         call.enqueue(
             onSuccess = {
@@ -90,7 +90,7 @@ class MainHomeFragment : Fragment() {
         )
     }
 
-    fun rvCustom() {
+    private fun rvCustom() {
 
         val customAdapter : PagerAdapter = CustomNotificationAdapter(childFragmentManager)
         viewpager.adapter = customAdapter
