@@ -17,7 +17,7 @@ object ApiServiceImpl {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val service = retrofit.create(ApiService::class.java)
+    val service: ApiService = retrofit.create(ApiService::class.java)
 
     fun setToken(token: String) {
         this.token = token

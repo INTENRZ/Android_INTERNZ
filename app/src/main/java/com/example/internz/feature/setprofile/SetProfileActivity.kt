@@ -197,8 +197,7 @@ class SetProfileActivity : AppCompatActivity() {
     private fun ImageView.makeCircle() {
         Glide
             .with(this@SetProfileActivity)
-//            .load(this.drawable)
-            .load("content://storage/emulated/0/DCIM/건훈이랑/20191121_213843.jpg")
+            .load(this.drawable)
             .apply(RequestOptions.circleCropTransform())
             .into(this)
     }

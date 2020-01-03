@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/notosanscjkkrmedium"
         android:text="영화번역가는 AI때문에 사라질 직업인가."
         android:textSize="17sp"/>
 
@@ -22,6 +23,7 @@
         app:layout_constraintTop_toBottomOf="@id/txtTimelineStoryListExternalDesc"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="12dp"
+        android:fontFamily="@font/notosanscjkkrmedium"
         android:text="D-13"
         android:textSize="14sp"
         android:textColor="@color/colorDday"/>

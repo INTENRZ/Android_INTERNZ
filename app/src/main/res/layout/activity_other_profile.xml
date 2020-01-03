@@ -17,6 +17,7 @@
         android:textSize="17sp"
         android:textColor="#000000"
         android:textStyle="bold"
+        android:fontFamily="@font/notosanscjkkrmedium"
         android:gravity="center_horizontal|center_vertical"
         android:background="#ffffff"/>
 
@@ -82,6 +83,7 @@
                 android:textColor="#212529"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/notosanscjkkrmedium"
                 app:layout_constraintStart_toEndOf="@+id/img_otherProfile_face_border"
                 app:layout_constraintTop_toBottomOf="@+id/img_otherProfile_bar" />
 
@@ -115,6 +117,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/notosanscjkkrmedium"
                 android:text="팔로워"
                 android:textSize="12sp"
                 android:textColor="#212529"/>
@@ -122,12 +125,13 @@
             <!--팔로워 수 -->
             <TextView
                 android:id="@+id/txt_otherProfile_follower_number"
-                android:layout_width="9dp"
-                android:layout_height="11dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="16dp"
                 android:textColor="#212529"
                 android:textSize="12sp"
+                android:fontFamily="@font/notosanscjkkrmedium"
                 app:layout_constraintStart_toEndOf="@+id/txt_otherProfile_follower"
                 app:layout_constraintTop_toBottomOf="@id/img_otherProfile_face_border" />
 
@@ -140,6 +144,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/notosanscjkkrmedium"
                 android:text="팔로우"
                 android:textSize="12sp"
                 android:textColor="#212529"/>
@@ -154,7 +159,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="16dp"
                 android:textSize="12sp"
-                android:textColor="#212529"/>
+                android:textColor="#212529"
+                android:fontFamily="@font/notosanscjkkrmedium"/>
 
             <!-- 소개 -->
             <TextView
@@ -168,7 +174,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="#212529"/>
+                android:textColor="#212529"
+                android:fontFamily="@font/notosanscjkkrmedium"/>
 
             <!-- 첫 번째 직무-->
             <TextView
@@ -185,7 +192,8 @@
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
                 android:textColor="#212529"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:fontFamily="@font/notosanscjkkrmedium"/>
 
             <!-- 두 번째 직무-->
             <TextView
@@ -201,7 +209,7 @@
                 android:paddingRight="8dp"
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
-
+                android:fontFamily="@font/notosanscjkkrmedium"
                 android:textColor="#212529"
                 android:textSize="14sp"/>
 
@@ -220,7 +228,8 @@
                 android:paddingTop="4dp"
                 android:paddingBottom="4dp"
                 android:textColor="#212529"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:fontFamily="@font/notosanscjkkrmedium"/>
 
             <View
                 android:id="@+id/v_blank"
@@ -258,6 +267,7 @@
         android:visibility="invisible"
         android:text="타임라인이 비어있습니다."
         android:textSize="18sp"
-        android:textColor="#dbdbdb"/>
+        android:textColor="#dbdbdb"
+        android:fontFamily="@font/notosanscjkkrmedium"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

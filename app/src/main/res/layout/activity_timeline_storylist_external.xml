@@ -19,6 +19,7 @@
             android:text="SK Telecom 서포터즈 T프렌즈 2기"
             app:layout_constraintStart_toStartOf="@id/constraint"
             app:layout_constraintTop_toTopOf="@id/constraint"
+            android:fontFamily="@font/notosanscjkkrmedium"
             android:textSize="16sp"
             android:layout_marginTop="90dp"
             android:layout_marginStart="18dp"/>
