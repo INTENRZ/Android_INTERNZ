@@ -146,6 +146,7 @@ class MainProfileFragment : Fragment() {
 
                 timelineCall.enqueue(
                     onSuccess = {
+                        txt_profile_black.visibility = View.INVISIBLE
                         adapter_profile_mainProfile.data = it
                         adapter_profile_mainProfile.notifyDataSetChanged()
                     },
@@ -169,8 +170,10 @@ class MainProfileFragment : Fragment() {
 
         timelineCall.enqueue(
             onSuccess = {
+                txt_profile_black.visibility = View.INVISIBLE
                 adapter_profile_mainProfile.data = it
                 adapter_profile_mainProfile.notifyDataSetChanged()
+
             },
             onFail = {status, message ->
                 // 자신의 타임라인이 하나도 존재하지 않을 때 "타임라인이 비어있습니다." 텍스트 띄우기

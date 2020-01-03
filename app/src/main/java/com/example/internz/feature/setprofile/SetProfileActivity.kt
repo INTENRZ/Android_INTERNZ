@@ -3,9 +3,14 @@ package com.example.internz.feature.setprofile
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -23,10 +28,19 @@ import com.example.internz.data.firstsignin.FirstSignInRequestData
 import com.example.internz.feature.SelectHelper
 import com.example.internz.ui.BottomBarActivity
 import kotlinx.android.synthetic.main.activity_set_profile.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.InputStream
+import java.net.URI
 
 class SetProfileActivity : AppCompatActivity() {
     private var imagePath : String = ""
     private lateinit var activity : Activity
+    private lateinit var path: Uri
+    private var img: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -122,11 +136,11 @@ class SetProfileActivity : AppCompatActivity() {
                         SelectHelper.arrayList.get(0),
                         SelectHelper.arrayList.get(1),
                         SelectHelper.arrayList.get(2),
-                        imagePath,
+                        img,
                         edtSetProfileContents.text.toString()
                     )
                 )
-
+//imagePath
                 call.enqueue(
                     onSuccess = {
                         val intent = Intent(this@SetProfileActivity, BottomBarActivity::class.java)
@@ -144,7 +158,9 @@ class SetProfileActivity : AppCompatActivity() {
 
     private fun getImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
+//        intent.type = "image/*"
+        intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
+        intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         startActivityForResult(intent, IMAGE_PICK_CODE)
     }
 
@@ -181,11 +197,27 @@ class SetProfileActivity : AppCompatActivity() {
             //원형 이미지 띄우기
             Glide
                 .with(this)
-                .load(data?.data)
+                .load(img)
                 .apply(RequestOptions.circleCropTransform())
                 .into(imgSetProfile)
-
+//data?.data
             imagePath = data?.data.toString()
+            path = data?.data!!
+//            val uri: Uri? = data?.data
+//            val cursor: Cursor? = contentResolver.query(Uri.parse(uri.toString()), null, null, null, null)
+//            cursor?.moveToNext()
+//            val string: String = cursor!!.getString(cursor?.getColumnIndex(MediaStore.MediaColumns.DATA)!!)
+//            Log.d("chohee", string)
+
+
+            var cursor = contentResolver.query(path, null, null, null, null)
+            cursor?.moveToNext()
+            img = cursor?.getString(cursor.getColumnIndex("_data"))
+            cursor?.close()
+
+
+            Log.d("chohee1", img.toString())
+            Log.d("chohee2", data?.data.toString())
         }
     }
 

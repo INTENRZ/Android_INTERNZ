@@ -75,21 +75,21 @@ class TimelineAddActivity : AppCompatActivity() {
             title = et_title.text.toString()
 //            startDate = startYear + "-"  + startMonth + "-" + startDay
 //            endDate = endYear + "-"  + endMonth + "-" + endDay
-            when(SelectHelper.categoryWhat){
-                0 -> category = "인턴"
-                1 -> category = "대외활동"
-                2 -> category = "공모전"
-                3 -> category = "동아리"
-                4 -> category = "자격증"
-                5 -> category = "기타"
-            }
+//            when(SelectHelper.categoryWhat){
+//                "인턴" -> category = "인턴"
+//                1 -> category = "대외활동"
+//                2 -> category = "공모전"
+//                3 -> category = "동아리"
+//                4 -> category = "자격증"
+//                5 -> category = "기타"
+//            }
 
             /* 타임라인 추가 서버 요청 */
             val call: Call<BaseResponse<TimelineAddRequestData>> = ApiServiceImpl.service.requestTimelineAdd(ApiServiceImpl.getToken(), TimelineAddRequestData(
                 title,
                 DatePickderHelper.startDate,
                 DatePickderHelper.endDate,
-                category)
+                SelectHelper.categoryWhat)
             )
 
             call.enqueue(
@@ -181,7 +181,6 @@ class TimelineAddActivity : AppCompatActivity() {
 
                     //내가 선택한 CheckedTextView의 정보 저장
                     if (TimelineHelper.count == 0) { //사용자가 선택한 필터가 없는 경우, current == null
-
                         TimelineHelper.currentButton = checkedTextView //CheckedTextView 정보 저장
                         TimelineHelper.count++ //count 증가
                         TimelineHelper.currentButton?.toggle() //drawable 변경
@@ -204,7 +203,7 @@ class TimelineAddActivity : AppCompatActivity() {
                         }
                     }
 
-                    //TimelineHelper.currentButton?.text.toString()
+                    SelectHelper.categoryWhat = TimelineHelper.currentButton?.text.toString()
                 }
             }
 
