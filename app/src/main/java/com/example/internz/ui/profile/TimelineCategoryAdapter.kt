@@ -19,7 +19,6 @@ class TimelineCategoryAdapter(private val context: Context) : RecyclerView.Adapt
 
     override fun onBindViewHolder(holder: TimelineCategoryViewHolder, position: Int) {
         holder.bind(data[position])
-        holder.category.isChecked = false
         holder.changeColor()
 
     }
