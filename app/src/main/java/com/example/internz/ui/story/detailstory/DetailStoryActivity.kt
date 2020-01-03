@@ -15,6 +15,7 @@ import com.example.internz.feature.comment.CommentActivity
 import com.example.internz.ui.profile.main.OtherProfileActivity
 import com.example.internz.ui.story.StoryHelper
 import kotlinx.android.synthetic.main.activity_detail_story.*
+import kotlinx.android.synthetic.main.activity_sign_up2.*
 import kotlinx.android.synthetic.main.activity_story_add.*
 
 
@@ -36,8 +37,15 @@ class DetailStoryActivity : AppCompatActivity() {
 
         //스크랩 버튼
         imgDetailScrap?.setOnClickListener {
-            //TODO! selecter 지정 필요
-            //TODO! 서버 통신 필요
+                when(imgDetailScrap.isSelected) {
+                    true -> {
+                        imgDetailScrap.isSelected = false
+                        imgDetailScrap.setBackgroundResource(R.drawable.scrap_ic)}
+                    false -> {
+                        imgDetailScrap.isSelected = true
+                        imgDetailScrap.setBackgroundResource(R.drawable.scrap_fill_ic)
+                    }
+                }
         }
 
         //댓글 아이콘 click event

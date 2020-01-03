@@ -17,8 +17,10 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/notosanscjkkrbold"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:textColor="#212529"
         android:text="라인스튜디오"
+        android:textColor="#212529"
         android:textSize="16sp" />
 
     <TextView
@@ -31,7 +33,6 @@
         android:layout_marginTop="5dp"
         android:text="모바일 게임 데이터 분석"
         android:fontFamily="@font/notosanscjkkrregular"
-        android:textColor="#212529"
         android:textSize="16sp"/>
 
     <TextView
@@ -51,8 +52,6 @@
         android:id="@+id/imgHomeCustomFirstImg"
         android:layout_width="138dp"
         android:layout_height="60dp"
-        tools:layout_editor_absoluteX="270dp"
-        tools:layout_editor_absoluteY="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="16dp"

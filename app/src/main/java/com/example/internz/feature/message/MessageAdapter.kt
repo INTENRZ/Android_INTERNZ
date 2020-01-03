@@ -27,7 +27,9 @@ class MessageAdapter(private val context : Context) : RecyclerView.Adapter<Messa
             val intent = Intent(holder.itemView.context, MessageListActivity::class.java)
             holder.itemView.context.startActivity(intent)
 
-            ApiServiceImpl.setUserIdx(data[position].uesrIdx.toString())
+            //TODO! useridx에서 receiver인덱스로 변환함
+            ApiServiceImpl.setReceiverIdx(data[position].uesrIdx.toString())
+            Log.e("TAG", "특정인과의 메시지 띄울때 상대방(receiver)의 userIdx : ${ApiServiceImpl.getReceiverIdx()}")
         }
     }
 

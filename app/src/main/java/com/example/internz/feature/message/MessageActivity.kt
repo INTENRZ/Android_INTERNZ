@@ -35,9 +35,6 @@ class MessageActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListene
 
         getMessageData()
 
-//        adapter.data = MessageDataTemp().getMessage()
-//        adapter.notifyDataSetChanged()
-
         //swipe for refresh
         swipe = findViewById(R.id.swipeRefresh)
         swipe.setOnRefreshListener(this)

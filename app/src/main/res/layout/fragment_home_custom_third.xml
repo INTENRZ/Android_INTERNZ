@@ -16,6 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
+        android:textColor="#212529"
         android:fontFamily="@font/notosanscjkkrmedium"
         android:text="한국언론진흥재단"
         android:textSize="16sp" />

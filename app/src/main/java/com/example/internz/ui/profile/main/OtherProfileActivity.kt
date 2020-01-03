@@ -1,5 +1,7 @@
 package com.example.internz.ui.profile.main
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -16,13 +18,16 @@ import com.example.internz.common.BaseResponse
 import com.example.internz.common.enqueue
 import com.example.internz.common.toast
 import com.example.internz.data.UserIdxRequestData
+import com.example.internz.data.message.MessageSendRequestData
 import com.example.internz.data.profile.ProfileData
 import com.example.internz.data.profile.ProfileTimelineData
+import com.example.internz.feature.message.messagesend.MessageSendActivity
 import com.example.internz.ui.story.StoryHelper
 import kotlinx.android.synthetic.main.activity_other_profile.*
 import retrofit2.Call
 
 class OtherProfileActivity : AppCompatActivity() {
+    private val REQUEST_CODE_IN_OTHERS = 200
 
     private lateinit var rv_otherTimeline: RecyclerView
     private lateinit var adapter_otherTimeline: MainProfileAdapter
@@ -33,6 +38,9 @@ class OtherProfileActivity : AppCompatActivity() {
 
         //val userIdx = intent.getStringExtra("userIdx")
         val userIdx = StoryHelper.getUserIndex()
+        ApiServiceImpl.setReceiverIdx(userIdx)
+
+        Log.e("TAG", "타인의 프로필에서 userIndex == receiver : ${userIdx}, ${ApiServiceImpl.getReceiverIdx()}")
 
         /* 다른 사람 프로필 정보 뷰 객체 초기화 */
         val nickname = findViewById<TextView>(R.id.txt_otherProfile_name)
@@ -95,15 +103,15 @@ class OtherProfileActivity : AppCompatActivity() {
 
         backBtn()
         //rvSetting()
-    }
 
-    /* 타임라인 리사이클러뷰 세팅 */
-    fun rvSetting(){
-        rv_otherTimeline = findViewById(R.id.rv_otherProfile_timeline)
-        adapter_otherTimeline = MainProfileAdapter(this)
-        rv_otherTimeline.adapter = adapter_otherTimeline
-        rv_otherTimeline.layoutManager = LinearLayoutManager(this)
-
+        //메시지 전송
+        img_otherProfile_massage?.setOnClickListener (
+            object : View.OnClickListener {
+                override fun onClick(p0: View?) {
+                    startActivity(Intent(applicationContext, MessageSendActivity::class.java)) //메시지 전송하는 페이지로 바로 변환
+                }
+            }
+        )
     }
 
     fun backBtn(){

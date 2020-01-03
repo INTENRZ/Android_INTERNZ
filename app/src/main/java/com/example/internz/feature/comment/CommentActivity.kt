@@ -32,7 +32,7 @@ class CommentActivity : AppCompatActivity() {
         adapter = CommentAdapter(this)
 
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         //서버 통신
         getComment()
