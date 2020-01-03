@@ -242,9 +242,10 @@
                 android:id="@+id/rv_otherProfile_timeline"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/v_blank"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:paddingTop="30dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="#f4f4f4">
 
             </androidx.recyclerview.widget.RecyclerView>

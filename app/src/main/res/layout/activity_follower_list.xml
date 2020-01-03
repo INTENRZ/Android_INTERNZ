@@ -29,6 +29,7 @@
             android:id="@+id/v_bar"
             app:layout_constraintTop_toBottomOf="@id/txtFollowerListMain"
             app:layout_constraintStart_toStartOf="@id/constraint"
+            app:layout_constraintEnd_toEndOf="@id/constraint"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#e3e3e3"

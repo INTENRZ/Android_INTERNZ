@@ -130,6 +130,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/txt_home_story"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:scaleType="fitXY"
                 android:layout_marginBottom="40dp"
                 android:layout_width="match_parent"
@@ -138,12 +139,13 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_homestory"
+                android:overScrollMode="never"
                 app:layout_constraintStart_toStartOf="@id/img_home_story"
                 app:layout_constraintTop_toTopOf="@id/img_home_story"
                 app:layout_constraintEnd_toEndOf="@id/img_home_story"
                 app:layout_constraintBottom_toBottomOf="@id/img_home_story"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="380dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

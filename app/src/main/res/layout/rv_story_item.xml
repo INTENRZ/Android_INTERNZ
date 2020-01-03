@@ -10,7 +10,7 @@
         android:layout_width="193dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/notosanscjkkrmedium"
         android:lineSpacingExtra="5sp"
         android:text="스토리의 제목입니다. AI 블라블라"

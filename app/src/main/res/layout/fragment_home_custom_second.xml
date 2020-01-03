@@ -33,7 +33,6 @@
         android:layout_marginTop="5dp"
         android:text="마케팅 팀"
         android:fontFamily="@font/notosanscjkkrregular"
-        android:textColor="#212529"
         android:textSize="16sp"/>
 
     <TextView
@@ -53,8 +52,6 @@
         android:id="@+id/imgHomeCustomSecondImg"
         android:layout_width="138dp"
         android:layout_height="45dp"
-        tools:layout_editor_absoluteX="270dp"
-        tools:layout_editor_absoluteY="25dp"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

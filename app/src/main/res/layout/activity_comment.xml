@@ -21,10 +21,11 @@
             android:id="@+id/imgCommentDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            app:layout_constraintHorizontal_bias="0.03"
             android:background="@drawable/delete_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -80,8 +81,8 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:paddingLeft="20dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
             android:inputType="textPersonName"
             android:background="@drawable/background_for_btn_in_comment"
             android:hint="댓글을 남겨보세요."
