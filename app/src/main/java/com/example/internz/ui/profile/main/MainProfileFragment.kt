@@ -83,7 +83,7 @@ class MainProfileFragment : Fragment() {
                 job1.text = it.task_one
                 job2.text = it.task_two
                 job3.text = it.task_three
-                if(it.front_image == null){
+                if(it.front_image == "undefined"){
                     // 프로필 이미지가 없을 경우 기본 이미지 적용
                     imgFace.setImageDrawable(getResources().getDrawable(R.drawable.basicprofile_img))
                 }else{

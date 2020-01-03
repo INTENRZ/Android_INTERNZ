@@ -41,6 +41,7 @@ class SetProfileActivity : AppCompatActivity() {
     private lateinit var activity : Activity
     private lateinit var path: Uri
     private var img: String? = ""
+    lateinit var file: File
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -126,6 +127,10 @@ class SetProfileActivity : AppCompatActivity() {
 
         //시작하기 click listener
         btnSetProfileStart.setOnClickListener {
+//
+//            var requestBody : RequestBody = RequestBody.create(MediaType.parse("image/*"),file)
+//            var body : MultipartBody.Part = MultipartBody.Part.createFormData("uploaded_file",file.getName(),requestBody)
+
             if (edtSetProfileContents.text.length < 20) {
                 edtSetProfileContents.requestFocus()
                 Toast.makeText(applicationContext, "20자 이상의 한줄 소개를 작성해주세요.", Toast.LENGTH_SHORT).show()
@@ -136,13 +141,13 @@ class SetProfileActivity : AppCompatActivity() {
                         SelectHelper.arrayList.get(0),
                         SelectHelper.arrayList.get(1),
                         SelectHelper.arrayList.get(2),
-                        img,
+                        imagePath,
                         edtSetProfileContents.text.toString()
                     )
                 )
-//imagePath
                 call.enqueue(
                     onSuccess = {
+                        Log.d("chohee", "서버성공")
                         val intent = Intent(this@SetProfileActivity, BottomBarActivity::class.java)
                         startActivity(intent)
 
@@ -150,6 +155,7 @@ class SetProfileActivity : AppCompatActivity() {
                     },
                     onFail = {
                         status, message -> toast(message)
+                        Log.d("chohee", "서버실패")
                     }
                 )
             }
@@ -197,27 +203,20 @@ class SetProfileActivity : AppCompatActivity() {
             //원형 이미지 띄우기
             Glide
                 .with(this)
-                .load(img)
+                .load(data?.data)
                 .apply(RequestOptions.circleCropTransform())
                 .into(imgSetProfile)
 //data?.data
             imagePath = data?.data.toString()
-            path = data?.data!!
-//            val uri: Uri? = data?.data
-//            val cursor: Cursor? = contentResolver.query(Uri.parse(uri.toString()), null, null, null, null)
+//            path = data?.data!!
+//
+//            var cursor = contentResolver.query(path, null, null, null, null)
 //            cursor?.moveToNext()
-//            val string: String = cursor!!.getString(cursor?.getColumnIndex(MediaStore.MediaColumns.DATA)!!)
-//            Log.d("chohee", string)
+//            img = cursor?.getString(cursor.getColumnIndex("_data"))
+//            cursor?.close()
+//            file = File(img)
 
 
-            var cursor = contentResolver.query(path, null, null, null, null)
-            cursor?.moveToNext()
-            img = cursor?.getString(cursor.getColumnIndex("_data"))
-            cursor?.close()
-
-
-            Log.d("chohee1", img.toString())
-            Log.d("chohee2", data?.data.toString())
         }
     }
 

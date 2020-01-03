@@ -29,6 +29,7 @@ import com.example.internz.data.signup2.SignUp2RequestData
 import com.example.internz.data.story.*
 import com.example.internz.data.timeline.NicknameResponseData
 import com.example.internz.feature.calendar.CalenderResponseDayData
+import okhttp3.MultipartBody
 import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.http.*
@@ -48,8 +49,9 @@ interface ApiService {
     fun requestSignUp2(@Body body : SignUp2RequestData) : Call<CallWithoutDataExt>
 
     //관심직군 + 프로필 + 한줄소개
+//    @Multipart
     @PUT("/user/taskandintro")
-    fun requestFirstSignIn(@Header("token") token : String, @Body body : FirstSignInRequestData) : Call<CallWithoutDataExt>
+    fun requestFirstSignIn(@Header("token") token : String, @Body body : FirstSignInRequestData ) : Call<CallWithoutDataExt>
 
     //스토리 카테고리/정렬 조회
     @POST("/story/category/sort")
