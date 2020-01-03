@@ -3,14 +3,13 @@ package com.example.internz.ui.profile.timeline
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
-import com.example.internz.StoryAddActivity
+import com.example.internz.ui.story.StoryAddActivity
 import com.example.internz.api.ApiServiceImpl
 import com.example.internz.common.enqueue
 import com.example.internz.ui.profile.timeline.TimelineStoryHelper.timelineIdx

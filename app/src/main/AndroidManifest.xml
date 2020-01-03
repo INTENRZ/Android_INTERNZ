@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".StoryAddActivity"></activity>
+        <activity android:name=".ui.story.StoryAddActivity"></activity>
         <activity android:name=".feature.web.WebViewActivity" />
         <activity android:name=".feature.filter.FilterActivity" />
         <activity android:name=".feature.calendar.CalendarActivity" />

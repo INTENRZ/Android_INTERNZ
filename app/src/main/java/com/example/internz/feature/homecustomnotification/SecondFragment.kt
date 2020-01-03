@@ -1,6 +1,7 @@
 package com.example.internz.feature.homecustomnotification
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.internz.R
+import com.example.internz.feature.web.WebViewActivity
+import kotlinx.android.synthetic.main.fragment_home_custom_second.*
 
 
 class SecondFragment : Fragment() {
@@ -21,4 +24,14 @@ class SecondFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home_custom_second, container, false)
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        contentSecond.setOnClickListener {
+            val intent = Intent(this@SecondFragment.context, WebViewActivity::class.java)
+                .putExtra("url", "https://showbox.recruiter.co.kr/app/jobnotice/view?systemKindCode=MRS2&jobnoticeSn=18400" )
+
+            startActivity(intent)
+        }
+    }
 }

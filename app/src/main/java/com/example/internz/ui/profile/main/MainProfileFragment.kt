@@ -107,7 +107,7 @@ class MainProfileFragment : Fragment() {
         rvInit()
         floatingClick()
         follow()
-        laterDevelop()
+        message()
     }
 
     private fun follow () {
@@ -195,13 +195,11 @@ class MainProfileFragment : Fragment() {
     }
 
     /* 기능 구현 부족한 부분들 토스트 처리 */
-    fun laterDevelop(){
-//        txt_profile_following.setOnClickListener {
-//            Toast.makeText(context, "팔로우, 팔로잉 기능을 준비중입니다. 조금만 기다려주세요.", Toast.LENGTH_SHORT).show()
-//        }
+    fun message(){
         img_profile_massage.setOnClickListener {
             //TODO! isme 판단해서 나일경우 목록, 상대방일경우 전송 페이지 띄우기
             startActivity(Intent(this@MainProfileFragment.context, MessageActivity::class.java))
         }
+
     }
 }

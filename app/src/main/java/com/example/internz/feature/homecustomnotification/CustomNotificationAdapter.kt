@@ -25,8 +25,12 @@ class CustomNotificationAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm,
         return PAGE_MAX_CNT
     }
 
-    override fun destroyItem( container: ViewGroup, position: Int, `object`: Any) {
+    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         super.destroyItem(container, position, `object`)
     }
+
+
+
+
 
 }
