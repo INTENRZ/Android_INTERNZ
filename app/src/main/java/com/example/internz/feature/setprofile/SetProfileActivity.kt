@@ -3,9 +3,14 @@ package com.example.internz.feature.setprofile
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -23,11 +28,21 @@ import com.example.internz.data.firstsignin.FirstSignInRequestData
 import com.example.internz.feature.SelectHelper
 import com.example.internz.ui.BottomBarActivity
 import kotlinx.android.synthetic.main.activity_set_profile.*
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.InputStream
+import java.net.URI
 
 class SetProfileActivity : AppCompatActivity() {
 
     private var imagePath : String = ""
     private lateinit var activity : Activity
+    private lateinit var path: Uri
+    private var img: String? = ""
+    lateinit var file: File
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,6 +128,10 @@ class SetProfileActivity : AppCompatActivity() {
 
         //시작하기 click listener
         btnSetProfileStart.setOnClickListener {
+//
+//            var requestBody : RequestBody = RequestBody.create(MediaType.parse("image/*"),file)
+//            var body : MultipartBody.Part = MultipartBody.Part.createFormData("uploaded_file",file.getName(),requestBody)
+
             if (edtSetProfileContents.text.length < 20) {
                 edtSetProfileContents.requestFocus()
                 Toast.makeText(applicationContext, "20자 이상의 한줄 소개를 작성해주세요.", Toast.LENGTH_SHORT).show()
@@ -147,7 +166,9 @@ class SetProfileActivity : AppCompatActivity() {
 
     private fun getImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
+//        intent.type = "image/*"
+        intent.type = android.provider.MediaStore.Images.Media.CONTENT_TYPE
+        intent.data = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         startActivityForResult(intent, IMAGE_PICK_CODE)
     }
 
@@ -187,8 +208,17 @@ class SetProfileActivity : AppCompatActivity() {
                 .load(data?.data)
                 .apply(RequestOptions.circleCropTransform())
                 .into(imgSetProfile)
-
+//data?.data
             imagePath = data?.data.toString()
+//            path = data?.data!!
+//
+//            var cursor = contentResolver.query(path, null, null, null, null)
+//            cursor?.moveToNext()
+//            img = cursor?.getString(cursor.getColumnIndex("_data"))
+//            cursor?.close()
+//            file = File(img)
+
+
             Log.e("TAG", "${imagePath}")
         }
     }

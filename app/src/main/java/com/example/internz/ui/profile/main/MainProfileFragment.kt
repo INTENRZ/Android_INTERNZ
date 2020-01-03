@@ -83,7 +83,7 @@ class MainProfileFragment : Fragment() {
                 job1.text = it.task_one
                 job2.text = it.task_two
                 job3.text = it.task_three
-                if(it.front_image == null){
+                if(it.front_image == "undefined"){
                     // 프로필 이미지가 없을 경우 기본 이미지 적용
                     imgFace.setImageDrawable(getResources().getDrawable(R.drawable.basicprofile_img))
                 }else{
@@ -146,6 +146,7 @@ class MainProfileFragment : Fragment() {
 
                 timelineCall.enqueue(
                     onSuccess = {
+                        txt_profile_black.visibility = View.INVISIBLE
                         adapter_profile_mainProfile.data = it
                         adapter_profile_mainProfile.notifyDataSetChanged()
                     },
@@ -169,8 +170,10 @@ class MainProfileFragment : Fragment() {
 
         timelineCall.enqueue(
             onSuccess = {
+                txt_profile_black.visibility = View.INVISIBLE
                 adapter_profile_mainProfile.data = it
                 adapter_profile_mainProfile.notifyDataSetChanged()
+
             },
             onFail = {status, message ->
                 // 자신의 타임라인이 하나도 존재하지 않을 때 "타임라인이 비어있습니다." 텍스트 띄우기

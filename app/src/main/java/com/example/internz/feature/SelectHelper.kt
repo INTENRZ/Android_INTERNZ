@@ -13,7 +13,7 @@ object SelectHelper {
     var categoryCount: IntArray = intArrayOf(0,0,0,0,0,0)
 
     // 타임라인 카테고리 판별
-    var categoryWhat = -1
+    var categoryWhat : String = ""
 
     var categoryOld = -1
 
