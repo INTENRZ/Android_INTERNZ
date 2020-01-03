@@ -64,11 +64,10 @@ class OtherProfileActivity : AppCompatActivity() {
                 job2.text = it.task_two
                 job3.text = it.task_three
 
-                if(it.front_image == "undefined"){
+                if(it.front_image == null){
                     // 프로필 설정 이미지가 없을 경우 기본 이미지 지정
                     imgFace.setImageDrawable(getResources().getDrawable(R.drawable.basicprofile_img))
                 }else{
-
                     Glide //사용자 이미지 프로필
                         .with(this)
                         .load(it.front_image)
