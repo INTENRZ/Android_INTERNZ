@@ -25,8 +25,8 @@ import com.example.internz.feature.homecustomnotification.ThirdFragment
 import com.example.internz.feature.homerecomm.HomerecommAdapter
 import retrofit2.Call
 import me.relex.circleindicator.CircleIndicator
-import kotlinx.android.synthetic.main.fragment_home.tablayout
-import kotlinx.android.synthetic.main.fragment_home.viewpager
+import kotlinx.android.synthetic.main.fragment_main_home.viewpager
+import kotlinx.android.synthetic.main.fragment_main_home.*
 
 
 class MainHomeFragment : Fragment() {
@@ -75,7 +75,7 @@ class MainHomeFragment : Fragment() {
     }
 
     /** 메인 홈 "추천 프로필", "오늘의 스토리" 서버 통신 */
-    fun responseMainHome(){
+    private fun responseMainHome(){
         val call: Call<BaseResponse<HomeResponseData>> = ApiServiceImpl.service.responseMainHome(ApiServiceImpl.getToken())
         call.enqueue(
             onSuccess = {
@@ -95,7 +95,7 @@ class MainHomeFragment : Fragment() {
         )
     }
 
-    fun rvCustom() {
+    private fun rvCustom() {
 
         val customAdapter: PagerAdapter = CustomNotificationAdapter(childFragmentManager)
         viewpager.adapter = customAdapter

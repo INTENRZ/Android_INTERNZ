@@ -22,7 +22,8 @@
         android:textSize="17sp"
         android:textColor="#000000"
         android:textStyle="bold"
-        android:background="#ffffff"/>
+        android:background="#ffffff"
+        android:fontFamily="@font/notosanscjkkrmedium"/>
 
     <View
         android:id="@+id/v_bar"

@@ -43,6 +43,7 @@
             android:textSize="14sp"
             android:textColor="#ffffff"
             android:textStyle="bold"
+            android:fontFamily="@font/notosanscjkkrmedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/category_fill_border"
@@ -59,6 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="NAVER SNOW Jam Studio 기획/운영팀"
+            android:fontFamily="@font/notosanscjkkrmedium"
             app:layout_constraintStart_toStartOf="@id/constraint"
             app:layout_constraintTop_toBottomOf="@+id/txt_storylist_category"
             android:layout_marginTop="4dp"
@@ -77,6 +79,7 @@
             android:layout_marginTop="8dp"
             android:text="19.01.01 - 19.07.01"
             android:textColor="#707070"
+            android:fontFamily="@font/notosanscjkkrmedium"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -110,6 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="스토리가 없습니다."
+        android:fontFamily="@font/notosanscjkkrmedium"
         android:textColor="#bfbfbf"
         android:textSize="18sp"
         android:visibility="invisible"/>
