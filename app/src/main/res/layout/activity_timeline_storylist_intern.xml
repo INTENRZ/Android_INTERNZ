@@ -18,22 +18,22 @@
             android:id="@+id/img_backBtn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
+            android:padding="15sp"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:src="@drawable/timeline_detail_back_ic"/>
 
 
         <ImageView
             android:id="@+id/img_menu"
+            android:padding="15sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/timeline_detail_menu_ic"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"/>
+            android:src="@drawable/timeline_detail_menu_ic"/>
 
         <TextView
             android:id="@+id/txt_storylist_category"

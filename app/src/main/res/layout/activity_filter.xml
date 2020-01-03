@@ -30,6 +30,7 @@
 
         <ImageView
             android:id="@+id/imgFilterBack"
+            android:padding="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintHorizontal_bias="0.03"
@@ -85,7 +86,7 @@
         android:fontFamily="@font/notosanscjkkrbold"
         android:textSize="20sp"
         android:textColor="#ffffff"
-        android:background="@drawable/selecter_for_sign_in_act"
+        android:background="@drawable/btn_shape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

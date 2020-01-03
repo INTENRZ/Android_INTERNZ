@@ -44,6 +44,7 @@
 
         <ImageView
             android:id="@+id/imgSendBack"
+            android:padding="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/delete_btn"

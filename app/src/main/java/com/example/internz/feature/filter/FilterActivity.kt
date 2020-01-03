@@ -116,13 +116,16 @@ class FilterActivity : AppCompatActivity() {
                     FilterHelper.count++ //count 증가
                     FilterHelper.currentButton?.toggle() //drawable 변경
                     FilterHelper.currentButton?.setTextColor(Color.parseColor("#ffc200")) //텍스트 색상 변경(YELLOW)
+                    btnFilterApply.setBackgroundResource(R.drawable.btn_shape_ok)
                 }
                 else if (FilterHelper.count == 1){ //사용자가 선택한 필터가 있는 경우, current != null
                     if(FilterHelper.currentButton!!.equals(checkedTextView)) { //사용자가 선택한 필터가 현재 선택된 필터인 경우
                         FilterHelper.count--
                         FilterHelper.currentButton?.toggle() //drawable 변경
+                        btnFilterApply.setBackgroundResource(R.drawable.btn_shape)
                         FilterHelper.currentButton?.setTextColor(Color.parseColor("#000000")) //텍스트 색상 변경(BLACK)
                         FilterHelper.currentButton = null //현재 선택된 버튼 초기화
+
                     } else { //사용자가 선택한 필터가 이전과 다른 경우 //현재와 다른 필터를 선택한 경우
                         FilterHelper.currentButton?.toggle() //현재로 저장된 이전 필터 drawable 변경
                         FilterHelper.currentButton?.setTextColor(Color.parseColor("#000000")) //텍스트 색상 변경(BLACK)

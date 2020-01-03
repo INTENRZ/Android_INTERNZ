@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorWhite"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.TimelineAddActivity"
-    android:id="@+id/layout_timeline_add">
+    tools:context=".ui.profile.TimelineAddActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constrainttop"
@@ -38,6 +38,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.03"
+        android:padding="15sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/delete_btn"/>
