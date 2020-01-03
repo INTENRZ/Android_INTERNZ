@@ -71,7 +71,7 @@ class OtherProfileActivity : AppCompatActivity() {
 
                     Glide //사용자 이미지 프로필
                         .with(this)
-                        .load(it.front_image)
+                        .load(R.drawable.basicprofile_img)
                         .apply(RequestOptions.circleCropTransform())
                         .into(imgFace)
                 }

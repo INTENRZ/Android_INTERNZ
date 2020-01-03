@@ -32,7 +32,8 @@
         android:textColor="#212529"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtStoryTitle" />
 
     <TextView
         android:id="@+id/txtStoryDate"

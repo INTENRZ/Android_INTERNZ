@@ -1,6 +1,5 @@
 package com.example.internz.ui
 
-import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -8,8 +7,6 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.internz.R
-import com.example.internz.feature.signin.SignInActivity
-import com.example.internz.ui.onboarding.OnBoardingActivity
 
 class SplashActivity : AppCompatActivity() {
 
