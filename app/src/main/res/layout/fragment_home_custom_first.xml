@@ -19,6 +19,7 @@
         android:layout_marginStart="16dp"
         android:fontFamily="@font/notosanscjkkrbold"
         android:text="라인스튜디오"
+        android:textColor="#212529"
         android:textSize="16sp" />
 
     <TextView

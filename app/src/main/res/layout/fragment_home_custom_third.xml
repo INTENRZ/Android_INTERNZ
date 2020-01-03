@@ -16,8 +16,9 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/notosanscjkkrmedium"
+        android:fontFamily="@font/notosanscjkkrbold"
         android:text="한국언론진흥재단"
+        android:textColor="#212529"
         android:textSize="16sp" />
 
     <TextView
@@ -30,6 +31,7 @@
         android:layout_marginTop="5dp"
         android:fontFamily="@font/notosanscjkkrregular"
         android:text="광고, 일반행정"
+        android:textColor="#212529"
         android:textSize="16sp"/>
 
     <TextView

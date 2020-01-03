@@ -41,11 +41,5 @@ class MessageListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         //날짜 및 시간 형식 변환
         date.text = data.date.replace("-",".").substring(2,10)
         time.text = data.date.substring(11,16)
-
-        //click listener 지정
-        view.setOnClickListener {
-            val intent = Intent(view.context, MessageSendActivity::class.java)
-            view.context.startActivity(intent)
-        }
     }
 }

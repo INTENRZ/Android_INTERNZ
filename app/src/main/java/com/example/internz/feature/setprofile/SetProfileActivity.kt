@@ -25,6 +25,7 @@ import com.example.internz.ui.BottomBarActivity
 import kotlinx.android.synthetic.main.activity_set_profile.*
 
 class SetProfileActivity : AppCompatActivity() {
+
     private var imagePath : String = ""
     private lateinit var activity : Activity
 
@@ -44,7 +45,7 @@ class SetProfileActivity : AppCompatActivity() {
         imgSetProfile.setOnClickListener {
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if(checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) ==
-                        PackageManager.PERMISSION_DENIED) {
+                    PackageManager.PERMISSION_DENIED) {
                     //권한 거부
                     val permissions = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
                     //권한 요청 팝업 생성
@@ -137,7 +138,7 @@ class SetProfileActivity : AppCompatActivity() {
                         ActivityCompat.finishAffinity(activity)
                     },
                     onFail = {
-                        status, message -> toast(message)
+                            status, message -> toast(message)
                     }
                 )
             }
@@ -196,7 +197,8 @@ class SetProfileActivity : AppCompatActivity() {
     private fun ImageView.makeCircle() {
         Glide
             .with(this@SetProfileActivity)
-            .load(this.drawable)
+//            .load(this.drawable)
+            .load("content://storage/emulated/0/DCIM/건훈이랑/20191121_213843.jpg")
             .apply(RequestOptions.circleCropTransform())
             .into(this)
     }
@@ -213,7 +215,7 @@ class SetProfileActivity : AppCompatActivity() {
                 textView14.text = it.nickname
             },
             onFail = {
-                status, message -> Log.e("TAG", "SetProfileActivity : 닉네임 받아오는 통신 FAIL ${status}, ${message}")
+                    status, message -> Log.e("TAG", "SetProfileActivity : 닉네임 받아오는 통신 FAIL ${status}, ${message}")
             }
         )
     }

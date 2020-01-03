@@ -61,27 +61,24 @@
             android:layout_height="wrap_content"
             app:headerColor="@color/colorWhite"
             app:headerLabelColor="#000000"
-            app:todayLabelColor="#000000"
-            app:selectionColor="@color/colorBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-<!--  calendar 첫번째에서 지정해줄 attribute      -->
-<!--            app:headerColor="@color/colorWhite"-->
-<!--            app:headerLabelColor="#000000"-->
-<!--            app:todayLabelColor="#000000"-->
-<!--            app:selectionColor="@color/colorBackground"-->
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:mcv_tileHeight="50dp"
+            app:selectionColor="@color/colorBackground"
+            app:todayLabelColor="#000000" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="320dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
         android:background="#f4f4f4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarCalendar">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCalendar"
