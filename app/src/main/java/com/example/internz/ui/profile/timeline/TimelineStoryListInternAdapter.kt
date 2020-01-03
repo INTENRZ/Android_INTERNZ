@@ -25,17 +25,6 @@ class TimelineStoryListInternAdapter (private val context : Context) : RecyclerV
     override fun onBindViewHolder(holder : TimelineStoryListInternViewHolder, position: Int) {
         holder.bind(data[position])
 
-        /* 서버에서 받은 데이터 중 isMe 가 데이터에 들어가 빈 리사이클러뷰가 생기는 경우 방지 */
-        if(position == data.size-1){
-            holder.title.text = ""
-            holder.date.text = ""
-            holder.img.visibility = View.INVISIBLE
-            holder.bar.visibility = View.INVISIBLE
-        }else{
-            holder.title.text = data[position].title
-            holder.date.text = data[position].created_date
-        }
-
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, DetailStoryActivity::class.java)
             StoryHelper.setStoryIndex(data[position].storyIdx.toString())

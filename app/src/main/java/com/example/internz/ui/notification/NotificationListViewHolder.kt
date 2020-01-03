@@ -39,7 +39,10 @@ class NotificationListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         //날짜 처리
         if(data.day < 0) {
             dday.text = "D" + data.day.toString()
-        } else {
+        } else if (data.day == 0) {
+            dday.text = "D-DAY"
+        }
+        else {
             dday.text = "D+" + data.day.toString()
         }
 
