@@ -50,7 +50,6 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
             supportFragmentManager.beginTransaction().add(R.id.nav_host_fragment, frag, key.toString()).hide(frag).commit()
         }
 
-
         // 임의로 4개중에 하나를 화면에 표시한다.
         supportFragmentManager.beginTransaction().show(fragmentHome).commit()
         active = fragmentHome

@@ -40,16 +40,6 @@
         android:textSize="16sp"
         app:layout_constraintVertical_bias="0.63"/>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/indicater_3_img"
-        app:layout_constraintVertical_bias="0.85"/>
-
     <Button
         android:id="@+id/btnOnBoarding"
         android:layout_width="match_parent"
@@ -61,6 +51,8 @@
         app:layout_constraintVertical_bias="0.95"
         android:text="시작하기"
         android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:fontFamily="@font/notosanscjkkrbold"
         android:background="@drawable/btn_shape_ok"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"/>

@@ -20,6 +20,6 @@ class StoryViewHolder(view : View) : RecyclerView.ViewHolder(view) {
         //통신
         title.text = data.title
         nickname.text = data.nickname
-        date.text = data.date
+        date.text = data.date.replace("-",".")
     }
 }

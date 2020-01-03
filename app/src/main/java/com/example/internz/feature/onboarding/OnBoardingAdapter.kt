@@ -9,7 +9,6 @@ import androidx.fragment.app.FragmentPagerAdapter
 
 class OnBoardingAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)  {
 
-
     private var fragments : ArrayList<Fragment> = ArrayList()
 
     override fun getItem(position: Int): Fragment {
@@ -24,9 +23,4 @@ class OnBoardingAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm, BEHAVIO
         fragments.add(fragment)
 
     }
-//
-//    fun replaceFragment(index : Int , fragment2: Fragment) {
-//        fragments.removeAt(index)
-//        fragments.add(fragment2)
-//    }
 }

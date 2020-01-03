@@ -29,6 +29,9 @@ class NotificationFragment : Fragment() {
     private lateinit var rvNotificationList: RecyclerView
     private lateinit var notificationListAdapter : NotificationListAdapter
 
+    private var selectedTask : String = "전체"
+    private var selectedSort : String = "0"
+
     private lateinit var notificationViewModel: NotificationViewModel
 
     override fun onCreateView(
@@ -40,7 +43,6 @@ class NotificationFragment : Fragment() {
         notificationViewModel =
             ViewModelProviders.of(this).get(NotificationViewModel::class.java)
         val view = inflater.inflate(R.layout.fragment_notification_list, container, false)
-
 
         return view
     }
@@ -65,12 +67,12 @@ class NotificationFragment : Fragment() {
                 //아이템이 클릭 되면 맨 위부터 position 0번부터 순서대로 동작하게 됩니다.
                 when(position) {
                     0   ->  {
-                        Log.e("TAG", "NotificationFragment : 전체 공고를 조회합니다.")
-                        requestNoti()
+                        selectedSort = "0" //전체공고
+                        requestData()
                     }
                     1   ->  {
-                        Log.e("TAG", "NotificationFragment : 지난 공고를 조회합니다.")
-                        requestPastData()
+                        selectedSort = "1" //지난공고
+                        requestData()
                     }
                 }
             }
@@ -80,6 +82,7 @@ class NotificationFragment : Fragment() {
         }
     }
 
+    //하단바 선택시 제공
     fun makeNotificationList() {
         rvNotificationList = view!!.findViewById(R.id.rvNotilist)
         notificationListAdapter = NotificationListAdapter(context!!)
@@ -89,7 +92,7 @@ class NotificationFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
 
-        requestNoti()
+        requestData()
 
         //공고 -> 캘린더 이동 imageview click listener
         activity?.findViewById<ImageView>(R.id.imgNotiToCalendar)?.setOnClickListener {
@@ -111,51 +114,30 @@ class NotificationFragment : Fragment() {
             REQUEST_CODE -> {
                 when(resultCode) {
                     Activity.RESULT_OK -> {
-                        //서버 통신
-                        val call = ApiServiceImpl.service.requestJobFilter(FilterHelper.filterText!!)
+                        //선택된 필터
+                        selectedTask = FilterHelper.filterText!!
 
-                        call.enqueue(
-                            onSuccess = {
-                                notificationListAdapter.data = it
-                                notificationListAdapter.notifyDataSetChanged()
-                            },
-                            onFail = {
-                                    status, message ->
-                                Log.e("TAG", "FilterActivity : status : ${status}, message : ${message}")
-                            }
-                        )
+                        //통신
+                        requestData()
                     }
                 }
             }
         }
     }
 
-    private fun requestNoti() {
-        val call = ApiServiceImpl.service.requestAllNotification()
+    private fun requestData() {
 
-        call.enqueue(
-            onSuccess = {
-                notificationListAdapter.data = it
-                notificationListAdapter.notifyDataSetChanged()
-            },
-            onFail = {
-                    status, message -> toast(message)
-            }
+        val call = ApiServiceImpl.service.requestNotification(
+            selectedTask, selectedSort
         )
-    }
-
-    private fun requestPastData() {
-        val call = ApiServiceImpl.service.requestPastNotification()
 
         call.enqueue(
             onSuccess = {
                 notificationListAdapter.data = it
                 notificationListAdapter.notifyDataSetChanged()
-
-                Log.e("TAG", "지난 공고 조회 SUCCESS")
             },
             onFail = {
-                status, message -> Log.e("TAG", "지난 공고 조회 FAIL : ${status}, ${message}")
+                status, message -> Log.e("TAG", "공고 데이터 통신 FAIL, ${status}, ${message}")
             }
         )
     }

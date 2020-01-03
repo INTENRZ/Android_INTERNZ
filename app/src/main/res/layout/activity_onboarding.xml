@@ -15,6 +15,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/onBoardingIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="80dp"
+        app:ci_drawable="@drawable/black_radius"
+        app:ci_height="5dp"
+        app:ci_width="5dp"
+        app:ci_margin="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager2"
