@@ -109,7 +109,7 @@ class TimelineAddActivity : AppCompatActivity() {
 
         deleteBtn()
     }
-
+//
 
     /* 타임라인 추가할 때 선택해야 하는 카테고리 그리디 리사이클러뷰 세팅 */
     fun timelineCategoryRv(){
