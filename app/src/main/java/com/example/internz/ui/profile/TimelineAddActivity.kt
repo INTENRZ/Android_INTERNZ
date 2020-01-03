@@ -1,12 +1,16 @@
 package com.example.internz.ui.profile
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.CheckedTextView
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
@@ -24,6 +28,7 @@ import com.example.internz.feature.SelectHelper
 import com.example.internz.ui.DatePickderHelper
 import com.example.internz.ui.EndDatePicker
 import com.example.internz.ui.StartDatePicker
+import com.example.internz.feature.filter.FilterHelper
 import kotlinx.android.synthetic.main.activity_timeline_add.*
 import retrofit2.Call
 
@@ -54,6 +59,7 @@ class TimelineAddActivity : AppCompatActivity() {
 
         timelineCategoryRv()
 
+        //timelineCategoryRv()
 
         /* 등록버튼 클릭시 edittext에 작성한 텍스트 받기 + 서버 통신 */
         txt_timelineadd_add.setOnClickListener {
@@ -96,12 +102,9 @@ class TimelineAddActivity : AppCompatActivity() {
                 onFail = {status, message ->  toast(message)
                 }
             )
-
         }
 
         deleteBtn()
-
-
     }
 
     /* 타임라인 추가할 때 선택해야 하는 카테고리 그리디 리사이클러뷰 세팅 */
@@ -153,7 +156,70 @@ class TimelineAddActivity : AppCompatActivity() {
     fun showEndDatePickerDialog(v: View) {
         val newFragment = EndDatePicker()
         newFragment.show(supportFragmentManager, "endDatePicker")
-    }
 
+    }
+        //adapter
+     inner class TimelineCategoryAdapter(private val context: Context) :
+            RecyclerView.Adapter<TimelineCategoryViewHolder>() {
+            var data = listOf<TimelineCategoryData>()
+
+            override fun onCreateViewHolder(
+                parent: ViewGroup,
+                viewType: Int
+            ): TimelineCategoryViewHolder {
+                val view =
+                    LayoutInflater.from(context).inflate(R.layout.rv_filterbox_item, parent, false)
+                return TimelineCategoryViewHolder(view)
+            }
+
+            override fun onBindViewHolder(holder: TimelineCategoryViewHolder, position: Int) {
+                holder.bind(data[position])
+
+                holder.itemView.setOnClickListener {
+                    val checkedTextView =
+                        holder.itemView.findViewById<CheckedTextView>(R.id.checktxt_filter)
+
+                    //내가 선택한 CheckedTextView의 정보 저장
+                    if (TimelineHelper.count == 0) { //사용자가 선택한 필터가 없는 경우, current == null
+
+                        TimelineHelper.currentButton = checkedTextView //CheckedTextView 정보 저장
+                        TimelineHelper.count++ //count 증가
+                        TimelineHelper.currentButton?.toggle() //drawable 변경
+                        TimelineHelper.currentButton?.setTextColor(Color.parseColor("#ffc200")) //텍스트 색상 변경(YELLOW)
+                    } else if (TimelineHelper.count == 1) { //사용자가 선택한 필터가 있는 경우, current != null
+                        if (TimelineHelper.currentButton!!.equals(checkedTextView)) { //사용자가 선택한 필터가 현재 선택된 필터인 경우
+                            TimelineHelper.count--
+                            TimelineHelper.currentButton?.toggle() //drawable 변경
+                            TimelineHelper.currentButton?.setTextColor(Color.parseColor("#000000")) //텍스트 색상 변경(BLACK)
+                            TimelineHelper.currentButton = null //현재 선택된 버튼 초기화
+                        } else { //사용자가 선택한 필터가 이전과 다른 경우 //현재와 다른 필터를 선택한 경우
+                            TimelineHelper.currentButton?.toggle() //현재로 저장된 이전 필터 drawable 변경
+                            TimelineHelper.currentButton?.setTextColor(Color.parseColor("#000000")) //텍스트 색상 변경(BLACK)
+                            TimelineHelper.lastButton =
+                                FilterHelper.currentButton //현재 필터를 이전 필터로 변경
+                            //카운트는 동일하게 1로 유지
+                            TimelineHelper.currentButton = checkedTextView
+                            TimelineHelper.currentButton?.toggle() //drawable 변경
+                            TimelineHelper.currentButton?.setTextColor(Color.parseColor("#ffc200")) //텍스트 색상 변경(YELLOW)
+                        }
+                    }
+
+                    //TimelineHelper.currentButton?.text.toString()
+                }
+            }
+
+            override fun getItemCount(): Int {
+                return data.size
+            }
+        }
+
+        //view holder
+        inner class TimelineCategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+            val category: CheckedTextView = itemView.findViewById(R.id.checktxt_filter)
+
+            fun bind(data: TimelineCategoryData) {
+                category.text = data.category
+            }
+        }
 
 }

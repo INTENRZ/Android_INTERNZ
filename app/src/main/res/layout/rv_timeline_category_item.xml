@@ -4,7 +4,7 @@
     android:layout_height="45dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <CheckedTextView
         android:id="@+id/txt_category"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:background="@drawable/category_selector"
-        android:gravity="center_horizontal|center_vertical" />
+        android:textAlignment="center"
+        android:gravity="center" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

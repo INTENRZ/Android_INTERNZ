@@ -1,6 +1,7 @@
 package com.example.internz.ui.home
 
 
+import android.graphics.Insets.add
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,9 @@ import com.example.internz.common.toast
 import com.example.internz.data.home.HomeResponseData
 import com.example.internz.feature.homestory.HomestoryAdapter
 import com.example.internz.feature.homecustomnotification.CustomNotificationAdapter
+import com.example.internz.feature.homecustomnotification.FirstFragment
+import com.example.internz.feature.homecustomnotification.SecondFragment
+import com.example.internz.feature.homecustomnotification.ThirdFragment
 import com.example.internz.feature.homerecomm.HomerecommAdapter
 import retrofit2.Call
 import me.relex.circleindicator.CircleIndicator
@@ -33,6 +37,7 @@ class MainHomeFragment : Fragment() {
     private lateinit var adapter_homestory: HomestoryAdapter
 
     private lateinit var homeViewModel: HomeViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -92,10 +97,9 @@ class MainHomeFragment : Fragment() {
 
     private fun rvCustom() {
 
-        val customAdapter : PagerAdapter = CustomNotificationAdapter(childFragmentManager)
+        val customAdapter: PagerAdapter = CustomNotificationAdapter(childFragmentManager)
         viewpager.adapter = customAdapter
         tablayout.setupWithViewPager(viewpager)
-
         val indicator : CircleIndicator = view!!.findViewById(R.id.indicator)
         indicator.setViewPager(viewpager)
 

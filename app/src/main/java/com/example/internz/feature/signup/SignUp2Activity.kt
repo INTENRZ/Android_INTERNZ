@@ -39,10 +39,10 @@ class SignUp2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up2)
 
-        signUpFunction()
+        signUp2Function()
     }
 
-    private fun signUpFunction() {
+    private fun signUp2Function() {
 
 
         //성별(radio_group)
@@ -51,25 +51,85 @@ class SignUp2Activity : AppCompatActivity() {
         //서비스 이용 약관 동의(image_button)
         imgbtnSignUpService.setOnClickListener {
             when(imgbtnSignUpService.isSelected) {
-                true -> imgbtnSignUpService.isSelected = false
-                false -> imgbtnSignUpService.isSelected = true
-
+                true -> {
+                    imgbtnSignUpService.isSelected = false
+                    btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape)}
+                false -> {
+                    imgbtnSignUpService.isSelected = true
+                    btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape_ok)
+                }
             }
-            btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape_ok)
+
         }
 
         //서비스 이용 약관 동의(TextView)
         txtSignUpService.setOnClickListener {
             when(txtSignUpService.isSelected) {
-                true -> txtSignUpService.isSelected = false
-                false -> txtSignUpService.isSelected = true
-
+                true -> { txtSignUpService.isSelected = false
+                    imgbtnSignUpService.isSelected = false
+                    btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape)}
+                false -> { txtSignUpService.isSelected = true
+                    imgbtnSignUpService.isSelected = true
+                    btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape_ok)}
             }
-            btnSignUpFinish.setBackgroundResource(R.drawable.btn_shape_ok)
         }
 
 
+        //(선택) 마케팅 정보 수신 동의
+        imgbtnSignUpMarketing.setOnClickListener {
+            when(imgbtnSignUpMarketing.isSelected) {
+                true -> imgbtnSignUpMarketing.isSelected = false
+
+                false -> imgbtnSignUpMarketing.isSelected = true
+
+                }
+            }
+
+
+        //(선택) 마케팅 정보 수신 동의
+        txtSignUpMarketing.setOnClickListener {
+            when(txtSignUpMarketing.isSelected) {
+                true ->  {
+                    txtSignUpMarketing.isSelected = false
+                    imgbtnSignUpMarketing.isSelected = false
+                }
+
+                false -> {
+                    txtSignUpMarketing.isSelected = true
+                    imgbtnSignUpMarketing.isSelected = true
+                }
+            }
+        }
+
+        //뒤로가기(back button)
+        findViewById<ImageView>(R.id.imgSignUp2Back).setOnClickListener {
+            this.finish()
+        }
+
         btnSignUpFinish.setOnClickListener {
+
+
+            if(edtSignUp2Name.length()<2)
+            {
+                Toast.makeText(this, "올바른 이름을 입력해 주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if(edtSignUp2Nick.length()<2)
+            {
+                Toast.makeText(this, "두 글자 이상의 닉네임을 입력해 주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if(edtSignUp2Birth.length()<6)
+            {
+                Toast.makeText(this, "올바른 생년월일을 입력해 주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if(!imgbtnSignUpService.isSelected)
+            {
+                Toast.makeText(this, "서비스 이용 약관에 동의하여 주십시오.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
             val intent = getIntent()
             val name : String = edtSignUp2Name.text.toString()
@@ -98,6 +158,7 @@ class SignUp2Activity : AppCompatActivity() {
                     val intent = Intent(applicationContext, SignInActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                     startActivity(intent)
+
 
                 },
                 onFail = {

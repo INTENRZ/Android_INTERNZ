@@ -115,7 +115,8 @@ class NotificationFragment : Fragment() {
                 when(resultCode) {
                     Activity.RESULT_OK -> {
                         //선택된 필터
-                        selectedTask = FilterHelper.filterText!!
+                        Log.e("TAG", "공고 리스트, 선택된 필터 : ${FilterHelper.currentButton?.text.toString()}")
+                        selectedTask = FilterHelper.currentButton?.text.toString()
 
                         //통신
                         requestData()

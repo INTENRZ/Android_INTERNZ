@@ -1,9 +1,8 @@
-package com.example.internz.feature.filter
+package com.example.internz.ui.profile
 
 import android.widget.CheckedTextView
-import com.example.internz.data.filter.FilterItem
 
-object FilterHelper {
+object TimelineHelper {
     var count : Int = 0
 
     //이전의 버튼
