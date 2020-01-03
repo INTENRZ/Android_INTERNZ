@@ -2,6 +2,7 @@ package com.example.internz.ui
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,6 +10,7 @@ import android.widget.DatePicker
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import com.example.internz.R
+import com.example.internz.ui.profile.TimelineHelper
 import kotlinx.android.synthetic.main.activity_timeline_add.*
 import java.util.*
 
@@ -27,8 +29,18 @@ class EndDatePicker : DialogFragment(), DatePickerDialog.OnDateSetListener {
 
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
         val btn_endDate : TextView = activity!!.findViewById(R.id.btn_endDate)
+        val addBtn : TextView = activity!!.findViewById(R.id.txt_timelineadd_add)
         DatePickderHelper.endDate = "${year}-${month+1}-${day}"
         btn_endDate.text = DatePickderHelper.endDate
+
+        /** 모든 정보가 입력된 경우에만 등록버튼 활성화하기 위한 코드 */
+        if(TimelineHelper.isTitle != true && DatePickderHelper.startDate != "" && DatePickderHelper.endDate != "" && TimelineHelper.category != false){
+            addBtn.setTextColor(Color.parseColor("#ffc200"))
+            TimelineHelper.isOK = true
+        }else{
+            addBtn.setTextColor(Color.parseColor("#dbdbdb"))
+            TimelineHelper.isOK = false
+        }
     }
 
 

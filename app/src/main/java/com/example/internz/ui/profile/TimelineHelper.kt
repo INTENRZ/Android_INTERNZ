@@ -9,4 +9,16 @@ object TimelineHelper {
     var lastButton : CheckedTextView? = null
     //현재 버튼
     var currentButton : CheckedTextView? = null
+
+    var isOK : Boolean = false
+
+    var isTitle: Boolean = false
+
+    var startPeriod : Boolean = false
+
+    var endPeriod: Boolean = false
+
+    var category: Boolean = false
+
+
 }
