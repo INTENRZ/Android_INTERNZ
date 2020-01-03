@@ -85,7 +85,7 @@
         android:fontFamily="@font/notosanscjkkrbold"
         android:textSize="20sp"
         android:textColor="#ffffff"
-        android:background="@drawable/selecter_for_sign_in_act"
+        android:background="@drawable/btn_shape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

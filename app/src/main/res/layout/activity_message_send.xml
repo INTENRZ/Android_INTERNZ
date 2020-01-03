@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintHorizontal_bias="0.96"
-            android:background="@drawable/messagesend_ic"
+            android:text="전송"
             android:fontFamily="@font/notosanscjkkrmedium"
             android:textSize="15sp"
             android:textColor="#dbdbdb"
