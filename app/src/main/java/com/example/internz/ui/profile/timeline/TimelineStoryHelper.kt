@@ -8,4 +8,6 @@ object TimelineStoryHelper {
     var title: String = ""
 
     var period: String = ""
+
+    var isMe: Int = -1
 }

@@ -182,8 +182,8 @@
 
         <ImageView
             android:id="@+id/profileImg"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/home_recomm_profile_img"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -194,7 +194,6 @@
             android:id="@+id/txt_detailStory_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="오현택"
             app:layout_constraintStart_toEndOf="@id/profileImg"
             app:layout_constraintTop_toTopOf="@id/profileImg"
             app:layout_constraintBottom_toBottomOf="@id/profileImg"
@@ -204,22 +203,22 @@
             android:id="@+id/imgFollow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
             android:layout_marginEnd="16dp"
             android:src="@drawable/follow_btn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/profileImg"
+            app:layout_constraintBottom_toBottomOf="@id/profileImg"/>
 
         <TextView
             android:id="@+id/txt_detailStory_introduce"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profileImg"
+            android:textSize="12sp"
             android:layout_marginTop="12dp"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="16dp"
-            android:text="되돌리고 싶다 ~ 널알기전에 그때로~"/>
+            android:layout_marginEnd="16dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

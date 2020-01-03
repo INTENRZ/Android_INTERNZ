@@ -3,6 +3,7 @@ package com.example.internz.feature.onboarding
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.media.MediaBrowserCompat
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -31,6 +32,8 @@ class OnBoardingThirdFragment : Fragment() {
 
         btnOnBoarding.setOnClickListener {
             val intent = Intent(this.context, SignInActivity::class.java)
+            activity?.finish()
+
             startActivity(intent)
         }
     }

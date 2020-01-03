@@ -18,7 +18,8 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/notosanscjkkrbold"
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:textColor="#212529"
         android:text="SHOWBOX"
         android:textSize="16sp" />
 
@@ -31,6 +32,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
         android:text="마케팅 팀"
+        android:fontFamily="@font/notosanscjkkrregular"
+        android:textColor="#212529"
         android:textSize="16sp"/>
 
     <TextView
@@ -42,6 +45,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginStart="16dp"
         android:text="D-5"
+        android:fontFamily="@font/notosanscjkkrbold"
         android:textSize="14sp"
         android:textColor="@color/colorDday"/>
 

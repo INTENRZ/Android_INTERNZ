@@ -16,15 +16,17 @@ import com.example.internz.data.UserIdxRequestData
 import com.example.internz.data.follow.FollowerResponseData
 import com.example.internz.data.follow.FollowingResponseData
 import com.example.internz.data.home.HomeResponseData
+import com.example.internz.data.message.MessageListRequestData
+import com.example.internz.data.message.MessageListResponseData
+import com.example.internz.data.message.MessageResponseData
+import com.example.internz.data.message.MessageSendRequestData
 import com.example.internz.data.profile.ProfileData
 import com.example.internz.data.profile.TimelineStoryListInternData
 import com.example.internz.data.signin.SignInData
 import com.example.internz.data.signin.SignInRequestData
 import com.example.internz.data.signup.SignUpRequestData
 import com.example.internz.data.signup2.SignUp2RequestData
-import com.example.internz.data.story.DetailStoryResponseData
-import com.example.internz.data.story.StoryCategoryRequestData
-import com.example.internz.data.story.StoryCategoryResponseData
+import com.example.internz.data.story.*
 import com.example.internz.data.timeline.NicknameResponseData
 import com.example.internz.feature.calendar.CalenderResponseDayData
 import org.w3c.dom.Text
@@ -48,14 +50,6 @@ interface ApiService {
     //관심직군 + 프로필 + 한줄소개
     @PUT("/user/taskandintro")
     fun requestFirstSignIn(@Header("token") token : String, @Body body : FirstSignInRequestData) : Call<CallWithoutDataExt>
-
-    //공고 최신 조회
-    @GET("/job")
-    fun requestAllNotification() : Call<BaseResponse<List<NotificationResponseData>>>
-
-    //공고 직군 필터링
-    @GET("/job/{task}")
-    fun requestJobFilter(@Path("task") task : String) : Call<BaseResponse<List<NotificationResponseData>>>
 
     //스토리 카테고리/정렬 조회
     @POST("/story/category/sort")
@@ -119,15 +113,35 @@ interface ApiService {
     //캘린더에 공고 추가
     @POST("/calender/{jobIdx}")
     fun requestAddNotification(@Path("jobIdx") jobIdx: String, @Header("token") token: String) : Call<CallWithoutDataExt>
+
     // 각 타임라인의 스토리 리스트 조회
     @GET("/timeline/{timelineIdx}/story")
     fun requestStoryList(@Header("token") token: String, @Path("timelineIdx") timelineIdx : String) : Call<BaseResponse<List<TimelineStoryListInternData>>>
 
-    //지난 공고 조회
-    @GET("/job/past")
-    fun requestPastNotification() : Call<BaseResponse<List<NotificationResponseData>>>
-
     //닉네임
     @GET("/user/nickname")
     fun requestNickname(@Header("token") token : String) : Call<BaseResponse<NicknameResponseData>>
+
+    //쪽지 첫화면 데이터 가져오기(쪽지 목록 조회)
+    @GET("/letter/others/list")
+    fun requestMessage(@Header("token") token : String) : Call<BaseResponse<List<MessageResponseData>>>
+
+    //쪽지 두번째 화면 데이터 가져오기(쪽지 내용 조회)
+    @POST("/letter/others/message")
+    fun requestMessageList(@Header("token") token : String, @Body body : MessageListRequestData) : Call<BaseResponse<List<MessageListResponseData>>>
+
+    //쪽지 전송
+    @POST("/letter/others")
+    fun requestSendMessage(@Header("token") token : String,
+                           @Body body : MessageSendRequestData) : Call<CallWithoutDataExt>
+
+    //공고 직군 필터링
+    @GET("/job/{task}/{sort}")
+    fun requestNotification(@Path("task") task : String,
+                            @Path("sort") sort : String) : Call<BaseResponse<List<NotificationResponseData>>>
+
+    //타임라인
+    @POST("/timeline/{timelineIdx}/story")
+    fun requestStoryAdd(@Header("token") token: String, @Path("timelineIdx") timelineIdx : Int, @Body body: StoryAddRequestData) : Call<BaseResponse<StoryAddReponseData>>
+
 }

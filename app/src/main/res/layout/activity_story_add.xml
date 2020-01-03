@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.story.StoryAddActivity">
+
+    <TextView
+        android:id="@+id/txt_storyAdd_mainTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:text="스토리"
+        android:textSize="17sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <ImageView
+        android:id="@+id/img_storyAdd_delete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/delete_btn"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/txt_storyAdd_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="등록"
+        android:textSize="17sp"
+        android:textColor="#dbdbdb"/>
+
+    <View
+        android:id="@+id/v_storyAdd_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_storyAdd_mainTitle"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e3e3e3"/>
+
+    <EditText
+        android:id="@+id/et_storyAdd_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v_storyAdd_bar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:hint="제목"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColorHint="#dbdbdb"
+        android:singleLine="true"
+        android:cursorVisible="true"
+        android:background="@null" />
+
+    <View
+        android:id="@+id/v_storyAdd_bar2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_storyAdd_title"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e3e3e3"/>
+
+    <EditText
+        android:id="@+id/et_storyAdd_contents"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v_storyAdd_bar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:hint="내용을 입력하세요."
+        android:textColorHint="#dbdbdb"
+       android:padding="16dp"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:overScrollMode="always"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

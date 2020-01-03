@@ -12,35 +12,38 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/launcher_ic"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".feature.web.WebViewActivity"></activity>
+        <activity android:name=".ui.story.StoryAddActivity"></activity>
+        <activity android:name=".feature.web.WebViewActivity" />
         <activity android:name=".feature.filter.FilterActivity" />
         <activity android:name=".feature.calendar.CalendarActivity" />
-        <activity android:name=".feature.followerlist.FollowerListActivity"/>
-        <activity android:name=".feature.followinglist.FollowingListActivity"/>
+        <activity android:name=".feature.followerlist.FollowerListActivity" />
+        <activity android:name=".feature.followinglist.FollowingListActivity" />
         <activity android:name=".feature.message.messagesend.MessageSendActivity" />
         <activity android:name=".feature.message.messagelist.MessageListActivity" />
         <activity android:name=".feature.message.MessageActivity" />
-        <activity android:name=".ui.onboarding.OnBoardingActivity"/>
+        <activity android:name=".ui.onboarding.OnBoardingActivity" />
         <activity android:name=".ui.story.detailstory.DetailStoryActivity" />
         <activity android:name=".ui.profile.main.OtherProfileActivity" />
         <activity android:name=".ui.profile.TimelineAddActivity" />
         <activity android:name=".feature.setprofile.SetProfileActivity" />
-        <activity android:name=".feature.comment.CommentActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".feature.comment.CommentActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.profile.timeline.TimelineStoryListInternActivity" />
         <activity android:name=".feature.jobselect.JobSelectActivity" />
         <activity android:name=".feature.signup.SignUp2Activity" />
         <activity
             android:name=".feature.signin.SignInActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".feature.signup.SignUpActivity"
-            android:windowSoftInputMode="adjustNothing"/>
+        <activity
+            android:name=".feature.signup.SignUpActivity"
+            android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".ui.BottomBarActivity" />
         <activity android:name=".ui.SplashActivity">
             <intent-filter>

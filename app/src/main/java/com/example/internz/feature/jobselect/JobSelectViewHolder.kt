@@ -2,7 +2,9 @@ package com.example.internz.feature.jobselect
 
 import android.graphics.Color
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
+import android.widget.Button
 import android.widget.CheckedTextView
 import android.widget.TextView
 import android.widget.Toast
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.internz.R
 import com.example.internz.data.jobselect.JobSelectItem
 import com.example.internz.feature.SelectHelper
+import kotlinx.android.synthetic.main.activity_job_select.*
 
 class JobSelectViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 

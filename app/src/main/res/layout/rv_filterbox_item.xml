@@ -12,6 +12,7 @@
         android:background="@drawable/category_selector"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
+        android:fontFamily="@font/notosanscjkkrmedium"
         android:text="인턴"
         android:textSize="14sp"
         android:textColor="#212529"

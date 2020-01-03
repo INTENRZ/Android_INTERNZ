@@ -2,6 +2,7 @@ package com.example.internz.ui.profile
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
@@ -44,7 +45,7 @@ class TimelineAddActivity : AppCompatActivity() {
         val et_endMonth = findViewById<EditText>(R.id.edt_timelineadd_period_month_end)
         val et_endDay = findViewById<EditText>(R.id.edt_timelineadd_period_day_end)
 
-        timelineCategoryRv()
+        //timelineCategoryRv()
 
         /* 등록버튼 클릭시 edittext에 작성한 텍스트 받기 + 서버 통신 */
         txt_timelineadd_add.setOnClickListener {
@@ -95,35 +96,35 @@ class TimelineAddActivity : AppCompatActivity() {
     }
 
     /* 타임라인 추가할 때 선택해야 하는 카테고리 그리디 리사이클러뷰 세팅 */
-    fun timelineCategoryRv(){
-        rv_timeline_category = findViewById(R.id.rv_timelineadd)
-        adapter_timeline_category = TimelineCategoryAdapter(this)
-        rv_timeline_category.adapter = adapter_timeline_category
-        rv_timeline_category.layoutManager = GridLayoutManager(this, 4)
-
-        /* 카테고리 6개 배치 그리드 리사이클러뷰*/
-        adapter_timeline_category.data = listOf(
-            TimelineCategoryData(
-                category = "인턴"
-            ),
-            TimelineCategoryData(
-                category = "대외활동"
-            ),
-            TimelineCategoryData(
-                category = "공모전"
-            ),
-            TimelineCategoryData(
-                category = "동아리"
-            ),
-            TimelineCategoryData(
-                category = "자격증"
-            ),
-            TimelineCategoryData(
-                category = "기타"
-            )
-        )
-        adapter_timeline_category.notifyDataSetChanged()
-    }
+//    fun timelineCategoryRv(){
+//        rv_timeline_category = findViewById(R.id.rv_timelineadd)
+//        adapter_timeline_category = TimelineCategoryAdapter(this)
+//        rv_timeline_category.adapter = adapter_timeline_category
+//        rv_timeline_category.layoutManager = GridLayoutManager(this, 4)
+//
+//        /* 카테고리 6개 배치 그리드 리사이클러뷰*/
+//        adapter_timeline_category.data = listOf(
+//            TimelineCategoryData(
+//                category = "인턴"
+//            ),
+//            TimelineCategoryData(
+//                category = "대외활동"
+//            ),
+//            TimelineCategoryData(
+//                category = "공모전"
+//            ),
+//            TimelineCategoryData(
+//                category = "동아리"
+//            ),
+//            TimelineCategoryData(
+//                category = "자격증"
+//            ),
+//            TimelineCategoryData(
+//                category = "기타"
+//            )
+//        )
+//        adapter_timeline_category.notifyDataSetChanged()
+//    }
 
 
 
@@ -133,6 +134,7 @@ class TimelineAddActivity : AppCompatActivity() {
             finish()
         }
     }
+
 
 
 }

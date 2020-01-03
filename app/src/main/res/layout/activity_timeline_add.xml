@@ -248,16 +248,18 @@
         android:textStyle="bold"/>
 
     <!-- 카테고리 그리드 리사이클러 뷰 -->
+
+
     <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rv_timelineadd"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/txt_timelineadd_category"
-    app:layout_constraintEnd_toEndOf="parent"
-    android:layout_marginTop="15dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+        android:id="@+id/rv_timelineadd"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_timelineadd_category"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
 <!--        android:layout_width="match_parent"-->

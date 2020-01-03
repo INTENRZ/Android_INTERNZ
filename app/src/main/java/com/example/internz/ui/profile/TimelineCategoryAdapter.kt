@@ -12,7 +12,6 @@ class TimelineCategoryAdapter(private val context: Context) : RecyclerView.Adapt
 
     var data = listOf<TimelineCategoryData>()
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimelineCategoryViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.rv_filterbox_item, parent, false)
         return TimelineCategoryViewHolder(view)
@@ -22,37 +21,9 @@ class TimelineCategoryAdapter(private val context: Context) : RecyclerView.Adapt
         holder.bind(data[position])
         holder.changeColor()
 
-//        holder.category.setOnClickListener{
-//            //맨 처음 누르면 false임
-//            /* 카테고리 셀렉터 설정 */
-//            when(holder.category.isSelected) {
-//                // 이미 선택되어 있는 카테고리를 선택할 경우
-//                true -> {
-//                    holder.category.isSelected = false
-//                    SelectHelper.categoryCount = 0
-//                    holder.category.setTextColor(Color.parseColor("#212529"))
-//                }
-//                // 선택되어 있지 않은 카테고리를 선택할 경우
-//                false -> {
-//                    holder.category.isSelected = true
-//                    SelectHelper.categoryCount++
-//
-//                    if(SelectHelper.categoryCount > 1){
-//                        holder.category.isSelected = false
-//                        holder.category.setTextColor(Color.parseColor("#212529"))
-//                        Toast.makeText(context, "한 개의 카테고리를 선택해주세요.", Toast.LENGTH_SHORT).show()
-//                    }else{
-//                        holder.category.setTextColor(Color.parseColor("#ffc200"))
-//                    }
-//
-//                }
-//            }
-//
-//        }
     }
 
     override fun getItemCount(): Int {
         return data.size
     }
-
 }

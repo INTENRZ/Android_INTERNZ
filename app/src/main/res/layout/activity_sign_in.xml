@@ -125,7 +125,7 @@
         android:textSize="14sp"
         android:fontFamily="@font/notosanscjkkrmedium"
         android:lineSpacingExtra="30sp"
-        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/constSignIn" />

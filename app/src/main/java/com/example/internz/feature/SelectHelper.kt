@@ -15,6 +15,8 @@ object SelectHelper {
     // 타임라인 카테고리 판별
     var categoryWhat = -1
 
+    var categoryOld = -1
+
     fun categoryCountInit(){
         categoryCount[0] = 0
         categoryCount[1] = 0
@@ -23,4 +25,6 @@ object SelectHelper {
         categoryCount[4] = 0
         categoryCount[5] = 0
     }
+
+
 }

@@ -45,7 +45,7 @@
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/btn_for_job_selected"
+            android:background="@drawable/category_fill_border"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:paddingBottom="4dp"

@@ -30,7 +30,6 @@ class NotificationListViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     val desc : TextView = view.findViewById(R.id.txtNotilistDesc)
 
     fun bind(data : NotificationResponseData) {
-        //TODO! 이미지 가운데 정렬 후 높이 맞춰야 함
         Glide
             .with(view.context)
             .load(data.logo)

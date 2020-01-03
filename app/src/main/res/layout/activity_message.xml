@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".feature.message.MessageActivity">
 
+    <TextView
+        android:id="@+id/emptyMessage"
+        android:text=""
+        android:fontFamily="@font/notosanscjkkrmedium"
+        android:textColor="#e3e3e3"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/action_bar"
         android:layout_width="match_parent"

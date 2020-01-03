@@ -30,6 +30,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
         android:text="모바일 게임 데이터 분석"
+        android:fontFamily="@font/notosanscjkkrregular"
+        android:textColor="#212529"
         android:textSize="16sp"/>
 
     <TextView
@@ -41,6 +43,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginStart="16dp"
         android:text="D-6"
+        android:fontFamily="@font/notosanscjkkrbold"
         android:textSize="14sp"
         android:textColor="@color/colorDday"/>
 
