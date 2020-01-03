@@ -21,8 +21,8 @@ import com.example.internz.feature.homecustomnotification.CustomNotificationAdap
 import com.example.internz.feature.homerecomm.HomerecommAdapter
 import retrofit2.Call
 import me.relex.circleindicator.CircleIndicator
-import kotlinx.android.synthetic.main.fragment_home.tablayout
-import kotlinx.android.synthetic.main.fragment_home.viewpager
+import kotlinx.android.synthetic.main.fragment_main_home.viewpager
+import kotlinx.android.synthetic.main.fragment_main_home.*
 
 
 class MainHomeFragment : Fragment() {

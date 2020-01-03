@@ -11,6 +11,7 @@
         android:text="인턴"
         android:textSize="14sp"
         android:textColor="#212529"
+        android:fontFamily="@font/notosanscjkkrmedium"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:background="@drawable/category_selector"
