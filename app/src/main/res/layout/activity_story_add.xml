@@ -24,10 +24,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
+        android:padding="15sp"
         android:layout_height="wrap_content"
-        android:src="@drawable/delete_btn"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"/>
+        android:src="@drawable/delete_btn"/>
 
     <TextView
         android:id="@+id/txt_storyAdd_add"
