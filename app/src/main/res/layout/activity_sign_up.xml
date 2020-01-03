@@ -209,6 +209,7 @@
         android:background="@drawable/btn_shape"
         android:gravity="center"
         android:text="다음"
+        android:fontFamily="@font/notosanscjkkrbold"
         android:elevation="0dp"
         android:textColor="@color/colorWhite"
         android:textSize="20sp"

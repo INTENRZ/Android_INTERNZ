@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.internz.R
@@ -117,6 +118,25 @@ class SignUpActivity : AppCompatActivity() {
                 Toast.makeText(this, "올바른 이메일 형식을 입력하세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
+            if( edtSignUpPwd.length() < 6)
+            {
+                Toast.makeText(this, "비밀번호가 형식에 맞지 않습니다.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if(edtSignUpPwd.text.toString() != edtSignUpPwdChk.text.toString())
+            {
+                Toast.makeText(this, "비밀번호 확인이 맞지 않습니다.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if(edtSignUpPhone.length() != 11 )
+            {
+                Toast.makeText(this, "올바른 휴대폰 번호를 입력해 주세요.", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
 
             val email = edtSignUpEmail.text.toString()
             val password = edtSignUpPwd.text.toString()

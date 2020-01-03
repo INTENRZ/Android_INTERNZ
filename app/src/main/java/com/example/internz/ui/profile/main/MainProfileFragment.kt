@@ -196,7 +196,7 @@ class MainProfileFragment : Fragment() {
 
     /* 기능 구현 부족한 부분들 토스트 처리 */
     fun laterDevelop(){
-        img_profile_following.setOnClickListener {
+        txt_profile_following.setOnClickListener {
             Toast.makeText(context, "팔로우, 팔로잉 기능을 준비중입니다. 조금만 기다려주세요.", Toast.LENGTH_SHORT).show()
         }
         img_profile_massage.setOnClickListener {
