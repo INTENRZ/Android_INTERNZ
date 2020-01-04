@@ -19,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(this@SplashActivity, OnBoardingActivity::class.java)
             startActivity(intent)
             finish()
-        }, 3000)
+        }, 2000)
 
         //status bar 색상 변경
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

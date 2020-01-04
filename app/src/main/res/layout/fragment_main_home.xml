@@ -134,18 +134,19 @@
                 android:scaleType="fitXY"
                 android:layout_marginBottom="40dp"
                 android:layout_width="match_parent"
-                android:layout_height="410dp"
+                android:layout_height="460dp"
                 android:src="@drawable/home_recomm_story_shadow_box"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_homestory"
                 android:overScrollMode="never"
+
                 app:layout_constraintStart_toStartOf="@id/img_home_story"
                 app:layout_constraintTop_toTopOf="@id/img_home_story"
                 app:layout_constraintEnd_toEndOf="@id/img_home_story"
                 app:layout_constraintBottom_toBottomOf="@id/img_home_story"
                 android:layout_width="wrap_content"
-                android:layout_height="380dp" />
+                android:layout_height="400dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
